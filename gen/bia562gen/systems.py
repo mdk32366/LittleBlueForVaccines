@@ -5,7 +5,7 @@ from collections import defaultdict
 
 from .seam import SystemProfile
 
-T12_FROM, T12_TO = "202510", "202609"  # trailing 12 months to the data's last month (AS-0006 as-of 202609)
+T12_FROM, T12_TO = "202510", "202609"  # trailing 12 months to the data's last month (program-level as-of-month assumption: 202609)
 
 
 def load_csv(path) -> list:
