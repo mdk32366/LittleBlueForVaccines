@@ -26,6 +26,8 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
                                                  "test_pre_regen_split_9_12_stub_data", "test_status_column_and_citations_use_marker",
                                                  "test_brief_tab_markers"]),
     "nosamesection": (["test_t0039_autorenew.py"], ["test_rule_unit_cases"]),
+    "schema_autorenew": (["test_t0041_autorenew_schema.py"], ["test_auto_renew_present_on_every_msa",
+                                                              "test_auto_renew_is_bool_in_term_section"]),
     "briefmarker": (["test_t0040_brief_contracts.py"], ["test_brief_tab_markers"]),
     "bench": (["test_t0037_benchmark.py"], ["test_national_mode", "test_missing_national_falls_back"]),
     "trainguard": (["test_t0025_train_guard.py"], ["test_refuses_national_path", "test_refuses_outside_train_dirs_and_copies",

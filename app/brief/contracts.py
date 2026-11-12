@@ -11,7 +11,9 @@ from . import config
 
 REFUSAL = "not in the contracts"  # D-0027 (refusal string)
 EXPIRED_MARKER = "[EXPIRED]"  # shown when a contract's end date is before the as-of date
-AUTO_RENEW_MARKER = "[TERM ENDED · auto-renews]"  # expired, but auto_renew is True in the same term section
+# expired, but auto_renew is True in the same term section. The hyphen is U+2011 (non-breaking) so the PDF wrapper
+# never splits the label; DejaVu Sans has the glyph (checked by render, pdftotext and pdffonts, GATE 2 r2).
+AUTO_RENEW_MARKER = "[TERM ENDED · auto\u2011renews]"
 SEC_RE = re.compile(r"^## (\d+(?:\.\d+)*[a-z]?)\. (.+)$", re.M)
 
 KEYWORDS = [  # (pattern, field base) for free-text questions; order matters

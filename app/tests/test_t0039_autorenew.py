@@ -1,5 +1,4 @@
-"""T-0039 (pending Trinity's numbering) auto-renew marker, field-based (AS-0040 (expired rule)), and T-0041 (pending)
-schema_v1 auto_renew contract (AS-0041 (schema_v1 keeps auto_renew boolean in term section)).
+"""T-0039 (auto-renew split): the auto-renew marker, field-based (AS-0040 (expired rule)). The schema guard is T-0041.
 
 The rule: an expired MSA shows [TERM ENDED · auto-renews] iff its TermSet auto_renew field is True AND cites the same
 section as expiration_date (span verbatim there); otherwise [EXPIRED]. No phrase matching anywhere."""
@@ -17,6 +16,7 @@ def _auto(value, anchor="2", span="renews automatically"):
 def test_rule_unit_cases():
     m = contracts.field_marker
     assert m("expiration_date", EXP, [_auto(True)], DOCS) == contracts.AUTO_RENEW_MARKER
+    assert "auto\u2011renews" in contracts.AUTO_RENEW_MARKER  # non-breaking hyphen keeps the PDF label whole
     assert m("expiration_date", EXP, [_auto(False)], DOCS) == contracts.EXPIRED_MARKER
     assert m("expiration_date", EXP, [], DOCS) == contracts.EXPIRED_MARKER
     # auto_renew True but cited in ANOTHER section -> not the same term span -> [EXPIRED]
@@ -58,21 +58,3 @@ def test_status_column_and_citations_use_marker():
     assert contracts.system_markers("SYNCP000014")[("SYN-SYNCP000014-MSA1", "expiration_date")] == contracts.EXPIRED_MARKER
     cites = contracts.answer("SYNCP000036", "When does the MSA expire?")["citations"]
     assert cites and all(h["marker"] == contracts.AUTO_RENEW_MARKER for h in cites)
-
-
-def test_schema_auto_renew_bool_in_term_section(real_facts):
-    """AS-0041: every MSA has an auto_renew TermSet field that is a bool and cites the same section as expiration_date.
-    Keyed on field names and sections only (no stub template text), so it applies unchanged to schema_v1."""
-    n = 0
-    for sid in sorted(real_facts):
-        for did, (meta, _secs, _p) in contracts.system_docs(sid).items():
-            if meta.get("doc_type") != "MSA":
-                continue
-            fields = {k: f for d, k, f in contracts.system_terms(sid) if d == did}
-            assert "auto_renew" in fields, (did, "auto_renew missing")
-            assert "expiration_date" in fields, (did, "expiration_date missing")
-            assert isinstance(fields["auto_renew"]["value"], bool), (did, fields["auto_renew"]["value"])
-            a, e = fields["auto_renew"]["source"], fields["expiration_date"]["source"]
-            assert (a["doc_id"], a["anchor"]) == (e["doc_id"], e["anchor"]), did  # compared directly, not via the rule
-            n += 1
-    assert n == len(real_facts) == 180

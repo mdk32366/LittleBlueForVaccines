@@ -64,6 +64,18 @@ def apply_mutation(name):
     elif name == "briefmarker":  # (c) hide the marker on the Brief tab only (PDF untouched)
         report.brief_contract_lines = lambda rows: [ln.replace(contracts.AUTO_RENEW_MARKER, "").replace(contracts.EXPIRED_MARKER, "")
                                                     for ln in render.contract_lines(rows)]
+    elif name == "schema_autorenew":  # T-0041: drop auto_renew on one MSA, make it a string on another
+        orig = contracts.system_terms
+
+        def broken_terms(system_id):
+            rows = orig(system_id)
+            if system_id == "SYNCP000001":
+                return [r for r in rows if not (r[0].endswith("-MSA1") and contracts._base(r[1]) == "auto_renew")]
+            if system_id == "SYNCP000002":
+                return [(d, k, dict(f, value=str(f["value"])) if d.endswith("-MSA1") and contracts._base(k) == "auto_renew"
+                         else f) for d, k, f in rows]
+            return rows
+        contracts.system_terms = broken_terms
     elif name == "bench":
         bm.national = lambda path: bm.synthetic(load.load_csv(cfg.DATA_PATH))
         orig = bm.resolve
