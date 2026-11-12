@@ -1,0 +1,51 @@
+{
+ "date": "2024-11-06",
+ "doc": {
+  "doc_id": "SYN-SYNCP000142-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000142-P1, was presented by the Supplier to Maple Grove Regional Hospital 142 on November 6, 2024."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 1 rebate of 3%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Tdap share floor of 60%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: accepted by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000142"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000142-P1#3",
+   "description": "a Tdap share floor of 60%",
+   "kind": "exclusivity",
+   "span": "a Tdap share floor of 60%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000142-P1#2",
+   "description": "a Tier 1 rebate of 3%",
+   "kind": "rebate_change",
+   "span": "a Tier 1 rebate of 3%"
+  }
+ ],
+ "outcome": "won",
+ "proposal_id": "SYN-SYNCP000142-P1",
+ "resulted_in": "SYN-SYNCP000142-AMD1",
+ "system_id": "SYNCP000142"
+}

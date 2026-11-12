@@ -1,0 +1,51 @@
+{
+ "date": "2024-10-06",
+ "doc": {
+  "doc_id": "SYN-SYNCP000028-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000028-P1, was presented by the Supplier to Keystone Community Health 028 on October 6, 2024."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Tdap share floor of 55%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: declined by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000028"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000028-P1#3",
+   "description": "a Tdap share floor of 55%",
+   "kind": "exclusivity",
+   "span": "a Tdap share floor of 55%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000028-P1#2",
+   "description": "a Tier 3 rebate of 5.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 5.5%"
+  }
+ ],
+ "outcome": "lost",
+ "proposal_id": "SYN-SYNCP000028-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000028"
+}

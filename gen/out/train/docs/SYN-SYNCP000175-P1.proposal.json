@@ -1,0 +1,51 @@
+{
+ "date": "2025-10-05",
+ "doc": {
+  "doc_id": "SYN-SYNCP000175-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000175-P1, was presented by the Supplier to Redwood Care Partners 175 on October 5, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 2 rebate of 3.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a commitment of 740 Shingles doses per year."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: awaiting a Customer decision."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000175"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000175-P1#3",
+   "description": "a commitment of 740 Shingles doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 740 Shingles doses per year"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000175-P1#2",
+   "description": "a Tier 2 rebate of 3.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 3.5%"
+  }
+ ],
+ "outcome": "pending",
+ "proposal_id": "SYN-SYNCP000175-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000175"
+}

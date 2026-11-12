@@ -1,0 +1,51 @@
+{
+ "date": "2024-09-19",
+ "doc": {
+  "doc_id": "SYN-SYNCP000110-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000110-P1, was presented by the Supplier to Silver Oak Medical Group 110 on September 19, 2024."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: an administrative fee of 2.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Tdap share floor of 85%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: declined by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000110"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000110-P1#3",
+   "description": "a Tdap share floor of 85%",
+   "kind": "exclusivity",
+   "span": "a Tdap share floor of 85%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000110-P1#2",
+   "description": "an administrative fee of 2.5%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 2.5%"
+  }
+ ],
+ "outcome": "lost",
+ "proposal_id": "SYN-SYNCP000110-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000110"
+}

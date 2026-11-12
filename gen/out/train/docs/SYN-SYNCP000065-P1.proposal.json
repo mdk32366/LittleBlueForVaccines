@@ -1,0 +1,51 @@
+{
+ "date": "2025-12-21",
+ "doc": {
+  "doc_id": "SYN-SYNCP000065-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000065-P1, was presented by the Supplier to Sunrise Care Partners 065 on December 21, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 2 rebate of 3.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a commitment of 480 Influenza doses per year."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: accepted by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000065"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000065-P1#3",
+   "description": "a commitment of 480 Influenza doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 480 Influenza doses per year"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000065-P1#2",
+   "description": "a Tier 2 rebate of 3.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 3.5%"
+  }
+ ],
+ "outcome": "won",
+ "proposal_id": "SYN-SYNCP000065-P1",
+ "resulted_in": "SYN-SYNCP000065-AMD1",
+ "system_id": "SYNCP000065"
+}

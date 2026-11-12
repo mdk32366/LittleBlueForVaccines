@@ -1,0 +1,51 @@
+{
+ "date": "2025-12-16",
+ "doc": {
+  "doc_id": "SYN-SYNCP000118-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Pitch Overview",
+    "text": "Prepared on 16 December 2025, pitch SYN-SYNCP000118-P1 was put before Lakeside Community Health 118 on behalf of Supplier."
+   },
+   {
+    "anchor": "2",
+    "heading": "Put Forward in Exchange",
+    "text": "In exchange the Supplier put forward a Band 1 rebate of 2 per cent."
+   },
+   {
+    "anchor": "3",
+    "heading": "Sought in Return",
+    "text": "The Supplier sought a yearly Tdap minimum take of 560 doses in return."
+   },
+   {
+    "anchor": "4",
+    "heading": "Recorded Result",
+    "text": "Recorded result: the Customer has not yet responded."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000118"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000118-P1#3",
+   "description": "a yearly Tdap minimum take of 560 doses",
+   "kind": "volume_commitment",
+   "span": "a yearly Tdap minimum take of 560 doses"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000118-P1#2",
+   "description": "a Band 1 rebate of 2 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 1 rebate of 2 per cent"
+  }
+ ],
+ "outcome": "pending",
+ "proposal_id": "SYN-SYNCP000118-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000118"
+}

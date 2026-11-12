@@ -1,0 +1,51 @@
+{
+ "date": "2024-06-07",
+ "doc": {
+  "doc_id": "SYN-SYNCP000025-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000025-P1, was presented by the Supplier to Sunrise Care Partners 025 on June 7, 2024."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: an administrative fee of 1.25%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Pneumococcal share floor of 55%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: awaiting a Customer decision."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000025"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000025-P1#3",
+   "description": "a Pneumococcal share floor of 55%",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal share floor of 55%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000025-P1#2",
+   "description": "an administrative fee of 1.25%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 1.25%"
+  }
+ ],
+ "outcome": "pending",
+ "proposal_id": "SYN-SYNCP000025-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000025"
+}

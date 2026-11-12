@@ -1,0 +1,51 @@
+{
+ "date": "2026-07-13",
+ "doc": {
+  "doc_id": "SYN-SYNCP000138-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Pitch Overview",
+    "text": "Prepared on 13 July 2026, pitch SYN-SYNCP000138-P1 was put before Lakeside Community Health 138 on behalf of Supplier."
+   },
+   {
+    "anchor": "2",
+    "heading": "Put Forward in Exchange",
+    "text": "In exchange the Supplier put forward a Band 3 rebate of 4.5 per cent."
+   },
+   {
+    "anchor": "3",
+    "heading": "Sought in Return",
+    "text": "The Supplier sought a Influenza preferred-position minimum of 45 per cent in return."
+   },
+   {
+    "anchor": "4",
+    "heading": "Recorded Result",
+    "text": "Recorded result: the Customer came back with a counter."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000138"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000138-P1#3",
+   "description": "a Influenza preferred-position minimum of 45 per cent",
+   "kind": "exclusivity",
+   "span": "a Influenza preferred-position minimum of 45 per cent"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000138-P1#2",
+   "description": "a Band 3 rebate of 4.5 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 3 rebate of 4.5 per cent"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000138-P1",
+ "resulted_in": "SYN-SYNCP000138-AMD1",
+ "system_id": "SYNCP000138"
+}

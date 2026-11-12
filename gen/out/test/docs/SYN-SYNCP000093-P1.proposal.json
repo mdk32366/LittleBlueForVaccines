@@ -1,0 +1,51 @@
+{
+ "date": "2025-04-04",
+ "doc": {
+  "doc_id": "SYN-SYNCP000093-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Pitch Overview",
+    "text": "Prepared on 4 April 2025, pitch SYN-SYNCP000093-P1 was put before Riverbend Physician Alliance 093 on behalf of Supplier."
+   },
+   {
+    "anchor": "2",
+    "heading": "Put Forward in Exchange",
+    "text": "In exchange the Supplier put forward a Band 2 rebate of 3 per cent."
+   },
+   {
+    "anchor": "3",
+    "heading": "Sought in Return",
+    "text": "The Supplier sought a yearly Influenza minimum take of 1,670 doses in return."
+   },
+   {
+    "anchor": "4",
+    "heading": "Recorded Result",
+    "text": "Recorded result: the Customer signed off on the terms."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000093"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000093-P1#3",
+   "description": "a yearly Influenza minimum take of 1,670 doses",
+   "kind": "volume_commitment",
+   "span": "a yearly Influenza minimum take of 1,670 doses"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000093-P1#2",
+   "description": "a Band 2 rebate of 3 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 2 rebate of 3 per cent"
+  }
+ ],
+ "outcome": "won",
+ "proposal_id": "SYN-SYNCP000093-P1",
+ "resulted_in": "SYN-SYNCP000093-AMD1",
+ "system_id": "SYNCP000093"
+}

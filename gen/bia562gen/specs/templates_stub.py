@@ -1,0 +1,237 @@
+"""Stub v0 template families. A = train, B = held-out. Text in A and B is disjoint by design (T-0031).
+Placeholders are {name}; everything outside braces is 'template text' for the leak check.
+No advisory verbs (ARCH §7.1 item 2 / D-0009) are used next to commercial terms.
+"""
+
+MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August",
+          "September", "October", "November", "December"]
+
+FAMILIES = {}
+
+FAMILIES["A"] = {
+    "date": lambda d: f"{MONTHS[d.month - 1]} {d.day}, {d.year}",
+    "pct": lambda v: f"{v:g}%",
+    "headings": {
+        "parties": "Parties and Scope", "term": "Term and Renewal", "termination": "Termination",
+        "tier": "Rebate Tier {k}", "commit": "Volume Commitment: {cls}", "excl": "Exclusivity and Share Floor",
+        "fee": "Administrative Fee", "other": "General Provisions",
+        "amd_purpose": "Amendment Purpose", "amd_share": "Revised Share Floor",
+        "p_summary": "Proposal Summary", "p_give": "Supplier Concession", "p_get": "Supplier Request",
+        "p_outcome": "Proposal Status",
+    },
+    "clauses": {
+        "parties": 'This Master Supply Agreement (the "Agreement") is made between {name} (the "Customer", account {sid}) and Synthetic Supplier Co. (the "Supplier"). The Agreement covers these products: {products}.',
+        "term": "The Agreement takes effect on {eff} and remains in force through {exp}. {renew} Written notice regarding renewal is due no later than {n} days before the term ends.",
+        "renew_true": "At the end of the term the Agreement renews automatically for one-year periods.",
+        "renew_false": "The Agreement does not renew automatically.",
+        "termination": "{tfc}. Any termination takes effect {n} days after written notice is delivered.",
+        "tfc_true": "Either party may terminate this Agreement for convenience",
+        "tfc_false": "Neither party may terminate this Agreement for convenience",
+        "tier": "Tier {k} applies when the Customer purchases at least {doses} doses of {cls} products in a contract year, and earns a rebate of {pct} on those purchases.",
+        "commit": "The Customer commits to purchase not less than {doses} doses of {cls} products in each contract year.",
+        "excl": "The Supplier is the exclusive contracted source for {cls} products. The Customer will maintain a share floor of {pct} of its {cls} doses with the Supplier.",
+        "fee": "The Supplier will pay the Customer an administrative fee equal to {pct} of eligible purchases.",
+        "other": "This Agreement is fictional test material generated for a classroom project. Its terms are confidential between the parties and governed by the laws of the State of {state}.",
+        "amd_purpose": "This amendment, {amd_id}, modifies {msa_id} with effect from {date}.",
+        "amd_share": "From the amendment date, the {cls} share floor becomes {pct} of the Customer's {cls} doses.",
+        "p_summary": "This proposal, {pid}, was presented by the Supplier to {name} on {date}.",
+        "p_give": "Supplier concession: {desc}.",
+        "p_get": "Supplier request: {desc}.",
+        "p_outcome": "Status of this proposal: {phrase}.",
+    },
+    "spans": {  # fixed evidence phrases (verbatim inside the clauses above)
+        "renew_true": "renews automatically", "renew_false": "does not renew automatically",
+        "tfc_true": "may terminate this Agreement for convenience",
+        "tfc_false": "Neither party may terminate this Agreement for convenience",
+    },
+    "givegets": {
+        "rebate_change": "a Tier {k} rebate of {pct}",
+        "admin_fee_change": "an administrative fee of {pct}",
+        "exclusivity": "a {cls} share floor of {pct}",
+        "volume_commitment": "a commitment of {doses} {cls} doses per year",
+    },
+    "outcomes": {"won": "accepted by the Customer", "countered": "countered by the Customer",
+                 "lost": "declined by the Customer", "pending": "awaiting a Customer decision"},
+    "questions": {
+        "effective_date": ["When does the master agreement take effect?", "What is the effective date of the MSA?",
+                           "On what date did the supply agreement begin?", "From which date is the master agreement in force?"],
+        "expiration_date": ["When does the MSA expire?", "What is the expiration date of the master agreement?",
+                            "Through what date does the agreement remain in force?", "On what date does the current term end?"],
+        "renewal_notice_days": ["How many days of notice are needed regarding renewal?", "What notice period applies before the term ends?",
+                                "How far ahead must renewal notice be given?", "What is the renewal notice period?"],
+        "auto_renew": ["Does the agreement renew automatically?", "Is there an automatic renewal?",
+                       "Will the MSA renew on its own at term end?", "Does the term auto-renew?"],
+        "termination_notice_days": ["How many days' notice does termination require?", "What is the termination notice period?",
+                                    "How long after notice does termination take effect?", "What notice must be delivered to terminate?"],
+        "termination_for_convenience": ["Can either party terminate for convenience?", "Is termination for convenience allowed?",
+                                        "May the agreement be terminated without cause?", "Does the MSA permit termination for convenience?"],
+        "tier_min_doses": ["What is the minimum dose volume for Tier {k}?", "How many doses qualify for Tier {k}?",
+                           "What purchase threshold triggers Tier {k}?", "At what dose count does Tier {k} start?"],
+        "tier_rebate_pct": ["What rebate does Tier {k} earn?", "What is the Tier {k} rebate percentage?",
+                            "How large is the rebate at Tier {k}?", "Which rebate rate applies at Tier {k}?"],
+        "commitment_doses_per_year": ["What is the annual volume commitment for {cls}?", "How many {cls} doses must the Customer buy each year?",
+                                      "What {cls} purchase commitment applies per contract year?", "What is the minimum yearly {cls} commitment?"],
+        "share_floor_pct": ["What share floor does the MSA set?", "What share of doses must go to the Supplier?",
+                            "What is the share floor in the master agreement?", "What minimum share applies under the exclusivity clause?"],
+        "exclusivity_class": ["Which product class is exclusive to the Supplier?", "For which class is the Supplier the exclusive source?",
+                              "What class does the exclusivity clause cover?", "Which therapeutic class carries exclusivity?"],
+        "admin_fee_pct": ["What administrative fee does the Supplier pay?", "What is the admin fee percentage?",
+                          "How large is the administrative fee?", "What fee rate is paid to the Customer for administration?"],
+        "amendment_exclusivity": ["Which amendment changed exclusivity?", "Which document amended the share floor?",
+                                  "What amendment modified the exclusivity terms?", "Which instrument revised the share floor?"],
+        "amended_share_floor": ["What share floor applies after the amendment?", "What is the revised share floor?",
+                                "To what level did the amendment move the share floor?", "What share floor does the amendment set?"],
+        "proposal_get": ["What did the Supplier ask for in the {year} proposal?", "What did the Supplier request in its {year} proposal?",
+                         "In the {year} proposal, what was the Supplier's request?", "What request did the {year} proposal contain?"],
+        "proposal_give": ["What concession did the Supplier make in the {year} proposal?", "What did the Supplier concede in {year}?",
+                          "Which concession appears in the {year} proposal?", "What did the Supplier give in the {year} proposal?"],
+        "proposal_outcome": ["What was the outcome of the {year} proposal?", "How did the Customer respond to the {year} proposal?",
+                             "What is the status of the {year} proposal?", "Was the {year} proposal accepted?"],
+        "unanswerable": ["What late-payment interest does the agreement impose?", "Which distributor is designated for shipments?",
+                         "What audit rights does the Customer hold?", "What insurance must the Supplier carry?",
+                         "What force majeure events are listed?", "What liability cap applies to the Supplier?"],
+    },
+    "answers": {
+        "effective_date": "The agreement takes effect on {S1}.",
+        "expiration_date": "The agreement runs through {S1}.",
+        "renewal_notice_days": "Notice is due {S1} days before the term ends.",
+        "auto_renew_true": "Yes; the agreement {S1}.", "auto_renew_false": "No; the agreement {S1}.",
+        "termination_notice_days": "Termination takes effect {S1} days after written notice.",
+        "termination_for_convenience_true": "Yes; either party {S1}.", "termination_for_convenience_false": "No; {S1}.",
+        "tier_min_doses": "That tier starts at {S1} doses per contract year.",
+        "tier_rebate_pct": "The rebate at that tier is {S1}.",
+        "commitment_doses_per_year": "The Customer commits to {S1} doses per contract year.",
+        "share_floor_pct": "The share floor is {S1}.",
+        "exclusivity_class": "Exclusivity covers {S1}.",
+        "admin_fee_pct": "The administrative fee is {S1} of eligible purchases.",
+        "amendment_exclusivity": "Exclusivity was changed by {S1}.",
+        "amended_share_floor": "After the amendment the share floor is {S1}.",
+        "proposal_get": "The Supplier requested {S1}.",
+        "proposal_give": "The Supplier conceded {S1}.",
+        "proposal_outcome": "The proposal was {S1}.",
+    },
+}
+
+FAMILIES["B"] = {
+    "date": lambda d: f"{d.day} {MONTHS[d.month - 1]} {d.year}",
+    "pct": lambda v: f"{v:g} per cent",
+    "headings": {
+        "parties": "Who Is Bound and What Is Covered", "term": "Duration and Extension", "termination": "Ending the Arrangement Early",
+        "tier": "Volume Band {k}", "commit": "Minimum Take: {cls}", "excl": "Preferred Position",
+        "fee": "Service Charge to Group", "other": "Miscellany",
+        "amd_purpose": "What This Changes", "amd_share": "Updated Preferred Position",
+        "p_summary": "Pitch Overview", "p_give": "Put Forward in Exchange", "p_get": "Sought in Return",
+        "p_outcome": "Recorded Result",
+    },
+    "clauses": {
+        "parties": 'Synthetic Supplier Co. (hereafter "Supplier") and {name} (hereafter "Customer", account {sid}) enter into this master arrangement. Products within its reach: {products}.',
+        "term": "Commencement is {eff}; the arrangement lapses after {exp}. {renew} A party must serve notice of non-extension {n} days or more ahead of lapse.",
+        "renew_true": "Absent notice, the arrangement rolls over each year without further action.",
+        "renew_false": "No rollover occurs; a fresh signature is needed to extend.",
+        "termination": "{tfc}. Early ending becomes effective {n} days after the counterparty receives notice.",
+        "tfc_true": "Without needing a reason, a party can walk away from the arrangement",
+        "tfc_false": "Walking away without a reason is not permitted under the arrangement",
+        "tier": "Band {k} is reached once yearly {cls} volume hits {doses} doses or more; qualifying spend then carries a {pct} rebate.",
+        "commit": "Each year the Customer undertakes to take {doses} or more {cls} doses.",
+        "excl": "For {cls}, the Supplier holds sole preferred standing. No less than {pct} of {cls} volume is to flow to the Supplier.",
+        "fee": "A {pct} charge on qualifying purchases goes from Supplier to Customer for group administration.",
+        "other": "Everything here is invented for coursework. Confidentiality binds both sides; the law of {state} governs.",
+        "amd_purpose": "Starting {date}, instrument {amd_id} revises {msa_id}.",
+        "amd_share": "Going forward the {cls} minimum flowing to the Supplier is set at {pct}.",
+        "p_summary": "Prepared on {date}, pitch {pid} was put before {name} on behalf of Supplier.",
+        "p_give": "In exchange the Supplier put forward {desc}.",
+        "p_get": "The Supplier sought {desc} in return.",
+        "p_outcome": "Recorded result: the Customer {phrase}.",
+    },
+    "spans": {
+        "renew_true": "rolls over each year without further action", "renew_false": "No rollover occurs",
+        "tfc_true": "a party can walk away from the arrangement",
+        "tfc_false": "Walking away without a reason is not permitted",
+    },
+    "givegets": {
+        "rebate_change": "a Band {k} rebate of {pct}",
+        "admin_fee_change": "a group service charge of {pct}",
+        "exclusivity": "a {cls} preferred-position minimum of {pct}",
+        "volume_commitment": "a yearly {cls} minimum take of {doses} doses",
+    },
+    "outcomes": {"won": "signed off on the terms", "countered": "came back with a counter",
+                 "lost": "turned the terms down", "pending": "has not yet responded"},
+    "questions": {
+        "effective_date": ["What is the commencement date of the arrangement?", "Starting when is the master arrangement binding?",
+                           "Which day marks commencement?", "When did the master deal kick off?"],
+        "expiration_date": ["When does the arrangement lapse?", "Lapse day for the master deal?",
+                            "Until which day is the arrangement binding?", "Which day closes the present term?"],
+        "renewal_notice_days": ["How much lead time does non-extension notice require?", "How early must a party serve non-extension notice?",
+                                "What lead time governs notice before lapse?", "Non-extension notice: how many days ahead?"],
+        "auto_renew": ["Does the arrangement roll over by itself?", "Is rollover automatic?",
+                       "Will the deal extend without a new signature?", "Any automatic rollover?"],
+        "termination_notice_days": ["How long until an early ending takes effect?", "Early ending: how many days after notice?",
+                                    "What delay applies to ending the arrangement early?", "How quickly does an early exit become effective?"],
+        "termination_for_convenience": ["Can a party walk away without giving a reason?", "Is a no-reason exit permitted?",
+                                        "May either side leave the arrangement without cause shown?", "Is walking away for no reason allowed?"],
+        "tier_min_doses": ["What volume reaches Band {k}?", "How many yearly doses unlock Band {k}?",
+                           "Band {k} threshold in doses?", "What dose count is needed for Band {k}?"],
+        "tier_rebate_pct": ["What rebate does Band {k} carry?", "Band {k} rebate rate?",
+                            "What percentage comes back at Band {k}?", "How much rebate attaches to Band {k}?"],
+        "commitment_doses_per_year": ["Minimum take for {cls}: how large?", "How many {cls} doses is the Customer bound to take yearly?",
+                                      "Yearly {cls} minimum take?", "What {cls} volume has the Customer undertaken?"],
+        "share_floor_pct": ["What minimum portion of volume flows to the Supplier?", "How much volume must the preferred position capture?",
+                            "Preferred-position minimum, please?", "What portion is reserved for the Supplier?"],
+        "exclusivity_class": ["In which class does the Supplier hold sole preferred standing?", "Which class gets the preferred position?",
+                              "Preferred standing applies to what class?", "Supplier preference sits in which class?"],
+        "admin_fee_pct": ["What service charge goes to the group?", "What percentage is remitted for group administration?",
+                          "Service charge rate, please?", "How much is remitted for running the group?"],
+        "amendment_exclusivity": ["What instrument updated the preferred position?", "Which later document altered the preferred-position minimum?",
+                                  "Name the document that revised preferred standing.", "Where was the preferred position updated?"],
+        "amended_share_floor": ["After the update, what minimum flows to the Supplier?", "Updated preferred-position minimum?",
+                                "What minimum did the later instrument set?", "Post-update minimum portion, please?"],
+        "proposal_get": ["Back in {year}, which item did the Supplier seek?", "Which return item was sought in {year}?",
+                         "What was sought by the Supplier during {year}?", "The {year} pitch: what did the Supplier seek?"],
+        "proposal_give": ["Which exchange item came forward in {year}?", "In {year}, what was put forward in exchange?",
+                          "What exchange item appeared in {year}?", "The {year} pitch: what was put forward?"],
+        "proposal_outcome": ["What became of the {year} pitch?", "How did the {year} pitch end?",
+                             "What result was recorded for {year}?", "Where did the {year} pitch land?"],
+        "unanswerable": ["How much interest accrues on overdue invoices?", "Who is named as logistics partner?",
+                         "Can the Customer inspect the Supplier's books?", "Which insurer backs the arrangement?",
+                         "Which events excuse a party from performing?", "Is there a ceiling on damages?"],
+    },
+    "answers": {
+        "effective_date": "Commencement: {S1}.",
+        "expiration_date": "Lapse: {S1}.",
+        "renewal_notice_days": "Lead time: {S1} days.",
+        "auto_renew_true": "Yes: {S1}.", "auto_renew_false": "Nope: {S1}.",
+        "termination_notice_days": "Early ending: {S1} days after notice.",
+        "termination_for_convenience_true": "Yes: {S1}.", "termination_for_convenience_false": "Nope: {S1}.",
+        "tier_min_doses": "Threshold: {S1} doses.",
+        "tier_rebate_pct": "Band rebate: {S1}.",
+        "commitment_doses_per_year": "Minimum take: {S1} doses.",
+        "share_floor_pct": "Minimum portion: {S1}.",
+        "exclusivity_class": "Preferred class: {S1}.",
+        "admin_fee_pct": "Service charge: {S1}.",
+        "amendment_exclusivity": "Updated by {S1}.",
+        "amended_share_floor": "Updated minimum: {S1}.",
+        "proposal_get": "Sought: {S1}.",
+        "proposal_give": "Put forward: {S1}.",
+        "proposal_outcome": "Result: the Customer {S1}.",
+    },
+}
+
+
+def static_fragments(family: str) -> list:
+    """Every static string of a family (placeholders removed), for leak checks."""
+    import re
+    fam = FAMILIES[family]
+    out = []
+
+    def walk(v):
+        if isinstance(v, str):
+            out.extend(p for p in re.split(r"\{[^}]*\}", v))
+        elif isinstance(v, dict):
+            for x in v.values():
+                walk(x)
+        elif isinstance(v, (list, tuple)):
+            for x in v:
+                walk(x)
+    for k in ("headings", "clauses", "spans", "givegets", "outcomes", "questions", "answers"):
+        walk(fam[k])
+    return out

@@ -1,0 +1,51 @@
+{
+ "date": "2025-12-05",
+ "doc": {
+  "doc_id": "SYN-SYNCP000105-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000105-P1, was presented by the Supplier to Sunrise Care Partners 105 on December 5, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Tdap share floor of 75%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: countered by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000105"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000105-P1#3",
+   "description": "a Tdap share floor of 75%",
+   "kind": "exclusivity",
+   "span": "a Tdap share floor of 75%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000105-P1#2",
+   "description": "a Tier 3 rebate of 5.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 5.5%"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000105-P1",
+ "resulted_in": "SYN-SYNCP000105-AMD1",
+ "system_id": "SYNCP000105"
+}

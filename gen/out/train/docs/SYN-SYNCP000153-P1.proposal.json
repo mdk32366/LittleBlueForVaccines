@@ -1,0 +1,51 @@
+{
+ "date": "2025-11-03",
+ "doc": {
+  "doc_id": "SYN-SYNCP000153-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000153-P1, was presented by the Supplier to Riverbend Physician Alliance 153 on November 3, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 2 rebate of 3.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Influenza share floor of 90%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: accepted by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000153"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000153-P1#3",
+   "description": "a Influenza share floor of 90%",
+   "kind": "exclusivity",
+   "span": "a Influenza share floor of 90%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000153-P1#2",
+   "description": "a Tier 2 rebate of 3.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 3.5%"
+  }
+ ],
+ "outcome": "won",
+ "proposal_id": "SYN-SYNCP000153-P1",
+ "resulted_in": "SYN-SYNCP000153-AMD1",
+ "system_id": "SYNCP000153"
+}

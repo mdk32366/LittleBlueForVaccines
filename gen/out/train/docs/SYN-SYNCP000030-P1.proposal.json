@@ -1,0 +1,51 @@
+{
+ "date": "2025-11-05",
+ "doc": {
+  "doc_id": "SYN-SYNCP000030-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000030-P1, was presented by the Supplier to Silver Oak Medical Group 030 on November 5, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 2 rebate of 4%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Influenza share floor of 80%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: countered by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000030"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000030-P1#3",
+   "description": "a Influenza share floor of 80%",
+   "kind": "exclusivity",
+   "span": "a Influenza share floor of 80%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000030-P1#2",
+   "description": "a Tier 2 rebate of 4%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 4%"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000030-P1",
+ "resulted_in": "SYN-SYNCP000030-AMD1",
+ "system_id": "SYNCP000030"
+}

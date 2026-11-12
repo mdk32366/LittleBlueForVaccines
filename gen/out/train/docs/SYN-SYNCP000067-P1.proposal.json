@@ -1,0 +1,51 @@
+{
+ "date": "2025-04-01",
+ "doc": {
+  "doc_id": "SYN-SYNCP000067-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000067-P1, was presented by the Supplier to Evergreen Health Network 067 on April 1, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Influenza share floor of 50%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: countered by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000067"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000067-P1#3",
+   "description": "a Influenza share floor of 50%",
+   "kind": "exclusivity",
+   "span": "a Influenza share floor of 50%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000067-P1#2",
+   "description": "a Tier 3 rebate of 5.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 5.5%"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000067-P1",
+ "resulted_in": "SYN-SYNCP000067-AMD1",
+ "system_id": "SYNCP000067"
+}
