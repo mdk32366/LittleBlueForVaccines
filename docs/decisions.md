@@ -37,3 +37,4 @@ Project-local decisions for app/ (BIA 562), logged from Matt's rulings via Trini
 ## Review rulings (Trinity, PR 3)
 - gen/out documents still carry the stamp "(D-0022)" as a bare number. It stays for now: `STAMP` in `gen/bia562gen/generate.py` gets fixed in the GATE 2 regeneration on Sat 11/14, which also changes the manifest. PR 3 does not touch gen/out or the manifest.
 - Assumptions AS-0028 to AS-0038 accepted (deferrals in assumptions.md); AS-0039 open follow-up; T-0035 to T-0037 confirmed; F-0008 to F-0013 accepted.
+- AS-0040 (expired rule) and T-0038 (expired marker) confirmed as numbered. Open: auto-renewing MSAs still show `[EXPIRED]`; `[ENDED]` versus exemption to be ruled at wire-in.

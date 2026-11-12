@@ -36,3 +36,13 @@ def test_pdf_snapshot_marked_and_one_page(tmp_path, real_facts):
         text = subprocess.run(["pdftotext", "-layout", str(p), "-"], capture_output=True, text=True).stdout
         assert (contracts.EXPIRED_MARKER in text) is want, sid
         assert render.pdf_page_count(pdf) == 1, sid
+
+
+def test_file_count_exactly_21_and_edge_systems_live(real_facts):
+    """AS-0040 (expired rule) is strictly before AS_OF_DATE: 21 of 180 MSAs; the three ending on 2026-09-30 are live."""
+    assert len(real_facts) == 180
+    expired = sorted(h["doc_id"] for sid in real_facts for h in contracts.lookup(sid, base="expiration_date") if h["expired"])
+    assert len(expired) == 21, expired
+    for sid in ("SYNCP000094", "SYNCP000095", "SYNCP000096"):
+        hits = contracts.lookup(sid, base="expiration_date")
+        assert hits and all(h["value"] == config.AS_OF_DATE and h["expired"] is False for h in hits), sid

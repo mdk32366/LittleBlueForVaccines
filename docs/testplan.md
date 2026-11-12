@@ -41,5 +41,5 @@ Every guard is red-proofed by `python app/tools/redproof.py` (REDPROOF=<mutation
 - T-0035, T-0036 and T-0037 are confirmed as numbered (Trinity, PR 3 review). T-0034 is the spec's full-length fit.
 
 ## Review follow-ups (PR 3)
-- **T-0038 expired marker (proposed id)** (`app/tests/test_t0038_expired.py`): SYNCP000036's MSA (ended 2026-08-31) is flagged expired in the lookup, the Q&A citations and the PDF snapshot (pdftotext), and its PDF stays one page. SYNCP000025's live MSA carries no marker. Rule edges: the as-of date itself isn't expired, and only `expiration_date` counts (AS-0040). Mutation: expired.
+- **T-0038 expired marker (confirmed as numbered, Trinity PR 3 review)** (`app/tests/test_t0038_expired.py`): SYNCP000036's MSA (ended 2026-08-31) is flagged expired in the lookup, the Q&A citations and the PDF snapshot (pdftotext), and its PDF stays one page. SYNCP000025's live MSA carries no marker. Rule edges: the as-of date itself isn't expired, and only `expiration_date` counts (AS-0040 (expired rule)). The file count is exactly 21 of 180, and SYNCP000094/095/096 (ending on 2026-09-30) are live. Mutations: expired, expired_le (`<` changed to `<=`).
 - gen red-proof: `test_real_out.py::test_real_regeneration_identical` is now on the expected-red list for the nondet and famsplit mutations.

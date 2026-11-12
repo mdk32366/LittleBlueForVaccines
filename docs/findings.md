@@ -20,5 +20,5 @@ Proposed numbering after F-0004.
 ## Review rulings (Trinity, PR 3)
 - F-0008 accepted.
 - F-0009 accepted, with the follow-up AS-0039 (exclude Influenza or use same-season windows).
-- F-0010 accepted: Trinity re-derived 0.661 (synthetic) and 0.54088 (national).
+- F-0010 accepted. Trinity re-derived both ratios: 0.661 is F-0008 (synthetic) and 0.54088 is F-0010 (national); cited together as F-0008 (synthetic) / F-0010 (national).
 - F-0011, F-0012 and F-0013 accepted.

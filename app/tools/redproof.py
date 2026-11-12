@@ -21,6 +21,7 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "isolation": (["test_t0036_contracts.py"], ["test_free_text_isolated"]),  # example-question path is also doc_id-pinned (F-0011)
     "expired": (["test_t0038_expired.py"], ["test_flag_on_lookup", "test_rule_edges", "test_qa_citation_flagged",
                                             "test_pdf_snapshot_marked_and_one_page"]),
+    "expired_le": (["test_t0038_expired.py"], ["test_file_count_exactly_21_and_edge_systems_live", "test_rule_edges"]),
     "bench": (["test_t0037_benchmark.py"], ["test_national_mode", "test_missing_national_falls_back"]),
     "trainguard": (["test_t0025_train_guard.py"], ["test_refuses_national_path", "test_refuses_outside_train_dirs_and_copies",
                                                     "test_refuses_non_synthetic_record", "test_scan_flags_planted_reference"]),
