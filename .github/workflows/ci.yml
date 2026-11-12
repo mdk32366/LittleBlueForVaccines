@@ -23,13 +23,16 @@ jobs:
       - name: Install pinned requirements
         run: python -m pip install -r requirements.txt
       - name: pytest (gen, must have 0 skipped)
+        timeout-minutes: 5
         run: |
           python -m pytest -v -rs tests | tee pytest-gen.txt
           if grep -qE '[0-9]+ skipped' pytest-gen.txt; then echo "::error::gen tests skipped (test_real_out needs data/)"; exit 1; fi
       - name: T-0027 vault guard
+        timeout-minutes: 5
         run: python -m pytest -v tests/test_vault.py
       - name: Red-proof (every guard can go red)
-        run: python tools/redproof.py
+        timeout-minutes: 10
+        run: python -u tools/redproof.py
 
   app:
     name: app (pytest, redproof, headless smoke)
@@ -52,7 +55,8 @@ jobs:
           STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
         run: python -m pytest -v tests
       - name: Red-proof (every guard can go red)
-        run: python tools/redproof.py
+        timeout-minutes: 10
+        run: python -u tools/redproof.py
       - name: Headless smoke (localhost only)
         env:
           STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
