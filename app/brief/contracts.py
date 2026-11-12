@@ -10,6 +10,7 @@ from pathlib import Path
 from . import config
 
 REFUSAL = "not in the contracts"  # D-0027 (refusal string)
+EXPIRED_MARKER = "[EXPIRED]"  # shown when a contract's end date is before the as-of date
 SEC_RE = re.compile(r"^## (\d+(?:\.\d+)*[a-z]?)\. (.+)$", re.M)
 
 KEYWORDS = [  # (pattern, field base) for free-text questions; order matters
@@ -87,6 +88,11 @@ def _base(key: str) -> str:
     return re.sub(r"-\d+$", "", key)
 
 
+def is_expired(field_key: str, value, as_of: str | None = None) -> bool:
+    """True when field_key is a contract end date (expiration_date) that falls before the as-of date."""
+    return _base(field_key) == "expiration_date" and str(value) < (as_of or config.AS_OF_DATE)
+
+
 def lookup(system_id: str, field_key: str | None = None, base: str | None = None, tier: int | None = None) -> list:
     """Cited answers: [{doc_id, field, value, span, anchor, heading, clause_text, verbatim}]."""
     docs = system_docs(system_id)
@@ -101,7 +107,8 @@ def lookup(system_id: str, field_key: str | None = None, base: str | None = None
         sdoc, anc = f["source"]["doc_id"], f["source"]["anchor"]
         sec = docs[sdoc][1][anc]
         out.append({"doc_id": did, "field": k, "value": f["value"], "span": f["span"], "anchor": f"{sdoc}#{anc}",
-                    "heading": sec["heading"], "clause_text": sec["text"], "verbatim": f["span"] in sec["text"]})
+                    "heading": sec["heading"], "clause_text": sec["text"], "verbatim": f["span"] in sec["text"],
+                    "expired": is_expired(k, f["value"])})
     return out
 
 

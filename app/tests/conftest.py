@@ -52,6 +52,8 @@ def apply_mutation(name):
                 out[meta["doc_id"]] = (meta, secs, p)
             return out
         contracts.system_docs = leaky
+    elif name == "expired":
+        contracts.is_expired = lambda *a, **k: False
     elif name == "bench":
         bm.national = lambda path: bm.synthetic(load.load_csv(cfg.DATA_PATH))
         orig = bm.resolve

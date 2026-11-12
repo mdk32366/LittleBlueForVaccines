@@ -116,7 +116,7 @@ def compute_all(df: pd.DataFrame, bench: "bm.Benchmark | None" = None) -> dict:
         fs.add(Fact("F2.by_class", series, "series", full, n, S))
         fs.add(Fact("F2.top_class", c.index[0], "label", full, n, S))
         fs.add(Fact("F2.top_class_share", float(c.iloc[0]) / dollars * 100, "pct", full, n, S))
-        # F3 facility type (BAC_CHNL_SPEC_DESC, AS-0031)
+        # F3 facility type (BAC_CHNL_SPEC_DESC, AS-0028)
         f3 = by_fac.loc[sid].sort_values(ascending=False)
         fs.add(Fact("F3.by_facility", [(k, float(v)) for k, v in f3.items()], "series", full, n, S))
         fs.add(Fact("F3.top_facility", f3.index[0], "label", full, n, S))

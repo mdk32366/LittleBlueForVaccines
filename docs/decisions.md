@@ -33,3 +33,7 @@ Project-local decisions for app/ (BIA 562), logged from Matt's rulings via Trini
 - **D-0034 (national file public-real):** Matt, 12:25 PT: "Treat it as public and real". This amends D-0022 (fake data) for that file only. BENCHMARK=national may read it; synthetic peers stays the default and the fallback. It is never training input (T-0025 kept).
 - **D-0035 (real names, fake grounding):** Matt, 12:31 PT: "Use them.  They are public companies with public data.  What is fake is the grounding data.  Go". Real manufacturer and product names may appear in the UI, charts and PDFs. Contracts, proposals and Q&A (gen/out) stay synthetic. The guardrails are unchanged: no pricing advice, no efficacy or safety claims, system isolation.
 - Applied, not new: D-0004 (single-figure PDF), D-0009 (denylist), D-0022 (fake data), D-0023 (slot tokens exempt from digit rule; applied to fact tokens), D-0027 (refusal string).
+
+## Review rulings (Trinity, PR 3)
+- gen/out documents still carry the stamp "(D-0022)" as a bare number. It stays for now: `STAMP` in `gen/bia562gen/generate.py` gets fixed in the GATE 2 regeneration on Sat 11/14, which also changes the manifest. PR 3 does not touch gen/out or the manifest.
+- Assumptions AS-0028 to AS-0038 accepted (deferrals in assumptions.md); AS-0039 open follow-up; T-0035 to T-0037 confirmed; F-0008 to F-0013 accepted.

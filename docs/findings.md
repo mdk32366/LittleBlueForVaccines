@@ -16,3 +16,9 @@ Proposed numbering after F-0004.
 - **F-0011:** red-proof run 1: the isolation mutation turned only `test_free_text_isolated` red. The example-question path is also pinned to the qa row's doc_id, so the expectation was narrowed to the isolation test.
 - **F-0012:** after netting returns, some manufacturers have negative net dollars for a system (e.g. Moderna, SYNCP000036), and their bars plot below zero.
 - **F-0013:** the dev environment runs Python 3.13.5 (CI uses the runner's 3.13); Streamlit 1.67.0 is pinned (`app/requirements.txt`).
+
+## Review rulings (Trinity, PR 3)
+- F-0008 accepted.
+- F-0009 accepted, with the follow-up AS-0039 (exclude Influenza or use same-season windows).
+- F-0010 accepted: Trinity re-derived 0.661 (synthetic) and 0.54088 (national).
+- F-0011, F-0012 and F-0013 accepted.

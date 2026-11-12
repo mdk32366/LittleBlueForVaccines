@@ -1,4 +1,4 @@
-"""templates.py: templated talking points, written only in fact tokens (no digits). Framing per PROPOSAL.md:
+"""templates.py: templated talking points, written only in fact tokens (no digits). Framing per the project proposal:
 where we're strong, where we're exposed, white space, questions to ask. Conditions read facts; text never carries numbers."""
 
 

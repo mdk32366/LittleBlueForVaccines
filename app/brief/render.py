@@ -10,7 +10,7 @@ matplotlib.rcParams["pdf.fonttype"] = 42  # TrueType: text stays extractable (T-
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.backends.backend_pdf import PdfPages  # noqa: E402
 
-from . import charts, config  # noqa: E402
+from . import charts, config, contracts  # noqa: E402
 from .fmt import fmt_fact  # noqa: E402
 
 LETTER = (8.5, 11)
@@ -45,7 +45,8 @@ def fit_points(points, width=POINT_WIDTH, max_lines=POINT_LINES) -> list:
 def contract_lines(contract_rows) -> list:
     out = []
     for r in contract_rows[:6]:
-        out.append(f"{r['label']}: {r['span']}  ({r['anchor']})")
+        mark = f" {contracts.EXPIRED_MARKER}" if r.get("expired") else ""
+        out.append(f"{r['label']}: {r['span']}{mark}  ({r['anchor']})")
     return out or ["No generated contracts found for this system."]
 
 
