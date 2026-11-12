@@ -1,0 +1,448 @@
+{
+ "fs_id": "FS-SYNCP000036-202609",
+ "system_id": "SYNCP000036",
+ "name": "Clearwater Urgent Care 036",
+ "state": "IL",
+ "as_of": "202609",
+ "benchmark": "synthetic",
+ "benchmark_label": "synthetic peers",
+ "benchmark_note": "",
+ "facts": [
+  {
+   "fact_id": "F1.dollars",
+   "value": 551766.81,
+   "unit": "usd",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F1.doses",
+   "value": 4260,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F1.rank",
+   "value": 96,
+   "unit": "int",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F1.n_systems",
+   "value": 180,
+   "unit": "int",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F1.bench_share",
+   "value": 0.5286553957145214,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F2.by_class",
+   "value": [
+    [
+     "RSV",
+     104162.7
+    ],
+    [
+     "Pneumococcal",
+     85480.65
+    ],
+    [
+     "HPV",
+     75220.78
+    ],
+    [
+     "Influenza",
+     66619.5
+    ],
+    [
+     "Tdap",
+     47094.42
+    ],
+    [
+     "Other",
+     173188.76
+    ]
+   ],
+   "unit": "series",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F2.top_class",
+   "value": "RSV",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F2.top_class_share",
+   "value": 18.878029289220926,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F3.by_facility",
+   "value": [
+    [
+     "Pediatric Medicine",
+     194790.22
+    ],
+    [
+     "Purchasing Agent",
+     107551.15
+    ],
+    [
+     "Other",
+     85758.09
+    ],
+    [
+     "Primary Care",
+     79366.7
+    ],
+    [
+     "General Acute",
+     27512.15
+    ],
+    [
+     "Multispecialty",
+     16085.8
+    ],
+    [
+     "Urgent Care",
+     15894.01
+    ],
+    [
+     "Critical Access",
+     12799.99
+    ],
+    [
+     "Women's Health",
+     9560.02
+    ],
+    [
+     "Specialty Pharmacy",
+     2448.68
+    ]
+   ],
+   "unit": "series",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F3.top_facility",
+   "value": "Pediatric Medicine",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F3.top_facility_share",
+   "value": 35.302996930895496,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.by_mfr",
+   "value": [
+    [
+     "SANOFI",
+     217831.92
+    ],
+    [
+     "MERCK & COMPANY",
+     157963.07
+    ],
+    [
+     "PFIZER",
+     90982.84
+    ],
+    [
+     "GSK PHARM",
+     59599.14
+    ],
+    [
+     "BAVARIAN NORDIC",
+     14917.55
+    ],
+    [
+     "MSP VACCINE COMP",
+     11063.83
+    ],
+    [
+     "DYNAVAX TECH CORP",
+     10082.66
+    ],
+    [
+     "MODERNA INC",
+     -10674.2
+    ]
+   ],
+   "unit": "series",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.top_mfr",
+   "value": "SANOFI",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.pfizer_dollars",
+   "value": 90982.84,
+   "unit": "usd",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.pfizer_share",
+   "value": 16.489364411027186,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F5.flags",
+   "value": [],
+   "unit": "series",
+   "period": "202410-202503 vs 202604-202609",
+   "n": 0,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F5.n_flags",
+   "value": 0,
+   "unit": "int",
+   "period": "202410-202503 vs 202604-202609",
+   "n": 0,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F5.status",
+   "value": "no material switching",
+   "unit": "label",
+   "period": "202410-202503 vs 202604-202609",
+   "n": 0,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.menb_doses",
+   "value": 30,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.menacwy_doses",
+   "value": 0,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.menabcwy_doses",
+   "value": 0,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.status",
+   "value": "undefined",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.bench_ratio",
+   "value": 0.660695468914647,
+   "unit": "ratio",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F6.state_status",
+   "value": "too few in-state peers",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 4,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F7.by_class",
+   "value": [
+    [
+     "Coronavirus",
+     0.0,
+     -1827.170000000002
+    ],
+    [
+     "DTaP",
+     13595.17,
+     263.51
+    ],
+    [
+     "HPV",
+     72211.1,
+     3009.68
+    ],
+    [
+     "Hepatitis",
+     14632.67,
+     18310.48
+    ],
+    [
+     "Hib",
+     1130.22,
+     0.0
+    ],
+    [
+     "Influenza",
+     0.0,
+     66619.5
+    ],
+    [
+     "MMR",
+     12755.42,
+     24364.8
+    ],
+    [
+     "Meningococcal",
+     2866.66,
+     4413.07
+    ],
+    [
+     "Other",
+     2567.54,
+     14287.809999999998
+    ],
+    [
+     "Pneumococcal",
+     10462.0,
+     75018.65000000001
+    ],
+    [
+     "RSV",
+     103916.17,
+     246.53
+    ],
+    [
+     "Rotavirus",
+     0.0,
+     23841.690000000002
+    ],
+    [
+     "Shingles",
+     17596.11,
+     13884.45
+    ],
+    [
+     "Tdap",
+     13582.810000000001,
+     33511.61
+    ],
+    [
+     "Travel",
+     0.0,
+     2754.06
+    ],
+    [
+     "Varicella",
+     5489.169999999999,
+     2263.1
+    ]
+   ],
+   "unit": "series",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.t12_dollars",
+   "value": 270805.04,
+   "unit": "usd",
+   "period": "202510-202609",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.p12_dollars",
+   "value": 280961.77,
+   "unit": "usd",
+   "period": "202410-202509",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.growth_pct",
+   "value": -3.6149864801891156,
+   "unit": "pct",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.top_grower",
+   "value": "RSV",
+   "unit": "label",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.top_decliner",
+   "value": "Influenza",
+   "unit": "label",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 141,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F8.returns_dollars",
+   "value": 32789.37,
+   "unit": "usd",
+   "period": "202410-202609",
+   "n": 4,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F8.returns_rows",
+   "value": 4,
+   "unit": "int",
+   "period": "202410-202609",
+   "n": 4,
+   "source_label": "system"
+  }
+ ]
+}

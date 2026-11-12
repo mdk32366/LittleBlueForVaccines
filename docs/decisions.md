@@ -23,3 +23,13 @@ Project-local decisions for gen/ (BIA 562), numbered by Trinity 2026-11-12. Thes
 - **G-18:** T-0028..T-0033 are confirmed (docs/testplan.md).
 - **G-09 / G-10:** accepted as built (V2 via project-grammar rule; V4 tested on a temp `src/brief/leafstore/`).
 - **G-11 / G-16 / G-17:** out of scope for this order.
+
+## App (app/, PR 2)
+
+Project-local decisions for app/ (BIA 562), logged from Matt's rulings via Trinity, 2026-11-12. Like the generator entries above, these numbers are local to this repository and are not the program-level decision log.
+
+- **D-0032 (Streamlit reports):** Streamlit is the UI. Pick a health system, see the brief with its charts, ask about the contracts with cited spans, and download a one-page PDF report (matplotlib).
+- **D-0033 (name):** Matt, 12:19 PT: "Call the project, and the system, 'Little Blue for Vaccine Sales'". The exact string goes in the page title, the page header, the PDF header and the README. Proposed repo slug: little-blue-vaccine-sales.
+- **D-0034 (national file public-real):** Matt, 12:25 PT: "Treat it as public and real". This amends D-0022 (fake data) for that file only. BENCHMARK=national may read it; synthetic peers stays the default and the fallback. It is never training input (T-0025 kept).
+- **D-0035 (real names, fake grounding):** Matt, 12:31 PT: "Use them.  They are public companies with public data.  What is fake is the grounding data.  Go". Real manufacturer and product names may appear in the UI, charts and PDFs. Contracts, proposals and Q&A (gen/out) stay synthetic. The guardrails are unchanged: no pricing advice, no efficacy or safety claims, system isolation.
+- Applied, not new: D-0004 (single-figure PDF), D-0009 (denylist), D-0022 (fake data), D-0023 (slot tokens exempt from digit rule; applied to fact tokens), D-0027 (refusal string).

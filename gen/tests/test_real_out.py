@@ -10,7 +10,7 @@ from bia562gen.generate import generate
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
-CSV = ROOT.parent / "BIA_562_Synthetic_Sales_Data.csv"
+CSV = ROOT.parent / "data" / "BIA_562_Synthetic_Sales_Data.csv"
 pytestmark = pytest.mark.skipif(not (OUT / "manifest.json").exists(), reason="gen/out not generated")
 
 
