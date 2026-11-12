@@ -24,7 +24,14 @@ def test_real_regeneration_identical(tmp_path, spec):
     src = {"kind": "csv", "file": CSV.name, "sha256": hashlib.sha256(CSV.read_bytes()).hexdigest()}
     m = json.loads((OUT / "manifest.json").read_text())
     generate(spec, S.load_csv(CSV), tmp_path / "re", m["seed"], systems_source=src)
-    assert (tmp_path / "re" / "manifest.json").read_bytes() == (OUT / "manifest.json").read_bytes()
+    regen, accepted = (tmp_path / "re" / "manifest.json").read_bytes(), (OUT / "manifest.json").read_bytes()
+    # Compare digests, not raw bytes: pytest's full diff of two ~400 KB blobs never finishes under CI=true
+    # (no assertion truncation on CI), which hung the redproof famsplit run in GitHub Actions.
+    if regen != accepted:
+        a, b = json.loads(regen).get("files", {}), json.loads(accepted).get("files", {})
+        differing = sorted(k for k in set(a) | set(b) if a.get(k) != b.get(k))
+        pytest.fail(f"regeneration differs from gen/out: {len(differing)} files differ, e.g. {differing[:5]}", pytrace=False)
+    assert hashlib.sha256(regen).hexdigest() == hashlib.sha256(accepted).hexdigest()
 
 
 def test_real_guards(spec):
