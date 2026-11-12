@@ -1,0 +1,51 @@
+{
+ "date": "2025-01-03",
+ "doc": {
+  "doc_id": "SYN-SYNCP000005-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Pitch Overview",
+    "text": "Prepared on 3 January 2025, pitch SYN-SYNCP000005-P1 was put before Sunrise Care Partners 005 on behalf of Supplier."
+   },
+   {
+    "anchor": "2",
+    "heading": "Put Forward in Exchange",
+    "text": "In exchange the Supplier put forward a Band 3 rebate of 6 per cent."
+   },
+   {
+    "anchor": "3",
+    "heading": "Sought in Return",
+    "text": "The Supplier sought a yearly Tdap minimum take of 1,030 doses in return."
+   },
+   {
+    "anchor": "4",
+    "heading": "Recorded Result",
+    "text": "Recorded result: the Customer turned the terms down."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000005"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000005-P1#3",
+   "description": "a yearly Tdap minimum take of 1,030 doses",
+   "kind": "volume_commitment",
+   "span": "a yearly Tdap minimum take of 1,030 doses"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000005-P1#2",
+   "description": "a Band 3 rebate of 6 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 3 rebate of 6 per cent"
+  }
+ ],
+ "outcome": "lost",
+ "proposal_id": "SYN-SYNCP000005-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000005"
+}

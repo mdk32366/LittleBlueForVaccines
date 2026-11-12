@@ -1,0 +1,51 @@
+{
+ "date": "2026-06-15",
+ "doc": {
+  "doc_id": "SYN-SYNCP000176-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000176-P1, was presented by the Supplier to Clearwater Urgent Care 176 on June 15, 2026."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 2 rebate of 4.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a commitment of 920 Influenza doses per year."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: countered by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000176"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000176-P1#3",
+   "description": "a commitment of 920 Influenza doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 920 Influenza doses per year"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000176-P1#2",
+   "description": "a Tier 2 rebate of 4.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 4.5%"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000176-P1",
+ "resulted_in": "SYN-SYNCP000176-AMD1",
+ "system_id": "SYNCP000176"
+}

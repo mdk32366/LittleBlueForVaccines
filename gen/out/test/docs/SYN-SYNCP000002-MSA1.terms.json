@@ -1,0 +1,227 @@
+{
+ "doc_id": "SYN-SYNCP000002-MSA1",
+ "fields": {
+  "admin_fee_pct": {
+   "qualifier": null,
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "1.5 per cent",
+   "type": "pct",
+   "value": 1.5
+  },
+  "auto_renew": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "No rollover occurs",
+   "type": "enum",
+   "value": false
+  },
+  "commitment_doses_per_year-1": {
+   "qualifier": {
+    "class": "CLS-dtap"
+   },
+   "source": {
+    "anchor": "5.1",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "610",
+   "type": "int",
+   "value": 610
+  },
+  "commitment_doses_per_year-2": {
+   "qualifier": {
+    "class": "CLS-pneumococcal"
+   },
+   "source": {
+    "anchor": "5.2",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "530",
+   "type": "int",
+   "value": 530
+  },
+  "covered_product-1": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "PRD-syn-dtap",
+   "type": "enum",
+   "value": "PRD-syn-dtap"
+  },
+  "covered_product-2": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "PRD-syn-pneumococcal",
+   "type": "enum",
+   "value": "PRD-syn-pneumococcal"
+  },
+  "covered_product-3": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "PRD-syn-tdap",
+   "type": "enum",
+   "value": "PRD-syn-tdap"
+  },
+  "effective_date": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "1 October 2025",
+   "type": "date",
+   "value": "2025-10-01"
+  },
+  "exclusivity_class": {
+   "qualifier": null,
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "DTaP",
+   "type": "enum",
+   "value": "CLS-dtap"
+  },
+  "expiration_date": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "30 September 2027",
+   "type": "date",
+   "value": "2027-09-30"
+  },
+  "renewal_notice_days": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "90",
+   "type": "int",
+   "value": 90
+  },
+  "share_floor_pct": {
+   "qualifier": null,
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "85 per cent",
+   "type": "pct",
+   "value": 85
+  },
+  "termination_for_convenience": {
+   "qualifier": null,
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "Walking away without a reason is not permitted",
+   "type": "enum",
+   "value": false
+  },
+  "termination_notice_days": {
+   "qualifier": null,
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "60",
+   "type": "int",
+   "value": 60
+  },
+  "tier_min_doses-1": {
+   "qualifier": {
+    "class": "CLS-dtap",
+    "tier": 1
+   },
+   "source": {
+    "anchor": "4.1",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "340",
+   "type": "int",
+   "value": 340
+  },
+  "tier_min_doses-2": {
+   "qualifier": {
+    "class": "CLS-dtap",
+    "tier": 2
+   },
+   "source": {
+    "anchor": "4.2",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "500",
+   "type": "int",
+   "value": 500
+  },
+  "tier_min_doses-3": {
+   "qualifier": {
+    "class": "CLS-dtap",
+    "tier": 3
+   },
+   "source": {
+    "anchor": "4.3",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "670",
+   "type": "int",
+   "value": 670
+  },
+  "tier_rebate_pct-1": {
+   "qualifier": {
+    "class": "CLS-dtap",
+    "tier": 1
+   },
+   "source": {
+    "anchor": "4.1",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "1.5 per cent",
+   "type": "pct",
+   "value": 1.5
+  },
+  "tier_rebate_pct-2": {
+   "qualifier": {
+    "class": "CLS-dtap",
+    "tier": 2
+   },
+   "source": {
+    "anchor": "4.2",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "3 per cent",
+   "type": "pct",
+   "value": 3.0
+  },
+  "tier_rebate_pct-3": {
+   "qualifier": {
+    "class": "CLS-dtap",
+    "tier": 3
+   },
+   "source": {
+    "anchor": "4.3",
+    "doc_id": "SYN-SYNCP000002-MSA1"
+   },
+   "span": "4 per cent",
+   "type": "pct",
+   "value": 4.0
+  }
+ }
+}

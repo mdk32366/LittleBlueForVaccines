@@ -1,0 +1,28 @@
+---
+id: "P-SYN-SYNCP000141-P1"
+type: "Proposal"
+ontology_version: 1
+synthetic: true
+source: {"file": "train/docs/SYN-SYNCP000141-P1.md", "generator_seed": 562}
+edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000141-AMD1"}]
+date: "2025-06-12"
+gives: [{"anchor": "SYN-SYNCP000141-P1#2", "description": "an administrative fee of 2%", "kind": "admin_fee_change", "span": "an administrative fee of 2%"}]
+gets: [{"anchor": "SYN-SYNCP000141-P1#3", "description": "a MMR share floor of 85%", "kind": "exclusivity", "span": "a MMR share floor of 85%"}]
+outcome: "countered"
+---
+
+## 1. Proposal Summary
+
+This proposal, SYN-SYNCP000141-P1, was presented by the Supplier to Prairie Pediatric Center 141 on June 12, 2025.
+
+## 2. Supplier Concession
+
+Supplier concession: an administrative fee of 2%.
+
+## 3. Supplier Request
+
+Supplier request: a MMR share floor of 85%.
+
+## 4. Proposal Status
+
+Status of this proposal: countered by the Customer.

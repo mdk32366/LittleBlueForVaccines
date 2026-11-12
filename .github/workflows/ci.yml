@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gen:
+    name: gen (pytest, T-0027, redproof)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: gen
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"  # box venv is 3.13.5; exact patch not published for this runner image
+      - name: Install pinned requirements
+        run: python -m pip install -r requirements.txt
+      - name: pytest (gen)
+        run: python -m pytest -v tests
+      - name: T-0027 vault guard
+        run: python -m pytest -v tests/test_vault.py
+      - name: Red-proof (every guard can go red)
+        run: python tools/redproof.py

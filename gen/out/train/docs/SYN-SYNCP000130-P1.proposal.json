@@ -1,0 +1,51 @@
+{
+ "date": "2024-09-14",
+ "doc": {
+  "doc_id": "SYN-SYNCP000130-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000130-P1, was presented by the Supplier to Silver Oak Medical Group 130 on September 14, 2024."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: an administrative fee of 1.25%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Influenza share floor of 45%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: accepted by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000130"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000130-P1#3",
+   "description": "a Influenza share floor of 45%",
+   "kind": "exclusivity",
+   "span": "a Influenza share floor of 45%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000130-P1#2",
+   "description": "an administrative fee of 1.25%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 1.25%"
+  }
+ ],
+ "outcome": "won",
+ "proposal_id": "SYN-SYNCP000130-P1",
+ "resulted_in": "SYN-SYNCP000130-AMD1",
+ "system_id": "SYNCP000130"
+}

@@ -1,0 +1,51 @@
+{
+ "date": "2025-09-10",
+ "doc": {
+  "doc_id": "SYN-SYNCP000048-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000048-P1, was presented by the Supplier to Keystone Community Health 048 on September 10, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 2 rebate of 4%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Tdap share floor of 45%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: countered by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000048"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000048-P1#3",
+   "description": "a Tdap share floor of 45%",
+   "kind": "exclusivity",
+   "span": "a Tdap share floor of 45%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000048-P1#2",
+   "description": "a Tier 2 rebate of 4%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 4%"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000048-P1",
+ "resulted_in": "SYN-SYNCP000048-AMD1",
+ "system_id": "SYNCP000048"
+}

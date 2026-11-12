@@ -1,0 +1,51 @@
+{
+ "date": "2025-02-05",
+ "doc": {
+  "doc_id": "SYN-SYNCP000116-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Pitch Overview",
+    "text": "Prepared on 5 February 2025, pitch SYN-SYNCP000116-P1 was put before Clearwater Urgent Care 116 on behalf of Supplier."
+   },
+   {
+    "anchor": "2",
+    "heading": "Put Forward in Exchange",
+    "text": "In exchange the Supplier put forward a group service charge of 2 per cent."
+   },
+   {
+    "anchor": "3",
+    "heading": "Sought in Return",
+    "text": "The Supplier sought a yearly Influenza minimum take of 2,310 doses in return."
+   },
+   {
+    "anchor": "4",
+    "heading": "Recorded Result",
+    "text": "Recorded result: the Customer turned the terms down."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000116"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000116-P1#3",
+   "description": "a yearly Influenza minimum take of 2,310 doses",
+   "kind": "volume_commitment",
+   "span": "a yearly Influenza minimum take of 2,310 doses"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000116-P1#2",
+   "description": "a group service charge of 2 per cent",
+   "kind": "admin_fee_change",
+   "span": "a group service charge of 2 per cent"
+  }
+ ],
+ "outcome": "lost",
+ "proposal_id": "SYN-SYNCP000116-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000116"
+}

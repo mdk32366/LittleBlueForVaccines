@@ -1,0 +1,227 @@
+{
+ "doc_id": "SYN-SYNCP000076-MSA1",
+ "fields": {
+  "admin_fee_pct": {
+   "qualifier": null,
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "2.75 per cent",
+   "type": "pct",
+   "value": 2.75
+  },
+  "auto_renew": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "No rollover occurs",
+   "type": "enum",
+   "value": false
+  },
+  "commitment_doses_per_year-1": {
+   "qualifier": {
+    "class": "CLS-hepatitis"
+   },
+   "source": {
+    "anchor": "5.1",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "1,030",
+   "type": "int",
+   "value": 1030
+  },
+  "commitment_doses_per_year-2": {
+   "qualifier": {
+    "class": "CLS-influenza"
+   },
+   "source": {
+    "anchor": "5.2",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "960",
+   "type": "int",
+   "value": 960
+  },
+  "covered_product-1": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "PRD-syn-hepatitis",
+   "type": "enum",
+   "value": "PRD-syn-hepatitis"
+  },
+  "covered_product-2": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "PRD-syn-influenza",
+   "type": "enum",
+   "value": "PRD-syn-influenza"
+  },
+  "covered_product-3": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "PRD-syn-tdap",
+   "type": "enum",
+   "value": "PRD-syn-tdap"
+  },
+  "effective_date": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "1 January 2024",
+   "type": "date",
+   "value": "2024-01-01"
+  },
+  "exclusivity_class": {
+   "qualifier": null,
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "Hepatitis",
+   "type": "enum",
+   "value": "CLS-hepatitis"
+  },
+  "expiration_date": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "31 December 2026",
+   "type": "date",
+   "value": "2026-12-31"
+  },
+  "renewal_notice_days": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "60",
+   "type": "int",
+   "value": 60
+  },
+  "share_floor_pct": {
+   "qualifier": null,
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "70 per cent",
+   "type": "pct",
+   "value": 70
+  },
+  "termination_for_convenience": {
+   "qualifier": null,
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "a party can walk away from the arrangement",
+   "type": "enum",
+   "value": true
+  },
+  "termination_notice_days": {
+   "qualifier": null,
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "90",
+   "type": "int",
+   "value": 90
+  },
+  "tier_min_doses-1": {
+   "qualifier": {
+    "class": "CLS-hepatitis",
+    "tier": 1
+   },
+   "source": {
+    "anchor": "4.1",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "480",
+   "type": "int",
+   "value": 480
+  },
+  "tier_min_doses-2": {
+   "qualifier": {
+    "class": "CLS-hepatitis",
+    "tier": 2
+   },
+   "source": {
+    "anchor": "4.2",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "710",
+   "type": "int",
+   "value": 710
+  },
+  "tier_min_doses-3": {
+   "qualifier": {
+    "class": "CLS-hepatitis",
+    "tier": 3
+   },
+   "source": {
+    "anchor": "4.3",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "950",
+   "type": "int",
+   "value": 950
+  },
+  "tier_rebate_pct-1": {
+   "qualifier": {
+    "class": "CLS-hepatitis",
+    "tier": 1
+   },
+   "source": {
+    "anchor": "4.1",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "1.5 per cent",
+   "type": "pct",
+   "value": 1.5
+  },
+  "tier_rebate_pct-2": {
+   "qualifier": {
+    "class": "CLS-hepatitis",
+    "tier": 2
+   },
+   "source": {
+    "anchor": "4.2",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "3 per cent",
+   "type": "pct",
+   "value": 3.0
+  },
+  "tier_rebate_pct-3": {
+   "qualifier": {
+    "class": "CLS-hepatitis",
+    "tier": 3
+   },
+   "source": {
+    "anchor": "4.3",
+    "doc_id": "SYN-SYNCP000076-MSA1"
+   },
+   "span": "4 per cent",
+   "type": "pct",
+   "value": 4.0
+  }
+ }
+}

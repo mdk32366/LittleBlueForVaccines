@@ -1,0 +1,227 @@
+{
+ "doc_id": "SYN-SYNCP000045-MSA1",
+ "fields": {
+  "admin_fee_pct": {
+   "qualifier": null,
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "2.75 per cent",
+   "type": "pct",
+   "value": 2.75
+  },
+  "auto_renew": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "No rollover occurs",
+   "type": "enum",
+   "value": false
+  },
+  "commitment_doses_per_year-1": {
+   "qualifier": {
+    "class": "CLS-influenza"
+   },
+   "source": {
+    "anchor": "5.1",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "570",
+   "type": "int",
+   "value": 570
+  },
+  "commitment_doses_per_year-2": {
+   "qualifier": {
+    "class": "CLS-tdap"
+   },
+   "source": {
+    "anchor": "5.2",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "390",
+   "type": "int",
+   "value": 390
+  },
+  "covered_product-1": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "PRD-syn-influenza",
+   "type": "enum",
+   "value": "PRD-syn-influenza"
+  },
+  "covered_product-2": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "PRD-syn-tdap",
+   "type": "enum",
+   "value": "PRD-syn-tdap"
+  },
+  "covered_product-3": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "PRD-syn-mmr",
+   "type": "enum",
+   "value": "PRD-syn-mmr"
+  },
+  "effective_date": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "1 September 2024",
+   "type": "date",
+   "value": "2024-09-01"
+  },
+  "exclusivity_class": {
+   "qualifier": null,
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "Influenza",
+   "type": "enum",
+   "value": "CLS-influenza"
+  },
+  "expiration_date": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "31 August 2028",
+   "type": "date",
+   "value": "2028-08-31"
+  },
+  "renewal_notice_days": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "90",
+   "type": "int",
+   "value": 90
+  },
+  "share_floor_pct": {
+   "qualifier": null,
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "75 per cent",
+   "type": "pct",
+   "value": 75
+  },
+  "termination_for_convenience": {
+   "qualifier": null,
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "Walking away without a reason is not permitted",
+   "type": "enum",
+   "value": false
+  },
+  "termination_notice_days": {
+   "qualifier": null,
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "180",
+   "type": "int",
+   "value": 180
+  },
+  "tier_min_doses-1": {
+   "qualifier": {
+    "class": "CLS-influenza",
+    "tier": 1
+   },
+   "source": {
+    "anchor": "4.1",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "270",
+   "type": "int",
+   "value": 270
+  },
+  "tier_min_doses-2": {
+   "qualifier": {
+    "class": "CLS-influenza",
+    "tier": 2
+   },
+   "source": {
+    "anchor": "4.2",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "400",
+   "type": "int",
+   "value": 400
+  },
+  "tier_min_doses-3": {
+   "qualifier": {
+    "class": "CLS-influenza",
+    "tier": 3
+   },
+   "source": {
+    "anchor": "4.3",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "540",
+   "type": "int",
+   "value": 540
+  },
+  "tier_rebate_pct-1": {
+   "qualifier": {
+    "class": "CLS-influenza",
+    "tier": 1
+   },
+   "source": {
+    "anchor": "4.1",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "2 per cent",
+   "type": "pct",
+   "value": 2.0
+  },
+  "tier_rebate_pct-2": {
+   "qualifier": {
+    "class": "CLS-influenza",
+    "tier": 2
+   },
+   "source": {
+    "anchor": "4.2",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "3 per cent",
+   "type": "pct",
+   "value": 3.0
+  },
+  "tier_rebate_pct-3": {
+   "qualifier": {
+    "class": "CLS-influenza",
+    "tier": 3
+   },
+   "source": {
+    "anchor": "4.3",
+    "doc_id": "SYN-SYNCP000045-MSA1"
+   },
+   "span": "4.5 per cent",
+   "type": "pct",
+   "value": 4.5
+  }
+ }
+}

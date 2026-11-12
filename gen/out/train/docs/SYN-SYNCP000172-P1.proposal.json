@@ -1,0 +1,51 @@
+{
+ "date": "2026-01-15",
+ "doc": {
+  "doc_id": "SYN-SYNCP000172-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000172-P1, was presented by the Supplier to Harborview Regional Hospital 172 on January 15, 2026."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: an administrative fee of 3.25%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a commitment of 670 Influenza doses per year."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: countered by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000172"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000172-P1#3",
+   "description": "a commitment of 670 Influenza doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 670 Influenza doses per year"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000172-P1#2",
+   "description": "an administrative fee of 3.25%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 3.25%"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000172-P1",
+ "resulted_in": "SYN-SYNCP000172-AMD1",
+ "system_id": "SYNCP000172"
+}

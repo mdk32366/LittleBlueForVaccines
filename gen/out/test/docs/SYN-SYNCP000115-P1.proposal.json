@@ -1,0 +1,51 @@
+{
+ "date": "2026-02-07",
+ "doc": {
+  "doc_id": "SYN-SYNCP000115-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Pitch Overview",
+    "text": "Prepared on 7 February 2026, pitch SYN-SYNCP000115-P1 was put before Redwood Care Partners 115 on behalf of Supplier."
+   },
+   {
+    "anchor": "2",
+    "heading": "Put Forward in Exchange",
+    "text": "In exchange the Supplier put forward a Band 1 rebate of 2 per cent."
+   },
+   {
+    "anchor": "3",
+    "heading": "Sought in Return",
+    "text": "The Supplier sought a yearly Hepatitis minimum take of 480 doses in return."
+   },
+   {
+    "anchor": "4",
+    "heading": "Recorded Result",
+    "text": "Recorded result: the Customer came back with a counter."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000115"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000115-P1#3",
+   "description": "a yearly Hepatitis minimum take of 480 doses",
+   "kind": "volume_commitment",
+   "span": "a yearly Hepatitis minimum take of 480 doses"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000115-P1#2",
+   "description": "a Band 1 rebate of 2 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 1 rebate of 2 per cent"
+  }
+ ],
+ "outcome": "countered",
+ "proposal_id": "SYN-SYNCP000115-P1",
+ "resulted_in": "SYN-SYNCP000115-AMD1",
+ "system_id": "SYNCP000115"
+}

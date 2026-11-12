@@ -1,0 +1,51 @@
+{
+ "date": "2026-04-14",
+ "doc": {
+  "doc_id": "SYN-SYNCP000097-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000097-P1, was presented by the Supplier to Atlantic Health Network 097 on April 14, 2026."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 1 rebate of 3%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Influenza share floor of 55%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: accepted by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000097"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000097-P1#3",
+   "description": "a Influenza share floor of 55%",
+   "kind": "exclusivity",
+   "span": "a Influenza share floor of 55%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000097-P1#2",
+   "description": "a Tier 1 rebate of 3%",
+   "kind": "rebate_change",
+   "span": "a Tier 1 rebate of 3%"
+  }
+ ],
+ "outcome": "won",
+ "proposal_id": "SYN-SYNCP000097-P1",
+ "resulted_in": "SYN-SYNCP000097-AMD1",
+ "system_id": "SYNCP000097"
+}

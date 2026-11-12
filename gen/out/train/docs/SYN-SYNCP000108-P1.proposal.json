@@ -1,0 +1,51 @@
+{
+ "date": "2025-10-11",
+ "doc": {
+  "doc_id": "SYN-SYNCP000108-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000108-P1, was presented by the Supplier to Keystone Community Health 108 on October 11, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: an administrative fee of 1.5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Influenza share floor of 75%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: accepted by the Customer."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000108"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000108-P1#3",
+   "description": "a Influenza share floor of 75%",
+   "kind": "exclusivity",
+   "span": "a Influenza share floor of 75%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000108-P1#2",
+   "description": "an administrative fee of 1.5%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 1.5%"
+  }
+ ],
+ "outcome": "won",
+ "proposal_id": "SYN-SYNCP000108-P1",
+ "resulted_in": "SYN-SYNCP000108-AMD1",
+ "system_id": "SYNCP000108"
+}

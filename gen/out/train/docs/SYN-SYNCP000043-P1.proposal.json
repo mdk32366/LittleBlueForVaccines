@@ -1,0 +1,51 @@
+{
+ "date": "2025-03-09",
+ "doc": {
+  "doc_id": "SYN-SYNCP000043-P1",
+  "doc_type": "PROPOSAL",
+  "sections": [
+   {
+    "anchor": "1",
+    "heading": "Proposal Summary",
+    "text": "This proposal, SYN-SYNCP000043-P1, was presented by the Supplier to Cedar Valley Physician Alliance 043 on March 9, 2025."
+   },
+   {
+    "anchor": "2",
+    "heading": "Supplier Concession",
+    "text": "Supplier concession: a Tier 3 rebate of 5%."
+   },
+   {
+    "anchor": "3",
+    "heading": "Supplier Request",
+    "text": "Supplier request: a Influenza share floor of 85%."
+   },
+   {
+    "anchor": "4",
+    "heading": "Proposal Status",
+    "text": "Status of this proposal: awaiting a Customer decision."
+   }
+  ],
+  "synthetic": true,
+  "system_id": "SYNCP000043"
+ },
+ "gets": [
+  {
+   "anchor": "SYN-SYNCP000043-P1#3",
+   "description": "a Influenza share floor of 85%",
+   "kind": "exclusivity",
+   "span": "a Influenza share floor of 85%"
+  }
+ ],
+ "gives": [
+  {
+   "anchor": "SYN-SYNCP000043-P1#2",
+   "description": "a Tier 3 rebate of 5%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 5%"
+  }
+ ],
+ "outcome": "pending",
+ "proposal_id": "SYN-SYNCP000043-P1",
+ "resulted_in": null,
+ "system_id": "SYNCP000043"
+}

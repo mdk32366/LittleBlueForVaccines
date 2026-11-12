@@ -1,0 +1,25 @@
+{
+ "doc_id": "SYN-SYNCP000053-AMD1",
+ "fields": {
+  "effective_date": {
+   "qualifier": null,
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000053-AMD1"
+   },
+   "span": "July 1, 2025",
+   "type": "date",
+   "value": "2025-07-01"
+  },
+  "share_floor_pct": {
+   "qualifier": null,
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000053-AMD1"
+   },
+   "span": "65%",
+   "type": "pct",
+   "value": 65
+  }
+ }
+}
