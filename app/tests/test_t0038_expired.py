@@ -1,10 +1,12 @@
 """T-0038 expired marker: a contract whose end date is before the as-of date is marked in the PDF snapshot and the
 Q&A tab (SYNCP000036's MSA ended 2026-08-31; as-of 2026-09-30). Live contracts carry no marker."""
+import re
 import subprocess
 
 from brief import config, contracts, render, report
 
 EXPIRED_SID, LIVE_SID = "SYNCP000036", "SYNCP000025"
+NONE_SID = "SYNCP000014"  # expired, auto_renew False
 
 
 def test_flag_on_lookup():
@@ -27,14 +29,20 @@ def test_qa_citation_flagged():
 
 
 def test_pdf_snapshot_marked_and_one_page(tmp_path, real_facts):
-    for sid, want in ((EXPIRED_SID, True), (LIVE_SID, False)):
+    """PDF snapshot: SYNCP000014 (expired, no auto-renew) shows [EXPIRED]; SYNCP000036 (expired, auto-renews) shows
+    the auto-renew label instead; SYNCP000025 (live) shows neither. All stay one page."""
+    for sid, want in ((NONE_SID, contracts.EXPIRED_MARKER), (EXPIRED_SID, contracts.AUTO_RENEW_MARKER), (LIVE_SID, None)):
         _n, rows, pdf = report.build(real_facts[sid])
-        lines = render.contract_lines(rows)
-        assert any(contracts.EXPIRED_MARKER in ln for ln in lines) is want, sid
+        lines = " ".join(render.contract_lines(rows))
         p = tmp_path / f"{sid}.pdf"
         p.write_bytes(pdf)
-        text = subprocess.run(["pdftotext", "-layout", str(p), "-"], capture_output=True, text=True).stdout
-        assert (contracts.EXPIRED_MARKER in text) is want, sid
+        text = subprocess.run(["pdftotext", "-raw", str(p), "-"], capture_output=True, text=True).stdout
+        for m in (contracts.EXPIRED_MARKER, contracts.AUTO_RENEW_MARKER):
+            assert (m in lines) is (m == want), (sid, m)
+        if want:  # pdftotext may wrap the label; compare with whitespace removed
+            assert re.sub(r"\s+", "", want) in re.sub(r"\s+", "", text), sid
+        else:
+            assert "[EXPIRED]" not in text and "[TERM ENDED" not in text, sid
         assert render.pdf_page_count(pdf) == 1, sid
 
 

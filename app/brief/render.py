@@ -45,7 +45,7 @@ def fit_points(points, width=POINT_WIDTH, max_lines=POINT_LINES) -> list:
 def contract_lines(contract_rows) -> list:
     out = []
     for r in contract_rows[:6]:
-        mark = f" {contracts.EXPIRED_MARKER}" if r.get("expired") else ""
+        mark = f" {r['marker']}" if r.get("marker") else ""
         out.append(f"{r['label']}: {r['span']}{mark}  ({r['anchor']})")
     return out or ["No generated contracts found for this system."]
 
