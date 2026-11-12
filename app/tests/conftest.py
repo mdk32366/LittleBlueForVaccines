@@ -52,6 +52,11 @@ def apply_mutation(name):
                 out[meta["doc_id"]] = (meta, secs, p)
             return out
         contracts.system_docs = leaky
+    elif name == "expired":
+        contracts.is_expired = lambda *a, **k: False
+    elif name == "expired_le":  # off-by-one: "on or before" instead of strictly before the as-of date
+        contracts.is_expired = lambda field_key, value, as_of=None: (contracts._base(field_key) == "expiration_date"
+                                                                     and str(value) <= (as_of or cfg.AS_OF_DATE))
     elif name == "bench":
         bm.national = lambda path: bm.synthetic(load.load_csv(cfg.DATA_PATH))
         orig = bm.resolve

@@ -7,11 +7,11 @@ ROOT = Path(__file__).resolve().parents[1]
 VENV_PY = ROOT / ".venv" / "bin" / "python"
 PY = str(VENV_PY) if VENV_PY.exists() else sys.executable  # clean clone / CI: current interpreter
 EXPECT = {
-    "nondet": ["test_determinism.py::test_same_seed_identical_bytes"],
+    "nondet": ["test_determinism.py::test_same_seed_identical_bytes", "test_real_out.py::test_real_regeneration_identical"],
     "span": ["test_spans.py::test_all_spans_verbatim"],
     "digits": ["test_answer_digits.py::test_no_digits_in_any_answer"],
     "overlap": ["test_split.py::test_no_system_in_both_splits"],
-    "famsplit": ["test_split.py::test_split_by_family"],
+    "famsplit": ["test_split.py::test_split_by_family", "test_real_out.py::test_real_regeneration_identical"],
     "leak": ["test_family_leak.py::test_no_family_b_text_in_train", "test_family_leak.py::test_template_families_disjoint"],
     "cap": ["test_caps.py::test_oversize_leaf_raises", "test_caps.py::test_section_over_1500_raises"],
     "vault": ["test_vault.py::test_v1_leaf_at_grok_bot_path_rejected", "test_vault.py::test_v1_generator_refuses_vault_out_root",

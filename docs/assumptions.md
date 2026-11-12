@@ -28,7 +28,13 @@ Proposed numbering after AS-0013; Trinity to confirm.
 - **AS-0032:** F6 uses all 24 months. Index = ratio ÷ benchmark ratio × 100.
 - **AS-0033:** F5 uses net doses. A manufacturer-window below zero is floored at 0; a pooled share of 0 or 1 gives no z. Doses are treated as trials, as §0 item 3 implies.
 - **AS-0034:** the national benchmark supplies only total dollars and the MenB:MenACWY ratio (it has no system or state columns), D-0034 (national file public-real).
-- **AS-0035:** the LLM path is an injectable callable used only by T-0005. There is no client code and no keys.
-- **AS-0036:** Q&A with the LLM off is TermSet lookup. Cross-doc and proposal questions answer D-0027 (refusal string), with the note "needs retrieval".
+- **AS-0035 (DEFERRED to the LLM wire-in PR, 11/18–20, after GATE 3):** the LLM path is an injectable callable used only by T-0005. There is no client code and no keys.
+- **AS-0036 (DEFERRED to the LLM wire-in PR, 11/18–20, after GATE 3):** Q&A with the LLM off is TermSet lookup. Cross-doc and proposal questions answer D-0027 (refusal string), with the note "needs retrieval".
 - **AS-0037:** data paths default to `<repo>/data/<file>`, falling back to `<repo>/<file>`. They are env-overridable.
-- **AS-0038:** the PDF's right column shows a cited contract snapshot from the TermSet. It is not C1–C6.
+- **AS-0038 (DEFERRED to the wire-in PR, 11/18–20, after GATE 3, for C1–C6 and the two-column layout):** the PDF's right column shows a cited contract snapshot from the TermSet. It is not C1–C6.
+
+## Review rulings (Trinity, PR 3)
+- AS-0028 to AS-0038 are accepted as built. AS-0035 and AS-0036 (LLM wire-in) and AS-0038 (C1–C6 and the two-column layout) are deferred to the 11/18–20 wire-in PR after GATE 3.
+- **AS-0039 (OPEN FOLLOW-UP, see F-0009):** F5 switching must either exclude Influenza or compare same-season windows. Today the two windows (202410–202503 and 202604–202609) sit in different flu seasons, so many of the 66/180 flags are Influenza season effects rather than switching. Documented only; not implemented in PR 3.
+- **AS-0040 (expired rule; confirmed as numbered, Trinity PR 3 review):** a contract whose end date (`expiration_date`) is before the as-of date, 2026-09-30 (the last day of the data's last month, 202609), is marked `[EXPIRED]` in the PDF "Contracts on file" snapshot, the Q&A tab citations and the TermSet table. 21 of 180 MSAs are expired on this rule, e.g. SYNCP000036 (ended 2026-08-31). SYNCP000094, SYNCP000095 and SYNCP000096 end exactly on 2026-09-30 and are live (the rule is strictly before). An amendment does not extend the end date in stub v0.
+- **Open note (AS-0040, no code change):** auto-renewing MSAs such as SYNCP000036 ("renews automatically") still get `[EXPIRED]`; Trinity will rule on `[ENDED]` versus exempting them at wire-in.

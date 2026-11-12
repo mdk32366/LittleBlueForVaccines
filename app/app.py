@@ -74,10 +74,12 @@ with tab_qa:
         st.markdown(f"**Answer:** {res['answer']}")
         st.caption(res["note"])
         for h in res["citations"]:
+            exp = f" · **{contracts.EXPIRED_MARKER}** (ended before {config.AS_OF_DATE})" if h.get("expired") else ""
             st.markdown(f"`{h['anchor']}` · {h['heading']} · span: **{h['span']}** "
-                        f"({'verbatim' if h['verbatim'] else 'NOT VERBATIM'})")
+                        f"({'verbatim' if h['verbatim'] else 'NOT VERBATIM'}){exp}")
             st.markdown("> " + h["clause_text"].replace(h["span"], f"**{h['span']}**", 1))
     with st.expander("All TermSet fields for this system"):
         st.dataframe(pd.DataFrame([{"doc": d, "field": k, "value": str(f["value"]), "span": f["span"],
-                                    "anchor": f"{f['source']['doc_id']}#{f['source']['anchor']}"}
+                                    "anchor": f"{f['source']['doc_id']}#{f['source']['anchor']}",
+                                    "status": contracts.EXPIRED_MARKER if contracts.is_expired(k, f["value"]) else ""}
                                    for d, k, f in contracts.system_terms(sid)]), hide_index=True)
