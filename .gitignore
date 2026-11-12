@@ -5,3 +5,7 @@ models/
 *.gguf
 *.safetensors
 .env
+
+# local run artefacts
+app/evidence/smoke.txt
+gen/pytest-gen.txt

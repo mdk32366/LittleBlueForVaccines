@@ -20,3 +20,22 @@ Ids T-0028..T-0033 are CONFIRMED by Trinity 2026-11-12 (G-18 ruling).
 - **T-0033 section ≤ 1,500 bytes** (`test_caps.py::test_section_over_1500_raises`, `caps_ok`). Red-proof: REDPROOF=cap.
 
 Run: `cd gen && python -m pytest tests` (T-0027 alone: `python -m pytest tests/test_vault.py`); red-proof: `python tools/redproof.py`.
+
+## App (app/, PR 2): test plan
+
+Every guard is red-proofed by `python app/tools/redproof.py` (REDPROOF=<mutation>, test-side monkeypatch only); CI runs it.
+
+- **T-0001 reconcile** (`test_t0001_reconcile.py`): F1 summed over the 180 systems equals the file total to the cent, and doses match. F2, F3 and F4 each sum to F1, on both the synthetic file and the fixture. Returns are 299 rows and −$1,285,193.13. The schema fails closed. The input sha256 equals gen's manifest record. Mutation: reconcile.
+- **T-0002 ratio edge** (`test_t0002_ratio.py`): MenACWY = 0 gives "undefined" and below 50 doses gives "insufficient volume", never inf. File counts: 4 undefined, 102 ok, peer ratio 0.661. Mutation: ratio.
+- **T-0003 switching** (`test_t0003_switching.py`): the planted Pfizer Pneumococcal 80%→30% at 400 doses per window flags; the noise system doesn't; the synthetic flag rate is below 50% (66/180). Mutation: switch.
+- **T-0004 validator** (`test_t0004_validator.py`): "54%", `{F9.x}`, "Prevnar is safer", "offer a 5% discount" and "should charge" are all rejected, plus the T-0013 cases. All 180 rendered briefs are free of clinical and advice language. Mutation: validator.
+- **T-0005 fallback** (`test_t0005_fallback.py`): LLM off, unreachable, the 20 s timeout and rejected-twice all give templated points (stub callable, no network). Mutation: fallback.
+- **T-0006 one page** (`test_t0006_onepage.py`): 180 renders, each exactly 1 page, cross-checked with pdfinfo. Points truncate with an ellipsis. Mutation: onepage.
+- **T-0007 custody: RETIRED** per D-0022 (fake data) and D-0034 (national file public-real). No test.
+- **T-0008 benchmark label** (`test_t0008_label.py`): benchmark-derived facts carry "synthetic peers" or "national", and other facts carry "system". The PDF footer shows the live benchmark in both modes. Mutation: label.
+- **T-0025 (app slice) national file never training or gen input** (`test_t0025_train_guard.py`): the national path or a copy of it is refused; paths outside `data/synthetic|train/` are refused; records without `synthetic: true` are refused; the gen/ scan is clean; a planted reference is flagged. Mutation: trainguard.
+- **T-0035 name, D-0033 (name)** (`test_t0035_name.py`): checks the `set_page_config(page_title=…)` spy, the `st.title`, the first line of the PDF text, and the README. Mutation: name.
+- **T-0036 contract Q&A** (`test_t0036_contracts.py`): TermSet answers equal the gen/out spans S1 text and anchor. Citations are from this system only and are verbatim. Unknown questions get D-0027 (refusal string). Mutation: isolation.
+- **T-0037 benchmark modes** (`test_t0037_benchmark.py`): the default is synthetic; national reads the national file (ratio 0.54); a missing file falls back with a note; a bad mode or schema fails closed. Mutation: bench.
+- **AppTest smoke** (`test_app.py`, `tools/smoke.py`): picker, brief, Q&A tab, download button and benchmark toggle. It also runs a live server health check.
+- New ids T-0035 to T-0037 are proposed (T-0034 is the spec's full-length fit).

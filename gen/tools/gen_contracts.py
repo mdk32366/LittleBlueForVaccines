@@ -22,7 +22,7 @@ spec = load_spec(spec_name)
 if a.fixture:
     systems, src = S.fixture_systems(a.fixture), {"kind": "fixture", "n": a.fixture}
 else:
-    csv = Path(a.systems_csv or root.parent / "BIA_562_Synthetic_Sales_Data.csv")
+    csv = Path(a.systems_csv or root.parent / "data" / "BIA_562_Synthetic_Sales_Data.csv")
     systems = S.load_csv(csv)
     src = {"kind": "csv", "file": csv.name, "sha256": hashlib.sha256(csv.read_bytes()).hexdigest()}
 m = generate(spec, systems, a.out, a.seed, overwrite=a.overwrite, systems_source=src)

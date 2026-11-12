@@ -19,12 +19,45 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"  # box venv is 3.13.5; exact patch not published for this runner image
+          python-version: "3.13"  # dev venv is 3.13.5; exact patch not published for this runner image
       - name: Install pinned requirements
         run: python -m pip install -r requirements.txt
-      - name: pytest (gen)
-        run: python -m pytest -v tests
+      - name: pytest (gen, must have 0 skipped)
+        timeout-minutes: 5
+        run: |
+          python -m pytest -v -rs tests | tee pytest-gen.txt
+          if grep -qE '[0-9]+ skipped' pytest-gen.txt; then echo "::error::gen tests skipped (test_real_out needs data/)"; exit 1; fi
       - name: T-0027 vault guard
+        timeout-minutes: 5
         run: python -m pytest -v tests/test_vault.py
       - name: Red-proof (every guard can go red)
-        run: python tools/redproof.py
+        timeout-minutes: 10
+        run: python -u tools/redproof.py
+
+  app:
+    name: app (pytest, redproof, headless smoke)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install poppler-utils (pdfinfo / pdftotext for T-0006, T-0008, T-0035)
+        run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
+      - name: Install pinned requirements
+        run: python -m pip install -r requirements.txt
+      - name: pytest (app)
+        env:
+          STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+        run: python -m pytest -v tests
+      - name: Red-proof (every guard can go red)
+        timeout-minutes: 10
+        run: python -u tools/redproof.py
+      - name: Headless smoke (localhost only)
+        env:
+          STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+        run: python tools/smoke.py

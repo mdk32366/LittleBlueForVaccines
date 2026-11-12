@@ -19,11 +19,18 @@ EXPECT = {
               "test_vault.py::test_v4_md_in_vendored_code_dir_rejected"],
     "unans": ["test_qa.py::test_unanswerable_at_least_15pct"],
 }
+RUN_TIMEOUT = int(os.environ.get("REDPROOF_TIMEOUT", "300"))  # per pytest run; a hang fails loudly
 lines, ok_all = [], True
 for name, expect in EXPECT.items():
     env = dict(os.environ, REDPROOF=name)
-    r = subprocess.run([PY, "-m", "pytest", "-q", "-rf", "-p", "no:cacheprovider", "tests"], cwd=ROOT, env=env,
-                       capture_output=True, text=True)
+    print(f"[redproof] REDPROOF={name} ...", flush=True)
+    try:
+        r = subprocess.run([PY, "-m", "pytest", "-q", "-rf", "-p", "no:cacheprovider", "tests"], cwd=ROOT, env=env,
+                           capture_output=True, text=True, timeout=RUN_TIMEOUT, stdin=subprocess.DEVNULL)
+    except subprocess.TimeoutExpired:
+        ok_all = False
+        lines.append(f"## REDPROOF={name}: TIMEOUT after {RUN_TIMEOUT}s (counts as FAIL)")
+        continue
     failed = sorted(set(re.findall(r"^FAILED tests/(\S+?)(?: - |$)", r.stdout, re.M)))
     summary = r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr[-200:]
     hit = all(e in failed for e in expect)
@@ -32,7 +39,9 @@ for name, expect in EXPECT.items():
     lines.append(f"   pytest exit={r.returncode}; {summary}")
     lines.append("   expected red: " + ", ".join(expect))
     lines.append("   all failed:   " + (", ".join(failed) or "(none)"))
-r = subprocess.run([PY, "-m", "pytest", "-q", "-p", "no:cacheprovider", "tests"], cwd=ROOT, capture_output=True, text=True)
+print("[redproof] control ...", flush=True)
+r = subprocess.run([PY, "-m", "pytest", "-q", "-p", "no:cacheprovider", "tests"], cwd=ROOT, capture_output=True, text=True,
+                   timeout=RUN_TIMEOUT, stdin=subprocess.DEVNULL)
 lines.append(f"## control (no mutation): exit={r.returncode}; {r.stdout.strip().splitlines()[-1]}")
 ok_all &= r.returncode == 0
 lines.append(f"REDPROOF OVERALL: {'PASS' if ok_all else 'FAIL'}")

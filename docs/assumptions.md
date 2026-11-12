@@ -19,3 +19,16 @@ Proposed numbering after AS-0013; Trinity to confirm.
 - **AS-0025 (see G-13 ruling):** one `qa.jsonl` per split, not one per document.
 - **AS-0026:** the 1,500-byte section limit is a hard raise in the generator (spec says "targets").
 - **AS-0027:** the cap is ≤ 15,360 bytes (L001), not strictly under.
+
+## App (app/, PR 2): assumptions (continue after gen's AS-0027)
+- **AS-0028:** F3 "facility type" is `BAC_CHNL_SPEC_DESC`.
+- **AS-0029:** F1.rank ranks by net dollars, with 1 as the largest (ties take the min rank). F1.bench_share is the system's dollars over the benchmark's dollars.
+- **AS-0030:** system-only facts carry `source_label: "system"`. The spec names only benchmark labels.
+- **AS-0031:** in-state peers are the other systems with the same `BAC_CORP_PAR_ST_CD`, excluding the system itself. At least 5 are needed; their ratio pools their doses.
+- **AS-0032:** F6 uses all 24 months. Index = ratio ÷ benchmark ratio × 100.
+- **AS-0033:** F5 uses net doses. A manufacturer-window below zero is floored at 0; a pooled share of 0 or 1 gives no z. Doses are treated as trials, as §0 item 3 implies.
+- **AS-0034:** the national benchmark supplies only total dollars and the MenB:MenACWY ratio (it has no system or state columns), D-0034 (national file public-real).
+- **AS-0035:** the LLM path is an injectable callable used only by T-0005. There is no client code and no keys.
+- **AS-0036:** Q&A with the LLM off is TermSet lookup. Cross-doc and proposal questions answer D-0027 (refusal string), with the note "needs retrieval".
+- **AS-0037:** data paths default to `<repo>/data/<file>`, falling back to `<repo>/<file>`. They are env-overridable.
+- **AS-0038:** the PDF's right column shows a cited contract snapshot from the TermSet. It is not C1–C6.

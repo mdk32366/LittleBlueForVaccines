@@ -50,4 +50,24 @@ gen/
   requirements.txt  pinned test dependencies (the package itself is standard library only)
 ```
 
-Regenerate with `cd gen && python tools/gen_contracts.py --seed 562 --out out/ --systems-csv <path to synthetic CSV>`. Without `--systems-csv` the tool looks for `BIA_562_Synthetic_Sales_Data.csv` at the repository root.
+Regenerate with `cd gen && python tools/gen_contracts.py --seed 562 --out out/`. Without `--systems-csv` the tool reads `data/BIA_562_Synthetic_Sales_Data.csv` (moved there in PR 2; `test_real_out.py` reads the same path).
+
+## App (app/, PR 2)
+
+Little Blue for Vaccine Sales, D-0033 (name). Proposed repo slug: `little-blue-vaccine-sales`.
+
+```
+data/BIA_562_Synthetic_Sales_Data.csv --load.py (schema check, fail closed)--> clean.py (returns netted, null class -> Unclassified)
+   --> facts.py F1..F8 (+ switching.py z-test, benchmark.py synthetic|national) --> FactSheet (fact_id, value, unit, period, n, source_label)
+   --> templates.py (fact tokens only) --> validator.py --> narrative.py (LLM off; templated) --> render tokens
+   --> charts.py (matplotlib Agg) --> render.py: ONE letter figure -> one-page PDF
+gen/out (read-only) --> contracts.py: TermSet lookup with cited spans <doc_id>#<section>, filtered to one system
+app.py (Streamlit): benchmark radio, system picker, Brief tab (tiles, 4 charts, points, flags, Download PDF), Contract Q&A tab
+cli.py: batch PDFs (--system/--all, --benchmark, --factsheet)
+```
+
+- **Paths:** `brief/config.py`. `DATA_PATH`, `NATIONAL_PATH`, `GEN_OUT` and `BENCHMARK` are env-overridable. Defaults are `<repo>/data/<file>` (legacy fallback: `<repo>/<file>`).
+- **Benchmark:** `synthetic` is the default and the fallback. `national` reads 'BIA 562 National System Data.csv', D-0034 (national file public-real). That file has no system or state columns, so it supplies only national dollars and the MenB:MenACWY ratio. Rank and in-state peers stay on synthetic peers and are labelled so. A missing national file falls back to synthetic, with a note in the sidebar and a "[fallback]" footer.
+- **LLM:** off. `narrative.compose(fs, llm=None)` takes an in-process callable only so T-0005 can prove the fallback. There is no network client.
+- **Guardrails:** `validator.py` rejects digits outside `{Fn.id}` tokens, unknown tokens, clinical-claim words, "should charge", and an advisory word plus a commercial term in one sentence. It applies D-0009 (denylist), and D-0023 (slot tokens exempt from digit rule) is applied to fact tokens. Real manufacturer and product names may appear, D-0035 (real names, fake grounding). Contracts and Q&A stay synthetic (gen/out).
+- **T-0025 app slice:** `train_guard.py` holds the refusal the future training path must call, plus a scan of gen/ for any consumption of the national file.

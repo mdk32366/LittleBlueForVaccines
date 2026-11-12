@@ -1,0 +1,479 @@
+{
+ "fs_id": "FS-SYNCP000001-202609",
+ "system_id": "SYNCP000001",
+ "name": "Prairie Pediatric Center 001",
+ "state": "TX",
+ "as_of": "202609",
+ "benchmark": "synthetic",
+ "benchmark_label": "synthetic peers",
+ "benchmark_note": "",
+ "facts": [
+  {
+   "fact_id": "F1.dollars",
+   "value": 592808.35,
+   "unit": "usd",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F1.doses",
+   "value": 5470,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F1.rank",
+   "value": 72,
+   "unit": "int",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F1.n_systems",
+   "value": 180,
+   "unit": "int",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F1.bench_share",
+   "value": 0.567977861611724,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F2.by_class",
+   "value": [
+    [
+     "Pneumococcal",
+     119876.13
+    ],
+    [
+     "MMR",
+     92213.05
+    ],
+    [
+     "Meningococcal",
+     66433.76
+    ],
+    [
+     "RSV",
+     63850.26
+    ],
+    [
+     "Influenza",
+     53846.36
+    ],
+    [
+     "Other",
+     196588.79
+    ]
+   ],
+   "unit": "series",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F2.top_class",
+   "value": "Pneumococcal",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F2.top_class_share",
+   "value": 20.221734393586054,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F3.by_facility",
+   "value": [
+    [
+     "Pediatric Medicine",
+     266607.88
+    ],
+    [
+     "Other",
+     128126.85
+    ],
+    [
+     "Primary Care",
+     70422.77
+    ],
+    [
+     "Urgent Care",
+     49231.04
+    ],
+    [
+     "General Acute",
+     32323.76
+    ],
+    [
+     "Critical Access",
+     20246.26
+    ],
+    [
+     "Women's Health",
+     11382.36
+    ],
+    [
+     "Purchasing Agent",
+     7952.9
+    ],
+    [
+     "Multispecialty",
+     5554.53
+    ],
+    [
+     "Risk-Based Specialty",
+     960.0
+    ]
+   ],
+   "unit": "series",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F3.top_facility",
+   "value": "Pediatric Medicine",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F3.top_facility_share",
+   "value": 44.97370524554859,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.by_mfr",
+   "value": [
+    [
+     "MERCK & COMPANY",
+     184460.49
+    ],
+    [
+     "GSK PHARM",
+     141043.62
+    ],
+    [
+     "PFIZER",
+     119135.12
+    ],
+    [
+     "SANOFI",
+     86866.13
+    ],
+    [
+     "SEQIRUS",
+     19258.6
+    ],
+    [
+     "DYNAVAX TECH CORP",
+     15020.87
+    ],
+    [
+     "MSP VACCINE COMP",
+     14118.5
+    ],
+    [
+     "BAVARIAN NORDIC",
+     12758.09
+    ],
+    [
+     "MODERNA INC",
+     146.93
+    ]
+   ],
+   "unit": "series",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.top_mfr",
+   "value": "MERCK & COMPANY",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.pfizer_dollars",
+   "value": 119135.12,
+   "unit": "usd",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F4.pfizer_share",
+   "value": 20.096734467387307,
+   "unit": "pct",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F5.flags",
+   "value": [],
+   "unit": "series",
+   "period": "202410-202503 vs 202604-202609",
+   "n": 0,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F5.n_flags",
+   "value": 0,
+   "unit": "int",
+   "period": "202410-202503 vs 202604-202609",
+   "n": 0,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F5.status",
+   "value": "no material switching",
+   "unit": "label",
+   "period": "202410-202503 vs 202604-202609",
+   "n": 0,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.menb_doses",
+   "value": 270,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.menacwy_doses",
+   "value": 80,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.menabcwy_doses",
+   "value": 0,
+   "unit": "doses",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.status",
+   "value": "ok",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.bench_ratio",
+   "value": 0.660695468914647,
+   "unit": "ratio",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F6.ratio",
+   "value": 3.375,
+   "unit": "ratio",
+   "period": "202410-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F6.index_vs_bench",
+   "value": 510.8253588516746,
+   "unit": "index",
+   "period": "202410-202609",
+   "n": 180,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F6.state_status",
+   "value": "ok",
+   "unit": "label",
+   "period": "202410-202609",
+   "n": 32,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F6.state_ratio",
+   "value": 0.5272727272727272,
+   "unit": "ratio",
+   "period": "202410-202609",
+   "n": 32,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F6.index_vs_state",
+   "value": 640.0862068965517,
+   "unit": "index",
+   "period": "202410-202609",
+   "n": 32,
+   "source_label": "synthetic peers"
+  },
+  {
+   "fact_id": "F7.by_class",
+   "value": [
+    [
+     "Coronavirus",
+     0.0,
+     146.93
+    ],
+    [
+     "DTaP",
+     14893.23,
+     1943.1100000000001
+    ],
+    [
+     "HPV",
+     0.0,
+     8642.119999999999
+    ],
+    [
+     "Hepatitis",
+     17862.77,
+     29376.27
+    ],
+    [
+     "Hib",
+     1903.82,
+     120.0
+    ],
+    [
+     "Influenza",
+     53470.12,
+     376.24
+    ],
+    [
+     "MMR",
+     52262.9,
+     39950.15
+    ],
+    [
+     "Meningococcal",
+     27443.72,
+     38990.04
+    ],
+    [
+     "Other",
+     5368.139999999999,
+     7972.15
+    ],
+    [
+     "Pneumococcal",
+     49305.53,
+     70570.59999999999
+    ],
+    [
+     "RSV",
+     0.0,
+     63850.26
+    ],
+    [
+     "Rotavirus",
+     20429.489999999998,
+     10973.76
+    ],
+    [
+     "Tdap",
+     16112.03,
+     14895.66
+    ],
+    [
+     "Travel",
+     0.0,
+     1823.38
+    ],
+    [
+     "Varicella",
+     1791.3199999999997,
+     42334.61
+    ]
+   ],
+   "unit": "series",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.t12_dollars",
+   "value": 260843.07,
+   "unit": "usd",
+   "period": "202510-202609",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.p12_dollars",
+   "value": 331965.28,
+   "unit": "usd",
+   "period": "202410-202509",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.growth_pct",
+   "value": -21.42459295743217,
+   "unit": "pct",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.top_grower",
+   "value": "Influenza",
+   "unit": "label",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F7.top_decliner",
+   "value": "RSV",
+   "unit": "label",
+   "period": "202510-202609 vs 202410-202509",
+   "n": 135,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F8.returns_dollars",
+   "value": 7928.48,
+   "unit": "usd",
+   "period": "202410-202609",
+   "n": 1,
+   "source_label": "system"
+  },
+  {
+   "fact_id": "F8.returns_rows",
+   "value": 1,
+   "unit": "int",
+   "period": "202410-202609",
+   "n": 1,
+   "source_label": "system"
+  }
+ ]
+}
