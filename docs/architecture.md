@@ -72,3 +72,23 @@ cli.py: batch PDFs (--system/--all, --benchmark, --factsheet)
 - **Guardrails:** `validator.py` rejects digits outside `{Fn.id}` tokens, unknown tokens, clinical-claim words, "should charge", and an advisory word plus a commercial term in one sentence. It applies D-0009 (denylist), and D-0023 (slot tokens exempt from digit rule) is applied to fact tokens. Real manufacturer and product names may appear, D-0035 (real names, fake grounding). Contracts and Q&A stay synthetic (gen/out).
 - **Expired marker:** `contracts.is_expired` flags a contract end date before `config.AS_OF_DATE` (2026-09-30); the PDF snapshot, Q&A citations and TermSet table show `[EXPIRED]` (AS-0040 (expired rule), T-0038 (expired marker)). `contracts.field_marker` swaps in `[TERM ENDED · auto-renews]` when the MSA's `auto_renew` field is True and cites the same section as `expiration_date` (field-based, no phrase matching; AS-0041 (schema_v1 keeps auto_renew boolean in term section)). The Brief tab lists the same "Contracts on file" lines via `report.brief_contract_lines` (T-0039, T-0040). The label's hyphen is U+2011 (non-breaking; DejaVu Sans renders it) so the PDF wrapper keeps it whole. T-0041 guards the `auto_renew` schema contract.
 - **T-0025 app slice:** `train_guard.py` holds the refusal the future training path must call, plus a scan of gen/ for any consumption of the national file.
+
+## v0.2-a client metrics (app/, PR 5)
+
+The client's key system attributes (A1–A11) and important ratios (R1–R3, R5–R7; R4 held) at three levels: the system, its pooled synthetic in-state peers and the pooled national file. The public spec copy is `docs/spec-v0.2.md` (§3 is the data contract).
+
+```
+data/BIA_562_Synthetic_Sales_Data.csv --load + clean--> client_metrics.extend(fsets, df, nat)
+data/BIA 562 National System Data.csv --benchmark.national_profile()--^   (benchmark only, D-0034 (national file public-real))
+   benchmark.pooled(rows): one additive aggregation used for the system, the pooled peers and the national file
+   availability.gate(key, compute): the only route to a computation; NOT AVAILABLE returns NotAvailable, never a number
+   --> FactSheet gains F9 (A1–A4, highest-dollar shares), F10 (A5–A9), F11 (A10), F12 (A11), F13 (R1–R7)
+   --> client_metrics.table_rows(fs) / attribute_strip(fs): display strings for the comparison table and A5–A9 strip
+```
+
+- **Levels and ids.** A value fact per level: system `<fid>`, state `<fid>_state`, national `<fid>_nat`; each has a status label `<fid>[_level]_st` (ok, undefined, insufficient volume, net returns, too few in-state peers, no national file, not available, inconsistent (private exceeds total)). Indices are `<fid>_idx_state` and `<fid>_idx_nat` (system ÷ comparator × 100). Series facts (A2, A3, A4, A9, manufacturer shares) carry one row per item with the three levels and both indices.
+- **Comparators.** State = the other systems with the same `BAC_CORP_PAR_ST_CD`, at least five (AS-0031 (in-state peers)), their components summed. National = the whole national file pooled (AS-0043 (comparators)). The national file has no system, state or outlet columns (F-0014), so A6–A9 national, a national system grouping and a real system universe are NOT AVAILABLE.
+- **Registry.** `brief/availability.py` holds `REGISTRY["<item>.<level>"] = Entry(status, reason, columns)` for every client item at every level, with status OK, DERIVED (the reason is the caveat) or NOT AVAILABLE. Reasons are digit-free. `client_metrics.cell()` renders a NOT AVAILABLE metric as `not available: <reason>`.
+- **Ratio rule.** `client_metrics.ratio_rule` applies AS-0044 (ratio rule). F6 (MenB:MenACWY, T-0002) and its PDF tile are unchanged; R1 is the v0.2 figure.
+- **Unchanged.** F1–F8 (`facts.py`), the PDF (one page, T-0006), the Brief and Q&A tabs, gen/ and gen/out. The comparison table and strip are rendered by the next PR (v0.2-b); this PR adds the data layer and its display strings only.
+- **Validator.** Fact tokens widen from F1–F8 to F1–F14 (`validator.TOKEN`); F0 and F15+ stay malformed (T-0053).
