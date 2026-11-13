@@ -1,7 +1,7 @@
 """Frozen seam types (TRINITY-ARCH §7.2, ONTOLOGY §6) and the ContractSpec protocol.
 
 Downstream code (generator, leaves, checks) depends ONLY on this module.
-A spec module (stub v0, Matt's schema_v1, the test toy spec) implements ContractSpec.
+A spec module (stub v0, the owner's schema_v1, the test toy spec) implements ContractSpec.
 """
 from __future__ import annotations
 

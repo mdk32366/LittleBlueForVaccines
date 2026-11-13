@@ -1,4 +1,4 @@
-"""Stub v0 ContractSpec (ONTOLOGY §3 catalog v0). Matt's schema_v1 replaces this module, not the generator."""
+"""Stub v0 ContractSpec (ONTOLOGY §3 catalog v0). The owner's schema_v1 replaces this module, not the generator."""
 from __future__ import annotations
 
 import datetime as dt

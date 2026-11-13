@@ -1,4 +1,4 @@
-"""System profiles: from the (fake, D-0022) synthetic sales CSV, or a seeded fixture for tests."""
+"""System profiles: from the (fake, D-0022 (fake data)) synthetic sales CSV, or a seeded fixture for tests."""
 import csv
 import random
 from collections import defaultdict
