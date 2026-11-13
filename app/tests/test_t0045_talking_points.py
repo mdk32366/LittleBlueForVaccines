@@ -17,10 +17,10 @@ def built(real_client):
     return {sid: talking.build(fs) for sid, fs in real_client.items()}
 
 
-def test_every_point_passes_guardrails(real_client, built):
-    assert len(built) == 180
-    for sid, pts in built.items():
-        fs = real_client[sid]
+def test_every_point_passes_guardrails(real_client):
+    assert len(real_client) == 180
+    for sid, fs in real_client.items():
+        pts = talking.build(fs)  # built here, not in a fixture: a guardrail failure must be a test failure
         assert [p.slot for p in pts[:3]] == ["fixed"] * 3 and pts[-1].slot == "question"
         assert 1 <= sum(p.slot == "must" for p in pts) <= talking.MUST_COVER_TOP
         for p in pts:
