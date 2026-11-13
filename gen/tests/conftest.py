@@ -64,6 +64,8 @@ def apply_mutation(name):
         G.MIN_UNANSWERABLE = 0.0
         orig = schema_stub.StubV0Spec.qa
         schema_stub.StubV0Spec.qa = lambda self, ds: [q for q in orig(self, ds) if q.answer_type != "unanswerable"]
+    elif name == "barestamp":  # the stamp goes back to a bare decision number
+        G.STAMP = "> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal."
     elif name == "dropin_as0041":  # the schema_v1 drop-in gate stops checking AS-0041
         conformance.check_auto_renew = lambda doc_id, fields, sections: []
     elif name == "dropin_appfields":  # the drop-in gate stops checking the app's field names

@@ -7,7 +7,7 @@ Every test must be able to go red; `python gen/tools/redproof.py` proves it (CI 
 
 Ids T-0028..T-0033 are CONFIRMED by Trinity 2026-11-12 (G-18 ruling).
 
-- **T-0014 SYNTHETIC stamp** (`test_qa.py::test_synthetic_stamp`): every doc has `synthetic: true` + the SYNTHETIC header; every leaf `synthetic: true`.
+- **T-0014 SYNTHETIC stamp** (`test_qa.py::test_synthetic_stamp`, `test_qa.py::test_stamp_cites_decisions_by_name`): every doc has `synthetic: true` + the SYNTHETIC header; every leaf `synthetic: true`. GATE 2: the stamp cites D-0022 (fake data) by name with no bare decision number, and docs carry it verbatim. Red-proof: REDPROOF=barestamp.
 - **T-0017 / T-0023 (generator side) cap** (`test_caps.py`): a 15,361-byte leaf raises `CapError`; exactly 15,360 passes; a 30 KB section yields ≥ 3 `continues`-linked sub-leaves each ≤ 15,360; all emitted leaves ≤ cap. Red-proof: REDPROOF=cap. (T-0023 retrieval part is not built here.)
 - **T-0021 (extended) split** (`test_split.py`): no system in both train and test (manifest, docs, qa, leaves); train is family A only, test family B only; a planted test doc in train is flagged. Red-proof: REDPROOF=overlap, REDPROOF=famsplit.
 - **T-0022 seam (generator slice)** (`test_seam.py`): toy 3-field spec runs through the unchanged generator via `tests.toy_spec:ToySpec`. Leaves/facts/brief/eval parts of T-0022 are out of scope here. Red-proof: REDPROOF=overlap also turns it red.

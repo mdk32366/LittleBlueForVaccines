@@ -39,6 +39,7 @@ Project-local decisions for app/ (BIA 562), logged from Matt's rulings via Trini
 - Assumptions AS-0028 to AS-0038 accepted (deferrals in assumptions.md); AS-0039 open follow-up; T-0035 to T-0037 confirmed; F-0008 to F-0013 accepted.
 - AS-0040 (expired rule) and T-0038 (expired marker) confirmed as numbered. Open: auto-renewing MSAs still show `[EXPIRED]`; `[ENDED]` versus exemption to be ruled at wire-in.
 - GATE 2 ruling (Trinity): auto-renewing expired MSAs show `[TERM ENDED · auto-renews]`, field-based (AS-0040 amendment); AS-0041 (schema_v1 keeps auto_renew boolean in term section) added, owned by Trinity. T-0039 (auto-renew split) and T-0040 (Brief-tab marker) confirmed as numbered; T-0041 (auto_renew bool schema guard) added as its own file; label hyphen is U+2011 (renders in the PDF font).
+- GATE 2 STAMP fix: `STAMP` in `gen/bia562gen/generate.py` now reads "Fictional test data generated for BIA 562 under D-0022 (fake data)." gen/out carries it from the GATE 2 regeneration on; the regeneration commit records the new manifest.
 
 ## v0.2
 - **D-0036 (v0.2 scope):** Accepted 2026-11-13 11:42 PT. The owner: "Generate a version 0.2 of this application (little blue)". Scope as in the spec `docs/spec-v0.2.md` §0 and §9: brief comparison, must-cover talking points from computed numbers, voice notes, and a Salesforce-shaped payload with a simulated send to SQLite, looked up by rep + date + company.

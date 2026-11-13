@@ -18,6 +18,7 @@ EXPECT = {
               "test_vault.py::test_v2_vault_shaped_id_rejected", "test_vault.py::test_v3_provenance_marker_rejected",
               "test_vault.py::test_v4_md_in_vendored_code_dir_rejected"],
     "unans": ["test_qa.py::test_unanswerable_at_least_15pct"],
+    "barestamp": ["test_qa.py::test_stamp_cites_decisions_by_name"],
     "dropin_as0041": ["test_spec_dropin.py::test_as0041_violations_rejected[str]",
                       "test_spec_dropin.py::test_as0041_violations_rejected[section]",
                       "test_spec_dropin.py::test_as0041_violations_rejected[dropped]"],

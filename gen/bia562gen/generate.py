@@ -14,7 +14,7 @@ from .seam import ANSWER_TYPES, FIELD_TYPES, REFUSAL, to_jsonable
 
 DIGIT = re.compile(r"\d")
 SLOT = re.compile(r"\{(S\d+)\}")
-STAMP = "> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal."
+STAMP = "> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal."
 MIN_UNANSWERABLE = 0.15
 TEST_FRACTION = 0.25
 SPLITS = ("train", "test")
