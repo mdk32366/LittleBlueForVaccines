@@ -3,7 +3,7 @@
 Public copy: the deploy section and server internals are omitted. Person names are replaced by roles ("the client" is the source of the asks; "the owner" is the project owner).
 
 Repo: mdk32366/LittleBlueForVaccines (PUBLIC). Base: main `a11b2f3e` plus unmerged `gate2-regen` head `9acaca82` (AS-0041, T-0039..T-0041). Numbering below continues from that branch. Highest numbers today: **D-0035 (real names, fake grounding), AS-0041, T-0041, F-0013** (docs/decisions.md:34, gate2-regen docs/assumptions.md, docs/testplan.md, docs/findings.md:18).
-Scope source: the owner's GO for v0.2, 11:42 AM PT 11/13. **D-0036 (v0.2 scope) below needs the owner's verbatim words before it's logged.** Only the owner's own words count as approval.
+Scope source: the owner's GO for v0.2, 11:42 AM PT 11/13, logged as D-0036 (v0.2 scope), accepted (docs/decisions.md). Only the owner's own words count as approval.
 Evidence for this spec: a read-only metrics probe script and its output, an STT bench script and its notes, and the fixture WAV, kept with the build evidence (not in the repository). The probe's national values are pinned by T-0042.
 
 ## 0. Goal, does / doesn't
@@ -259,10 +259,10 @@ CREATE INDEX visits_by_date ON visits (visit_date, system_id);
 ## 9. Log entries (proposed; numbering continues after gate2-regen)
 
 **Decisions (the owner's words only; verbatim quotes required before logging):**
-- **D-0036 (v0.2 scope):** brief, must-cover talking points from computed numbers, voice notes, and a Salesforce-shaped payload with a simulated send to SQLite, looked up by rep + date + company. Source: the owner's GO, 11:42 AM PT 11/13; **verbatim pending**.
+- **D-0036 (v0.2 scope):** brief, must-cover talking points from computed numbers, voice notes, and a Salesforce-shaped payload with a simulated send to SQLite, looked up by rep + date + company. Source: the owner's GO, 11:42 AM PT 11/13. **Accepted** (verbatim in docs/decisions.md).
 - **D-0037 (no real Salesforce):** no Salesforce network calls, library or credentials.
 - **D-0038 (no raw audio kept):** only the edited transcript is stored.
-- **D-0039 (v0.2 deploy, in place):** pending the owner's own GO wording.
+- **D-0039 (v0.2 deploy GO):** **Accepted** 11:49 PT 11/13 (verbatim in docs/decisions.md). Little Blue only; each merge and deploy still needs the Architect's approval.
 - **D-0040 (public visit exposure):** the owner's choice from Q-M1.
 
 **Assumptions:**
@@ -290,7 +290,7 @@ CREATE INDEX visits_by_date ON visits (visit_date, system_id);
 
 ## 10. Deploy
 
-The deploy plan for v0.2 (in-place upgrade of the public demo at https://little-blue.tailea9f4f.ts.net, its rollback and its smoke) needs its own GO, D-0039 (v0.2 deploy, proposed). It is kept outside this public repository because it describes server internals. Nothing in PR 5 to PR 8 changes the server.
+The deploy plan for v0.2 (in-place upgrade of the public demo at https://little-blue.tailea9f4f.ts.net, its rollback and its smoke) is covered by D-0039 (v0.2 deploy GO), accepted; each deploy still needs the Architect's approval. It is kept outside this public repository because it describes server internals. Nothing in PR 5 to PR 8 changes the server.
 
 ## 11. Tests (each must be able to fail) and redproof mutations
 
@@ -316,7 +316,7 @@ Existing T-0001..T-0041 must stay green, unchanged. The redproof runner (`app/to
 
 **Owner (real decisions):**
 - **Q-M1 (TOP):** public visit read/write on the public URL: (a) a shared passcode on the visit tabs, (b) per-session saves with a read-only seeded lookup, or (c) a synthetic-only banner. **Recommend (a) plus the banner.**
-- **Q-M2:** a GO for the in-place server upgrade (D-0039 (v0.2 deploy), deploy plan kept outside this repository).
+- **Q-M2:** answered: D-0039 (v0.2 deploy GO), accepted (deploy plan kept outside this repository).
 - **Q-M3:** should the v0.2 comparison table always show the national column when the file is present? D-0034 (national file public-real) keeps "synthetic peers" as the default for the BENCHMARK toggle. **Recommend yes**: the table is a benchmark, not training, and the toggle keeps governing F1/F6.
 - **Q-M4:** STT model base.en (recommended) or small.en; English only?
 - **Q-M5:** notes policy on a demo: "no patient information, no real HCP names" banner only, or also a simple pattern block (dates of birth, phone numbers)?
