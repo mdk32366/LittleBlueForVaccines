@@ -30,3 +30,7 @@ Evidence: the box probe output for this PR (counts below), re-checked by T-0042 
 - **F-0016:** subsidiary ids cross parents (80 of 80; 20,000 of 25,000 rows have a blank subsidiary); 2,395 of 2,400 outlets cross specialties; no outlet crosses parents. A7 is 14–35 per system and A8 13–14.
 - **F-0017:** the client's babies heuristic gives private > total in 62 of 180 synthetic systems: 61 show "inconsistent (private exceeds total)" and SYNCP000162 (no Varicella doses, total 0) shows "undefined".
 - **F-0021:** state comparison is available for 140 of 180 systems (TX 33, OH 30, CA 22, UT 12, MN 11, PA 9, FL 8, LA 8, ID 7); the other 40 show "too few in-state peers" (for example SYNCP000036, 4 peers). SYNCP000025 (FL, 7 peers): R1 150/240 against pooled peers 952/1144.
+
+## v0.2-b brief and talking points (app/, PR 6-lite): numbering per the v0.2 spec
+- **F-0022:** with the client's interim R4 definition, the synthetic R4 is 0 in 179 systems (1 has under 50 DTaP doses: insufficient volume) because synthetic HepB Ped is 0 everywhere (F-0015); national R4 is 0.5956. The synthetic value says nothing about HepB Ped use.
+- **F-0023:** the OBGYN Tdap ratios are sparse in the synthetic file: flu ÷ Tdap and RSV ÷ Tdap are ok in 5 systems, insufficient volume in 14 and undefined (no in-season Women's Health Tdap) in 161. National Women's Health season doses: Tdap 296,785 (ADACEL TDAP and BOOSTRIX TDAP), Influenza 102,450, RSV Vaccine 78,036.

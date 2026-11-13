@@ -1,4 +1,4 @@
-"""client_metrics.py (v0.2-a): the client's key system attributes (A1-A11) and important ratios (R1-R3, R5-R7; R4 held)
+"""client_metrics.py (v0.2-a): the client's key system attributes (A1-A11) and important ratios (R1-R7, with R4 the client's interim definition)
 at three levels: the system, its pooled synthetic in-state peers (at least five, AS-0031) and the pooled national file
 (D-0034 (national file public-real), benchmark only; never training input, T-0025).
 
@@ -38,7 +38,12 @@ A2_TOP, A4_TOP = 5, 10
 
 # R1-R3, R5, R6: (numerator component, denominator component) in benchmark.pooled() terms.
 RATIOS = {"R1": ("menb_abcwy", "acwy_abcwy"), "R2": ("hpv", "acwy_abcwy"), "R3": ("flu", "covid"),
-          "R5": ("shingles", "flu_adult"), "R6": ("rsv", "flu_adult")}
+          "R4": ("hepb_ped", "dtap"),       # the client's interim definition, client email 2026-11-13 (AS-0053)
+          "R5": ("shingles", "flu_adult"),
+          "R6": ("rsv", "flu_adult")}       # the full RSV Vaccine subclass, client email 2026-11-13 (AS-0054)
+# Women's Health (OBGYN), Oct-Mar season window, over Tdap subclass doses (client email 2026-11-13, AS-0055)
+OBGYN_RATIOS = {"R7_FLU_TDAP": ("r7_flu", "r7_tdap"), "R7_RSV_TDAP": ("r7_rsv", "r7_tdap")}
+KEY_OF = {}  # fact id -> registry key "<item>.<level>" (talking.py rejects a token whose key is NOT AVAILABLE)
 R7_PARTS = (("boostrix", "r7_boostrix", "Boostrix"), ("flu", "r7_flu", "Influenza"), ("rsv", "r7_rsv", "RSV Vaccine"))
 
 
@@ -113,7 +118,7 @@ def _b_share(c, s):
 
 def _ratio(item):
     def f(c, s):
-        num, den = RATIOS[item]
+        num, den = RATIOS[item] if item in RATIOS else OBGYN_RATIOS[item]
         return ratio_rule(c[num], c[den])
     return f
 
@@ -149,7 +154,8 @@ SCALARS = [
     ("A11", "F12.adult_share", "pct", LEVELS, FULL, _age("age_adult"), True),
     ("A11", "F12.mixed_share", "pct", LEVELS, FULL, _age("age_mixed"), True),
 ] + [(r, f"F13.{r.lower()}", "ratio", LEVELS, FULL, _ratio(r), True) for r in RATIOS] + [
-    ("R7", f"F13.r7_{name}", "pct", LEVELS, R7_PERIOD, _r7(comp), True) for name, comp, _ in R7_PARTS]
+    ("R7", f"F13.r7_{name}", "pct", LEVELS, R7_PERIOD, _r7(comp), True) for name, comp, _ in R7_PARTS] + [
+    (r, f"F13.{r.lower()}", "ratio", LEVELS, R7_PERIOD, _ratio(r), True) for r in OBGYN_RATIOS]
 
 # Series (A2, A3, A4, highest dollars by manufacturer): (item, fact id, components key, total key, top-N or None)
 SERIES = [("A2", "F9.cls_pct", "cls_dollars", "dollars", A2_TOP), ("A3", "F9.spec_pct", "spec_dollars", "dollars", None),
@@ -161,7 +167,9 @@ def _fid(base, level):
     return base + SUFFIX[level]
 
 
-def _put(fs, fid, value, unit, period, n, label):
+def _put(fs, fid, value, unit, period, n, label, key=None):
+    if key:
+        KEY_OF[fid] = key
     if fid not in fs.facts:
         fs.add(Fact(fid, value, unit, period, int(n), label))
 
@@ -170,12 +178,12 @@ def _emit(fs, key, fid, unit, period, n, label, compute):
     """Gate, then add the value fact (when there is one) and its status label."""
     res = av.gate(key, compute)
     if isinstance(res, av.NotAvailable):
-        _put(fs, fid + "_st", NA_STATUS, "label", period, 0, label)
+        _put(fs, fid + "_st", NA_STATUS, "label", period, 0, label, key)
         return None
     v, st = res
     if v is not None:
-        _put(fs, fid, v, unit, period, n, label)
-    _put(fs, fid + "_st", st, "label", period, n, label)
+        _put(fs, fid, v, unit, period, n, label, key)
+    _put(fs, fid + "_st", st, "label", period, n, label, key)
     return v
 
 
@@ -218,6 +226,23 @@ def series_rows(sys_map, sys_tot, comps: dict, top=None) -> list:
     return rows
 
 
+def _class_facts(fs, rows, n):
+    """F9.cls<i>_* for the top-five A2 classes (i = 1..5): name, system / state / national percent, indices."""
+    for i, r in enumerate([r for r in rows if r["label"] != REST][:A2_TOP], start=1):
+        b = f"F9.cls{i}"
+        _put(fs, b + "_name", r["label"], "label", FULL, n["system"], LABEL["system"], "A2.system")
+        for lvl, col in (("system", "system"), ("state", "state"), ("national", "national")):
+            fid, key = _fid(b, lvl), f"A2.{lvl}"
+            st = "ok" if r[col] is not None else MISSING.get(lvl, "undefined")
+            if r[col] is not None:
+                _put(fs, fid, r[col], "pct", FULL, n[lvl], LABEL[lvl], key)
+            _put(fs, fid + "_st", st, "label", FULL, n[lvl], LABEL[lvl], key)
+        for lvl in ("state", "national"):
+            v = r[IDX[lvl][1:]]
+            if v is not None and v > 0:
+                _put(fs, b + IDX[lvl], v, "index", FULL, n[lvl], LABEL[lvl], f"A2.{lvl}")
+
+
 def _system_counts(g: pd.DataFrame) -> dict:
     subs = g["BAC_OWN_SUBS_IMS_ORG_ID"]
     by_spec = g.groupby("BAC_CHNL_SPEC_DESC")["DDD_OTLT_NBR"].nunique()
@@ -245,6 +270,10 @@ def extend(fsets: dict, df: pd.DataFrame, nat: dict | None) -> dict:
                 state_c = bm.add_pooled(state_c, comps[p])
         ctx = {"system": sc, "state": state_c, "national": nat}
         n = {"system": sc["rows"], "state": len(peers), "national": nat["rows"] if nat else 0}
+        if state_c is not None:
+            _put(fs, "F9.n_state_peers", len(peers), "int", FULL, len(peers), LABEL["state"], "SYSKEY.state")
+        if nat is not None:
+            _put(fs, "F9.n_nat_rows", nat["rows"], "int", FULL, nat["rows"], LABEL["national"], "A1.national")
         # A1M: in-state peer median dollars, for scale next to the A1 state share
         if state_c is None:
             _put(fs, "F9.peer_median_dollars_state_st", MISSING["state"], "label", FULL, n["state"], LABEL["state"])
@@ -259,14 +288,15 @@ def extend(fsets: dict, df: pd.DataFrame, nat: dict | None) -> dict:
             for lvl in levels:
                 fid, key, c = _fid(base, lvl), f"{item}.{lvl}", ctx[lvl]
                 if c is None and av.status(key) != av.NA:
-                    _put(fs, fid + "_st", MISSING[lvl], "label", period, n[lvl], LABEL[lvl])
+                    _put(fs, fid + "_st", MISSING[lvl], "label", period, n[lvl], LABEL[lvl], key)
                     continue
                 vals[lvl] = _emit(fs, key, fid, unit, period, n[lvl], LABEL[lvl], lambda c=c: fn(c, sc))
             if indexed and vals.get("system") is not None:
                 for lvl in ("state", "national"):
                     cv = vals.get(lvl)
                     if cv is not None and cv > 0:
-                        _put(fs, base + IDX[lvl], vals["system"] / cv * 100, "index", period, n[lvl], LABEL[lvl])
+                        _put(fs, base + IDX[lvl], vals["system"] / cv * 100, "index", period, n[lvl], LABEL[lvl],
+                             f"{item}.{lvl}")
         # series
         for item, fid, mkey, tkey, top in SERIES:
             cmp = {}
@@ -278,6 +308,8 @@ def extend(fsets: dict, df: pd.DataFrame, nat: dict | None) -> dict:
                 _put(fs, _fid(fid, lvl) + "_st", st, "label", FULL, n[lvl], LABEL[lvl])
             rows = series_rows(sc[mkey], sc[tkey], cmp, top)
             _put(fs, fid, rows, "series", FULL, n["system"], LABEL["system"])
+            if item == "A2":  # scalar facts for the top classes, so talking points can cite them as tokens
+                _class_facts(fs, rows, n)
             _put(fs, fid + "_st", "ok", "label", FULL, n["system"], LABEL["system"])
         # A5-A9 attributes (labels and counts; there is no national outlet, subsidiary or state column)
         _put(fs, "F10.parent_type", cnt["type"], "label", FULL, n["system"], LABEL["system"])
@@ -388,7 +420,7 @@ def _na_row(item):
 
 
 def table_rows(fs) -> list:
-    """'System vs state peers vs national' rows: A1-A4, A10-A11 and R1-R7 (R4 and older-adult RSV as not available)."""
+    """'System vs state peers vs national' rows: A1 (+ A1M scale), A2-A4, A10-A11, R1-R7 and the two OBGYN ratios."""
     a1 = _scalar_row(fs, "A1", "F9.share", "dollars (state: share of the state total incl. the system; "
                      "national: share of national dollars)", system_text=fmt_fact(fs.facts["F1.dollars"]))
     med = cell(fs, "A1M", "state", "F9.peer_median_dollars_state")
@@ -405,14 +437,12 @@ def table_rows(fs) -> list:
     for base, name in (("F12.ped_share", "Ped share of doses"), ("F12.adult_share", "Adult share of doses"),
                        ("F12.mixed_share", "Mixed share of doses")):
         rows.append(_scalar_row(fs, "A11", base, name))
-    for r in ("R1", "R2", "R3"):
+    for r in RATIOS:  # R1-R6; R4 is the client's interim definition (client email 2026-11-13)
         rows.append(_scalar_row(fs, r, f"F13.{r.lower()}", av.ITEMS[r]))
-    rows.append(_na_row("R4"))
-    for r in ("R5", "R6"):
-        rows.append(_scalar_row(fs, r, f"F13.{r.lower()}", av.ITEMS[r]))
-    rows.append(_na_row("R6_OLDER"))
     for name, _, label in R7_PARTS:
         rows.append(_scalar_row(fs, "R7", f"F13.r7_{name}", f"{label} share (Women's Health, season)"))
+    for r in OBGYN_RATIOS:
+        rows.append(_scalar_row(fs, r, f"F13.{r.lower()}", av.ITEMS[r]))
     return rows
 
 

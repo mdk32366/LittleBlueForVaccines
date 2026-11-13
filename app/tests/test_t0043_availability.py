@@ -5,17 +5,19 @@ import re
 from brief import availability as av, client_metrics as cm
 
 DIGIT = re.compile(r"\d")
+# PR 6 note: R4 (the client's interim definition) and R6 (full RSV Vaccine subclass, older-adult proxy dropped)
+# left the NOT AVAILABLE list per the client email 2026-11-13; the PR 5-era pins for them are updated here.
 NA_KEYS = {"A1M.national", "A5.state", "A6.state", "A6.national", "A7.national", "A8.national", "A9.national",
-           "R4.system", "R4.state", "R4.national", "R6_OLDER.system", "R6_OLDER.state", "R6_OLDER.national",
            "SYSKEY.national", "UNIVERSE.national"}
 DERIVED_KEYS = ({"A5.national", "A7.system", "A7.state", "A9.system", "A9.state"}
-                | {f"{i}.{lvl}" for i in ("A10", "A11", "R5", "R6", "R7") for lvl in av.LEVELS})
+                | {f"{i}.{lvl}" for i in ("A10", "A11", "R4", "R5", "R6", "R7", "R7_FLU_TDAP", "R7_RSV_TDAP")
+                   for lvl in av.LEVELS})
 # every fact id the client metrics write for a level, by registry key (series facts included)
 LEVEL_FACTS = {"A7.national": ["F10.n_subs_nat"], "A8.national": ["F10.n_ddd_nat"], "A9.national": []}
 
 
 def test_every_item_has_an_entry_at_every_level():
-    want = {f"A{i}" for i in range(1, 12)} | {"A1M"} | {f"R{i}" for i in range(1, 8)} | {"R6_OLDER", "SYSKEY", "UNIVERSE", "HD"}
+    want = {f"A{i}" for i in range(1, 12)} | {"A1M"} | {f"R{i}" for i in range(1, 8)} | {"R7_FLU_TDAP", "R7_RSV_TDAP", "SYSKEY", "UNIVERSE", "HD"}
     assert set(av.ITEMS) == want
     assert set(av.REGISTRY) == {f"{i}.{lvl}" for i in want for lvl in av.LEVELS}
     for key, e in av.REGISTRY.items():
@@ -26,7 +28,7 @@ def test_every_item_has_an_entry_at_every_level():
 def test_not_available_and_derived_sets():
     assert {k for k, e in av.REGISTRY.items() if e.status == av.NA} == NA_KEYS
     assert {k for k, e in av.REGISTRY.items() if e.status == av.DERIVED} == DERIVED_KEYS
-    assert isinstance(av.gate("R4.national", lambda: (1.0, "ok")), av.NotAvailable)  # never computed
+    assert isinstance(av.gate("A8.national", lambda: (1.0, "ok")), av.NotAvailable)  # never computed
 
 
 def test_not_available_never_a_number(real_client, metrics_facts):
@@ -47,9 +49,9 @@ def test_not_available_never_a_number(real_client, metrics_facts):
 def test_table_and_strip_render_not_available(real_client):
     fs = real_client["SYNCP000025"]
     rows = {r["metric"].split()[0]: r for r in cm.table_rows(fs)}
-    for item in ("R4", "R6_OLDER"):
-        for col in ("system", cm.TABLE_COLUMNS[2], cm.NATIONAL_COLUMN):
-            assert rows[item][col].startswith("not available: ") and not DIGIT.search(rows[item][col])
+    assert "R6_OLDER" not in rows and rows["R4"]["system"] == "0.00"  # PR 6: R4 is computed (synthetic HepB Ped is 0)
+    assert rows["A1M"][cm.NATIONAL_COLUMN].startswith("not available: ")
+    assert not DIGIT.search(rows["A1M"][cm.NATIONAL_COLUMN])
     strip = {r["attribute"].split()[0]: r for r in cm.attribute_strip(fs)}
     assert strip["A1M"][cm.NATIONAL_COLUMN].startswith("not available: ")
     for item in ("A6", "A7", "A8", "A9"):
