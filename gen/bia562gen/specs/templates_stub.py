@@ -217,10 +217,10 @@ FAMILIES["B"] = {
 }
 
 
-def static_fragments(family: str) -> list:
-    """Every static string of a family (placeholders removed), for leak checks."""
+def static_fragments(family: str, families: dict | None = None) -> list:
+    """Every static string of a family (placeholders removed), for leak checks. `families` defaults to FAMILIES."""
     import re
-    fam = FAMILIES[family]
+    fam = (FAMILIES if families is None else families)[family]
     out = []
 
     def walk(v):

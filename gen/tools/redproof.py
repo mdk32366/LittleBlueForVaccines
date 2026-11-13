@@ -18,6 +18,11 @@ EXPECT = {
               "test_vault.py::test_v2_vault_shaped_id_rejected", "test_vault.py::test_v3_provenance_marker_rejected",
               "test_vault.py::test_v4_md_in_vendored_code_dir_rejected"],
     "unans": ["test_qa.py::test_unanswerable_at_least_15pct"],
+    "dropin_as0041": ["test_spec_dropin.py::test_as0041_violations_rejected[str]",
+                      "test_spec_dropin.py::test_as0041_violations_rejected[section]",
+                      "test_spec_dropin.py::test_as0041_violations_rejected[dropped]"],
+    "dropin_appfields": ["test_spec_dropin.py::test_app_field_rename_rejected",
+                         "test_spec_dropin.py::test_toy_spec_is_not_a_contract_spec_for_the_app"],
 }
 RUN_TIMEOUT = int(os.environ.get("REDPROOF_TIMEOUT", "300"))  # per pytest run; a hang fails loudly
 lines, ok_all = [], True

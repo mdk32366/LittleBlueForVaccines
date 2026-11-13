@@ -10,7 +10,7 @@ import random
 import pytest
 
 from bia562gen import caps, generate as G, vault_guard
-from bia562gen.specs import load_spec, schema_stub, templates_stub
+from bia562gen.specs import conformance, load_spec, schema_stub, templates_stub
 from bia562gen.systems import fixture_systems
 
 SEED = 562
@@ -64,6 +64,10 @@ def apply_mutation(name):
         G.MIN_UNANSWERABLE = 0.0
         orig = schema_stub.StubV0Spec.qa
         schema_stub.StubV0Spec.qa = lambda self, ds: [q for q in orig(self, ds) if q.answer_type != "unanswerable"]
+    elif name == "dropin_as0041":  # the schema_v1 drop-in gate stops checking AS-0041
+        conformance.check_auto_renew = lambda doc_id, fields, sections: []
+    elif name == "dropin_appfields":  # the drop-in gate stops checking the app's field names
+        conformance.check_app_fields = lambda spec: ([], [])
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 

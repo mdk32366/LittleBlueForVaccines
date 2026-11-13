@@ -18,7 +18,14 @@ The generator turns one seed plus the synthetic sales CSV into a small, fully fi
 
 `bia562gen/seam.py` defines the frozen record types and the `ContractSpec` protocol. The generator, leaf writer and checks import only from the seam, never from a spec module. A spec provides `spec_version`, `families`, `doc_types()`, `field_catalog()`, `plan(...)`, `render(...)`, `terms(...)`, `proposals(...)`, `qa(...)` and `template_text(family)`; the last three seam members were added under D-0028 (seam additions).
 
-Stub v0 lives in `bia562gen/specs/schema_stub.py` with its templates in `templates_stub.py`. The owner's schema_v1 drops in as a new `bia562gen/specs/schema_v1.py` plus one `REGISTRY` line in `bia562gen/specs/__init__.py` (or `--spec module:Class`), with `config.json` naming it. No generator code changes. `tests/test_seam.py` proves this with a three-field toy spec that only the test suite knows about.
+Stub v0 lives in `bia562gen/specs/schema_stub.py` with its templates in `templates_stub.py`. `tests/test_seam.py` proves the seam with a three-field toy spec that only the test suite knows about.
+
+### schema_v1 drop-in (GATE 2)
+
+- **Slot:** `REGISTRY["v1"]` in `bia562gen/specs/__init__.py` already points at `bia562gen.specs.schema_v1:SchemaV1Spec`. Until that module exists, `load_spec("v1")` raises `SpecNotDroppedIn`. The drop-in is one new file, `bia562gen/specs/schema_v1.py`, plus `config.json` set to `{"spec": "v1"}`. No generator code changes.
+- **Two shapes:** if schema_v1 changes only the field catalog or template text, subclass `StubV0Spec` and set `spec_version`, `CATALOG` and `TEMPLATES` (`schema_v1_scaffold.py` is the copyable starting point). A structural change implements `ContractSpec` directly.
+- **Gate:** `python tools/check_spec.py --spec v1` runs `specs/conformance.py` before any regeneration and writes nothing. Errors block: seam shape, families A and B, the doc_type vocabulary, catalog types, the field names the app reads (`effective_date`, `expiration_date`, `auto_renew`), and AS-0041 (schema_v1 keeps auto_renew boolean in term section) on a seeded fixture. A missing app Q&A field or a one-sided `auto_renew` draw is a warning for the Architect. Renaming a field the app reads is a spec change, never a silent remap.
+- **Note:** `spec_version` is part of the per-system RNG key, so a new spec version redraws every system's terms, including the expired MSAs and their `auto_renew` values.
 
 ### Families and split
 
@@ -44,7 +51,7 @@ Each answer is a slot template plus verbatim spans, following D-0020 (answer for
 gen/
   bia562gen/        generator package (seam, generate, leaves, caps, checks, vault_guard, specs/)
   tests/            pytest suite (T-0014, T-0017, T-0021, T-0022, T-0027 to T-0033)
-  tools/            gen_contracts.py (CLI), redproof.py (proves each guard can go red)
+  tools/            gen_contracts.py (CLI), check_spec.py (schema_v1 drop-in gate), redproof.py (proves each guard can go red)
   out/              accepted seed-562 run; tests re-check it
   config.json       active spec name
   requirements.txt  pinned test dependencies (the package itself is standard library only)
