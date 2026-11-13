@@ -14,6 +14,11 @@ def contract_snapshot(system_id: str) -> list:
     return rows
 
 
+def brief_contract_lines(rows) -> list:
+    """Brief tab 'Contracts on file': the same lines (and marker) as the PDF snapshot, render.contract_lines."""
+    return render.contract_lines(rows)
+
+
 def build(fs):
     n = narrative.compose(fs)
     rows = contract_snapshot(fs.system_id)

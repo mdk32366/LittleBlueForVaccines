@@ -55,6 +55,10 @@ with tab_brief:
     st.caption(f"source: {narr.source} ({'; '.join(narr.notes)})")
     for p in narr.rendered:
         st.markdown(f"- {p}")
+    st.subheader("Contracts on file")
+    st.caption(f"Generated contracts (synthetic), cited spans; as of {config.AS_OF_DATE}.")
+    for line in report.brief_contract_lines(rows):
+        st.markdown(f"- {line}")
     if fs.v("F5.flags"):
         st.subheader("F5 switching flags")
         st.dataframe(pd.DataFrame(fs.v("F5.flags")), hide_index=True)
@@ -74,12 +78,13 @@ with tab_qa:
         st.markdown(f"**Answer:** {res['answer']}")
         st.caption(res["note"])
         for h in res["citations"]:
-            exp = f" · **{contracts.EXPIRED_MARKER}** (ended before {config.AS_OF_DATE})" if h.get("expired") else ""
+            exp = f" · **{h['marker']}** (ended before {config.AS_OF_DATE})" if h.get("marker") else ""
             st.markdown(f"`{h['anchor']}` · {h['heading']} · span: **{h['span']}** "
                         f"({'verbatim' if h['verbatim'] else 'NOT VERBATIM'}){exp}")
             st.markdown("> " + h["clause_text"].replace(h["span"], f"**{h['span']}**", 1))
-    with st.expander("All TermSet fields for this system"):
+    with st.expander("All TermSet fields for this system"):  # stays collapsed (Trinity GATE 2 ruling)
+        marks = contracts.system_markers(sid)
         st.dataframe(pd.DataFrame([{"doc": d, "field": k, "value": str(f["value"]), "span": f["span"],
                                     "anchor": f"{f['source']['doc_id']}#{f['source']['anchor']}",
-                                    "status": contracts.EXPIRED_MARKER if contracts.is_expired(k, f["value"]) else ""}
+                                    "status": marks[(d, k)]}
                                    for d, k, f in contracts.system_terms(sid)]), hide_index=True)

@@ -11,6 +11,9 @@ from . import config
 
 REFUSAL = "not in the contracts"  # D-0027 (refusal string)
 EXPIRED_MARKER = "[EXPIRED]"  # shown when a contract's end date is before the as-of date
+# expired, but auto_renew is True in the same term section. The hyphen is U+2011 (non-breaking) so the PDF wrapper
+# never splits the label; DejaVu Sans has the glyph (checked by render, pdftotext and pdffonts, GATE 2 r2).
+AUTO_RENEW_MARKER = "[TERM ENDED · auto\u2011renews]"
 SEC_RE = re.compile(r"^## (\d+(?:\.\d+)*[a-z]?)\. (.+)$", re.M)
 
 KEYWORDS = [  # (pattern, field base) for free-text questions; order matters
@@ -93,11 +96,43 @@ def is_expired(field_key: str, value, as_of: str | None = None) -> bool:
     return _base(field_key) == "expiration_date" and str(value) < (as_of or config.AS_OF_DATE)
 
 
+def same_section(a_source: dict, b_source: dict) -> bool:
+    """Two TermSet field sources cite the same section (same doc_id and anchor)."""
+    return a_source["doc_id"] == b_source["doc_id"] and a_source["anchor"] == b_source["anchor"]
+
+
+def term_ended_auto_renews(exp_field: dict, auto_fields: list, docs: dict) -> bool:
+    """AS-0040 (expired rule), field-based: the TermSet auto_renew field is True, cites the same section as the
+    expiration_date field, and its span is verbatim in that section. No phrase matching."""
+    for f in auto_fields:
+        if f.get("value") is True and same_section(f["source"], exp_field["source"]):
+            sec = docs.get(f["source"]["doc_id"], (None, {}))[1].get(f["source"]["anchor"])
+            if sec and f["span"] in sec["text"]:
+                return True
+    return False
+
+
+def field_marker(field_key: str, field: dict, auto_fields: list, docs: dict) -> str:
+    """'' for live fields; AUTO_RENEW_MARKER or EXPIRED_MARKER for an expiration_date before the as-of date."""
+    if not is_expired(field_key, field["value"]):
+        return ""
+    return AUTO_RENEW_MARKER if term_ended_auto_renews(field, auto_fields, docs) else EXPIRED_MARKER
+
+
+def system_markers(system_id: str) -> dict:
+    """(doc_id, field_key) -> marker for one system's TermSet fields (the Q&A tab's status column)."""
+    docs, terms = system_docs(system_id), system_terms(system_id)
+    autos = [f for _d, k, f in terms if _base(k) == "auto_renew"]
+    return {(d, k): field_marker(k, f, autos, docs) for d, k, f in terms}
+
+
 def lookup(system_id: str, field_key: str | None = None, base: str | None = None, tier: int | None = None) -> list:
     """Cited answers: [{doc_id, field, value, span, anchor, heading, clause_text, verbatim}]."""
     docs = system_docs(system_id)
+    terms = system_terms(system_id)
+    autos = [f for _d, k, f in terms if _base(k) == "auto_renew"]
     out = []
-    for did, k, f in system_terms(system_id):
+    for did, k, f in terms:
         if field_key and k != field_key:
             continue
         if base and _base(k) != base:
@@ -108,7 +143,7 @@ def lookup(system_id: str, field_key: str | None = None, base: str | None = None
         sec = docs[sdoc][1][anc]
         out.append({"doc_id": did, "field": k, "value": f["value"], "span": f["span"], "anchor": f"{sdoc}#{anc}",
                     "heading": sec["heading"], "clause_text": sec["text"], "verbatim": f["span"] in sec["text"],
-                    "expired": is_expired(k, f["value"])})
+                    "expired": is_expired(k, f["value"]), "marker": field_marker(k, f, autos, docs)})
     return out
 
 

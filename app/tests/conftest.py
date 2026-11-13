@@ -8,7 +8,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from brief import benchmark as bm, clean, config as cfg, contracts, facts, load, narrative, render, switching, train_guard, validator  # noqa: E402,E501
+from brief import benchmark as bm, clean, config as cfg, contracts, facts, load, narrative, render, report, switching, train_guard, validator  # noqa: E402,E501
 from tests import make_fixture  # noqa: E402
 
 SAMPLE = {"switch": None, "noswitch": None, "edge": None}
@@ -57,6 +57,25 @@ def apply_mutation(name):
     elif name == "expired_le":  # off-by-one: "on or before" instead of strictly before the as-of date
         contracts.is_expired = lambda field_key, value, as_of=None: (contracts._base(field_key) == "expiration_date"
                                                                      and str(value) <= (as_of or cfg.AS_OF_DATE))
+    elif name == "noautorenew":  # (a) drop the auto_renew check: every expired MSA falls back to [EXPIRED]
+        contracts.term_ended_auto_renews = lambda *a, **k: False
+    elif name == "nosamesection":  # (b) drop the same-section check
+        contracts.same_section = lambda a, b: True
+    elif name == "briefmarker":  # (c) hide the marker on the Brief tab only (PDF untouched)
+        report.brief_contract_lines = lambda rows: [ln.replace(contracts.AUTO_RENEW_MARKER, "").replace(contracts.EXPIRED_MARKER, "")
+                                                    for ln in render.contract_lines(rows)]
+    elif name == "schema_autorenew":  # T-0041: drop auto_renew on one MSA, make it a string on another
+        orig = contracts.system_terms
+
+        def broken_terms(system_id):
+            rows = orig(system_id)
+            if system_id == "SYNCP000001":
+                return [r for r in rows if not (r[0].endswith("-MSA1") and contracts._base(r[1]) == "auto_renew")]
+            if system_id == "SYNCP000002":
+                return [(d, k, dict(f, value=str(f["value"])) if d.endswith("-MSA1") and contracts._base(k) == "auto_renew"
+                         else f) for d, k, f in rows]
+            return rows
+        contracts.system_terms = broken_terms
     elif name == "bench":
         bm.national = lambda path: bm.synthetic(load.load_csv(cfg.DATA_PATH))
         orig = bm.resolve
