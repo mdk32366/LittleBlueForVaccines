@@ -63,6 +63,19 @@ def share_rule(num: float, den: float):
     return num / den * 100, "ok"
 
 
+def state_share(sys_dollars: float, peer_dollars: float):
+    """A1 state, AS-0043 (comparators): the system's share of the state total INCLUDING the system, as a fraction
+    bounded 0 to 1. State total <= 0 -> undefined; negative system dollars -> net returns; above 1 (peers net
+    negative) -> undefined."""
+    tot = sys_dollars + peer_dollars
+    if tot <= 0:
+        return None, "undefined"
+    if sys_dollars < 0:
+        return None, "net returns"
+    v = sys_dollars / tot
+    return (v, "ok") if v <= 1 else (None, "undefined")
+
+
 def _babies(c):
     total, private = c["varicella"] / 2, c["dtap"] / 5     # the client's heuristic, A10 (an estimate)
     return total, private
@@ -125,7 +138,8 @@ def _type_share(c, s):  # A5 national: national dollars of this system's parent 
 # (item, base fact id, unit, levels, period, compute(comparator components, system components) -> (value, status),
 #  indexed against comparators)
 SCALARS = [
-    ("A1", "F9.share", "pct_fine", ("state", "national"), FULL, lambda c, s: share_rule(s["dollars"], c["dollars"]), False),
+    ("A1", "F9.share", "frac", ("state",), FULL, lambda c, s: state_share(s["dollars"], c["dollars"]), False),
+    ("A1", "F9.share", "pct_fine", ("national",), FULL, lambda c, s: share_rule(s["dollars"], c["dollars"]), False),
     ("A5", "F10.parent_type_share", "pct", ("national",), FULL, _type_share, False),
     ("A10", "F11.babies_total", "est", LEVELS, FULL, _b_total, False),
     ("A10", "F11.babies_private", "est", LEVELS, FULL, _b_private, False),
@@ -231,6 +245,14 @@ def extend(fsets: dict, df: pd.DataFrame, nat: dict | None) -> dict:
                 state_c = bm.add_pooled(state_c, comps[p])
         ctx = {"system": sc, "state": state_c, "national": nat}
         n = {"system": sc["rows"], "state": len(peers), "national": nat["rows"] if nat else 0}
+        # A1M: in-state peer median dollars, for scale next to the A1 state share
+        if state_c is None:
+            _put(fs, "F9.peer_median_dollars_state_st", MISSING["state"], "label", FULL, n["state"], LABEL["state"])
+        else:
+            _emit(fs, "A1M.state", "F9.peer_median_dollars_state", "usd", FULL, n["state"], LABEL["state"],
+                  lambda: (float(statistics.median(comps[p]["dollars"] for p in peers)), "ok"))
+        _emit(fs, "A1M.national", "F9.peer_median_dollars_nat", "usd", FULL, n["national"], LABEL["national"],
+              lambda: (None, "no system id"))
         # scalars + indices
         for item, base, unit, levels, period, fn, indexed in SCALARS:
             vals = {}
@@ -367,8 +389,13 @@ def _na_row(item):
 
 def table_rows(fs) -> list:
     """'System vs state peers vs national' rows: A1-A4, A10-A11 and R1-R7 (R4 and older-adult RSV as not available)."""
-    rows = [_scalar_row(fs, "A1", "F9.share", "dollars (state and national: share of the comparator)",
-                        system_text=fmt_fact(fs.facts["F1.dollars"]))]
+    a1 = _scalar_row(fs, "A1", "F9.share", "dollars (state: share of the state total incl. the system; "
+                     "national: share of national dollars)", system_text=fmt_fact(fs.facts["F1.dollars"]))
+    med = cell(fs, "A1M", "state", "F9.peer_median_dollars_state")
+    if not a1[TABLE_COLUMNS[2]].startswith("not available"):
+        a1[TABLE_COLUMNS[2]] += f"; peer median {med}"
+    rows = [a1, _scalar_row(fs, "A1M", "F9.peer_median_dollars", av.ITEMS["A1M"],
+                            system_text=fmt_fact(fs.facts["F1.dollars"]))]
     rows += _series_table(fs, "A2", "F9.cls_pct", "pct")
     rows += _series_table(fs, "A3", "F9.spec_pct", "pct")
     rows += _series_table(fs, "A4", "F9.cls_spec_dose_pct", "pct", top=A4_TOP)
@@ -390,11 +417,13 @@ def table_rows(fs) -> list:
 
 
 def attribute_strip(fs) -> list:
-    """A5-A9 compact strip."""
+    """A5-A9 compact strip, led by the A1 scale line (system dollars against the in-state peer median)."""
     def row(item, sys_txt, state_txt, nat_txt):
         return dict(zip(STRIP_COLUMNS, (f"{item} {av.ITEMS[item]}", sys_txt, state_txt, nat_txt,
                                         av.status_text(f"{item}.system"))))
-    out = [row("A5", fs.v("F10.parent_type"), av.render_na("A5.state"), cell(fs, "A5", "national", "F10.parent_type_share_nat")),
+    out = [row("A1M", fmt_fact(fs.facts["F1.dollars"]), cell(fs, "A1M", "state", "F9.peer_median_dollars_state"),
+               av.render_na("A1M.national")),
+           row("A5", fs.v("F10.parent_type"), av.render_na("A5.state"), cell(fs, "A5", "national", "F10.parent_type_share_nat")),
            row("A6", fs.v("F10.parent_state"), av.render_na("A6.state"), av.render_na("A6.national"))]
     for item, base in (("A7", "F10.n_subs"), ("A8", "F10.n_ddd")):
         out.append(row(item, cell(fs, item, "system", base), cell(fs, item, "state", base + "_state"),

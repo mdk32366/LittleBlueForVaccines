@@ -108,6 +108,8 @@ def apply_mutation(name):
                 return None, "net returns"
             return num / den, "ok"
         client_metrics.ratio_rule = no_nonpos
+    elif name == "a1_excl":  # T-0042/T-0044: A1 state reverts to the system-excluded denominator (can exceed 1)
+        client_metrics.state_share = lambda sys_d, peer_d: (sys_d / peer_d, "ok") if peer_d > 0 else (None, "undefined")
     elif name == "tok_wide":  # T-0053: any F-number token is accepted
         import re
         validator.TOKEN = re.compile(r"\{(F\d+\.[a-z0-9_]+)\}")

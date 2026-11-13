@@ -32,6 +32,7 @@ class NotAvailable:
 # ideal named under R6, and the other items (system grouping, real system universe, highest dollars).
 ITEMS = {
     "A1": "Total System Vaccines Dollars",
+    "A1M": "In-state peer median dollars (scale for A1)",
     "A2": "% Vaccines Dollars by Class",
     "A3": "% Vaccines Dollars by Specialty",
     "A4": "% Vaccines Doses by Class and Specialty",
@@ -74,8 +75,13 @@ def _all(status, reason, cols=()):
 
 def _build() -> dict:
     spec = {
-        "A1": _all(OK, "sum of DOLLARS; the state and national figures are shares of the pooled comparator",
-                   ("DOLLARS",)),
+        "A1": {"system": Entry(OK, "sum of DOLLARS", ("DOLLARS",)),
+               "state": Entry(OK, "the system's share of the state total including the system, bounded zero to one",
+                              ("DOLLARS", "BAC_CORP_PAR_ST_CD")),
+               "national": Entry(OK, "the system's share of national dollars", ("DOLLARS",))},
+        "A1M": {"system": Entry(OK, "the system's own dollars", ("DOLLARS",)),
+                "state": Entry(OK, "median of the in-state peers' dollars, for scale", ("DOLLARS", "BAC_CORP_PAR_ST_CD")),
+                "national": Entry(NA, "the national file has no system id, so there is no per-system median")},
         "A2": _all(OK, "DOLLARS by VAC_PROD_CLAS_NM over all DOLLARS", ("VAC_PROD_CLAS_NM", "DOLLARS")),
         "A3": _all(OK, "DOLLARS by BAC_CHNL_SPEC_DESC over all DOLLARS", ("BAC_CHNL_SPEC_DESC", "DOLLARS")),
         "A4": _all(OK, "DOSES by class and specialty over all DOSES",

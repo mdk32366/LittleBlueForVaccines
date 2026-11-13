@@ -40,3 +40,17 @@ def test_real_file_guards(real_client):
         for k, x in f.facts.items():
             if x.unit in ("ratio", "index") and k.startswith("F13."):
                 assert x.value is not None and math.isfinite(x.value) and x.value >= 0, (f.system_id, k)
+
+
+def test_a1_state_share_bounded(real_client, metrics_facts):
+    """A1 state is the share of the state total INCLUDING the system: always within 0..1 (AS-0043 (comparators))."""
+    assert cm.state_share(100, 50) == (100 / 150, "ok")
+    assert cm.state_share(100, 0) == (1.0, "ok")
+    assert cm.state_share(0, 0) == (None, "undefined")
+    assert cm.state_share(-5, 100) == (None, "net returns")
+    assert cm.state_share(100, -60) == (None, "undefined")
+    for fsets in (real_client, metrics_facts):
+        for f in fsets.values():
+            if "F9.share_state" in f.facts:
+                assert 0 <= f.v("F9.share_state") <= 1, f.system_id
+    assert 0 < real_client["SYNCP000025"].v("F9.share_state") < 1

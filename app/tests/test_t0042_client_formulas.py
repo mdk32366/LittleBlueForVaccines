@@ -33,7 +33,9 @@ def test_r7_women_health_season(metrics_facts):
 def test_attributes_hand_computed(metrics_facts):
     fs = metrics_facts[S]
     assert fs.v("F1.dollars") == 13300
-    assert fs.v("F9.share_state") == approx(13300 / 65500 * 100)          # A1 vs pooled peers
+    assert fs.v("F9.share_state") == approx(13300 / (13300 + 65500))      # A1: share of the state total incl. system
+    assert fs.v("F9.peer_median_dollars_state") == 13100                  # A1M: in-state peer median, for scale
+    assert "F9.peer_median_dollars_nat" not in fs.facts
     assert fs.v("F9.share_nat") == approx(13300 / 39600 * 100)            # A1 vs national
     cls = {r["label"]: r for r in fs.v("F9.cls_pct")}                     # A2: top five + All other
     assert list(cls) == ["Influenza", "DTaP", "Varicella", "Meningococcal", "Coronavirus", "All other"]

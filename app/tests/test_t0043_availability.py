@@ -5,7 +5,7 @@ import re
 from brief import availability as av, client_metrics as cm
 
 DIGIT = re.compile(r"\d")
-NA_KEYS = {"A5.state", "A6.state", "A6.national", "A7.national", "A8.national", "A9.national",
+NA_KEYS = {"A1M.national", "A5.state", "A6.state", "A6.national", "A7.national", "A8.national", "A9.national",
            "R4.system", "R4.state", "R4.national", "R6_OLDER.system", "R6_OLDER.state", "R6_OLDER.national",
            "SYSKEY.national", "UNIVERSE.national"}
 DERIVED_KEYS = ({"A5.national", "A7.system", "A7.state", "A9.system", "A9.state"}
@@ -15,7 +15,7 @@ LEVEL_FACTS = {"A7.national": ["F10.n_subs_nat"], "A8.national": ["F10.n_ddd_nat
 
 
 def test_every_item_has_an_entry_at_every_level():
-    want = {f"A{i}" for i in range(1, 12)} | {f"R{i}" for i in range(1, 8)} | {"R6_OLDER", "SYSKEY", "UNIVERSE", "HD"}
+    want = {f"A{i}" for i in range(1, 12)} | {"A1M"} | {f"R{i}" for i in range(1, 8)} | {"R6_OLDER", "SYSKEY", "UNIVERSE", "HD"}
     assert set(av.ITEMS) == want
     assert set(av.REGISTRY) == {f"{i}.{lvl}" for i in want for lvl in av.LEVELS}
     for key, e in av.REGISTRY.items():
@@ -51,6 +51,7 @@ def test_table_and_strip_render_not_available(real_client):
         for col in ("system", cm.TABLE_COLUMNS[2], cm.NATIONAL_COLUMN):
             assert rows[item][col].startswith("not available: ") and not DIGIT.search(rows[item][col])
     strip = {r["attribute"].split()[0]: r for r in cm.attribute_strip(fs)}
+    assert strip["A1M"][cm.NATIONAL_COLUMN].startswith("not available: ")
     for item in ("A6", "A7", "A8", "A9"):
         assert strip[item][cm.NATIONAL_COLUMN].startswith("not available: ")
         assert not DIGIT.search(strip[item][cm.NATIONAL_COLUMN])

@@ -39,6 +39,8 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
                                                     "test_syncp000025_pins"]),
     "invent": (["test_t0043_availability.py"], ["test_not_available_never_a_number"]),  # NOT AVAILABLE -> a number
     "ratio_neg": (["test_t0044_ratio_guards.py"], ["test_rule_unit_cases", "test_fixture_edges", "test_real_file_guards"]),
+    "a1_excl": (["test_t0042_client_formulas.py", "test_t0044_ratio_guards.py"], ["test_attributes_hand_computed",
+                                                                               "test_a1_state_share_bounded"]),
     "tok_wide": (["test_t0053_validator_tokens.py"], ["test_rejects_f0_f15_and_above"]),
 }
 lines, ok_all = [], True
