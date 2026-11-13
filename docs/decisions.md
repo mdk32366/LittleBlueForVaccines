@@ -39,3 +39,7 @@ Project-local decisions for app/ (BIA 562), logged from Matt's rulings via Trini
 - Assumptions AS-0028 to AS-0038 accepted (deferrals in assumptions.md); AS-0039 open follow-up; T-0035 to T-0037 confirmed; F-0008 to F-0013 accepted.
 - AS-0040 (expired rule) and T-0038 (expired marker) confirmed as numbered. Open: auto-renewing MSAs still show `[EXPIRED]`; `[ENDED]` versus exemption to be ruled at wire-in.
 - GATE 2 ruling (Trinity): auto-renewing expired MSAs show `[TERM ENDED · auto-renews]`, field-based (AS-0040 amendment); AS-0041 (schema_v1 keeps auto_renew boolean in term section) added, owned by Trinity. T-0039 (auto-renew split) and T-0040 (Brief-tab marker) confirmed as numbered; T-0041 (auto_renew bool schema guard) added as its own file; label hyphen is U+2011 (renders in the PDF font).
+
+## v0.2
+- **D-0036 (v0.2 scope):** Accepted 2026-11-13 11:42 PT. The owner: "Generate a version 0.2 of this application (little blue)". Scope as in the spec `docs/spec-v0.2.md` §0 and §9: brief comparison, must-cover talking points from computed numbers, voice notes, and a Salesforce-shaped payload with a simulated send to SQLite, looked up by rep + date + company.
+- **D-0039 (v0.2 deploy GO):** Accepted 2026-11-13 11:49 PT. The owner: "GO covers v0.2 build, merge, and deploy to [the app server]" (bracket: editorial redaction of a server hostname). Little Blue only; each merge and each deploy still needs the Architect's approval. The deploy plan is kept outside this repository.

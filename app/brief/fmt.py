@@ -26,4 +26,12 @@ def fmt_fact(f) -> str:
         return f"{v:.0f}"
     if f.unit == "int":
         return f"{int(v):,}"
+    if f.unit == "frac":  # v0.2 share stored as a fraction 0..1 (A1 state), shown as a percent
+        return f"{v * 100:.1f}%"
+    if f.unit == "pct_fine":  # v0.2 small shares, e.g. one system's share of national dollars (A1)
+        return f"{v:.1f}%" if abs(v) >= 1 else f"{v:.4f}%"
+    if f.unit == "median":  # v0.2 peer medians (client_metrics.py)
+        return f"{int(v):,}" if float(v).is_integer() else f"{v:,.1f}"
+    if f.unit == "est":     # v0.2 heuristic estimates, e.g. the client's babies estimate (A10)
+        return f"~{v:,.0f}"
     return str(v)

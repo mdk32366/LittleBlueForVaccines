@@ -7,7 +7,7 @@ sentence as a commercial term (D-0009 (advisory verb + commercial term)).
 import re
 from dataclasses import dataclass, field
 
-TOKEN = re.compile(r"\{(F[1-8]\.[a-z0-9_]+)\}")
+TOKEN = re.compile(r"\{(F(?:[1-9]|1[0-4])\.[a-z0-9_]+)\}")  # F1..F14 (v0.2 widening, T-0053); F0, F15+ are malformed
 ANY_BRACE = re.compile(r"\{[^}]*\}")
 DIGIT = re.compile(r"\d")
 CLINICAL = re.compile(r"\b(efficacy|efficacious|safe|safer|safest|safety|effective|effectiveness|outcomes?|superior|inferior)\b", re.I)

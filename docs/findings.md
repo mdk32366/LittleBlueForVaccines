@@ -22,3 +22,11 @@ Proposed numbering after F-0004.
 - F-0009 accepted, with the follow-up AS-0039 (exclude Influenza or use same-season windows).
 - F-0010 accepted. Trinity re-derived both ratios: 0.661 is F-0008 (synthetic) and 0.54088 is F-0010 (national); cited together as F-0008 (synthetic) / F-0010 (national).
 - F-0011, F-0012 and F-0013 accepted.
+
+## v0.2-a client metrics (app/, PR 5): numbering per the v0.2 spec
+Evidence: the box probe output for this PR (counts below), re-checked by T-0042 and T-0044.
+- **F-0014:** the national file has no system, state or outlet columns (restates F-0010), so national comparisons are pooled only. It has 45,462 rows, $29.42B and 258.8M doses; 19 specialties against 14 in the synthetic file (national-only: Dialysis, Long Term Care, Non-Retail Walk-In, Retail, Retail Walk-In). 52 national rows (62,407 doses) have a blank age group, so national Ped, Adult and Mixed shares of all doses are 0.1546, 0.1927 and 0.6525 (the spec's Mixed 0.653 is the complement of Ped and Adult). National R1 0.5483, R2 1.2570, R3 5.6960, R5 0.1928, R6 0.0802.
+- **F-0015:** synthetic HepB Ped is 0 in all 180 systems; national HepB Ped is 6,711,748 doses (46.9% of national HepB doses).
+- **F-0016:** subsidiary ids cross parents (80 of 80; 20,000 of 25,000 rows have a blank subsidiary); 2,395 of 2,400 outlets cross specialties; no outlet crosses parents. A7 is 14–35 per system and A8 13–14.
+- **F-0017:** the client's babies heuristic gives private > total in 62 of 180 synthetic systems: 61 show "inconsistent (private exceeds total)" and SYNCP000162 (no Varicella doses, total 0) shows "undefined".
+- **F-0021:** state comparison is available for 140 of 180 systems (TX 33, OH 30, CA 22, UT 12, MN 11, PA 9, FL 8, LA 8, ID 7); the other 40 show "too few in-state peers" (for example SYNCP000036, 4 peers). SYNCP000025 (FL, 7 peers): R1 150/240 against pooled peers 952/1144.

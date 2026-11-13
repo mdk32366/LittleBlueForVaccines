@@ -8,8 +8,8 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from brief import benchmark as bm, clean, config as cfg, contracts, facts, load, narrative, render, report, switching, train_guard, validator  # noqa: E402,E501
-from tests import make_fixture  # noqa: E402
+from brief import availability, benchmark as bm, clean, client_metrics, config as cfg, contracts, facts, load, narrative, render, report, switching, train_guard, validator  # noqa: E402,E501
+from tests import make_fixture, metrics_fixture  # noqa: E402
 
 SAMPLE = {"switch": None, "noswitch": None, "edge": None}
 
@@ -92,6 +92,27 @@ def apply_mutation(name):
         train_guard.refuse_training_input = lambda *a, **k: None
         train_guard.refuse_record = lambda *a, **k: None
         train_guard.scan_for_national = lambda *a, **k: []
+    # v0.2-a client metrics (T-0042, T-0043, T-0044, T-0053)
+    elif name == "kr_abcwy":  # T-0042: drop MenABCWY from the R1 numerator
+        bm.R1_NUM_SUBCLASSES = ("MenB",)
+    elif name == "kr_swap":  # T-0042: swap numerator and denominator of every ratio
+        client_metrics.RATIOS = {k: (d, n) for k, (n, d) in client_metrics.RATIOS.items()}
+    elif name == "invent":  # T-0043: the registry lets a NOT AVAILABLE national A8 through as the number 0
+        orig_gate = availability.gate
+        availability.gate = lambda key, compute: (0, "ok") if key == "A8.national" else orig_gate(key, compute)
+    elif name == "ratio_neg":  # T-0044: drop the denominator <= 0 check
+        def no_nonpos(num, den):
+            if den < client_metrics.MIN_RATIO_DEN:
+                return None, "insufficient volume"
+            if num < 0:
+                return None, "net returns"
+            return num / den, "ok"
+        client_metrics.ratio_rule = no_nonpos
+    elif name == "a1_excl":  # T-0042/T-0044: A1 state reverts to the system-excluded denominator (can exceed 1)
+        client_metrics.state_share = lambda sys_d, peer_d: (sys_d / peer_d, "ok") if peer_d > 0 else (None, "undefined")
+    elif name == "tok_wide":  # T-0053: any F-number token is accepted
+        import re
+        validator.TOKEN = re.compile(r"\{(F\d+\.[a-z0-9_]+)\}")
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
@@ -128,3 +149,33 @@ def real_df(raw_df):
 @pytest.fixture(scope="session")
 def real_facts(real_df):
     return facts.compute_all(real_df)
+
+
+# --- v0.2-a client metrics fixtures (separate FactSheets: real_facts stays F1..F8 only) ---------------------------
+@pytest.fixture(scope="session")
+def metrics_national(tmp_path_factory):
+    p = tmp_path_factory.mktemp("nat") / bm.NATIONAL_FILE
+    metrics_fixture.national_rows().to_csv(p, index=False)
+    return bm.national_profile(p)
+
+
+@pytest.fixture(scope="session")
+def metrics_df(tmp_path_factory):
+    p = tmp_path_factory.mktemp("mfx") / "metrics_fixture.csv"
+    metrics_fixture.synthetic_rows().to_csv(p, index=False)
+    return clean.clean(load.load_csv(p))
+
+
+@pytest.fixture(scope="session")
+def metrics_facts(metrics_df, metrics_national):
+    return client_metrics.compute_all(metrics_df, nat=metrics_national)
+
+
+@pytest.fixture(scope="session")
+def real_national():
+    return bm.national_profile()
+
+
+@pytest.fixture(scope="session")
+def real_client(real_df, real_national):
+    return client_metrics.compute_all(real_df, nat=real_national)

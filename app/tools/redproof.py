@@ -32,6 +32,16 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "bench": (["test_t0037_benchmark.py"], ["test_national_mode", "test_missing_national_falls_back"]),
     "trainguard": (["test_t0025_train_guard.py"], ["test_refuses_national_path", "test_refuses_outside_train_dirs_and_copies",
                                                     "test_refuses_non_synthetic_record", "test_scan_flags_planted_reference"]),
+    # v0.2-a client metrics
+    "kr_abcwy": (["test_t0042_client_formulas.py"], ["test_ratios_hand_computed", "test_national_file_pins",
+                                                     "test_syncp000025_pins"]),
+    "kr_swap": (["test_t0042_client_formulas.py"], ["test_ratios_hand_computed", "test_national_file_pins",
+                                                    "test_syncp000025_pins"]),
+    "invent": (["test_t0043_availability.py"], ["test_not_available_never_a_number"]),  # NOT AVAILABLE -> a number
+    "ratio_neg": (["test_t0044_ratio_guards.py"], ["test_rule_unit_cases", "test_fixture_edges", "test_real_file_guards"]),
+    "a1_excl": (["test_t0042_client_formulas.py", "test_t0044_ratio_guards.py"], ["test_attributes_hand_computed",
+                                                                               "test_a1_state_share_bounded"]),
+    "tok_wide": (["test_t0053_validator_tokens.py"], ["test_rejects_f0_f15_and_above"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():
