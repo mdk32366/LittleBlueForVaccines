@@ -52,6 +52,24 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "r6_proxy": (["test_t0056_r6_full_rsv.py"], ["test_fixture_counts_every_rsv_product", "test_national_pin_and_registry"]),
     "obgyn_spec": (["test_t0057_obgyn_tdap.py"], ["test_fixture_hand_values", "test_national_pins"]),
     "babies_swap": (["test_t0058_babies_ratio.py"], ["test_fixture_hand_values", "test_national_pin_and_levels"]),
+    # v0.2-d visit store + FAKE Salesforce payload record (no send)
+    "pay_drop": (["test_t0047_payload.py"], ["test_payload_validates_against_schema"]),
+    "pay_nofake": (["test_t0047_payload.py"], ["test_payload_carries_fake_marker"]),
+    "schema_lax": (["test_t0047_payload.py"], ["test_bad_payload_rejected"]),
+    "pay_none_str": (["test_t0047_payload.py"], ["test_provider_values_numbers_and_null"]),
+    "hint": (["test_t0047_payload.py"], ["test_mentioned_hint"]),
+    "store_nopayload": (["test_t0048_visit_store.py"], ["test_save_writes_payload_row"]),
+    "store_overwrite": (["test_t0048_visit_store.py"], ["test_resave_versions_not_overwrites"]),
+    "store_prefix": (["test_t0048_visit_store.py"], ["test_lookup_exact_key_only"]),
+    "store_listall": (["test_t0048_visit_store.py"], ["test_no_list_all_exposed"]),
+    "load_lax": (["test_t0048_visit_store.py"], ["test_load_rejects_invalid_file"]),
+    "backup_empty": (["test_t0048_visit_store.py"], ["test_backup_subcommand"]),
+    "net": (["test_t0049_no_egress.py"], ["test_no_network_imports", "test_round_trip_with_sockets_blocked"]),
+    "trainguard_visits": (["test_t0051_visits_not_training.py"], ["test_refuses_visit_records",
+                                                                  "test_gen_clean_and_planted_flagged"]),
+    "ui_lookup": (["test_t0059_visit_record_ui.py"], ["test_save_then_lookup_round_trip"]),
+    "ui_banner": (["test_t0059_visit_record_ui.py"], ["test_banner_and_no_send_action"]),
+    "ui_send": (["test_t0059_visit_record_ui.py"], ["test_banner_and_no_send_action"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():
