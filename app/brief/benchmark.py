@@ -78,3 +78,77 @@ def resolve(df: pd.DataFrame, mode: str | None = None, path=None) -> Benchmark:
     if not p.exists():
         return synthetic(df, note=f"national file not found at {p}; fell back to synthetic peers")
     return national(p)
+
+
+# --- v0.2: pooled client-metric components (AS-0042 (client field mapping), AS-0043 (comparators)) -------------------
+# One aggregation is used at every level (system, pooled in-state peers, pooled national file), so the three columns
+# can never drift apart. Every component is an additive sum, so pooled peers are the sum of the peers' components.
+# The sets below are read at call time (red-proof mutations patch them in tests only).
+R1_NUM_SUBCLASSES = ("MenB", "MenABCWY")        # R1 numerator, the client's "MenB + MenABCWY"
+ACWY_SUBCLASSES = ("MenACWY", "MenABCWY")       # R1/R2 denominator, the client's "Men ACWY + MenABCWY"
+OBGYN_SPECIALTY = "Women's Health"              # the client's "OBGYN offices" (AS-0042 (client field mapping))
+R7_PRODUCT = "BOOSTRIX TDAP"
+R7_SEASON = ("202510", "202603")                # latest full Oct-Mar season, spec §3.2 R7 (AS-0046 (season windows), logged with PR 6)
+_BLANKABLE = ("VAC_PROD_CLAS_NM", "VAC_PROD_SUBCLAS_NM", "MFR_NM", "BAC_CHNL_SPEC_DESC")
+
+
+def _sum_by(d: pd.DataFrame, cols, value: str) -> dict:
+    if d.empty:
+        return {}
+    g = d.groupby(cols)[value].sum()
+    return {k: float(v) for k, v in g.items()}
+
+
+def pooled(d: pd.DataFrame) -> dict:
+    """Additive components of the client's attributes and ratios for any set of rows (net of returns)."""
+    C, U, A, P = d["VAC_PROD_CLAS_NM"], d["VAC_PROD_SUBCLAS_NM"], d["VAC_AGE_GRP_NM"], d["PROD_NM"]
+    doses = d["DOSES"]
+
+    def sd(mask) -> float:
+        return float(doses[mask].sum())
+
+    m = d["MTH_ID"]
+    season = (m >= R7_SEASON[0]) & (m <= R7_SEASON[1]) & (d["BAC_CHNL_SPEC_DESC"] == OBGYN_SPECIALTY)
+    return {
+        "rows": int(len(d)), "dollars": float(d["DOLLARS"].sum()), "doses": float(doses.sum()),
+        "cls_dollars": _sum_by(d, "VAC_PROD_CLAS_NM", "DOLLARS"),
+        "spec_dollars": _sum_by(d, "BAC_CHNL_SPEC_DESC", "DOLLARS"),
+        "mfr_dollars": _sum_by(d, "MFR_NM", "DOLLARS"),
+        "type_dollars": _sum_by(d, "BAC_CORP_PAR_ORG_TYP_DESC", "DOLLARS"),
+        "cls_spec_doses": _sum_by(d, ["VAC_PROD_CLAS_NM", "BAC_CHNL_SPEC_DESC"], "DOSES"),
+        "menb_abcwy": sd(U.isin(list(R1_NUM_SUBCLASSES))), "acwy_abcwy": sd(U.isin(list(ACWY_SUBCLASSES))),
+        "hpv": sd(C == "HPV"), "flu": sd(C == "Influenza"), "covid": sd(U == "COVID Vaccine"),
+        "shingles": sd(C == "Shingles"), "flu_adult": sd((C == "Influenza") & (A == "Adult")),
+        "rsv": sd(U == "RSV Vaccine"), "hepb": sd(U == "HepB"), "hepb_ped": sd((U == "HepB") & (A == "Ped")),
+        "varicella": sd(C == "Varicella"), "dtap": sd(C == "DTaP"),
+        "age_ped": sd(A == "Ped"), "age_adult": sd(A == "Adult"), "age_mixed": sd(A == "Mixed"),
+        "r7_boostrix": sd(season & (P == R7_PRODUCT)), "r7_flu": sd(season & (C == "Influenza")),
+        "r7_rsv": sd(season & (U == "RSV Vaccine")),
+    }
+
+
+def add_pooled(a: dict, b: dict) -> dict:
+    """Sum two component dicts (nested dicts are summed key by key)."""
+    out = {}
+    for k in set(a) | set(b):
+        x, y = a.get(k), b.get(k)
+        if isinstance(x, dict) or isinstance(y, dict):
+            x, y = x or {}, y or {}
+            out[k] = {kk: x.get(kk, 0.0) + y.get(kk, 0.0) for kk in set(x) | set(y)}
+        else:
+            out[k] = (x or 0) + (y or 0)
+    return out
+
+
+def national_profile(path=None) -> dict | None:
+    """Pooled national components from the national file (benchmark only, D-0034 (national file public-real); never
+    training input, T-0025). None when the file is missing; the caller shows that instead of a number."""
+    p = Path(path) if path else national_path()
+    if not p.exists():
+        return None
+    d = load_national(p)
+    for c in _BLANKABLE:  # same rule as clean.clean on the synthetic file
+        d[c] = d[c].where(d[c].str.strip() != "", "Unclassified")
+    prof = pooled(d)
+    prof["path"] = str(p)
+    return prof
