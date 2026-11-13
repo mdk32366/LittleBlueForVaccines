@@ -230,6 +230,23 @@ def apply_mutation(name):
         visits.BANNER = " "
     elif name == "ui_send":  # T-0059: the save action is labelled Send
         visits.LABELS = dict(visits.LABELS, save="Send to Salesforce")
+    elif name == "ro_save":  # T-0060: the Save visit path loses its store-error catch (ValueError kept)
+        from brief import visit_tab
+        import streamlit as st
+
+        def typed_unguarded(**kw):
+            try:
+                return visits.save_visit(**kw)
+            except ValueError as e:
+                st.error(f"Not saved: {e}")
+            return None
+        visit_tab._save_typed = typed_unguarded
+    elif name == "ro_save_loaded":  # T-0060: the Save loaded visit path loses its catch (as in 6b0410d)
+        from brief import visit_tab
+        visit_tab._save_loaded = lambda **kw: visits.save_visit(**kw)
+    elif name == "ro_store_errors":  # T-0060: no store error is caught anywhere in the tab
+        from brief import visit_tab
+        visit_tab.STORE_ERRORS = ()
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 

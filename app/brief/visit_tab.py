@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import datetime as _dt
 import json
+import sqlite3
 
 import streamlit as st
 
@@ -46,6 +47,38 @@ def _outcome_controls(sid: str, points: list, notes: str) -> list:
     return out
 
 
+STORE_ERRORS = (sqlite3.Error, OSError)  # the visit store can't be opened or written (AS-0050 (visits DB path))
+NOT_SAVED = ("Not saved: the visit store isn't writable here ({err}). Nothing was stored and nothing was sent; "
+             "the rest of this tab still works.")
+LOOKUP_FAILED = "Lookup failed: the visit store can't be read here ({err})."
+
+
+def _store_msg(template: str, e: Exception) -> str:
+    return template.format(err=type(e).__name__)
+
+
+def _save_typed(**kw):
+    """'Save visit': returns the save result, or None after showing why nothing was saved."""
+    try:
+        return visits.save_visit(**kw)
+    except ValueError as e:
+        st.error(f"Not saved: {e}")
+    except STORE_ERRORS as e:
+        st.error(_store_msg(NOT_SAVED, e))
+    return None
+
+
+def _save_loaded(**kw):
+    """'Save loaded visit': returns the save result, or None after showing why nothing was saved."""
+    try:
+        return visits.save_visit(**kw)
+    except ValueError as e:
+        st.error(f"Not saved: {e}")
+    except STORE_ERRORS as e:
+        st.error(_store_msg(NOT_SAVED, e))
+    return None
+
+
 def _show_record(found: dict):
     st.success(f"Visit {found['visit_key']}: version {found['version']} of {len(found['versions'])}, "
                f"sha256 {found['sha256'][:12]}…")
@@ -79,15 +112,12 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     outcomes = _outcome_controls(sid, points, notes)
     saves = st.session_state.get("vr_saves", 0)
     if st.button(visits.LABELS["save"], key="vr_save", disabled=saves >= visits.SAVES_PER_SESSION):
-        try:
-            res = visits.save_visit(rep=rep, visit_date=vdate.isoformat(), system_id=sid, system_name=fs.name,
-                                    notes=notes, outcomes=outcomes, start_time=start.strftime("%H:%M"),
-                                    duration=int(duration))
+        res = _save_typed(rep=rep, visit_date=vdate.isoformat(), system_id=sid, system_name=fs.name, notes=notes,
+                          outcomes=outcomes, start_time=start.strftime("%H:%M"), duration=int(duration))
+        if res is not None:
             st.session_state["vr_saves"] = saves + 1
             st.success(f"Saved visit {res['visit_key']} as payload record version {res['version']} "
                        f"(sha256 {res['sha256'][:12]}…). Nothing was sent.")
-        except ValueError as e:
-            st.error(f"Not saved: {e}")
     if saves >= visits.SAVES_PER_SESSION:
         st.caption(f"Save limit for this session reached ({visits.SAVES_PER_SESSION}).")
 
@@ -103,6 +133,8 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
             st.session_state["vr_found"] = visits.lookup(l_rep, l_date.isoformat(), l_sid) or "none"
         except ValueError as e:
             st.session_state["vr_found"] = f"error: {e}"
+        except STORE_ERRORS as e:
+            st.session_state["vr_found"] = _store_msg(LOOKUP_FAILED, e)
     found = st.session_state.get("vr_found")
     if isinstance(found, dict):
         _show_record(found)
@@ -123,8 +155,9 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
             st.success(f"Valid visit file for {loaded['visit_key']} ({len(v['outcomes'])} talking points).")
             if st.button(visits.LABELS["save_loaded"], key="vr_save_loaded",
                          disabled=saves >= visits.SAVES_PER_SESSION):
-                res = visits.save_visit(rep=v["rep"], visit_date=v["visit_date"], system_id=v["system_id"],
-                                        system_name=v["system_name"], notes=v["notes"], outcomes=loaded["outcomes"],
-                                        start_time=v["start_time"], duration=v["duration"])
-                st.session_state["vr_saves"] = saves + 1
-                st.success(f"Saved loaded visit as payload record version {res['version']}. Nothing was sent.")
+                res = _save_loaded(rep=v["rep"], visit_date=v["visit_date"], system_id=v["system_id"],
+                                   system_name=v["system_name"], notes=v["notes"], outcomes=loaded["outcomes"],
+                                   start_time=v["start_time"], duration=v["duration"])
+                if res is not None:
+                    st.session_state["vr_saves"] = saves + 1
+                    st.success(f"Saved loaded visit as payload record version {res['version']}. Nothing was sent.")

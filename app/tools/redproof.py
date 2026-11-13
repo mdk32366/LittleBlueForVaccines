@@ -70,6 +70,11 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "ui_lookup": (["test_t0059_visit_record_ui.py"], ["test_save_then_lookup_round_trip"]),
     "ui_banner": (["test_t0059_visit_record_ui.py"], ["test_banner_and_no_send_action"]),
     "ui_send": (["test_t0059_visit_record_ui.py"], ["test_banner_and_no_send_action"]),
+    "ro_save": (["test_t0060_visit_store_unwritable.py"], ["test_typed_save_not_writable"]),
+    "ro_save_loaded": (["test_t0060_visit_store_unwritable.py"], ["test_loaded_save_not_writable"]),
+    "ro_store_errors": (["test_t0060_visit_store_unwritable.py"], ["test_typed_save_not_writable",
+                                                                  "test_loaded_save_not_writable",
+                                                                  "test_lookup_store_unreadable"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():
