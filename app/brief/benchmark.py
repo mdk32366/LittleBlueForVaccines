@@ -124,6 +124,7 @@ def pooled(d: pd.DataFrame) -> dict:
         "age_ped": sd(A == "Ped"), "age_adult": sd(A == "Adult"), "age_mixed": sd(A == "Mixed"),
         "r7_boostrix": sd(season & (P == R7_PRODUCT)), "r7_flu": sd(season & (C == "Influenza")),
         "r7_rsv": sd(season & (U == "RSV Vaccine")),
+        "r7_tdap": sd(season & (U == "Tdap")),   # OBGYN ratios' denominator (client email 2026-11-13, AS-0055)
     }
 
 

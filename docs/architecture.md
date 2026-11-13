@@ -92,3 +92,12 @@ data/BIA 562 National System Data.csv --benchmark.national_profile()--^   (bench
 - **Ratio rule.** `client_metrics.ratio_rule` applies AS-0044 (ratio rule). F6 (MenB:MenACWY, T-0002) and its PDF tile are unchanged; R1 is the v0.2 figure.
 - **Unchanged.** F1–F8 (`facts.py`), the PDF (one page, T-0006), the Brief and Q&A tabs, gen/ and gen/out. The comparison table and strip are rendered by the next PR (v0.2-b); this PR adds the data layer and its display strings only.
 - **Validator.** Fact tokens widen from F1–F8 to F1–F14 (`validator.TOKEN`); F0 and F15+ stay malformed (T-0053).
+
+## v0.2-b brief and talking points (app/, PR 6-lite)
+
+- **Tabs** come from `config.TABS`: Brief, Talking points, Contract Q&A (T-0052, partial).
+- **Brief tab** adds "System vs state peers vs national" (`client_metrics.table_rows`) and the A5–A9 strip (`attribute_strip`); a NOT AVAILABLE cell reads "not available: <reason>". The app computes `client_metrics.compute_all` with the national file whenever it is present, so the national column always shows (Q-M3 closed).
+- **Talking points tab** (`brief/talking.py`): templates plus fact tokens only, no LLM. `build(fs)` gives three fixed points, up to three must-cover points (AS-0045 (must-cover selection)) and one question. Each is checked by the validator and by `allowed()` (no status labels, no NOT AVAILABLE items, only status-ok facts) and shown with a "covered" checkbox.
+- **Payload seam.** `talking.payload_points(system_id, fsets=None)` returns `PayloadPoint(key, text, metric_value, bench_state, bench_national)` items. This is a local frozen dataclass whose field names and order map 1:1 to the payload dataclass in `brief/payload.py` (the visit-record payload, a separate PR); talking.py does not import payload.py. Values are numbers or None, never a number for a NOT AVAILABLE or not-ok fact. T-0045 `test_payload_fields` pins the fields (mutation payload_fields).
+- **Client email 2026-11-13 items:** R4 (the client's interim definition), R6 (full RSV Vaccine subclass), the two OBGYN Tdap ratios (F13.r7_flu_tdap, F13.r7_rsv_tdap) and the babies ratio; registry updated (AS-0053..AS-0056).
+- **Unchanged:** the PDF, the narrative points, F14 (PR 6b), gen/ and gen/out.

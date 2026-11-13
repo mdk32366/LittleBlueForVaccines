@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 APP_NAME = "Little Blue for Vaccine Sales"  # D-0033 (name), Matt 12:19 PT 2026-11-12
+TABS = ["Brief", "Talking points", "Contract Q&A"]  # v0.2-b tab order (T-0052 partial)
 PROJECT = Path(__file__).resolve().parents[2]  # repository root
 SALES_FILE = "BIA_562_Synthetic_Sales_Data.csv"
 

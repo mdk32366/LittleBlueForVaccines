@@ -28,8 +28,8 @@ class NotAvailable:
     reason: str
 
 
-# The client's asks (spec §3): key system attributes A1-A11, important ratios R1-R7 (R4 held), the older-adult RSV
-# ideal named under R6, and the other items (system grouping, real system universe, highest dollars).
+# The client's asks (spec §3, updated by the client email 2026-11-13): key system attributes A1-A11, important ratios
+# R1-R7 (R4 the client's interim definition) and the two OBGYN ratios over Tdap, and the other items (system grouping, real system universe, highest dollars).
 ITEMS = {
     "A1": "Total System Vaccines Dollars",
     "A1M": "In-state peer median dollars (scale for A1)",
@@ -46,11 +46,12 @@ ITEMS = {
     "R1": "MenB + MenABCWY to MenACWY + MenABCWY",
     "R2": "HPV to MenACWY + MenABCWY",
     "R3": "Influenza to COVID Vaccine",
-    "R4": "HepB Ped high",
+    "R4": "HepB Ped to DTaP (the client's interim definition)",
     "R5": "Shingles to adult-labelled Influenza",
     "R6": "RSV Vaccine to adult-labelled Influenza",
-    "R6_OLDER": "Older-adult RSV to adult-labelled Influenza (the client's ideal for R6)",
     "R7": "Women's Health: Boostrix, Influenza and RSV Vaccine doses in season",
+    "R7_FLU_TDAP": "Women's Health in season: Influenza to Tdap",
+    "R7_RSV_TDAP": "Women's Health in season: RSV Vaccine to Tdap",
     "SYSKEY": "Grouped by BAC_CORP_PAR_IMS_ORG_ID",
     "UNIVERSE": "The entire universe of systems",
     "HD": "Highest dollars by class, specialty and manufacturer",
@@ -58,10 +59,8 @@ ITEMS = {
 
 _NO_NAT_ID = "the national file has no system, state or outlet columns; it is pooled only"
 _LABEL = "a label attribute; there is no peer value to compare"
-_R4 = ("the client's denominator is cut off in the request, and synthetic HepB Ped doses are zero in every system; "
-       "held until the client gives the denominator")
-_OLDER = ("there is no patient-age column, and ABRYSVO is sold for both maternal and older-adult use, "
-          "so an older-adult-only RSV count cannot be separated")
+_R4 = ("the client's interim definition: subclass HepB with Ped label over class DTaP; synthetic HepB Ped doses are "
+       "zero in every system, so the synthetic value is zero, not an estimate")
 _AGE = "Age_Group maps to VAC_AGE_GRP_NM, a product label and not patient age"
 _BABIES = ("the client's heuristic: total = Varicella doses / two, private = DTaP doses / five, public = total - private; "
            "an estimate, inconsistent when private exceeds total")
@@ -114,14 +113,18 @@ def _build() -> dict:
                    ("VAC_PROD_CLAS_NM", "VAC_PROD_SUBCLAS_NM", "DOSES")),
         "R3": _all(OK, "class Influenza over subclass COVID Vaccine (antivirals excluded by subclass)",
                    ("VAC_PROD_CLAS_NM", "VAC_PROD_SUBCLAS_NM", "DOSES")),
-        "R4": _all(NA, _R4),
+        "R4": _all(DERIVED, _R4, ("VAC_PROD_SUBCLAS_NM", "VAC_AGE_GRP_NM", "VAC_PROD_CLAS_NM", "DOSES")),
         "R5": _all(DERIVED, "class Shingles over class Influenza with adult label; " + _AGE,
                    ("VAC_PROD_CLAS_NM", "VAC_AGE_GRP_NM", "DOSES")),
-        "R6": _all(DERIVED, "subclass RSV Vaccine over class Influenza with adult label, as written; " + _AGE,
+        "R6": _all(DERIVED, "the full RSV Vaccine subclass, every product, over class Influenza with adult label; "
+                            "the older-adult proxy is dropped; " + _AGE,
                    ("VAC_PROD_SUBCLAS_NM", "VAC_PROD_CLAS_NM", "VAC_AGE_GRP_NM", "DOSES")),
-        "R6_OLDER": _all(NA, _OLDER),
         "R7": _all(DERIVED, _R7 + "; shown as three shares of their sum",
                    ("BAC_CHNL_SPEC_DESC", "PROD_NM", "VAC_PROD_CLAS_NM", "VAC_PROD_SUBCLAS_NM", "MTH_ID", "DOSES")),
+        "R7_FLU_TDAP": _all(DERIVED, _R7 + "; class Influenza over subclass Tdap",
+                            ("BAC_CHNL_SPEC_DESC", "VAC_PROD_CLAS_NM", "VAC_PROD_SUBCLAS_NM", "MTH_ID", "DOSES")),
+        "R7_RSV_TDAP": _all(DERIVED, _R7 + "; subclass RSV Vaccine over subclass Tdap",
+                            ("BAC_CHNL_SPEC_DESC", "VAC_PROD_SUBCLAS_NM", "MTH_ID", "DOSES")),
         "SYSKEY": {"system": Entry(OK, "synthetic systems keyed by BAC_CORP_PAR_IMS_ORG_ID",
                                    ("BAC_CORP_PAR_IMS_ORG_ID",)),
                    "state": Entry(OK, "synthetic in-state peers keyed by BAC_CORP_PAR_IMS_ORG_ID",

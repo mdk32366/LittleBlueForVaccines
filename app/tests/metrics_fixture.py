@@ -7,6 +7,9 @@
 - SYNCP900002..SYNCP900006 (CA): five identical peers, so SYNCP900001 has exactly five in-state peers.
 - SYNCP900007 (TX, alone): edge cases: COVID net -80 (R3 undefined), HPV net -5 (R2 net returns), adult flu 40
   (R5 insufficient volume), private babies above total (inconsistent), no in-state peers.
+- SYNCP900008 (NV, alone): the client email 2026-11-13 items: R4 HepB Ped 20 / DTaP 100; R6 = all RSV Vaccine
+  products (ABRYSVO 25 + AREXVY 15) / adult flu 140; Women's Health season Influenza 100 and RSV Vaccine 25 over
+  Tdap 50 (a 202606 Tdap row and a Primary Care flu row are outside the window); babies private 20 / total 50.
 - national_rows(): a twelve-column national-shaped file: R1 400 / 800, R2 400 / 800, R3 1000 / 250, R5 120 / 600,
   R6 60 / 600, babies 200 / 120, R7 Boostrix 30 / RSV 20, 3,960 doses, IDN $31,600 of $39,600."""
 import pandas as pd
@@ -74,6 +77,22 @@ def synthetic_rows() -> pd.DataFrame:
         _row(e, tx, "Shingles", "RZV", 10, "Adult", outlet="9007001"),
         _row(e, tx, "Varicella", "Varicella", 20, "Ped", outlet="9007001"),
         _row(e, tx, "DTaP", "DTaP", 100, "Ped", outlet="9007001"),
+    ]
+    o, nv = "SYNCP900008", "NV"   # the client email 2026-11-13 items (T-0055..T-0058)
+    rows += [
+        _row(o, nv, "Tdap", "Tdap", 50, "Mixed", spec="Women's Health", outlet="9008001", prod="BOOSTRIX TDAP",
+             mth="202511"),
+        _row(o, nv, "Influenza", "Influenza", 100, "Adult", spec="Women's Health", outlet="9008001", mth="202511"),
+        _row(o, nv, "RSV", "RSV Vaccine", 25, "Adult", spec="Women's Health", outlet="9008001", prod="ABRYSVO",
+             mth="202512"),
+        _row(o, nv, "Tdap", "Tdap", 30, "Mixed", spec="Women's Health", outlet="9008001", prod="ADACEL TDAP",
+             mth="202606"),  # out of season: excluded from the OBGYN ratios
+        _row(o, nv, "Influenza", "Influenza", 40, "Adult", outlet="9008002", mth="202511"),  # not Women's Health
+        _row(o, nv, "RSV", "RSV Vaccine", 15, "Adult", outlet="9008002", prod="AREXVY"),
+        _row(o, nv, "Hepatitis", "HepB", 20, "Ped", outlet="9008002"),
+        _row(o, nv, "Hepatitis", "HepB", 30, "Adult", outlet="9008002"),
+        _row(o, nv, "DTaP", "DTaP", 100, "Ped", outlet="9008002"),
+        _row(o, nv, "Varicella", "Varicella", 100, "Ped", outlet="9008002"),
     ]
     return pd.DataFrame(rows, columns=REQUIRED_COLUMNS)
 

@@ -42,6 +42,16 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "a1_excl": (["test_t0042_client_formulas.py", "test_t0044_ratio_guards.py"], ["test_attributes_hand_computed",
                                                                                "test_a1_state_share_bounded"]),
     "tok_wide": (["test_t0053_validator_tokens.py"], ["test_rejects_f0_f15_and_above"]),
+    "tp_digit": (["test_t0045_talking_points.py"], ["test_every_point_passes_guardrails"]),
+    "tp_inject": (["test_t0045_talking_points.py"], ["test_numbers_trace_to_facts"]),
+    "tp_select": (["test_t0045_talking_points.py"], ["test_select_rule_unit_cases"]),
+    "tp_na": (["test_t0045_talking_points.py"], ["test_status_and_not_available_tokens_rejected"]),
+    "payload_fields": (["test_t0045_talking_points.py"], ["test_payload_fields"]),
+    "tabs": (["test_t0052_ui_tabs.py"], ["test_tabs_table_and_talking_points_render"]),
+    "r4_def": (["test_t0055_r4_hepb_ped.py"], ["test_fixture_hand_value", "test_national_pin"]),
+    "r6_proxy": (["test_t0056_r6_full_rsv.py"], ["test_fixture_counts_every_rsv_product", "test_national_pin_and_registry"]),
+    "obgyn_spec": (["test_t0057_obgyn_tdap.py"], ["test_fixture_hand_values", "test_national_pins"]),
+    "babies_swap": (["test_t0058_babies_ratio.py"], ["test_fixture_hand_values", "test_national_pin_and_levels"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

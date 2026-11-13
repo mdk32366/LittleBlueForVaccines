@@ -8,7 +8,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from brief import availability, benchmark as bm, clean, client_metrics, config as cfg, contracts, facts, load, narrative, render, report, switching, train_guard, validator  # noqa: E402,E501
+from brief import availability, benchmark as bm, clean, client_metrics, config as cfg, contracts, facts, load, narrative, render, report, switching, talking, train_guard, validator  # noqa: E402,E501
 from tests import make_fixture, metrics_fixture  # noqa: E402
 
 SAMPLE = {"switch": None, "noswitch": None, "edge": None}
@@ -113,6 +113,37 @@ def apply_mutation(name):
     elif name == "tok_wide":  # T-0053: any F-number token is accepted
         import re
         validator.TOKEN = re.compile(r"\{(F\d+\.[a-z0-9_]+)\}")
+    # v0.2-b talking points, tabs and the client email 2026-11-13 items (T-0045, T-0052, T-0055..T-0058)
+    elif name == "tp_digit":  # T-0045: a literal number in a template
+        talking.QUESTION = talking.QUESTION.replace("next season", "the next 12 months")
+    elif name == "tp_inject":  # T-0045: a rendered point gains a number no computed fact produced
+        orig_render = talking.render
+        talking.render = lambda text, fs: orig_render(text, fs) + " (up 12%)"
+    elif name == "tp_select":  # T-0045: must-cover threshold 25 -> 0
+        talking.MUST_COVER_MIN_DEV = 0
+    elif name == "tp_na":  # T-0045: status labels and NOT AVAILABLE tokens let through
+        talking.allowed = lambda fid, fs: True
+    elif name == "payload_fields":  # T-0045: the payload seam's field order drifts
+        from dataclasses import make_dataclass
+        talking.PayloadPoint = make_dataclass("PayloadPoint", ["key", "text", "metric_value", "bench_national",
+                                                               "bench_state"], frozen=True)
+    elif name == "tabs":  # T-0052: the Talking points tab dropped
+        cfg.TABS = ["Brief", "Contract Q&A"]
+    elif name == "r4_def":  # T-0055: R4 numerator back to every HepB dose
+        client_metrics.RATIOS = {**client_metrics.RATIOS, "R4": ("hepb", "dtap")}
+    elif name == "r6_proxy":  # T-0056: R6 numerator back to the older-adult products only
+        orig_pooled = bm.pooled
+
+        def proxy_pooled(df, *a, **k):
+            out = orig_pooled(df, *a, **k)
+            u, p = df["VAC_PROD_SUBCLAS_NM"], df["PROD_NM"].astype(str).str.upper()
+            out["rsv"] = float(df.loc[(u == "RSV Vaccine") & p.str.contains("AREXVY|MRESVIA"), "DOSES"].sum())
+            return out
+        bm.pooled = proxy_pooled
+    elif name == "obgyn_spec":  # T-0057: the OBGYN specialty filter moves off Women's Health
+        bm.OBGYN_SPECIALTY = "Primary Care"
+    elif name == "babies_swap":  # T-0058: private and total swapped
+        client_metrics._babies = lambda c: (c["dtap"] / 5, c["varicella"] / 2)
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
