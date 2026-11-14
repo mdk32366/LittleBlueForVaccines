@@ -98,8 +98,8 @@ def _show_record(found: dict):
 
 
 def _preview_panel(payload: dict, stored_sha: str, where: str) -> None:
-    """'Preview Salesforce request': each request a real integration would make for this stored payload. Shown, never
-    sent. Pure: (stored payload, latest setup) in, text out (T-0078)."""
+    """'Preview Salesforce request': the one Composite request a real integration would make for this stored payload
+    (D-0046). Shown, never sent. Pure: (stored payload, latest setup) in, text out (T-0078)."""
     st.subheader(sf_preview.LABELS["panel"])
     st.warning(sf_preview.BANNER)
     try:
@@ -113,15 +113,16 @@ def _preview_panel(payload: dict, stored_sha: str, where: str) -> None:
     except (sf_preview.NotPreviewable, sf_config.InvalidConfig, pl.InvalidPayload) as e:
         st.info(f"No preview: {e}")
         return
-    st.caption(f"{len(reqs)} sObject Tree requests, in order. Setup: instance {cfg['instance_url']} (placeholder, never "
-               f"contacted), API v{cfg['api_version']}. WhatId {pl.VISIT_REF} stands for the Id the first request "
-               "would return (F-0033).")
-    for i, r in enumerate(reqs, 1):
-        st.markdown(f"**Request {i} of {len(reqs)}: {r['root']}**")
-        st.code(f"{r['method']} {r['url']}\n" + "\n".join(f"{k}: {v}" for k, v in r["headers"].items()),
-                language="http")
-        st.code(json.dumps(r["body"], indent=2, ensure_ascii=False), language="json")
-        st.code(r["curl"], language="bash")
+    r = reqs[0]
+    subs = r["body"]["compositeRequest"]
+    st.caption(f"One Composite request (allOrNone: all {len(subs)} subrequests succeed or none do; at most "
+               f"{sf_preview.COMPOSITE_MAX}). Setup: instance `{cfg['instance_url']}` (placeholder, never contacted), "
+               f"API v{cfg['api_version']}. {pl.VISIT_REF} is the Id the first subrequest creates (D-0046).")
+    st.markdown("\n".join(f"{i}. `{s['method']} {s['url']}` (referenceId `{s['referenceId']}`)"
+                           for i, s in enumerate(subs, 1)))
+    st.code(f"{r['method']} {r['url']}\n" + "\n".join(f"{k}: {v}" for k, v in r["headers"].items()), language="http")
+    st.code(json.dumps(r["body"], indent=2, ensure_ascii=False), language="json")
+    st.code(r["curl"], language="bash")
     st.download_button(sf_preview.LABELS["download"], data=data, mime="application/json",
                        file_name=f"sf-dryrun-requests-{payload['lb_visit_key'].rsplit('|', 1)[1]}.json",
                        key=f"vr_preview_download_{where}")

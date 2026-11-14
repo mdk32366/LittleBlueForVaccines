@@ -2,6 +2,8 @@
 
 D-0045 (Salesforce dry run): the owner chose "Save setup in the app DB, non-secret fields only". AS-0071 (dry-run setup,
 non-secret fields only) lists the fields; every __c and __r name in them is a proposal (AS-0070).
+- 6c adds `outcome_parent_field` (AS-0072 (composite subrequest mapping)): the outcome's master-detail field set to
+  @{visit.id} in the Composite request. A setup saved before 6c has no such key and gets the default (Visit__c).
 - The setup is validated against schemas/sf_integration_config.schema.json (JSON Schema 2020-12,
   additionalProperties: false). The instance URL must match INSTANCE_URL_RE; the default is the placeholder
   DEFAULT_INSTANCE_URL, which is never contacted (nothing in the app opens a connection: T-0079).
@@ -37,15 +39,17 @@ AUTH_METHOD_DISPLAY = ("OAuth 2.0 JWT bearer flow (planned). Not configured: thi
 OWNER_MAPPINGS = ("<NOT MAPPED: records stay with the integration user>",
                   "<PLACEHOLDER: rep key to a Salesforce user, not configured>")
 FIELDS = ("instance_url", "api_version", "visit_object", "outcome_object", "outcome_relationship",
-          "account_relationship", "account_external_id_field", "record_type_id", "owner_mapping")
+          "outcome_parent_field", "account_relationship", "account_external_id_field", "record_type_id", "owner_mapping")
 DEFAULTS = {"lb_config_version": CONFIG_VERSION, "instance_url": DEFAULT_INSTANCE_URL,
             "api_version": DEFAULT_API_VERSION, "visit_object": pl.ROOT_OBJECT,
             "outcome_object": "Talking_Point_Outcome__c", "outcome_relationship": pl.CHILD_REL,
+            "outcome_parent_field": pl.ROOT_OBJECT,
             "account_relationship": pl.ACCOUNT_REL, "account_external_id_field": pl.ACCOUNT_EXT_ID,
             "record_type_id": "", "owner_mapping": OWNER_MAPPINGS[0]}
 LABELS = {"instance_url": "Instance URL (placeholder; never contacted)", "api_version": "API version",
           "visit_object": "Visit object API name", "outcome_object": "Talking point outcome object API name",
           "outcome_relationship": "Outcomes relationship name (master-detail, on the visit)",
+          "outcome_parent_field": "Visit master-detail field (on the outcome)",
           "account_relationship": "Account relationship name (on the visit)",
           "account_external_id_field": "Account external-id field (matched on the system id)",
           "record_type_id": "Record type id (optional, 15 or 18 characters)",
@@ -123,6 +127,8 @@ def validate(cfg: dict) -> dict:
                                "account_external_id_field")]
     if len(set(names)) != len(names):
         raise InvalidConfig("object, relationship and field API names must all differ")
+    if full["outcome_parent_field"] in names[1:]:  # it may share the visit object's name (AS-0072); nothing else
+        raise InvalidConfig("outcome_parent_field: must differ from the outcome object, relationship and Account names")
     return full
 
 
