@@ -101,3 +101,21 @@ data/BIA 562 National System Data.csv --benchmark.national_profile()--^   (bench
 - **Payload seam.** `talking.payload_points(system_id, fsets=None)` returns `PayloadPoint(key, text, metric_value, bench_state, bench_national)` items. This is a local frozen dataclass whose field names and order map 1:1 to the payload dataclass in `brief/payload.py` (the visit-record payload, a separate PR); talking.py does not import payload.py. Values are numbers or None, never a number for a NOT AVAILABLE or not-ok fact. T-0045 `test_payload_fields` pins the fields (mutation payload_fields).
 - **Client email 2026-11-13 items:** R4 (the client's interim definition), R6 (full RSV Vaccine subclass), the two OBGYN Tdap ratios (F13.r7_flu_tdap, F13.r7_rsv_tdap) and the babies ratio; registry updated (AS-0053..AS-0056).
 - **Unchanged:** the PDF, the narrative points, F14 (PR 6b), gen/ and gen/out.
+## v0.2-d visit store + FAKE Salesforce payload record (app/, PR 8)
+
+```
+Visit record tab (brief/visit_tab.py): rep, visit date, company (= the health system picker), start, duration, typed notes
+   talking points: talking.payload_points(system_id, fsets) (v0.2-b; same points as the Talking points tab),
+                   falling back to payload.points_from_client_rows(client_metrics.table_rows) if the provider fails
+   payload.mentioned_hint(point, notes) pre-fills "Addressed"; the rep confirms every outcome
+   --> visits.save_visit(): payload.build_payload() -> payload.validate() (schemas/visit_payload.schema.json)
+       -> SQLite visits (upsert by key) + sf_payloads (append version n+1, sha256)      [nothing is sent]
+   --> visits.lookup(rep, date, system_id): exact key only -> latest version + payload JSON + Download visit (.json)
+   --> Load visit file: visits.parse_visit_file() (file schema + payload schema + payload rebuilt from the visit fields)
+```
+
+- **Modules.** `brief/payload.py` (the pure builder, the TalkingPoint seam, the keyword hint and schema validation), `brief/visits.py` (stdlib sqlite3 store, parameterised SQL, `backup` CLI), `brief/visit_tab.py` (Streamlit tab), and `brief/schemas/visit_payload.schema.json` with `visit_file.schema.json`. app.py gains one tab, "Visit record", in one block.
+- **Payload.** sObject Tree bodies per root type: Event plus nested Talking_Point_Outcome__c children, and Task per follow-up (AS-0049 (sf payload field names)). It is marked FAKE-SYNTHETIC and stored as a record, never sent (AS-0057 (sf payload is a database record, not a send), D-0037 (no real Salesforce)).
+- **Store.** `visits` holds one row per key (AS-0048 (visit key, exact lookup)). `sf_payloads` holds id, visit_key, version, created_at, schema_version, payload_json and sha256; it is append-only, with triggers. The path is `LB_VISITS_DB` (AS-0050 (visits DB path)). The store is open with no passcode, so there is no enumeration (AS-0058 (open visit store, no passcode)).
+- **Seams.** app.py passes `talking.payload_points` (bound to the app's FactSheets) as `points_provider`. It returns frozen PayloadPoint items (key, text, metric_value, bench_state, bench_national), and payload.py duck-types them without importing talking.py. "Visit record" is the last entry of `config.TABS`. v0.2-c pre-fills `st.session_state["vr_notes"]` with the edited transcript before the notes widget renders.
+- **Unchanged.** The PDF (T-0006), the Brief and Q&A tabs, F1–F14, gen/ and gen/out. Visit records are never training input (T-0051).

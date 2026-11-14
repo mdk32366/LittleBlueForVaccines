@@ -7,6 +7,8 @@ from pathlib import Path
 from .benchmark import NATIONAL_FILE
 
 ALLOWED_TRAIN_DIRS = ("data/synthetic/", "data/train/")  # §9.5 T-0025
+VISIT_SUFFIXES = (".db", ".sqlite", ".sqlite3")  # T-0051: the visit store and its backups are never training input
+VISIT_MARKERS = ("visits.db", "sf_payloads", "lb-visit-file")
 
 
 class TrainingInputRefused(ValueError):
@@ -18,6 +20,8 @@ def refuse_training_input(path, national_sha256: str | None = None) -> None:
     s = p.as_posix()
     if NATIONAL_FILE in s or "National System Data" in s:
         raise TrainingInputRefused(f"T-0025: national file is not training input: {p}")
+    if p.suffix.lower() in VISIT_SUFFIXES or any(m in s for m in VISIT_MARKERS):
+        raise TrainingInputRefused(f"T-0051: visit records are not training input: {p}")
     if not any(d in s for d in ALLOWED_TRAIN_DIRS):
         raise TrainingInputRefused(f"T-0025: training input must be under {ALLOWED_TRAIN_DIRS}: {p}")
     if national_sha256 and p.exists():
@@ -50,4 +54,16 @@ def scan_for_national(root, national_sha256: str | None = None) -> list:
             src = (json.loads(t).get("systems_source") or {})
             if NATIONAL_FILE in str(src.get("file", "")) or (national_sha256 and src.get("sha256") == national_sha256):
                 bad.append(f"{p}: systems_source is the national file")
+    return bad
+
+
+def scan_for_visits(root) -> list:
+    """T-0051: code or outputs under root (gen/) that name the visit store, its payload table or a visit file."""
+    bad = []
+    for p in sorted(Path(root).rglob("*")):
+        if not p.is_file() or ".venv" in p.parts or "__pycache__" in p.parts or p.suffix not in (
+                ".py", ".json", ".jsonl", ".txt", ".toml", ".cfg", ".sh"):
+            continue
+        t = p.read_text(errors="replace")
+        bad += [f"{p}: names {m}" for m in VISIT_MARKERS if m in t]
     return bad

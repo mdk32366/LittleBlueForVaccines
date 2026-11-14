@@ -9,3 +9,8 @@ models/
 # local run artefacts
 app/evidence/smoke.txt
 gen/pytest-gen.txt
+
+# v0.2-d visit store (AS-0050 (visits DB path)): never committed
+data/visits.db*
+data/*.db
+data/backup-*

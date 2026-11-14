@@ -12,7 +12,7 @@ def test_tabs_table_and_talking_points_render():
     at = AppTest.from_file(APP, default_timeout=240).run()
     at.selectbox(key="system").set_value("SYNCP000025").run()
     assert not at.exception
-    assert [t.label for t in at.tabs] == ["Brief", "Talking points", "Contract Q&A"]
+    assert [t.label for t in at.tabs] == ["Brief", "Talking points", "Contract Q&A", "Visit record"]
     table = next(d.value for d in at.dataframe if "metric" in d.value.columns)
     assert list(table.columns)[:2] == ["metric", "system"]
     cells = table.astype(str).to_numpy().ravel().tolist()

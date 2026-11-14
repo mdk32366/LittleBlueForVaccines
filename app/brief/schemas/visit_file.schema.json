@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lb-visit-file-0.2",
+  "title": "Little Blue visit file (Download visit / Load visit file); the payload is checked separately",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lb_visit_file",
+    "lb_marker",
+    "visit",
+    "payload"
+  ],
+  "properties": {
+    "lb_visit_file": {
+      "const": "lb-visit-file-0.2"
+    },
+    "lb_marker": {
+      "const": "FAKE-SYNTHETIC"
+    },
+    "visit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rep",
+        "visit_date",
+        "system_id",
+        "system_name",
+        "notes",
+        "start_time",
+        "duration",
+        "outcomes"
+      ],
+      "properties": {
+        "rep": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "visit_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "system_id": {
+          "type": "string",
+          "pattern": "^SYNCP\\d{6}$"
+        },
+        "system_name": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 8000
+        },
+        "start_time": {
+          "type": "string",
+          "pattern": "^\\d{2}:\\d{2}$"
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1440
+        },
+        "outcomes": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "text",
+              "metric_value",
+              "bench_state",
+              "bench_national",
+              "addressed",
+              "response",
+              "quality",
+              "evidence",
+              "follow_up"
+            ],
+            "properties": {
+              "key": {
+                "type": "string",
+                "minLength": 1
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "metric_value": {
+                "type": [
+                  "number",
+                  "string",
+                  "null"
+                ]
+              },
+              "bench_state": {
+                "type": [
+                  "number",
+                  "string",
+                  "null"
+                ]
+              },
+              "bench_national": {
+                "type": [
+                  "number",
+                  "string",
+                  "null"
+                ]
+              },
+              "addressed": {
+                "enum": [
+                  "Raised",
+                  "Partially",
+                  "Not raised"
+                ]
+              },
+              "response": {
+                "enum": [
+                  "Positive",
+                  "Neutral",
+                  "Negative",
+                  "Objection"
+                ]
+              },
+              "quality": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "evidence": {
+                "type": "string",
+                "maxLength": 1000
+              },
+              "follow_up": {
+                "type": "string",
+                "maxLength": 1000
+              }
+            }
+          }
+        }
+      }
+    },
+    "payload": {
+      "type": "object"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

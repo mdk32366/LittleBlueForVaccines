@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from brief import availability, benchmark as bm, clean, client_metrics, config as cfg, contracts, facts, load, narrative, render, report, switching, talking, train_guard, validator  # noqa: E402,E501
+from brief import payload, visits  # noqa: E402
 from tests import make_fixture, metrics_fixture  # noqa: E402
 
 SAMPLE = {"switch": None, "noswitch": None, "edge": None}
@@ -144,6 +145,108 @@ def apply_mutation(name):
         bm.OBGYN_SPECIALTY = "Primary Care"
     elif name == "babies_swap":  # T-0058: private and total swapped
         client_metrics._babies = lambda c: (c["dtap"] / 5, c["varicella"] / 2)
+    # v0.2-d visit store + FAKE Salesforce payload record (T-0047, T-0048, T-0049, T-0051, T-0059)
+    elif name == "pay_drop":  # T-0047: the Event loses ActivityDate
+        orig_build = payload.build_payload
+
+        def no_date(**kw):
+            p = orig_build(**kw)
+            p["trees"]["Event"]["records"][0].pop("ActivityDate")
+            return p
+        payload.build_payload = no_date
+    elif name == "pay_nofake":  # T-0047: the FAKE-SYNTHETIC marker is dropped everywhere
+        orig_build = payload.build_payload
+
+        def no_fake(**kw):
+            p = orig_build(**kw)
+            p["lb_marker"] = "REAL"
+            for tree in p["trees"].values():
+                for r in tree["records"]:
+                    r["Description"] = r["Description"].replace(payload.FAKE_MARKER + " ", "")
+            return p
+        payload.build_payload = no_fake
+    elif name == "schema_lax":  # T-0047: the schema check accepts anything
+        payload.validate = lambda p: None
+    elif name == "pay_none_str":  # T-0047: values are stringified, so None becomes "None" and NaN leaks through
+        payload._val = lambda v: str(v)
+    elif name == "hint":  # T-0047: the keyword hint never fires
+        payload.mentioned_hint = lambda point, transcript: False
+    elif name == "store_nopayload":  # T-0048: saving writes the visit row but no payload record
+        visits._write_payload = lambda conn, key, p, now: 1
+    elif name == "store_overwrite":  # T-0048: a re-save replaces version 1 instead of appending
+        def overwrite(conn, key, p, now):
+            conn.execute("DROP TRIGGER IF EXISTS sf_payloads_no_delete")
+            conn.execute("DELETE FROM sf_payloads WHERE visit_key = ?", (key,))
+            conn.execute("INSERT INTO sf_payloads (visit_key, version, created_at, schema_version, payload_json, "
+                         "sha256) VALUES (?, 1, ?, ?, ?, ?)", (key, now, p["lb_schema_version"], payload.canonical(p),
+                                                               payload.sha256(p)))
+            return 1
+        visits._write_payload = overwrite
+    elif name == "store_prefix":  # T-0048: lookup matches a rep prefix (LIKE) instead of the exact key
+        orig_lookup = visits.lookup
+
+        def prefix(rep, visit_date, system_id, db=None):
+            c = visits.connect(db)
+            row = c.execute("SELECT rep_key FROM visits WHERE rep_key LIKE ? AND visit_date = ? AND system_id = ?",
+                            (payload.rep_key(rep) + "%", visit_date, system_id.upper())).fetchone()
+            c.close()
+            return orig_lookup(row[0] if row else rep, visit_date, system_id, db=db)
+        visits.lookup = prefix
+    elif name == "store_listall":  # T-0048: a list-all function appears on the store
+        visits.list_visits = lambda db=None: visits.connect(db).execute("SELECT * FROM visits").fetchall()
+    elif name == "load_lax":  # T-0048: Load visit file skips validation
+        visits.parse_visit_file = lambda data: {"visit": {}, "outcomes": [], "payload": {}, "visit_key": "?"}
+    elif name == "backup_empty":  # T-0048: the backup writes an empty database
+        import sqlite3
+
+        def empty(dest, db=None):
+            sqlite3.connect(str(dest)).close()
+            return Path(dest)
+        visits.backup = empty
+    elif name == "net":  # T-0049: the save path reaches for the network
+        import importlib
+        payload.urlreq = importlib.import_module("urllib.request")
+        orig_write = visits._write_payload
+
+        def phone_home(conn, key, p, now):
+            try:
+                payload.urlreq.urlopen("http://127.0.0.1:9/", timeout=0.2)
+            except OSError:
+                pass
+            return orig_write(conn, key, p, now)
+        visits._write_payload = phone_home
+    elif name == "trainguard_visits":  # T-0051: the visit-record refusal and scan are gone
+        orig_refuse = train_guard.refuse_training_input
+
+        def lax(path, national_sha256=None):
+            if Path(path).suffix in train_guard.VISIT_SUFFIXES or "lb-visit-file" in str(path):
+                return None
+            return orig_refuse(path, national_sha256)
+        train_guard.refuse_training_input = lax
+        train_guard.scan_for_visits = lambda root: []
+    elif name == "ui_lookup":  # T-0059: the tab's lookup finds nothing
+        visits.lookup = lambda *a, **k: None
+    elif name == "ui_banner":  # T-0059: the banner is blank
+        visits.BANNER = " "
+    elif name == "ui_send":  # T-0059: the save action is labelled Send
+        visits.LABELS = dict(visits.LABELS, save="Send to Salesforce")
+    elif name == "ro_save":  # T-0060: the Save visit path loses its store-error catch (ValueError kept)
+        from brief import visit_tab
+        import streamlit as st
+
+        def typed_unguarded(**kw):
+            try:
+                return visits.save_visit(**kw)
+            except ValueError as e:
+                st.error(f"Not saved: {e}")
+            return None
+        visit_tab._save_typed = typed_unguarded
+    elif name == "ro_save_loaded":  # T-0060: the Save loaded visit path loses its catch (as in 6b0410d)
+        from brief import visit_tab
+        visit_tab._save_loaded = lambda **kw: visits.save_visit(**kw)
+    elif name == "ro_store_errors":  # T-0060: no store error is caught anywhere in the tab
+        from brief import visit_tab
+        visit_tab.STORE_ERRORS = ()
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
