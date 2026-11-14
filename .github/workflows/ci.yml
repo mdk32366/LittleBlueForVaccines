@@ -56,7 +56,7 @@ jobs:
           STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
         run: python -m pytest -v tests
       - name: Red-proof (every guard can go red)
-        timeout-minutes: 10
+        timeout-minutes: 15  # F-0024: 58 app mutations no longer fit in 10 minutes
         run: python -u tools/redproof.py
       - name: Headless smoke (localhost only)
         env:
