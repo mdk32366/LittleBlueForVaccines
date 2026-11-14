@@ -114,6 +114,7 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "over_25": (["test_t0081_sf_composite.py"], ["test_at_most_25_subrequests", "test_check_composite_refuses_each_broken_shape"]),
     "visit_not_first": (["test_t0081_sf_composite.py"], ["test_all_or_none_and_order", "test_check_composite_refuses_each_broken_shape"]),
     "placeholder_linked": (["test_t0082_placeholder_not_linked.py"], ["test_instance_url_in_backticks"]),  # F-0034
+    "link_live": (["test_t0082_placeholder_not_linked.py"], ["test_integration_tab_no_salesforce_anchor"]),  # F-0034
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

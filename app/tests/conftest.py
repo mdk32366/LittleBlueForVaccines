@@ -405,6 +405,17 @@ def apply_mutation(name):
         import streamlit as st_mod
         orig_caption = st_mod.caption
         st_mod.caption = lambda body, *a, **k: orig_caption(str(body).replace("`", ""), *a, **k)
+    elif name == "link_live":  # T-0082: the Integration tab's placeholder URL is auto-linked again (no backticks)
+        import streamlit as st_mod
+        from brief import integration_tab
+
+        class _St:
+            def __getattr__(self, k):
+                return getattr(st_mod, k)
+
+            def caption(self, body, *a, **k):
+                return st_mod.caption(str(body).replace("`", ""), *a, **k)
+        integration_tab.st = _St()
     elif name == "send_label":  # T-0080: the request-set download is labelled Send
         from brief import sf_preview
         sf_preview.LABELS = dict(sf_preview.LABELS, download="Send request set to Salesforce")
