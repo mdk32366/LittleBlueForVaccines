@@ -1,0 +1,18 @@
+# Optional voice notes (v0.2-c, AS-0047 (STT engine and model)). Install on top of requirements.txt:
+#   pip install -r requirements.txt -r requirements-voice.txt
+# CI does not install these; the T-0046 Stub tests need none of them. Resolved on CPython 3.13, linux x86_64.
+faster-whisper==1.2.1
+ctranslate2==4.9.0
+tokenizers==0.23.3
+onnxruntime==1.32.0
+av==19.0.2
+huggingface_hub==2.4.0
+hf-xet==1.8.0
+httpcore2==2.16.0
+httpx2==2.16.0
+filelock==4.2.10
+flatbuffers==25.12.19
+fsspec==2026.9.0
+PyYAML==6.0.3
+tqdm==4.70.1
+truststore==0.10.5

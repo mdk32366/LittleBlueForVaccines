@@ -34,3 +34,8 @@ Evidence: the box probe output for this PR (counts below), re-checked by T-0042 
 ## v0.2-b brief and talking points (app/, PR 6-lite): numbering per the v0.2 spec
 - **F-0022:** with the client's interim R4 definition, the synthetic R4 is 0 in 179 systems (1 has under 50 DTaP doses: insufficient volume) because synthetic HepB Ped is 0 everywhere (F-0015); national R4 is 0.5956. The synthetic value says nothing about HepB Ped use.
 - **F-0023:** the OBGYN Tdap ratios are sparse in the synthetic file: flu ÷ Tdap and RSV ÷ Tdap are ok in 5 systems, insufficient volume in 14 and undefined (no in-season Women's Health Tdap) in 161. National Women's Health season doses: Tdap 296,785 (ADACEL TDAP and BOOSTRIX TDAP), Influenza 102,450, RSV Vaccine 78,036.
+
+## v0.2-c voice notes (app/, PR 7): numbering per the v0.2 spec
+- **F-0018:** faster-whisper 1.2.1's file-path decode goes through PyAV, and with av 19.0.2 it fails (`open() got an unexpected keyword argument 'metadata_errors'`); `av<15` has no CPython 3.13 wheel. The app never hands faster-whisper a path: it decodes the WAV with stdlib `wave` + numpy and passes a float32 array (AS-0047 (STT engine and model)).
+- **F-0019:** STT cost on the 8-vCPU build box, 2 threads, on the pinned 8.27 s clean-speech fixture (2026-11-13): small.en 2.00 s (RTF 0.24), base.en 0.64 s (RTF 0.08), each 4/4 keywords and word-correct. An earlier run the same day measured small.en 1.19-1.29 s (RTF 0.14-0.17, about 807 MB RSS) and base.en 0.47-0.54 s (RTF 0.07, about 360 MB RSS). Model sizes: small.en 464 MB, base.en 141 MB. The client laptop and the app server are not measured, and real rep audio (noise, accents, product names) will be worse than synthetic speech.
+

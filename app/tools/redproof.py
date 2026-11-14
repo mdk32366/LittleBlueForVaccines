@@ -75,6 +75,13 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "ro_store_errors": (["test_t0060_visit_store_unwritable.py"], ["test_typed_save_not_writable",
                                                                   "test_loaded_save_not_writable",
                                                                   "test_lookup_store_unreadable"]),
+    # v0.2-c voice notes (T-0046)
+    "stt_nofallback": (["test_t0046_stt.py"], ["test_transcribe_bytes_falls_back"]),
+    "stt_none": (["test_t0046_stt.py"], ["test_get_transcriber_config"]),
+    "stt_decode": (["test_t0046_stt.py"], ["test_decode_rejects_bad"]),
+    "stt_offline": (["test_t0046_stt.py"], ["test_faster_whisper_offline_args"]),
+    "stt_persist": (["test_t0046_stt_ui.py"], ["test_no_audio_on_disk_or_in_store"]),
+    "stt_prefill": (["test_t0046_stt_ui.py"], ["test_stub_prefills_notes_and_saves", "test_no_audio_on_disk_or_in_store"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

@@ -1,5 +1,6 @@
 """'Visit record' tab (v0.2-d, PR 8): outcomes per talking point, typed notes, save as a FAKE Salesforce payload record,
-exact-key lookup, visit file download/load. No network; nothing is sent anywhere (AS-0057 (sf payload is a database
+exact-key lookup, visit file download/load. v0.2-c (PR 7) adds an optional voice recording that pre-fills the notes box
+(brief/stt.py; AS-0047 (STT engine and model), AS-0059 (raw audio is not kept)). No network; nothing is sent anywhere (AS-0057 (sf payload is a database
 record, not a send)). Kept in its own module so app.py only gains one tab line and one call."""
 from __future__ import annotations
 
@@ -9,7 +10,9 @@ import sqlite3
 
 import streamlit as st
 
-from . import benchmark as bm, clean, client_metrics, config, load, payload as pl, visits
+import hashlib
+
+from . import benchmark as bm, clean, client_metrics, config, load, payload as pl, stt, visits
 
 
 @st.cache_data(show_spinner="Computing client metrics…")
@@ -92,6 +95,44 @@ def _show_record(found: dict):
     st.code(json.dumps(found["payload"], indent=2, ensure_ascii=False), language="json")
 
 
+@st.cache_resource(show_spinner=False)
+def _transcriber(key: tuple):
+    """One transcriber per STT config per process, so the model loads once (lazy, on the first recording)."""
+    return stt.get_transcriber()
+
+
+def _voice_notes() -> None:
+    """Audio recorder above the notes box. The transcript pre-fills st.session_state["vr_notes"] (appended to anything
+    already typed) before that widget renders; the rep edits it there. The recording itself is only read in memory."""
+    tr, reason = _transcriber(stt.config_key())
+    if tr is None:
+        st.caption(f"voice unavailable: {reason}. Type the notes below.")
+        return
+    audio = st.audio_input("Record visit notes", sample_rate=stt.SAMPLE_RATE, key="vr_audio")
+    if audio is None:
+        return
+    data = audio.getvalue()
+    digest = hashlib.sha256(data).hexdigest()  # only the hash is kept, to transcribe each recording once
+    if st.session_state.get("vr_audio_done") == digest:
+        return
+    with st.spinner("Transcribing the recording…"):
+        text, note = stt.transcribe_bytes(tr, data)
+    st.session_state["vr_audio_done"] = digest
+    if note:
+        st.warning(note)
+        return
+    if not text:
+        st.caption("The recording had no words to transcribe; type the notes below.")
+        return
+    typed = (st.session_state.get("vr_notes") or "").strip()
+    merged = f"{typed}\n{text}" if typed else text
+    if len(merged) > visits.NOTES_MAX:
+        merged = merged[: visits.NOTES_MAX]
+        st.caption(f"The transcript was cut to the {visits.NOTES_MAX}-character notes limit.")
+    st.session_state["vr_notes"] = merged
+    st.caption(f"Transcribed with {tr.name}. Check and edit the notes below before saving; the recording is not kept.")
+
+
 def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     st.info(visits.BANNER)
     st.subheader(f"Visit record: {fs.name} ({sid})")
@@ -103,7 +144,7 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     start = t[0].time_input("Start time", value=_dt.time(9, 0), key="vr_start")
     duration = t[1].number_input("Duration (minutes)", min_value=1, max_value=1440, value=pl.DEFAULT_DURATION,
                                  key="vr_duration")
-    # PR 7 hook: the voice transcript pre-fills st.session_state["vr_notes"] before this widget renders.
+    _voice_notes()  # PR 7: the voice transcript pre-fills st.session_state["vr_notes"] before this widget renders
     notes = st.text_area("Visit notes (typed)", max_chars=visits.NOTES_MAX, key="vr_notes")
     points, source = _points(sid, points_provider)
     st.caption(f"Talking points from: {source}. Hints come from a keyword match on the notes; please confirm each one.")
