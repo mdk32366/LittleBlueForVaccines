@@ -132,3 +132,14 @@ Visit record tab: st.audio_input("Record visit notes", sample_rate=16000)    [hi
 - **Privacy.** The recording is never written anywhere (AS-0059 (raw audio is not kept)); the payload and store are unchanged.
 - **Unchanged.** The payload schema, the visit store, the other tabs and the PDF.
 
+
+## Deploy-facing requirements (PR 6-hot)
+The deploy files (Dockerfile, Streamlit config.toml, reverse-proxy Caddyfile) stay outside this repository (Q-M7), as does the deploy plan for D-0039 (v0.2 deploy GO). These are the requirements the app places on them.
+- **CSP `connect-src` must allow `blob:`.** It is `connect-src 'self' blob: wss://<public host>`. `st.audio_input` (the voice recorder, T-0046) `fetch()`es its own `blob:` URL to build the WAV it uploads. Without `blob:` the recorder shows "An error has occurred" and nothing is uploaded. Every other CSP directive is unchanged.
+- **Deploy-plan amendment (Architect ruling, Deploy-2).**
+  - Item C4 under §10.2 of the deploy plan said "No CSP change needed". That was wrong.
+  - The rule under §10.8 that the CSP stays byte-identical is amended for this one inserted token, `blob:` in `connect-src`, and nothing else.
+  - The Deploy-2 live smoke confirmed it: the mic recording transcribes, and the browser reports no CSP or Permissions-Policy violation.
+- **Permissions-Policy `microphone=(self)`.** The upload endpoint `/_stcore/upload_file/*` is reachable (XSRF protection stays on), for the recorder and Load visit file.
+- **Upload limits equal (F-0026).** The per-app proxy's `request_body max_size` for `/_stcore/upload_file/*` must equal Streamlit's `server.maxUploadSize` in bytes: `10MiB` against `10`, both 10,485,760 B. The deploy checks this with `app/tools/upload_limit_check.py` (T-0062).
+- **Widget keys follow the sidebar system (F-0025).** A Visit record widget whose default depends on the sidebar system is keyed on that system, e.g. `vr_company_{sid}` and `vr_l_sid_{sid}`. A fixed key keeps the first system's value (T-0061).
