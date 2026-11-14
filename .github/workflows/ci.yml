@@ -37,7 +37,7 @@ jobs:
   app:
     name: app (pytest, redproof, headless smoke)
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # F-0024: was 20; red-proof alone can take 12+ minutes
+    timeout-minutes: 45  # F-0024: was 20; F-0031: was 30 (69 app mutations; red-proof 13-15+ minutes)
     defaults:
       run:
         working-directory: app
@@ -56,7 +56,7 @@ jobs:
           STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
         run: python -m pytest -v tests
       - name: Red-proof (every guard can go red)
-        timeout-minutes: 15  # F-0024: 58 app mutations no longer fit in 10 minutes
+        timeout-minutes: 25  # F-0024: was 10; F-0031: was 15, 69 app mutations timed out at 15 on one runner
         run: python -u tools/redproof.py
       - name: Headless smoke (localhost only)
         env:
