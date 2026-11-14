@@ -57,7 +57,8 @@ def test_setup_and_preview_with_network_blocked(tmp_path, monkeypatch):
     assert sf_config.import_config(sf_config.export_config(cfg)) == cfg
     res = visits.save_visit(db=db, **vf.visit())
     reqs = sf_preview.build_requests(res["payload"], cfg)
-    assert len(reqs) == 3 and all(r["url"].startswith("https://example-dev.my.salesforce.com/") for r in reqs)
+    assert len(reqs) == 1 and reqs[0]["url"] == "https://example-dev.my.salesforce.com/services/data/v62.0/composite"
+    assert all(s["url"].startswith("/services/data/") for s in reqs[0]["body"]["compositeRequest"])  # relative only
     sf_preview.request_set_bytes(res["payload"], cfg, res["sha256"])
     with pytest.raises(sf_preview.NotPreviewable):
         sf_preview.build_requests(pl.build_payload_v02(**vf.visit()), cfg)

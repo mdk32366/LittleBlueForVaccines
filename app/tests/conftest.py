@@ -327,7 +327,7 @@ def apply_mutation(name):
     elif name == "upload_si":  # T-0062: the upload-limit check reads Caddy's MiB as MB (base 1000)
         from tools import upload_limit_check as ulc
         ulc.CADDY_UNITS = dict(ulc.CADDY_UNITS, mib=1000 ** 2, kib=1000, gib=1000 ** 3)
-    # v0.2-f Salesforce dry run (T-0047, T-0077 to T-0080)
+    # v0.2-f Salesforce dry run (T-0047, T-0077 to T-0080); body_drift reworked in 6c for the Composite body
     elif name == "root_event":  # T-0047: the outcomes are nested under the Event again
         orig_build = payload.build_payload
 
@@ -362,15 +362,49 @@ def apply_mutation(name):
         sf_config.schema = lambda: sch
         sf_config.DDL = sf_config.DDL.replace("  sha256         TEXT NOT NULL\n", "  sha256         TEXT NOT NULL,\n"
                                               "  client_secret  TEXT\n")
-    elif name == "body_drift":  # T-0078: the preview body is no longer the stored tree
+    elif name == "body_drift":  # T-0078: a subrequest body is no longer the stored record
         from brief import sf_preview
-        orig_body = sf_preview._body
+        orig_subs = sf_preview._subrequests
 
-        def drift(tree, root, cfg):
-            b = orig_body(tree, root, cfg)
-            b["records"][0]["LB_Previewed__c"] = True
-            return b
-        sf_preview._body = drift
+        def drift(p, cfg):
+            subs = orig_subs(p, cfg)
+            subs[0]["body"]["LB_Previewed__c"] = True
+            return subs
+        sf_preview._subrequests = drift
+    # 6c one Composite request (T-0081, D-0046): each mutation turns one guard off and makes that defect
+    elif name == "allornone_off":  # T-0081: allOrNone false is accepted
+        from brief import sf_preview
+        sf_preview.ALL_OR_NONE = False
+        sf_preview._check_all_or_none = lambda body, cfg: None
+    elif name == "ref_break":  # T-0081: the Event, the Tasks and the outcomes no longer point at @{visit.id}
+        from brief import sf_preview
+        orig_subs = sf_preview._subrequests
+
+        def unref(p, cfg):
+            subs = orig_subs(p, cfg)
+            for s in subs[1:]:
+                for f in ("WhatId", cfg["outcome_parent_field"]):
+                    if f in s["body"]:
+                        s["body"][f] = "@{event.id}"
+            return subs
+        sf_preview._subrequests = unref
+        sf_preview._check_refs = lambda subs, cfg: None
+    elif name == "over_25":  # T-0081: 26 or more subrequests are accepted
+        from brief import sf_preview
+        sf_preview._check_count = lambda subs, cfg: None
+    elif name == "visit_not_first":  # T-0081: the Visit__c is not the first subrequest
+        from brief import sf_preview
+        orig_subs = sf_preview._subrequests
+
+        def last(p, cfg):
+            subs = orig_subs(p, cfg)
+            return subs[1:] + subs[:1]
+        sf_preview._subrequests = last
+        sf_preview._check_first = lambda subs, cfg: None
+    elif name == "placeholder_linked":  # T-0082: the backticks around the instance URL are dropped (F-0034)
+        import streamlit as st_mod
+        orig_caption = st_mod.caption
+        st_mod.caption = lambda body, *a, **k: orig_caption(str(body).replace("`", ""), *a, **k)
     elif name == "send_label":  # T-0080: the request-set download is labelled Send
         from brief import sf_preview
         sf_preview.LABELS = dict(sf_preview.LABELS, download="Send request set to Salesforce")

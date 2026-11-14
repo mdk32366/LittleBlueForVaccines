@@ -105,9 +105,15 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "net_call": (["test_t0079_sf_no_egress.py"], ["test_no_network_imports", "test_setup_and_preview_with_network_blocked"]),
     "secret_ok": (["test_t0077_sf_config.py"], ["test_secret_values_refused"]),
     "secret_col": (["test_t0077_sf_config.py"], ["test_no_secret_fields_or_columns"]),
-    "body_drift": (["test_t0078_sf_preview.py"], ["test_body_is_the_stored_payload"]),
+    "body_drift": (["test_t0078_sf_preview.py"], ["test_body_is_the_stored_payload"]),  # 6c: on the Composite body
     "send_label": (["test_t0080_sf_dryrun_ui.py"], ["test_preview_after_save_and_lookup_and_no_send"]),
     "url_lax": (["test_t0077_sf_config.py"], ["test_instance_url_pattern", "test_export_import_round_trip"]),
+    # 6c one Composite request, allOrNone (D-0046, T-0081; closes F-0033)
+    "allornone_off": (["test_t0081_sf_composite.py"], ["test_all_or_none_and_order", "test_check_composite_refuses_each_broken_shape"]),
+    "ref_break": (["test_t0081_sf_composite.py"], ["test_every_reference_points_at_the_visit", "test_check_composite_refuses_each_broken_shape"]),
+    "over_25": (["test_t0081_sf_composite.py"], ["test_at_most_25_subrequests", "test_check_composite_refuses_each_broken_shape"]),
+    "visit_not_first": (["test_t0081_sf_composite.py"], ["test_all_or_none_and_order", "test_check_composite_refuses_each_broken_shape"]),
+    "placeholder_linked": (["test_t0082_placeholder_not_linked.py"], ["test_instance_url_in_backticks"]),  # F-0034
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

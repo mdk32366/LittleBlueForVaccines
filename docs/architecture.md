@@ -168,10 +168,15 @@ Visit record tab: Save visit --> payload.build_payload() lb-sf-tree-0.3 (AS-0070
                     --> sf_payloads (append version n+1, sha256)                                       [nothing is sent]
                   Look up visit --> latest payload row (0.3, or 0.2 for rows saved before v0.2-f)
    --> "Preview Salesforce request" = sf_preview.build_requests(stored payload, sf_config.latest_config())   [pure]
-         for root in Visit__c, Event, Task (when present):
-           POST {instance}/services/data/v{api}/composite/tree/{object}
+         ONE request (6c, D-0046 (one Composite request, allOrNone)):
+           POST {instance}/services/data/v{api}/composite
            Authorization: Bearer <NOT CONFIGURED>; Content-Type: application/json
-           body = the stored tree (setup renames undone by stored_tree: T-0078 checks the sha256)
+           body = {"allOrNone": true, "compositeRequest": [                          (AS-0072, at most 25: T-0081)
+             POST /services/data/v{api}/sobjects/Visit__c                 referenceId visit   (Account__r by external id)
+             POST .../sobjects/Talking_Point_Outcome__c  x n              tp1..tpn   Visit__c = @{visit.id}
+             POST .../sobjects/Event                                     event      WhatId   = @{visit.id}
+             POST .../sobjects/Task  x follow-ups                        followup1.. WhatId  = @{visit.id} ]}
+           every subrequest body = its stored record (stored_trees rebuilds the stored sha256: T-0078)
          + curl text with the placeholder token + "Download request set (.json)"
          banner: DRY RUN. Nothing is sent. No credentials are stored.
 Integration (dry run) tab: setup form (non-secret fields, AS-0071) --> sf_config.validate()
@@ -179,7 +184,8 @@ Integration (dry run) tab: setup form (non-secret fields, AS-0071) --> sf_config
 ```
 
 - **Modules.** `brief/payload.py` (0.3 builder, legacy 0.2 builder for old visit files, version-dispatched `validate`), `brief/sf_config.py` (setup validation and storage), `brief/sf_preview.py` (the pure preview), `brief/integration_tab.py` (the new tab), and `brief/visit_tab.py` (gains the preview panel). Schemas: `visit_payload.schema.json` (0.3), `visit_payload-0.2.schema.json` (legacy) and `sf_integration_config.schema.json`. app.py gains one tab block; "Integration (dry run)" is the last entry of `config.TABS`.
-- **Payload tree.** The Visit__c is the root, with the Talking_Point_Outcome__c children as master-detail under `Talking_Point_Outcomes__r`. Event and Task are their own tree requests with `WhatId` = `@{visit.id}`, a placeholder that nothing resolves (F-0033). Every `__c` and `__r` name is a proposal (AS-0070).
+- **Payload tree.** The Visit__c is the root, with the Talking_Point_Outcome__c children as master-detail under `Talking_Point_Outcomes__r`. Event and Task are stored as their own trees with `WhatId` = `@{visit.id}`. Every `__c` and `__r` name is a proposal (AS-0070).
+- **Composite flow (6c).** The preview turns the stored trees into one Composite request with `allOrNone: true` (D-0046 (one Composite request, allOrNone)). The Visit__c subrequest goes first, with referenceId `visit` and the Account set by the external-id relationship on the system id. Then come the outcomes, with the master-detail field (`outcome_parent_field`, default `Visit__c`) set to `@{visit.id}`, then the Event and the Tasks, with `WhatId` = `@{visit.id}`. The reference resolves inside the one request, which closes F-0033. `check_composite` refuses more than 25 subrequests, allOrNone not true, a visit that is not first, and any reference that does not point at the visit. This is preview-only: the stored payload, its version and its sha256 are unchanged (AS-0072 (composite subrequest mapping)). The instance URL is shown in backticks so it isn't auto-linked (F-0034).
 - **Preview purity.** The preview reads the stored payload and the latest setup and returns text. It never rebuilds the payload from the visit fields. It refuses a payload whose sha256 is not the stored one, and it shows a 0.2 payload as stored, without a preview.
 - **No egress.** The new modules import no network library (T-0079), and the instance URL, a placeholder by default, is only ever shown as text.
 - **Unchanged.** The visit store tables and lookup rules (AS-0048 (visit key, exact lookup), AS-0058 (open visit store, no passcode)), the Brief, Talking points and Q&A tabs, the PDF, gen/ and gen/out.
