@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lb-sf-tree-0.4",
+  "title": "Little Blue FAKE Salesforce visit payload 0.4, Visit__c root, with missed-point reasons (stored as a database record, never sent)",
+  "description": "AS-0074 (lb-sf-tree-0.4): the lb-sf-tree-0.3 shape (AS-0070) plus three proposed fields on each Talking_Point_Outcome__c child: Not_Addressed_Reason__c, Not_Addressed_Reason_Text__c and Addendum__c. An outcome that is Partially or Not raised must carry a reason; a Raised outcome must not; reason OTHER needs non-blank text (D-0047, AS-0075). Every __c / __r name is a proposal, not validated against any org.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lb_marker",
+    "lb_schema_version",
+    "lb_visit_key",
+    "lb_note",
+    "trees"
+  ],
+  "properties": {
+    "lb_marker": {
+      "const": "FAKE-SYNTHETIC"
+    },
+    "lb_schema_version": {
+      "const": "lb-sf-tree-0.4"
+    },
+    "lb_visit_key": {
+      "type": "string",
+      "pattern": "^[^|]+\\|\\d{4}-\\d{2}-\\d{2}\\|SYNCP\\d{6}$"
+    },
+    "lb_note": {
+      "type": "string"
+    },
+    "trees": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Visit__c",
+        "Event"
+      ],
+      "properties": {
+        "Visit__c": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "records"
+          ],
+          "properties": {
+            "records": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attributes",
+                  "Subject__c",
+                  "Visit_Date__c",
+                  "Start_DateTime__c",
+                  "Duration_Minutes__c",
+                  "Description__c",
+                  "Account__r",
+                  "Rep_Name__c",
+                  "LB_Rep_Key__c",
+                  "LB_Visit_Key__c",
+                  "LB_Synthetic__c"
+                ],
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "referenceId"
+                    ],
+                    "properties": {
+                      "type": {
+                        "const": "Visit__c"
+                      },
+                      "referenceId": {
+                        "type": "string",
+                        "pattern": "^visit$"
+                      }
+                    }
+                  },
+                  "Subject__c": {
+                    "type": "string",
+                    "pattern": "^Vaccine rep visit – .+",
+                    "maxLength": 255
+                  },
+                  "Visit_Date__c": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "Start_DateTime__c": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:00Z$"
+                  },
+                  "Duration_Minutes__c": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1440
+                  },
+                  "Description__c": {
+                    "type": "string",
+                    "pattern": "^FAKE-SYNTHETIC "
+                  },
+                  "Account__r": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "attributes",
+                      "LB_System_Id__c"
+                    ],
+                    "properties": {
+                      "attributes": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "type"
+                        ],
+                        "properties": {
+                          "type": {
+                            "const": "Account"
+                          }
+                        }
+                      },
+                      "LB_System_Id__c": {
+                        "type": "string",
+                        "pattern": "^SYNCP\\d{6}$"
+                      }
+                    }
+                  },
+                  "Rep_Name__c": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "LB_Rep_Key__c": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "LB_Visit_Key__c": {
+                    "type": "string",
+                    "pattern": "^[^|]+\\|\\d{4}-\\d{2}-\\d{2}\\|SYNCP\\d{6}$"
+                  },
+                  "LB_Synthetic__c": {
+                    "const": true
+                  },
+                  "Talking_Point_Outcomes__r": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "records"
+                    ],
+                    "properties": {
+                      "records": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 50,
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "attributes",
+                            "Talking_Point_Key__c",
+                            "Point_Text__c",
+                            "Metric_Value__c",
+                            "Benchmark_State__c",
+                            "Benchmark_National__c",
+                            "Addressed__c",
+                            "Customer_Response__c",
+                            "Quality_Score__c",
+                            "Evidence_Quote__c",
+                            "Follow_Up__c",
+                            "Not_Addressed_Reason__c",
+                            "Not_Addressed_Reason_Text__c",
+                            "Addendum__c"
+                          ],
+                          "properties": {
+                            "attributes": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "type",
+                                "referenceId"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "const": "Talking_Point_Outcome__c"
+                                },
+                                "referenceId": {
+                                  "type": "string",
+                                  "pattern": "^tp\\d+$"
+                                }
+                              }
+                            },
+                            "Talking_Point_Key__c": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 80
+                            },
+                            "Point_Text__c": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 1000
+                            },
+                            "Metric_Value__c": {
+                              "type": [
+                                "number",
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "Benchmark_State__c": {
+                              "type": [
+                                "number",
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "Benchmark_National__c": {
+                              "type": [
+                                "number",
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "Addressed__c": {
+                              "enum": [
+                                "Raised",
+                                "Partially",
+                                "Not raised"
+                              ]
+                            },
+                            "Customer_Response__c": {
+                              "enum": [
+                                "Positive",
+                                "Neutral",
+                                "Negative",
+                                "Objection"
+                              ]
+                            },
+                            "Quality_Score__c": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 5
+                            },
+                            "Evidence_Quote__c": {
+                              "type": "string",
+                              "maxLength": 1000
+                            },
+                            "Follow_Up__c": {
+                              "type": "string",
+                              "maxLength": 1000
+                            },
+                            "Not_Addressed_Reason__c": {
+                              "enum": [
+                                "NOT_RELEVANT",
+                                "OUT_OF_TIME",
+                                "CONTACT_DECLINED",
+                                "COVERED_PREVIOUSLY",
+                                "OTHER",
+                                null
+                              ]
+                            },
+                            "Not_Addressed_Reason_Text__c": {
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "maxLength": 280
+                            },
+                            "Addendum__c": {
+                              "type": "boolean"
+                            }
+                          },
+                          "allOf": [
+                            {
+                              "if": {
+                                "required": [
+                                  "Addressed__c"
+                                ],
+                                "properties": {
+                                  "Addressed__c": {
+                                    "enum": [
+                                      "Partially",
+                                      "Not raised"
+                                    ]
+                                  }
+                                }
+                              },
+                              "then": {
+                                "properties": {
+                                  "Not_Addressed_Reason__c": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "if": {
+                                "required": [
+                                  "Addressed__c"
+                                ],
+                                "properties": {
+                                  "Addressed__c": {
+                                    "const": "Raised"
+                                  }
+                                }
+                              },
+                              "then": {
+                                "properties": {
+                                  "Not_Addressed_Reason__c": {
+                                    "type": "null"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "if": {
+                                "required": [
+                                  "Not_Addressed_Reason__c"
+                                ],
+                                "properties": {
+                                  "Not_Addressed_Reason__c": {
+                                    "const": "OTHER"
+                                  }
+                                }
+                              },
+                              "then": {
+                                "properties": {
+                                  "Not_Addressed_Reason_Text__c": {
+                                    "type": "string",
+                                    "pattern": "\\S"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Event": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "records"
+          ],
+          "properties": {
+            "records": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attributes",
+                  "Subject",
+                  "ActivityDate",
+                  "StartDateTime",
+                  "DurationInMinutes",
+                  "Description",
+                  "WhatId",
+                  "LB_Rep_Key__c",
+                  "LB_Visit_Key__c",
+                  "LB_Synthetic__c"
+                ],
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "referenceId"
+                    ],
+                    "properties": {
+                      "type": {
+                        "const": "Event"
+                      },
+                      "referenceId": {
+                        "type": "string",
+                        "pattern": "^event$"
+                      }
+                    }
+                  },
+                  "Subject": {
+                    "type": "string",
+                    "pattern": "^Vaccine rep visit – .+",
+                    "maxLength": 255
+                  },
+                  "ActivityDate": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "StartDateTime": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:00Z$"
+                  },
+                  "DurationInMinutes": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1440
+                  },
+                  "Description": {
+                    "type": "string",
+                    "pattern": "^FAKE-SYNTHETIC "
+                  },
+                  "WhatId": {
+                    "const": "@{visit.id}"
+                  },
+                  "LB_Rep_Key__c": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "LB_Visit_Key__c": {
+                    "type": "string",
+                    "pattern": "^[^|]+\\|\\d{4}-\\d{2}-\\d{2}\\|SYNCP\\d{6}$"
+                  },
+                  "LB_Synthetic__c": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Task": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "records"
+          ],
+          "properties": {
+            "records": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 50,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attributes",
+                  "Subject",
+                  "ActivityDate",
+                  "Status",
+                  "Priority",
+                  "Description",
+                  "WhatId",
+                  "LB_Visit_Key__c",
+                  "LB_Synthetic__c"
+                ],
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "referenceId"
+                    ],
+                    "properties": {
+                      "type": {
+                        "const": "Task"
+                      },
+                      "referenceId": {
+                        "type": "string",
+                        "pattern": "^followup\\d+$"
+                      }
+                    }
+                  },
+                  "Subject": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "ActivityDate": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "Status": {
+                    "const": "Not Started"
+                  },
+                  "Priority": {
+                    "const": "Normal"
+                  },
+                  "Description": {
+                    "type": "string",
+                    "pattern": "^FAKE-SYNTHETIC "
+                  },
+                  "WhatId": {
+                    "const": "@{visit.id}"
+                  },
+                  "LB_Visit_Key__c": {
+                    "type": "string",
+                    "pattern": "^[^|]+\\|\\d{4}-\\d{2}-\\d{2}\\|SYNCP\\d{6}$"
+                  },
+                  "LB_Synthetic__c": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

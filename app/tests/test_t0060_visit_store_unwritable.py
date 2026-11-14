@@ -10,6 +10,8 @@ from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
 
+from tests.conftest import resolve_gaps
+
 from brief import visits
 from tests import visit_fixture
 
@@ -52,6 +54,7 @@ def test_typed_save_not_writable(tmp_path, monkeypatch):
         at = _app(monkeypatch, db)
         at.text_input(key="vr_rep").input("Demo Rep").run()
         at.date_input(key="vr_date").set_value(D).run()
+        resolve_gaps(at)  # v0.2-g: Save needs every gap resolved (D-0047)
         at.button(key="vr_save").click().run()
         assert not at.exception, [e.value for e in at.exception]
         msgs = _not_saved(at)

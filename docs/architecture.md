@@ -189,3 +189,28 @@ Integration (dry run) tab: setup form (non-secret fields, AS-0071) --> sf_config
 - **Preview purity.** The preview reads the stored payload and the latest setup and returns text. It never rebuilds the payload from the visit fields. It refuses a payload whose sha256 is not the stored one, and it shows a 0.2 payload as stored, without a preview.
 - **No egress.** The new modules import no network library (T-0079), and the instance URL, a placeholder by default, is only ever shown as text.
 - **Unchanged.** The visit store tables and lookup rules (AS-0048 (visit key, exact lookup), AS-0058 (open visit store, no passcode)), the Brief, Talking points and Q&A tabs, the PDF, gen/ and gen/out.
+
+## v0.2-g missed talking-point follow-up (app/)
+D-0047 (missed talking-point follow-up). Still no Salesforce connection and nothing is sent (D-0037 (no real Salesforce)).
+```
+Visit record tab: notes (typed or voice) --> payload.hint_status(point, notes) per point: Raised | Partially | Not raised
+                     (AS-0073: sentence window + the point's cue words; size point by template anchors)
+   rep confirms each "Addressed" selectbox (pre-fill = max(hint, the point's best addendum result))
+   --> "Not covered yet — What about these?" = gap.uncovered(outcomes): every point not Raised
+         (A) Mark not addressed: reason (no default, AS-0075) + details (<= 280, required for Other)
+         (B) Address now: one Addendum box for the (B) points + "Check addendum"
+               gap.second_pass(outcomes, addendum, keys): hint_status on the addendum ONLY, for the (B) points
+               that are not Raised ONLY; status = max(old, new); addendum = True; rounds repeat
+   --> gap.unresolved(outcomes) not empty: "Not saved yet: N talking points need a reason or an addendum: keys",
+       Save disabled
+   --> Save visit: notes + "\n\nAddendum n: ..." per round --> visits.save_visit (refuses unresolved: ValueError)
+         --> payload.build_payload() lb-sf-tree-0.4 (AS-0074) --> validate (0.4 schema if/then reason rules)
+         --> sf_payloads (append)                                                          [nothing is sent]
+   --> "Preview Salesforce request": sf_preview.PREVIEWABLE = 0.3 and 0.4, same one Composite request (D-0046)
+   Load visit file (lb-visit-file-0.3 or 0.2): same panel, path (A) only, for points not Raised without a reason
+```
+
+- **Modules.** New `brief/gap.py`, pure (no Streamlit, no store): `uncovered`, `second_pass`, `unresolved`, `problem`, `REASONS`, `REASON_TEXT_MAX`. `brief/visit_tab.py` only renders it. `brief/payload.py` gains `hint_status` (with `FUNC`, `cues` and `ANCHORS`), the three `Outcome` fields (defaulted, so positional construction still works), the 0.4 builder and the frozen `build_payload_v03`. `brief/visits.py` gates `save_visit`, stores the reason keys and writes visit file 0.3. `brief/sf_preview.py` gains `PREVIEWABLE`.
+- **Schemas.** New `visit_payload-0.4.schema.json`. `visit_payload.schema.json` (0.3) is byte-identical; `visit_file.schema.json` accepts lb-visit-file-0.2 and 0.3.
+- **Session state.** `st.session_state["vr_gap"][system id]` keeps, per point key, the best status an addendum reached, the keys that went through a round and the addendum texts. Addenda are kept apart from the notes box and joined to the notes on save, so editing the notes re-runs the first pass without re-reading an addendum, and an addendum result stays in force because the status only goes up. A point that becomes Raised leaves the panel, and its reason widgets, and so its reason, go with it.
+- **Unchanged.** The Composite mapping, the 25-subrequest guard and the inverse (AS-0072), the visit store tables and lookup, stored 0.2 and 0.3 rows, the other tabs, the PDF, gen/ and gen/out.

@@ -9,7 +9,7 @@ POINTS = [pl.TalkingPoint("R1", "R1 MenB + MenABCWY to MenACWY + MenABCWY: syste
 
 def outcomes(follow_up="Share the season comparison"):
     return [pl.Outcome(POINTS[0], "Raised", "Positive", 4, "We buy MenB through the clinic.", follow_up),
-            pl.Outcome(POINTS[1], "Not raised", "Neutral", 3, "", "")]
+            pl.Outcome(POINTS[1], "Not raised", "Neutral", 3, "", "", "OUT_OF_TIME")]  # v0.2-g: a reason (D-0047)
 
 
 def visit(**kw):

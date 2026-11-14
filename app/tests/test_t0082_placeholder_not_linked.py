@@ -12,6 +12,8 @@ from urllib.parse import urlparse
 
 from streamlit.testing.v1 import AppTest
 
+from tests.conftest import resolve_gaps
+
 ROOT = Path(__file__).resolve().parents[1]
 BARE = re.compile(r"(?<!`)https://[^\s`]+")
 D = datetime.date(2026, 11, 18)
@@ -75,6 +77,7 @@ def test_instance_url_in_backticks(tmp_path, monkeypatch):
     at.selectbox(key="system").set_value("SYNCP000025").run()
     at.text_input(key="vr_rep").input("Demo Rep").run()
     at.date_input(key="vr_date").set_value(D).run()
+    resolve_gaps(at)  # v0.2-g: Save needs every gap resolved (D-0047)
     at.button(key="vr_save").click().run()
     assert not at.exception
     texts = [c.value for c in at.caption] + [m.value for m in at.markdown]

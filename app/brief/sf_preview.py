@@ -2,7 +2,8 @@
 payload, latest setup) that shows the request a real integration would make. Nothing is sent, and this module can't
 send: it imports no HTTP, socket or Salesforce library (T-0079), and it only builds strings and dicts.
 
-D-0046 (one Composite request, allOrNone): the stored lb-sf-tree-0.3 payload (AS-0070) becomes ONE request,
+D-0046 (one Composite request, allOrNone): the stored lb-sf-tree-0.3 or 0.4 payload (AS-0070, AS-0074) becomes ONE
+request,
   POST {instance}/services/data/v{api}/composite
   Authorization: Bearer <NOT CONFIGURED>      Content-Type: application/json
   {"allOrNone": true, "compositeRequest": [subrequests, in order]}
@@ -209,12 +210,19 @@ def curl(req: dict) -> str:
             f"--data-binary {_sh(json.dumps(req['body'], ensure_ascii=False, separators=(',', ':')))}")
 
 
+PREVIEWABLE = (pl.V03_VERSION, pl.SCHEMA_VERSION)  # v0.2-g (AS-0074): 0.3 and 0.4; the mapping is the same
+
+
 def build_requests(payload: dict, cfg: dict) -> list[dict]:
-    """The request for a stored 0.3 payload: a list with ONE Composite request. Pure: no clock, no store, no network."""
-    if not isinstance(payload, dict) or payload.get("lb_schema_version") != pl.SCHEMA_VERSION:
-        version = payload.get("lb_schema_version") if isinstance(payload, dict) else None
-        raise NotPreviewable(f"this record was saved as {version} (Event root); re-save the visit to preview the "
-                             f"{pl.SCHEMA_VERSION} request")
+    """The request for a stored 0.3 or 0.4 payload: a list with ONE Composite request. Pure: no clock, no store, no
+    network. A 0.4 outcome's reason fields ride in its subrequest body like every other field."""
+    version = payload.get("lb_schema_version") if isinstance(payload, dict) else None
+    if version not in PREVIEWABLE:
+        if version == pl.LEGACY_VERSION:
+            raise NotPreviewable(f"this record was saved as {version} (Event root); re-save the visit to preview the "
+                                 f"{pl.SCHEMA_VERSION} request")
+        raise NotPreviewable(f"this record was saved as {version}, which has no preview; previewable: "
+                             f"{', '.join(PREVIEWABLE)}")
     pl.validate(payload)
     cfg = sf_config.validate(cfg)
     body = {"allOrNone": ALL_OR_NONE, "compositeRequest": _subrequests(payload, cfg)}

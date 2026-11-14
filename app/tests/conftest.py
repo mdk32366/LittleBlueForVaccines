@@ -195,8 +195,9 @@ def apply_mutation(name):
         payload.validate = lambda p: None
     elif name == "pay_none_str":  # T-0047: values are stringified, so None becomes "None" and NaN leaks through
         payload._val = lambda v: str(v)
-    elif name == "hint":  # T-0047: the keyword hint never fires
+    elif name == "hint":  # T-0047: the keyword hint never fires (v0.2-g: hint_status too)
         payload.mentioned_hint = lambda point, transcript: False
+        payload.hint_status = lambda point, text: payload.ADDRESSED[2]
     elif name == "store_nopayload":  # T-0048: saving writes the visit row but no payload record
         visits._write_payload = lambda conn, key, p, now: 1
     elif name == "store_overwrite":  # T-0048: a re-save replaces version 1 instead of appending
@@ -426,8 +427,70 @@ def apply_mutation(name):
         sch = copy.deepcopy(sf_config.schema())
         sch["properties"]["instance_url"].pop("pattern")
         sf_config.schema = lambda: sch
+    # v0.2-g missed talking-point follow-up (D-0047, T-0083..T-0087): each mutation turns one guard off
+    elif name == "reason_optional":  # T-0085/T-0087: the 0.4 reason rules are dropped and unresolved() ignores reasons
+        import copy
+        from brief import gap
+        orig_schema = payload.schema
+
+        def lax_schema(version=payload.SCHEMA_VERSION):
+            s = copy.deepcopy(orig_schema(version))
+            if version == payload.SCHEMA_VERSION:
+                item = (s["properties"]["trees"]["properties"]["Visit__c"]["properties"]["records"]["items"]
+                        ["properties"][payload.CHILD_REL]["properties"]["records"]["items"])
+                item.pop("allOf", None)
+            return s
+        payload.schema = lax_schema
+        gap.unresolved = lambda outcomes: []
+    elif name == "gap_panel_off":  # T-0084/T-0085: the panel lists nothing
+        from brief import gap
+        gap.uncovered = lambda outcomes: []
+    elif name == "second_pass_rescans_covered":  # T-0086: every point is re-checked and its status overwritten
+        import dataclasses
+        from brief import gap
+        gap.second_pass = lambda outcomes, addendum, keys: [
+            dataclasses.replace(o, addressed=payload.hint_status(o.point, addendum or ""), addendum=True)
+            for o in outcomes or []]
+    elif name == "partial_dropped":  # T-0083/T-0084: Partially is reported as Raised
+        orig_hs = payload.hint_status
+        payload.hint_status = lambda point, text: ("Raised" if orig_hs(point, text) == "Partially"
+                                                   else orig_hs(point, text))
+    elif name == "schema_03_mutated":  # T-0087: the frozen 0.3 builder emits Addendum__c; one byte of the 0.3 schema changes
+        import tempfile
+        orig_v03 = payload.build_payload_v03
+
+        def v03_plus(**kw):
+            p = orig_v03(**kw)
+            for r in p["trees"][payload.ROOT_OBJECT]["records"][0].get(payload.CHILD_REL, {"records": []})["records"]:
+                r["Addendum__c"] = False
+            return p
+        payload.build_payload_v03 = v03_plus
+        payload.BUILDERS = {**payload.BUILDERS, payload.V03_VERSION: v03_plus}
+        raw = payload.SCHEMA_PATHS[payload.V03_VERSION].read_bytes()
+        tmp = Path(tempfile.mkdtemp()) / "visit_payload.schema.json"
+        tmp.write_bytes(raw.replace(b"Little Blue", b"Little blue", 1))
+        payload.SCHEMA_PATHS = {**payload.SCHEMA_PATHS, payload.V03_VERSION: tmp}
+    elif name == "a1_stopworded":  # T-0083/T-0084: the size-point anchor rule is removed (empty K -> Not raised)
+        payload.ANCHORS = ()
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
+
+
+def resolve_gaps(at, code="OUT_OF_TIME", where="typed"):
+    """T-0083..T-0088 shared helper (v0.2-g, D-0047): resolve every point in the 'Not covered yet' panel of an AppTest
+    with path A (Mark not addressed) and one reason code, so a test that only needs a save can click Save."""
+    from brief import gap, visit_tab
+    pre = f"vr_gap_mode_{where}_"
+    for r in [r for r in at.radio if str(r.key or "").startswith(pre)]:
+        at.radio(key=r.key).set_value(visit_tab.GAP["A"]).run()
+    rpre = f"vr_gap_reason_{where}_"
+    for s in [s for s in at.selectbox if str(s.key or "").startswith(rpre)]:
+        at.selectbox(key=s.key).set_value(gap.REASONS[code]).run()
+    if code == "OTHER":
+        tpre = f"vr_gap_text_{where}_"
+        for t in [t for t in at.text_input if str(t.key or "").startswith(tpre)]:
+            at.text_input(key=t.key).input("other reason").run()
+    return at
 
 
 def pytest_configure(config):  # noqa: F811 (pytest hook arg name is fixed)

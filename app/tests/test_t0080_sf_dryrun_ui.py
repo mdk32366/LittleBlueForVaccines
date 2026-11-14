@@ -11,6 +11,8 @@ from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
 
+from tests.conftest import resolve_gaps
+
 from brief import payload as pl, sf_config as sc, sf_preview as sp, visits
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,6 +74,7 @@ def test_preview_after_save_and_lookup_and_no_send(tmp_path, monkeypatch):
     at.text_input(key="vr_rep").input("Demo  Rep").run()
     at.date_input(key="vr_date").set_value(D).run()
     at.text_area(key="vr_notes").input("We talked about HPV uptake.").run()
+    resolve_gaps(at)  # v0.2-g: Save needs every gap resolved (D-0047)
     at.button(key="vr_save").click().run()
     assert not at.exception
     stored = visits.lookup("demo rep", "2026-11-18", "SYNCP000025", db=tmp_path / "ui.db")

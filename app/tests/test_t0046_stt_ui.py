@@ -11,6 +11,8 @@ from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
 
+from tests.conftest import resolve_gaps
+
 from brief import config, stt, visits
 
 APP = str(Path(__file__).resolve().parents[1] / "app.py")
@@ -39,6 +41,7 @@ def _record(at):
 
 
 def _save(at, tmp_path):
+    resolve_gaps(at)  # v0.2-g: Save needs every gap resolved (D-0047)
     at.button(key="vr_save").click().run()
     assert not at.exception
     assert [s.value for s in at.success if s.value.startswith("Saved visit")]
@@ -56,7 +59,7 @@ def test_stub_prefills_notes_and_saves(tmp_path, monkeypatch):
     stored = _save(at, tmp_path)
     assert stored["visit"]["notes_text"] == SPOKEN + " Edited."
     outs = {o["key"]: o for o in stored["visit"]["outcomes"]}
-    assert outs["must.R2"]["addressed"] == "Raised"  # the keyword hint works on the transcript ("HPV")
+    assert outs["must.R2"]["addressed"] == "Partially"  # the hint works on the transcript; v0.2-g AS-0073: "HPV" alone
 
 
 def test_none_hides_recorder_typed_still_saves(tmp_path, monkeypatch):
@@ -92,6 +95,7 @@ def test_one_transcription_per_recording(tmp_path, monkeypatch):
     assert len(calls) == 1 and at.text_area(key="vr_notes").value == SPOKEN
     at.text_area(key="vr_notes").input("Edited by the rep.").run()
     at.text_input(key="vr_rep").input("Voice Rep 2").run()
+    resolve_gaps(at)  # v0.2-g: Save needs every gap resolved (D-0047)
     at.button(key="vr_save").click().run()
     assert not at.exception
     assert len(calls) == 1, f"the same recording was transcribed {len(calls)} times"
