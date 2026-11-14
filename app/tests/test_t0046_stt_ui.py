@@ -1,8 +1,10 @@
 """T-0046 STT in the Visit record tab (AppTest): a Stub transcript pre-fills the notes box and is saved; LB_STT=off
 hides the recorder with a "voice unavailable" caption and typed notes still save; an engine exception falls back to
 typed notes with a note; no audio bytes end up on disk or in the visit store (AS-0059 (raw audio is not kept)).
+One recording is transcribed once, however many reruns follow; a transcript that would push the notes past the
+8,000-character limit is cut to the limit with a caption, keeping the typed text first.
 Mutations: stt_none, stt_nofallback, stt_persist (the recording is written next to the store), stt_prefill
-(the transcript is dropped)."""
+(the transcript is dropped), stt_dedupe (every rerun re-transcribes), stt_cap (the transcript is not cut)."""
 import datetime
 import tempfile
 from pathlib import Path
@@ -75,6 +77,40 @@ def test_exception_falls_back_to_typed(tmp_path, monkeypatch):
     assert at.text_area(key="vr_notes").value == ""
     at.text_area(key="vr_notes").input("Typed after the failure.").run()
     assert _save(at, tmp_path)["visit"]["notes_text"] == "Typed after the failure."
+
+
+def test_one_transcription_per_recording(tmp_path, monkeypatch):
+    calls = []
+    orig = stt.Stub.transcribe
+
+    def counting(self, audio):
+        calls.append(audio.size)
+        return orig(self, audio)
+
+    monkeypatch.setattr(stt.Stub, "transcribe", counting)
+    at = _record(_app(tmp_path, monkeypatch))
+    assert len(calls) == 1 and at.text_area(key="vr_notes").value == SPOKEN
+    at.text_area(key="vr_notes").input("Edited by the rep.").run()
+    at.text_input(key="vr_rep").input("Voice Rep 2").run()
+    at.button(key="vr_save").click().run()
+    assert not at.exception
+    assert len(calls) == 1, f"the same recording was transcribed {len(calls)} times"
+    assert at.text_area(key="vr_notes").value == "Edited by the rep."
+
+
+def test_transcript_cut_to_notes_limit(tmp_path, monkeypatch):
+    long_text = ("clinic manager flu shingles " * 400).strip()  # about 11,000 characters
+    assert len(long_text) > visits.NOTES_MAX
+    at = _app(tmp_path, monkeypatch)
+    monkeypatch.setenv("LB_STT_STUB_TEXT", long_text)
+    at.text_area(key="vr_notes").input("Typed first.").run()
+    _record(at)
+    notes = at.text_area(key="vr_notes").value
+    assert len(notes) == visits.NOTES_MAX
+    assert notes == ("Typed first.\n" + long_text)[: visits.NOTES_MAX]
+    assert any(f"cut to the {visits.NOTES_MAX}-character notes limit" in c.value for c in at.caption)
+    stored = _save(at, tmp_path)
+    assert len(stored["visit"]["notes_text"]) == visits.NOTES_MAX
 
 
 def _files(root: Path):

@@ -101,6 +101,20 @@ def _transcriber(key: tuple):
     return stt.get_transcriber()
 
 
+def _recording_id(data: bytes) -> str:
+    """sha256 of the recording: the only trace of it kept in the session (AS-0059 (raw audio is not kept))."""
+    return hashlib.sha256(data).hexdigest()
+
+
+def _merge_notes(typed: str, text: str) -> tuple[str, bool]:
+    """Typed notes + transcript, capped at the notes limit -> (notes, was_cut)."""
+    typed = typed.strip()
+    merged = f"{typed}\n{text}" if typed else text
+    if len(merged) > visits.NOTES_MAX:
+        return merged[: visits.NOTES_MAX], True
+    return merged, False
+
+
 def _voice_notes() -> None:
     """Audio recorder above the notes box. The transcript pre-fills st.session_state["vr_notes"] (appended to anything
     already typed) before that widget renders; the rep edits it there. The recording itself is only read in memory."""
@@ -112,7 +126,7 @@ def _voice_notes() -> None:
     if audio is None:
         return
     data = audio.getvalue()
-    digest = hashlib.sha256(data).hexdigest()  # only the hash is kept, to transcribe each recording once
+    digest = _recording_id(data)  # only the hash is kept, to transcribe each recording once
     if st.session_state.get("vr_audio_done") == digest:
         return
     with st.spinner("Transcribing the recording…"):
@@ -124,10 +138,8 @@ def _voice_notes() -> None:
     if not text:
         st.caption("The recording had no words to transcribe; type the notes below.")
         return
-    typed = (st.session_state.get("vr_notes") or "").strip()
-    merged = f"{typed}\n{text}" if typed else text
-    if len(merged) > visits.NOTES_MAX:
-        merged = merged[: visits.NOTES_MAX]
+    merged, cut = _merge_notes(st.session_state.get("vr_notes") or "", text)
+    if cut:
         st.caption(f"The transcript was cut to the {visits.NOTES_MAX}-character notes limit.")
     st.session_state["vr_notes"] = merged
     st.caption(f"Transcribed with {tr.name}. Check and edit the notes below before saving; the recording is not kept.")

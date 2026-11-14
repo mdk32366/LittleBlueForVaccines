@@ -37,7 +37,7 @@ jobs:
   app:
     name: app (pytest, redproof, headless smoke)
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30  # F-0024: was 20; red-proof alone can take 12+ minutes
     defaults:
       run:
         working-directory: app

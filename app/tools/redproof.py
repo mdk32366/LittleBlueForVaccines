@@ -82,6 +82,8 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "stt_offline": (["test_t0046_stt.py"], ["test_faster_whisper_offline_args"]),
     "stt_persist": (["test_t0046_stt_ui.py"], ["test_no_audio_on_disk_or_in_store"]),
     "stt_prefill": (["test_t0046_stt_ui.py"], ["test_stub_prefills_notes_and_saves", "test_no_audio_on_disk_or_in_store"]),
+    "stt_dedupe": (["test_t0046_stt_ui.py"], ["test_one_transcription_per_recording"]),
+    "stt_cap": (["test_t0046_stt_ui.py"], ["test_transcript_cut_to_notes_limit"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

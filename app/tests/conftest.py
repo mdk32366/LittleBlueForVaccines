@@ -281,6 +281,14 @@ def apply_mutation(name):
     elif name == "stt_prefill":  # T-0046: the transcript never reaches the notes box
         from brief import stt
         stt.transcribe_bytes = lambda tr, data: ("", "")
+    elif name == "stt_dedupe":  # T-0046: every rerun looks like a new recording, so it is transcribed again
+        import itertools
+        from brief import visit_tab
+        n = itertools.count()
+        visit_tab._recording_id = lambda data: f"rec-{next(n)}"
+    elif name == "stt_cap":  # T-0046: the transcript is not cut to the notes limit
+        from brief import visit_tab
+        visit_tab._merge_notes = lambda typed, text: ((f"{typed.strip()}\n{text}" if typed.strip() else text), False)
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
