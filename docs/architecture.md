@@ -119,3 +119,16 @@ Visit record tab (brief/visit_tab.py): rep, visit date, company (= the health sy
 - **Store.** `visits` holds one row per key (AS-0048 (visit key, exact lookup)). `sf_payloads` holds id, visit_key, version, created_at, schema_version, payload_json and sha256; it is append-only, with triggers. The path is `LB_VISITS_DB` (AS-0050 (visits DB path)). The store is open with no passcode, so there is no enumeration (AS-0058 (open visit store, no passcode)).
 - **Seams.** app.py passes `talking.payload_points` (bound to the app's FactSheets) as `points_provider`. It returns frozen PayloadPoint items (key, text, metric_value, bench_state, bench_national), and payload.py duck-types them without importing talking.py. "Visit record" is the last entry of `config.TABS`. v0.2-c pre-fills `st.session_state["vr_notes"]` with the edited transcript before the notes widget renders.
 - **Unchanged.** The PDF (T-0006), the Brief and Q&A tabs, F1–F14, gen/ and gen/out. Visit records are never training input (T-0051).
+
+## v0.2-c voice notes (app/, PR 7)
+```
+Visit record tab: st.audio_input("Record visit notes", sample_rate=16000)    [hidden when no transcriber]
+   --> bytes in memory --> stt.decode_wav() (stdlib wave + numpy, float32, 16 kHz) --> transcriber.transcribe(array)
+   --> st.session_state["vr_notes"] (appended to typed text) --> the rep edits --> Save visit (as typed notes)
+```
+
+- **Module.** `brief/stt.py`: `get_transcriber()` returns FasterWhisper, Stub or None with a reason, and `transcribe_bytes()` falls back to typed notes on any error. visit_tab.py caches the transcriber per STT config with `st.cache_resource` and shows a spinner while it runs (AS-0047 (STT engine and model)).
+- **Config.** `LB_STT` (faster-whisper, stub, off), `LB_STT_MODEL` (small.en default, base.en swap), `LB_STT_MODEL_DIR`. The optional packages are in `app/requirements-voice.txt`; without them the app runs typed-only.
+- **Privacy.** The recording is never written anywhere (AS-0059 (raw audio is not kept)); the payload and store are unchanged.
+- **Unchanged.** The payload schema, the visit store, the other tabs and the PDF.
+

@@ -247,11 +247,54 @@ def apply_mutation(name):
     elif name == "ro_store_errors":  # T-0060: no store error is caught anywhere in the tab
         from brief import visit_tab
         visit_tab.STORE_ERRORS = ()
+    # v0.2-c voice notes (T-0046)
+    elif name == "stt_nofallback":  # T-0046: decode and engine errors propagate instead of falling back to typed
+        from brief import stt
+        stt.transcribe_bytes = lambda tr, data: (tr.transcribe(stt.decode_wav(data)), "")
+    elif name == "stt_none":  # T-0046: LB_STT=off or a missing engine still yields a transcriber (no typed-only mode)
+        from brief import stt
+        orig_get = stt.get_transcriber
+        stt.get_transcriber = lambda: (orig_get()[0] or stt.Stub(), "")
+    elif name == "stt_decode":  # T-0046: the WAV header is ignored (any rate, width or junk is decoded)
+        import numpy as np
+        from brief import stt
+        stt.decode_wav = lambda data: np.frombuffer(data[44:len(data) - (len(data) - 44) % 2], "<i2").astype(np.float32) / 32768.0
+    elif name == "stt_offline":  # T-0046: the model is loaded by name, so faster-whisper may download it
+        from brief import stt
+
+        def online(self):
+            if self._m is None:
+                from faster_whisper import WhisperModel
+                self._m = WhisperModel(self.model, **stt.ENGINE_ARGS)
+            return self._m
+        stt.FasterWhisper._engine = online
+    elif name == "stt_persist":  # T-0046: the raw recording is written next to the visit store
+        from brief import stt
+        orig_tb = stt.transcribe_bytes
+
+        def persist(tr, data):
+            p = visits.db_path().parent / "last-recording.wav"
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_bytes(data)
+            return orig_tb(tr, data)
+        stt.transcribe_bytes = persist
+    elif name == "stt_prefill":  # T-0046: the transcript never reaches the notes box
+        from brief import stt
+        stt.transcribe_bytes = lambda tr, data: ("", "")
+    elif name == "stt_dedupe":  # T-0046: every rerun looks like a new recording, so it is transcribed again
+        import itertools
+        from brief import visit_tab
+        n = itertools.count()
+        visit_tab._recording_id = lambda data: f"rec-{next(n)}"
+    elif name == "stt_cap":  # T-0046: the transcript is not cut to the notes limit
+        from brief import visit_tab
+        visit_tab._merge_notes = lambda typed, text: ((f"{typed.strip()}\n{text}" if typed.strip() else text), False)
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
 
 def pytest_configure(config):  # noqa: F811 (pytest hook arg name is fixed)
+    config.addinivalue_line("markers", "stt: real speech-to-text model; box and server only (T-0046)")
     apply_mutation(os.environ.get("REDPROOF", ""))
 
 
