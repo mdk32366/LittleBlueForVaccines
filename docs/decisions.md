@@ -62,3 +62,12 @@ The owner's answers of 2026-11-13, verbatim. At 4:54 PM PT: "Still on, but inven
   - A new "Integration (dry run)" tab saves a setup with non-secret fields only, append-only in the app DB (AS-0071 (dry-run setup, non-secret fields only)).
   - The Visit record tab shows "Preview Salesforce request" after a save or a lookup: the requests a real integration would make, as text and a download. Nothing is sent, and no action is labelled Send.
   - Guards: T-0047 (updated), T-0077 to T-0080.
+
+## 6c one Composite request (app/)
+- **D-0046 (one Composite request, allOrNone):** the Architect's PR 12 review, ruling 1 ("Follow-up 6c: switch the dry run from three Composite Tree requests to one POST /composite request with allOrNone=true"). The owner's GO for the next task after a green Deploy-4. D-0045 (Salesforce dry run), D-0037 (no real Salesforce) and AS-0057 (sf payload is a database record, not a send) stand: nothing is sent, and there is no client, credential or network call.
+  - "Preview Salesforce request" shows ONE request, `POST {instance}/services/data/v{api}/composite`, body `{"allOrNone": true, "compositeRequest": [...]}`, in the order and with the bodies of AS-0072 (composite subrequest mapping). The Visit__c is first (referenceId `visit`); the outcomes, the Event and every Task point at `@{visit.id}`, which now resolves inside the one request. This closes F-0033.
+  - At most 25 subrequests (Salesforce's Composite limit). More is refused with a clear error and no preview; the payload is still stored.
+  - **Preview-only, no new payload version.** The stored lb-sf-tree-0.3 tree (AS-0070) already holds every record, its referenceId, the Account external-id relationship and `WhatId` = `@{visit.id}`. Only the outcome's master-detail field is missing, and that is a setup name, not visit data. So stored payloads, their `schema_version`, their sha256 and the visit file are unchanged, and every 0.3 row saved under v0.2-f previews as one Composite request. 0.2 rows still show "No preview".
+  - The setup gains one non-secret field, `outcome_parent_field` (AS-0072).
+  - The headers, the `Bearer <NOT CONFIGURED>` placeholder, the curl text, the request-set download (now `lb-sf-dryrun-requests-0.2`), the DRY RUN banner and the no-Send rule are unchanged.
+  - Guards: T-0078 (updated), T-0081 and T-0082.

@@ -55,7 +55,7 @@ def render() -> None:
     with st.form(key=f"ig_form_{rev}"):
         vals = {}
         for f in ("instance_url", "api_version", "visit_object", "outcome_object", "outcome_relationship",
-                  "account_relationship", "account_external_id_field", "record_type_id"):
+                  "outcome_parent_field", "account_relationship", "account_external_id_field", "record_type_id"):
             vals[f] = st.text_input(L[f], value=cur[f], key=f"ig_{f}_{rev}")
         vals["owner_mapping"] = st.selectbox(L["owner_mapping"], sf_config.OWNER_MAPPINGS,
                                              index=sf_config.OWNER_MAPPINGS.index(cur["owner_mapping"]),
@@ -66,7 +66,7 @@ def render() -> None:
         latest, _ = _latest()
     who = (f"setup record {latest['id']}, saved {latest['created_at']}" if latest["id"] else
            "the defaults (no setup saved yet)")
-    st.caption(f"In use: {who}. Instance URL default {sf_config.DEFAULT_INSTANCE_URL} is a placeholder; API version "
+    st.caption(f"In use: {who}. Instance URL default `{sf_config.DEFAULT_INSTANCE_URL}` is a placeholder; API version "
                f"default {sf_config.DEFAULT_API_VERSION}.")
     st.download_button(L["download"], data=sf_config.export_config(latest["config"]),
                        file_name="little-blue-sf-dryrun-setup.json", mime="application/json", key="ig_download")

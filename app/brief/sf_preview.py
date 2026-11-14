@@ -1,14 +1,22 @@
-"""sf_preview.py (v0.2-f): 'Preview Salesforce request'. A pure function of (stored payload, latest setup) that shows
-the sObject Tree requests a real integration would make. Nothing is sent, and this module can't send: it imports no
-HTTP, socket or Salesforce library (T-0079), and it only builds strings and dicts.
+"""sf_preview.py (v0.2-f; one Composite request since 6c): 'Preview Salesforce request'. A pure function of (stored
+payload, latest setup) that shows the request a real integration would make. Nothing is sent, and this module can't
+send: it imports no HTTP, socket or Salesforce library (T-0079), and it only builds strings and dicts.
 
-D-0045 (Salesforce dry run). One request per tree in the stored lb-sf-tree-0.3 payload (AS-0070), in TREE_ORDER:
-  POST {instance}/services/data/v{api}/composite/tree/{Visit__c | Event | Task}
+D-0046 (one Composite request, allOrNone): the stored lb-sf-tree-0.3 payload (AS-0070) becomes ONE request,
+  POST {instance}/services/data/v{api}/composite
   Authorization: Bearer <NOT CONFIGURED>      Content-Type: application/json
-The body is the stored tree. With the default setup it is that tree exactly; a setup that renames an object,
-relationship or the Account external-id field renames those keys and attribute types only, and a record type id adds
-RecordTypeId to the Visit__c record. `stored_tree` undoes both, so T-0078 can check every preview body against the
-stored payload's sha256. A 0.2 payload (Event root) is shown as stored, without a preview (NotPreviewable).
+  {"allOrNone": true, "compositeRequest": [subrequests, in order]}
+AS-0072 (composite subrequest mapping) gives the order and the bodies:
+  1. POST /services/data/v{api}/sobjects/{visit object}, referenceId "visit": the Visit__c record without its
+     attributes and children (Account by the external-id relationship on the system id, as stored);
+  2. one POST per Talking_Point_Outcome__c child, referenceId tp{i}: the child record with the master-detail field
+     ({outcome_parent_field}) set to @{visit.id};
+  3. the Event, then each Task, with WhatId @{visit.id} as stored.
+All names come from the setup (sf_config). At most COMPOSITE_MAX (25) subrequests; more is refused (TooManySubrequests).
+`check_composite` refuses a request whose first subrequest is not the visit, whose other subrequests do not point at
+@{visit.id}, or whose allOrNone is not true. `stored_trees` undoes the mapping, so T-0078 rebuilds the stored payload's
+sha256 from the request body (the body_drift guarantee). A 0.2 payload (Event root) is shown as stored, without a
+preview (NotPreviewable).
 """
 from __future__ import annotations
 
@@ -19,7 +27,7 @@ from . import payload as pl, sf_config
 BANNER = "DRY RUN. Nothing is sent. No credentials are stored."
 AUTH_PLACEHOLDER = "Bearer <NOT CONFIGURED>"
 HEADERS = (("Authorization", AUTH_PLACEHOLDER), ("Content-Type", "application/json"))
-SET_VERSION = "lb-sf-dryrun-requests-0.1"
+SET_VERSION = "lb-sf-dryrun-requests-0.2"  # 6c: one Composite request (0.1: one tree request per root)
 LABELS = {"panel": "Preview Salesforce request", "download": "Download request set (.json)"}
 
 
@@ -73,32 +81,121 @@ def _check_renames(tree: dict, keys: dict, types: dict) -> None:
             raise sf_config.InvalidConfig(f"setup name {dst} collides with a payload field or object")
 
 
-def _body(tree: dict, root: str, cfg: dict) -> dict:
-    keys, types = _renames(cfg)
-    _check_renames(tree, keys, types)
-    body = _walk(tree, keys, types)
-    if root == pl.ROOT_OBJECT and cfg.get("record_type_id"):
-        for r in body["records"]:
-            r["RecordTypeId"] = cfg["record_type_id"]
-    return body
+COMPOSITE_MAX = 25  # Salesforce Composite: at most 25 subrequests in one request
+ALL_OR_NONE = True  # one failed subrequest rolls back the whole visit
 
 
-def stored_tree(body: dict, root: str, cfg: dict) -> dict:
-    """The inverse of _body: the stored tree this preview body came from."""
+class TooManySubrequests(NotPreviewable):
+    pass
+
+
+def _api(cfg: dict) -> str:
+    return f"/services/data/v{cfg['api_version']}"
+
+
+def url(cfg: dict) -> str:
+    return f"{cfg['instance_url']}{_api(cfg)}/composite"
+
+
+def _sobject_url(obj: str, cfg: dict) -> str:
+    return f"{_api(cfg)}/sobjects/{obj}"
+
+
+def _visit_ref() -> str:
+    """The referenceId of the first subrequest; VISIT_REF is its Id reference."""
+    ref = "visit"
+    if pl.VISIT_REF != "@{" + ref + ".id}":
+        raise NotPreviewable(f"VISIT_REF {pl.VISIT_REF} does not reference the first subrequest ({ref})")
+    return ref
+
+
+def _sub(rec: dict, cfg: dict, extra: dict | None = None) -> dict:
+    """One subrequest from one (renamed) stored record: POST to its object, referenceId from the record, body = the
+    record without `attributes`, plus `extra` (a field that is already in the record is refused)."""
+    body = {k: v for k, v in rec.items() if k != "attributes"}
+    for k, v in (extra or {}).items():
+        if k in body:
+            raise sf_config.InvalidConfig(f"setup name {k} collides with a payload field")
+        body[k] = v
+    return {"method": "POST", "url": _sobject_url(rec["attributes"]["type"], cfg),
+            "referenceId": rec["attributes"]["referenceId"], "body": body}
+
+
+def _subrequests(payload: dict, cfg: dict) -> list[dict]:
     keys, types = _renames(cfg)
+    trees = {}
+    for root, tree in payload["trees"].items():
+        _check_renames(tree, keys, types)
+        trees[root] = _walk(tree, keys, types)
+    visit = dict(trees[pl.ROOT_OBJECT]["records"][0])
+    kids = visit.pop(cfg["outcome_relationship"], {"records": []})["records"]
+    extra = {"RecordTypeId": cfg["record_type_id"]} if cfg.get("record_type_id") else None
+    subs = [_sub(visit, cfg, extra)]
+    subs += [_sub(k, cfg, {cfg["outcome_parent_field"]: pl.VISIT_REF}) for k in kids]
+    for root in pl.TREE_ORDER[1:]:
+        subs += [_sub(r, cfg) for r in trees.get(root, {"records": []})["records"]]
+    return subs
+
+
+def _check_count(subs: list, cfg: dict) -> None:
+    if len(subs) > COMPOSITE_MAX:
+        raise TooManySubrequests(f"{len(subs)} subrequests; one Composite request allows at most {COMPOSITE_MAX}. "
+                                 "Record fewer talking points or follow-ups for this visit.")
+
+
+def _check_all_or_none(body: dict, cfg: dict) -> None:
+    if body.get("allOrNone") is not True:
+        raise NotPreviewable("allOrNone must be true: the visit, outcomes, Event and Tasks succeed or fail together")
+
+
+def _check_first(subs: list, cfg: dict) -> None:
+    ref = _visit_ref()
+    if not subs or subs[0]["referenceId"] != ref or subs[0]["url"] != _sobject_url(cfg["visit_object"], cfg):
+        raise NotPreviewable(f"the first subrequest must create the {cfg['visit_object']} (referenceId {ref})")
+
+
+def _check_refs(subs: list, cfg: dict) -> None:
+    for s in subs[1:]:
+        field = cfg["outcome_parent_field"] if s["url"] == _sobject_url(cfg["outcome_object"], cfg) else "WhatId"
+        if s["body"].get(field) != pl.VISIT_REF:
+            raise NotPreviewable(f"subrequest {s['referenceId']}: {field} must be {pl.VISIT_REF}")
+    if len({s["referenceId"] for s in subs}) != len(subs):
+        raise NotPreviewable("referenceIds must be unique")
+
+
+def check_composite(body: dict, cfg: dict) -> None:
+    """Refuse a composite body that a real integration must not send: more than COMPOSITE_MAX subrequests, allOrNone
+    not true, the Visit__c not the first subrequest, or an outcome, Event or Task not pointing at @{visit.id}."""
+    subs = body.get("compositeRequest") or []
+    _check_count(subs, cfg)
+    _check_all_or_none(body, cfg)
+    _check_first(subs, cfg)
+    _check_refs(subs, cfg)
+
+
+def stored_trees(body: dict, cfg: dict) -> dict:
+    """The inverse of the mapping: the stored `trees` this composite body came from (setup renames undone)."""
+    keys, types = _renames(cfg)
+    rkeys, rtypes = {v: k for k, v in keys.items()}, {v: k for k, v in types.items()}
     body = json.loads(json.dumps(body))
-    if root == pl.ROOT_OBJECT:
-        for r in body["records"]:
-            r.pop("RecordTypeId", None)
-    return _walk(body, {v: k for k, v in keys.items()}, {v: k for k, v in types.items()})
-
-
-def _object(root: str, cfg: dict) -> str:
-    return cfg["visit_object"] if root == pl.ROOT_OBJECT else root
-
-
-def url(root: str, cfg: dict) -> str:
-    return f"{cfg['instance_url']}/services/data/v{cfg['api_version']}/composite/tree/{_object(root, cfg)}"
+    trees: dict = {}
+    visit, kids = None, []
+    for s in body["compositeRequest"]:
+        obj = s["url"].rsplit("/", 1)[1]
+        rec = {"attributes": {"type": obj, "referenceId": s["referenceId"]}, **s["body"]}
+        if obj == cfg["visit_object"]:
+            if cfg.get("record_type_id"):
+                rec.pop("RecordTypeId", None)
+            visit = rec
+        elif obj == cfg["outcome_object"]:
+            rec.pop(cfg["outcome_parent_field"])
+            kids.append(rec)
+        else:
+            trees.setdefault(obj, {"records": []})["records"].append(rec)
+    if kids:
+        visit[cfg["outcome_relationship"]] = {"records": kids}
+    trees = {pl.ROOT_OBJECT: {"records": [visit]}, **trees}
+    return {root: _walk(t, rkeys, rtypes) for root, t in trees.items()}
 
 
 def _sh(s: str) -> str:
@@ -113,22 +210,18 @@ def curl(req: dict) -> str:
 
 
 def build_requests(payload: dict, cfg: dict) -> list[dict]:
-    """Every request for a stored 0.3 payload, in TREE_ORDER. Pure: no clock, no store, no network."""
+    """The request for a stored 0.3 payload: a list with ONE Composite request. Pure: no clock, no store, no network."""
     if not isinstance(payload, dict) or payload.get("lb_schema_version") != pl.SCHEMA_VERSION:
         version = payload.get("lb_schema_version") if isinstance(payload, dict) else None
         raise NotPreviewable(f"this record was saved as {version} (Event root); re-save the visit to preview the "
-                             f"{pl.SCHEMA_VERSION} requests")
+                             f"{pl.SCHEMA_VERSION} request")
     pl.validate(payload)
     cfg = sf_config.validate(cfg)
-    out = []
-    for root in pl.TREE_ORDER:
-        if root not in payload["trees"]:
-            continue
-        req = {"root": root, "method": "POST", "url": url(root, cfg), "headers": dict(HEADERS),
-               "body": _body(payload["trees"][root], root, cfg)}
-        req["curl"] = curl(req)
-        out.append(req)
-    return out
+    body = {"allOrNone": ALL_OR_NONE, "compositeRequest": _subrequests(payload, cfg)}
+    check_composite(body, cfg)
+    req = {"root": "composite", "method": "POST", "url": url(cfg), "headers": dict(HEADERS), "body": body}
+    req["curl"] = curl(req)
+    return [req]
 
 
 def request_set(payload: dict, cfg: dict, stored_sha256: str | None = None) -> dict:

@@ -1,7 +1,8 @@
 """T-0080 Salesforce dry-run UI (AppTest; D-0045 (Salesforce dry run)): the 'Integration (dry run)' tab is last, shows
 the DRY RUN banner and a display-only auth method, has no password-type input (nor does any app source), saves a
 non-secret setup and refuses a token-shaped one; the Visit record tab shows 'Preview Salesforce request' after a save and
-after a lookup, with the banner, each request's POST URL and headers, the body, the curl text and the request-set
+after a lookup, with the banner, the one Composite request's POST URL and headers, the body (allOrNone, the
+stored records as subrequests), the curl text and the request-set
 download, following the latest setup; no label anywhere says Send. Mutation: send_label (a Send label added)."""
 import datetime
 import json
@@ -77,12 +78,16 @@ def test_preview_after_save_and_lookup_and_no_send(tmp_path, monkeypatch):
     assert [h.value for h in at.subheader].count(sp.LABELS["panel"]) == 1
     assert sum(w.value == sp.BANNER for w in at.warning) >= 2  # the preview panel and the Integration tab
     codes = [c.value for c in at.code]
-    base = "POST https://example.my.salesforce.com/services/data/v62.0/composite/tree/"
-    for o in ("Visit__c", "Event"):
-        assert any(c.startswith(base + o + "\nAuthorization: Bearer <NOT CONFIGURED>\nContent-Type: application/json")
-                   for c in codes), o
-    bodies = [json.loads(c) for c in codes if c.startswith('{\n  "records"')]
-    assert bodies[0] == stored["payload"]["trees"]["Visit__c"]  # the exact stored body
+    url = "POST https://example.my.salesforce.com/services/data/v62.0/composite"
+    assert sum(c == url + "\nAuthorization: Bearer <NOT CONFIGURED>\nContent-Type: application/json"
+               for c in codes) == 1  # one Composite request (D-0046)
+    bodies = [json.loads(c) for c in codes if c.startswith('{\n  "allOrNone"')]
+    assert len(bodies) == 1 and bodies[0]["allOrNone"] is True
+    subs = bodies[0]["compositeRequest"]
+    visit = stored["payload"]["trees"]["Visit__c"]["records"][0]
+    assert subs[0]["referenceId"] == "visit"
+    assert subs[0]["body"] == {k: v for k, v in visit.items() if k not in ("attributes", pl.CHILD_REL)}  # stored
+    assert sp.stored_trees(bodies[0], sc.DEFAULTS) == stored["payload"]["trees"]
     assert any(c.startswith("curl -X POST 'https://example.my.salesforce.com/") for c in codes)
     dl = [b for b in at.get("download_button") if b.proto.label == sp.LABELS["download"]]
     assert dl, "request-set download missing"
@@ -94,7 +99,7 @@ def test_preview_after_save_and_lookup_and_no_send(tmp_path, monkeypatch):
     assert not at.exception
     assert [h.value for h in at.subheader].count(sp.LABELS["panel"]) == 2  # after the save and after the lookup
     codes = [c.value for c in at.code]
-    assert any(c.startswith("POST https://example-dev.my.salesforce.com/services/data/v62.0/composite/tree/Visit__c")
+    assert any(c.startswith("POST https://example-dev.my.salesforce.com/services/data/v62.0/composite\n")
                for c in codes)  # the latest setup
     shown = next(json.loads(c) for c in codes if '"lb_marker"' in c)
     assert pl.sha256(shown) == stored["sha256"]

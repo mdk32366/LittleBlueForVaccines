@@ -50,7 +50,7 @@ def test_instance_url_pattern():
 
 
 @pytest.mark.parametrize("field", ["instance_url", "api_version", "visit_object", "outcome_object",
-                                   "outcome_relationship", "account_relationship", "account_external_id_field",
+                                   "outcome_relationship", "outcome_parent_field", "account_relationship", "account_external_id_field",
                                    "record_type_id", "owner_mapping"])
 def test_secret_values_refused(field):
     for tok in TOKENS:

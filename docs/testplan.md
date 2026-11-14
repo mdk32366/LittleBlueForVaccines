@@ -106,25 +106,42 @@ Every mutation below is in `gen/tests/conftest.py` or `app/tests/conftest.py` an
 - **T-0077 dry-run setup** (`app/tests/test_t0077_sf_config.py`, AS-0071 (dry-run setup, non-secret fields only)):
   - The defaults validate, the instance URL default is the placeholder and the API version default is 62.0.
   - 13 off-pattern instance URLs are refused, among them http, uppercase, a path, a port, a credential prefix and a look-alike host.
-  - Eight token shapes are refused in each of the nine fields, and ordinary API names are not flagged.
+  - Eight token shapes are refused in each of the ten fields (6c adds `outcome_parent_field`), and ordinary API names are not flagged.
   - Record type ids of 15 and 18 characters are accepted, and bad names, versions and extra fields are refused.
   - The schema and the `sf_integration_config` columns are pinned, with no secret-named field or column.
   - The table is append-only and the latest row is in use. The config store reads only its own table.
   - JSON export and import round-trip and refuse unknown, secret or off-pattern fields.
   - Mutations: secret_ok (a token-shaped value accepted), secret_col (a `client_secret` field added to the schema and table), url_lax (an off-pattern instance URL accepted).
 - **T-0078 Preview Salesforce request** (`app/tests/test_t0078_sf_preview.py`, D-0045 (Salesforce dry run)):
-  - One POST per tree, to `{instance}/services/data/v{api}/composite/tree/{Visit__c|Event|Task}`, with exactly the headers `Authorization: Bearer <NOT CONFIGURED>` and `Content-Type: application/json`.
-  - With the default setup, each body is the stored tree byte for byte, and the stored sha256 is rebuilt from the bodies. Through a renaming setup it is rebuilt again after the rename is undone.
+  - Since 6c (D-0046 (one Composite request, allOrNone)): ONE POST to `{instance}/services/data/v{api}/composite`, with exactly the headers `Authorization: Bearer <NOT CONFIGURED>` and `Content-Type: application/json`. Its subrequests are, in order, the Visit__c, the outcomes, the Event and the Tasks, each `POST /services/data/v{api}/sobjects/{object}` (AS-0072 (composite subrequest mapping)).
+  - With the default setup, each subrequest body is its stored record without `attributes`. The visit has no children, and each outcome gains `Visit__c` = `@{visit.id}`. The stored sha256 is rebuilt from the one body by `stored_trees`, and through a renaming setup (including `outcome_parent_field`) it is rebuilt again after the rename is undone.
+  - Shape change: before 6c, each of up to three bodies was a stored tree byte for byte. Now the guarantee is that the one body's subrequests rebuild the stored trees exactly.
   - The request set carries the stored sha256, and the curl text carries the same body and the placeholder token, with quotes shell-safe.
   - The preview is pure and leaves its input untouched.
-  - A 0.2 payload, a sha256 mismatch, an off-pattern URL or a colliding setup name gets no preview.
-  - Mutation: body_drift (the preview body gains a field).
+  - A 0.2 payload, a sha256 mismatch, an off-pattern URL or a colliding setup name gets no preview. That includes an `outcome_parent_field` equal to an outcome field.
+  - Mutation: body_drift (a subrequest body gains a field; reworked in 6c for the Composite body).
 - **T-0079 dry-run no egress** (`app/tests/test_t0079_sf_no_egress.py`, extends T-0049 (no Salesforce network) to the new modules): sf_config, sf_preview and integration_tab import no HTTP, socket or Salesforce library and bind none at runtime, and none contains `urlopen`. The only host text is the URL pattern, the placeholder default and the refusal message in sf_config. Setup save, latest, export, import, a visit save and every preview run with socket connect, create_connection, getaddrinfo and urllib's urlopen patched to raise. Mutation: net_call (urlopen added to the preview path; loopback only).
 - **T-0080 dry-run UI** (`app/tests/test_t0080_sf_dryrun_ui.py`): AppTest.
   - "Integration (dry run)" is the last tab. It shows the DRY RUN banner and the display-only auth method.
   - No text input is a password field, and no app source has `type="password"`.
   - A token-shaped record type id is refused with nothing stored. A good setup saves, and the form then shows it.
-  - After a save and after a lookup, the Visit record tab shows "Preview Salesforce request" with the banner, each POST line with its headers, the exact stored Visit__c body, the curl text and the request-set download. The lookup's preview follows the latest setup.
+  - After a save and after a lookup, the Visit record tab shows "Preview Salesforce request" with the banner and the one Composite POST line with its headers (6c). The body has `allOrNone: true`, the stored Visit__c record as the first subrequest and subrequests that rebuild the stored trees. The curl text and the request-set download are also shown. The lookup's preview follows the latest setup.
   - No label anywhere says Send.
   - Mutation: send_label (the request-set download labelled Send).
 - T-0052 (UI tabs) now expects "Integration (dry run)" as a fifth, last tab. T-0059 reads the Visit__c tree for its outcome checks and finds the payload code block by its marker, because the preview's code blocks now follow it. Nothing else in them changed.
+
+## 6c one Composite request (app/)
+- **T-0081 one Composite request** (`app/tests/test_t0081_sf_composite.py`, D-0046 (one Composite request, allOrNone), AS-0072 (composite subrequest mapping), closes F-0033):
+  - The body is exactly `allOrNone` (true) and `compositeRequest`. The Visit__c is the first subrequest with referenceId `visit`, then the outcomes, the Event and the Tasks, every one a POST to a relative `/services/data/v62.0/sobjects/` URL, with unique referenceIds.
+  - Every outcome's master-detail field (default `Visit__c`, or the setup's `outcome_parent_field`) and every Event and Task `WhatId` is `@{visit.id}`, and `@{visit.id}` names the first subrequest.
+  - 25 subrequests build (12 outcomes, 11 follow-ups). 26 are refused with "26 subrequests; one Composite request allows at most 25", and so is 50 + 50.
+  - `check_composite` refuses each broken shape on its own: allOrNone false or missing, the visit not first, a broken Event, Task or outcome reference, a duplicate referenceId, and 26 subrequests with every reference intact.
+  - Mutations:
+    - allornone_off: allOrNone false, its guard off.
+    - ref_break: the Event, Tasks and outcomes point at `@{event.id}`, the reference guard off.
+    - over_25: the count guard off.
+    - visit_not_first: the Visit__c moved last, the first-subrequest guard off.
+- **T-0082 placeholder not linked** (`app/tests/test_t0082_placeholder_not_linked.py`, F-0034): AppTest. After a save, the Integration tab caption shows `` `https://example.my.salesforce.com` is a placeholder `` and the preview caption shows the instance in backticks. No caption or markdown holds a bare `https://` URL.
+  - The Architect's addition: the Integration tab renders no `<a>` anchor to any salesforce.com (or force.com) host. `rendered_anchors` finds every anchor Streamlit's GFM markdown would make (bare-URL and `www.` autolinks, `<url>`, `[text](url)`, raw `<a href>`), with code spans and blocks excluded. It is applied to every caption, markdown, alert and widget label on the tab. The detector is checked on its own: the bare caption links, the backticked one does not.
+  - Mutations: placeholder_linked (the captions' backticks dropped), link_live (the Integration tab's auto-link restored).
+- T-0079 now expects one request to `…/composite` with only relative subrequest URLs. T-0077 covers the new `outcome_parent_field` in the credential refusal. Mutations net_call, secret_ok, secret_col, send_label and url_lax are unchanged.

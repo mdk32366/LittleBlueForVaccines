@@ -11,8 +11,9 @@ Shape lb-sf-tree-0.3, AS-0070 (sf payload lb-sf-tree-0.3, Visit__c root), D-0045
                                 + nested Talking_Point_Outcomes__r master-detail child records]}
   trees.Event    = {"records": [one Event, WhatId = VISIT_REF]}
   trees.Task     = {"records": [one Task per non-empty follow-up, WhatId = VISIT_REF]} (omitted when there are none)
-VISIT_REF "@{visit.id}" is a placeholder for the Id the Visit__c request returns; separate tree requests can't
-reference each other, so a real integration fills it in (F-0033).
+VISIT_REF "@{visit.id}" references the Id the Visit__c subrequest creates. The stored shape is unchanged in 6c: the
+preview maps these trees to ONE Composite request (allOrNone), where the reference resolves (D-0046, AS-0072; F-0033
+closed).
 Every __c and __r name (Visit__c, Talking_Point_Outcome__c, Talking_Point_Outcomes__r, Account__r and every custom
 field) is still a proposal and has not been checked against any org (AS-0070).
 Rows saved before v0.2-f keep lb-sf-tree-0.2 (Event root, AS-0049 (sf payload field names)); `validate` checks each
@@ -44,8 +45,8 @@ CHILD_REL = "Talking_Point_Outcomes__r"
 ROOT_OBJECT = "Visit__c"
 ACCOUNT_REL = "Account__r"
 ACCOUNT_EXT_ID = "LB_System_Id__c"
-VISIT_REF = "@{visit.id}"  # placeholder for the Visit__c Id (F-0033); the dry run never resolves it
-TREE_ORDER = (ROOT_OBJECT, "Event", "Task")  # request order: the Visit__c tree first
+VISIT_REF = "@{visit.id}"  # the Visit__c subrequest's Id in the one Composite request (D-0046); never sent
+TREE_ORDER = (ROOT_OBJECT, "Event", "Task")  # subrequest order: the Visit__c (then its outcomes) first
 SYSTEM_ID = re.compile(r"^SYNCP\d{6}$")
 
 
