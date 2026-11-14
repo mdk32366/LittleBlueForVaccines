@@ -1,7 +1,9 @@
 """'Visit record' tab (v0.2-d, PR 8): outcomes per talking point, typed notes, save as a FAKE Salesforce payload record,
 exact-key lookup, visit file download/load. v0.2-c (PR 7) adds an optional voice recording that pre-fills the notes box
 (brief/stt.py; AS-0047 (STT engine and model), AS-0059 (raw audio is not kept)). No network; nothing is sent anywhere (AS-0057 (sf payload is a database
-record, not a send)). Kept in its own module so app.py only gains one tab line and one call."""
+record, not a send)). v0.2-f adds the 'Preview Salesforce request' panel after a save or a lookup: a pure function of
+the stored payload and the latest dry-run setup (brief/sf_preview.py, D-0045 (Salesforce dry run)); nothing is sent.
+Kept in its own module so app.py only gains one tab line and one call."""
 from __future__ import annotations
 
 import datetime as _dt
@@ -12,7 +14,7 @@ import streamlit as st
 
 import hashlib
 
-from . import benchmark as bm, clean, client_metrics, config, load, payload as pl, stt, visits
+from . import benchmark as bm, clean, client_metrics, config, load, payload as pl, sf_config, sf_preview, stt, visits
 
 
 @st.cache_data(show_spinner="Computing client metrics…")
@@ -95,6 +97,36 @@ def _show_record(found: dict):
     st.code(json.dumps(found["payload"], indent=2, ensure_ascii=False), language="json")
 
 
+def _preview_panel(payload: dict, stored_sha: str, where: str) -> None:
+    """'Preview Salesforce request': each request a real integration would make for this stored payload. Shown, never
+    sent. Pure: (stored payload, latest setup) in, text out (T-0078)."""
+    st.subheader(sf_preview.LABELS["panel"])
+    st.warning(sf_preview.BANNER)
+    try:
+        cfg = sf_config.latest_config()["config"]
+    except (sqlite3.Error, OSError, sf_config.InvalidConfig) as e:
+        cfg = dict(sf_config.DEFAULTS)
+        st.caption(f"Stored setup unavailable ({type(e).__name__}); previewing with the default setup.")
+    try:
+        reqs = sf_preview.build_requests(payload, cfg)
+        data = sf_preview.request_set_bytes(payload, cfg, stored_sha)
+    except (sf_preview.NotPreviewable, sf_config.InvalidConfig, pl.InvalidPayload) as e:
+        st.info(f"No preview: {e}")
+        return
+    st.caption(f"{len(reqs)} sObject Tree requests, in order. Setup: instance {cfg['instance_url']} (placeholder, never "
+               f"contacted), API v{cfg['api_version']}. WhatId {pl.VISIT_REF} stands for the Id the first request "
+               "would return (F-0033).")
+    for i, r in enumerate(reqs, 1):
+        st.markdown(f"**Request {i} of {len(reqs)}: {r['root']}**")
+        st.code(f"{r['method']} {r['url']}\n" + "\n".join(f"{k}: {v}" for k, v in r["headers"].items()),
+                language="http")
+        st.code(json.dumps(r["body"], indent=2, ensure_ascii=False), language="json")
+        st.code(r["curl"], language="bash")
+    st.download_button(sf_preview.LABELS["download"], data=data, mime="application/json",
+                       file_name=f"sf-dryrun-requests-{payload['lb_visit_key'].rsplit('|', 1)[1]}.json",
+                       key=f"vr_preview_download_{where}")
+
+
 @st.cache_resource(show_spinner=False)
 def _transcriber(key: tuple):
     """One transcriber per STT config per process, so the model loads once (lazy, on the first recording)."""
@@ -171,6 +203,10 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
             st.session_state["vr_saves"] = saves + 1
             st.success(f"Saved visit {res['visit_key']} as payload record version {res['version']} "
                        f"(sha256 {res['sha256'][:12]}…). Nothing was sent.")
+            st.session_state["vr_last_saved"] = {"payload": res["payload"], "sha256": res["sha256"]}
+    last = st.session_state.get("vr_last_saved")
+    if last:
+        _preview_panel(last["payload"], last["sha256"], "saved")
     if saves >= visits.SAVES_PER_SESSION:
         st.caption(f"Save limit for this session reached ({visits.SAVES_PER_SESSION}).")
 
@@ -192,6 +228,8 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     found = st.session_state.get("vr_found")
     if isinstance(found, dict):
         _show_record(found)
+        if found["payload"] is not None:
+            _preview_panel(found["payload"], found["sha256"], "found")
     elif found == "none":
         st.info("No visit for that exact rep, date and company.")
     elif found:

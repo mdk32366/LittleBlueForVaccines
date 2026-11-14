@@ -37,7 +37,7 @@ st.sidebar.write(f"Live benchmark: **{fs.benchmark_label}**")
 if fs.benchmark_note:
     st.sidebar.warning(fs.benchmark_note)
 
-tab_brief, tab_talk, tab_qa, tab_visit = st.tabs(config.TABS)  # T-0052: Brief, Talking points, Contract Q&A, Visit record
+tab_brief, tab_talk, tab_qa, tab_visit, tab_sf = st.tabs(config.TABS)  # T-0052: Brief, Talking points, Contract Q&A, Visit record, Integration (dry run)
 
 with tab_brief:
     st.header(f"{fs.name} ({sid})")
@@ -113,3 +113,7 @@ with tab_visit:  # v0.2-d (PR 8): FAKE Salesforce payload record, no send (AS-00
     from functools import partial  # noqa: E402 (imports kept in this block so the PR's app.py change stays in one place)
     from brief import visit_tab  # noqa: E402
     visit_tab.render(sid, fs, ids, points_provider=partial(talking.payload_points, fsets=fsets))  # same points as the Talking points tab
+
+with tab_sf:  # v0.2-f: Salesforce dry-run setup, non-secret fields only; nothing is sent (D-0045 (Salesforce dry run))
+    from brief import integration_tab  # noqa: E402
+    integration_tab.render()

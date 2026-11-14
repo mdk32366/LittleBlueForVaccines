@@ -170,12 +170,12 @@ def apply_mutation(name):
     elif name == "babies_swap":  # T-0058: private and total swapped
         client_metrics._babies = lambda c: (c["dtap"] / 5, c["varicella"] / 2)
     # v0.2-d visit store + FAKE Salesforce payload record (T-0047, T-0048, T-0049, T-0051, T-0059)
-    elif name == "pay_drop":  # T-0047: the Event loses ActivityDate
+    elif name == "pay_drop":  # T-0047: the Visit__c root loses Visit_Date__c
         orig_build = payload.build_payload
 
         def no_date(**kw):
             p = orig_build(**kw)
-            p["trees"]["Event"]["records"][0].pop("ActivityDate")
+            p["trees"][payload.ROOT_OBJECT]["records"][0].pop("Visit_Date__c")
             return p
         payload.build_payload = no_date
     elif name == "pay_nofake":  # T-0047: the FAKE-SYNTHETIC marker is dropped everywhere
@@ -186,7 +186,9 @@ def apply_mutation(name):
             p["lb_marker"] = "REAL"
             for tree in p["trees"].values():
                 for r in tree["records"]:
-                    r["Description"] = r["Description"].replace(payload.FAKE_MARKER + " ", "")
+                    for f in ("Description", "Description__c"):
+                        if f in r:
+                            r[f] = r[f].replace(payload.FAKE_MARKER + " ", "")
             return p
         payload.build_payload = no_fake
     elif name == "schema_lax":  # T-0047: the schema check accepts anything
@@ -325,6 +327,60 @@ def apply_mutation(name):
     elif name == "upload_si":  # T-0062: the upload-limit check reads Caddy's MiB as MB (base 1000)
         from tools import upload_limit_check as ulc
         ulc.CADDY_UNITS = dict(ulc.CADDY_UNITS, mib=1000 ** 2, kib=1000, gib=1000 ** 3)
+    # v0.2-f Salesforce dry run (T-0047, T-0077 to T-0080)
+    elif name == "root_event":  # T-0047: the outcomes are nested under the Event again
+        orig_build = payload.build_payload
+
+        def on_event(**kw):
+            p = orig_build(**kw)
+            kids = p["trees"][payload.ROOT_OBJECT]["records"][0].pop(payload.CHILD_REL, None)
+            if kids:
+                p["trees"]["Event"]["records"][0][payload.CHILD_REL] = kids
+            return p
+        payload.build_payload = on_event
+    elif name == "net_call":  # T-0079: the preview path calls urllib.request.urlopen (loopback only, never the instance)
+        import importlib
+        from brief import sf_preview
+        sf_preview.urlreq = importlib.import_module("urllib.request")
+        orig_reqs = sf_preview.build_requests
+
+        def phone_home(p, cfg):
+            try:
+                sf_preview.urlreq.urlopen("http://127.0.0.1:9/", timeout=0.2)
+            except OSError:
+                pass
+            return orig_reqs(p, cfg)
+        sf_preview.build_requests = phone_home
+    elif name == "secret_ok":  # T-0077: a token-shaped value is accepted
+        from brief import sf_config
+        sf_config.looks_secret = lambda value: False
+    elif name == "secret_col":  # T-0077: a secret column is added to the config schema (and the table)
+        import copy
+        from brief import sf_config
+        sch = copy.deepcopy(sf_config.schema())
+        sch["properties"]["client_secret"] = {"type": "string"}
+        sf_config.schema = lambda: sch
+        sf_config.DDL = sf_config.DDL.replace("  sha256         TEXT NOT NULL\n", "  sha256         TEXT NOT NULL,\n"
+                                              "  client_secret  TEXT\n")
+    elif name == "body_drift":  # T-0078: the preview body is no longer the stored tree
+        from brief import sf_preview
+        orig_body = sf_preview._body
+
+        def drift(tree, root, cfg):
+            b = orig_body(tree, root, cfg)
+            b["records"][0]["LB_Previewed__c"] = True
+            return b
+        sf_preview._body = drift
+    elif name == "send_label":  # T-0080: the request-set download is labelled Send
+        from brief import sf_preview
+        sf_preview.LABELS = dict(sf_preview.LABELS, download="Send request set to Salesforce")
+    elif name == "url_lax":  # T-0077: an off-pattern instance URL is accepted (the URL check and the schema pattern)
+        import copy
+        from brief import sf_config
+        sf_config.INSTANCE_URL_RE = re.compile(r".*")
+        sch = copy.deepcopy(sf_config.schema())
+        sch["properties"]["instance_url"].pop("pattern")
+        sf_config.schema = lambda: sch
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 

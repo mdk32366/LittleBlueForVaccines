@@ -160,3 +160,26 @@ The deploy files (Dockerfile, Streamlit config.toml, reverse-proxy Caddyfile) st
 - **Permissions-Policy `microphone=(self)`.** The upload endpoint `/_stcore/upload_file/*` is reachable (XSRF protection stays on), for the recorder and Load visit file.
 - **Upload limits equal (F-0026).** The per-app proxy's `request_body max_size` for `/_stcore/upload_file/*` must equal Streamlit's `server.maxUploadSize` in bytes: `10MiB` against `10`, both 10,485,760 B. The deploy checks this with `app/tools/upload_limit_check.py` (T-0062).
 - **Widget keys follow the sidebar system (F-0025).** A Visit record widget whose default depends on the sidebar system is keyed on that system, e.g. `vr_company_{sid}` and `vr_l_sid_{sid}`. A fixed key keeps the first system's value (T-0061).
+
+## v0.2-f Salesforce dry run (app/)
+D-0045 (Salesforce dry run). There is no Salesforce connection: no client, no credentials, no network call (D-0037 (no real Salesforce)).
+```
+Visit record tab: Save visit --> payload.build_payload() lb-sf-tree-0.3 (AS-0070) --> payload.validate() (schema of its version)
+                    --> sf_payloads (append version n+1, sha256)                                       [nothing is sent]
+                  Look up visit --> latest payload row (0.3, or 0.2 for rows saved before v0.2-f)
+   --> "Preview Salesforce request" = sf_preview.build_requests(stored payload, sf_config.latest_config())   [pure]
+         for root in Visit__c, Event, Task (when present):
+           POST {instance}/services/data/v{api}/composite/tree/{object}
+           Authorization: Bearer <NOT CONFIGURED>; Content-Type: application/json
+           body = the stored tree (setup renames undone by stored_tree: T-0078 checks the sha256)
+         + curl text with the placeholder token + "Download request set (.json)"
+         banner: DRY RUN. Nothing is sent. No credentials are stored.
+Integration (dry run) tab: setup form (non-secret fields, AS-0071) --> sf_config.validate()
+   (credential-shape refusal, instance URL pattern, JSON Schema) --> sf_integration_config (append-only) ; JSON export/import
+```
+
+- **Modules.** `brief/payload.py` (0.3 builder, legacy 0.2 builder for old visit files, version-dispatched `validate`), `brief/sf_config.py` (setup validation and storage), `brief/sf_preview.py` (the pure preview), `brief/integration_tab.py` (the new tab), and `brief/visit_tab.py` (gains the preview panel). Schemas: `visit_payload.schema.json` (0.3), `visit_payload-0.2.schema.json` (legacy) and `sf_integration_config.schema.json`. app.py gains one tab block; "Integration (dry run)" is the last entry of `config.TABS`.
+- **Payload tree.** The Visit__c is the root, with the Talking_Point_Outcome__c children as master-detail under `Talking_Point_Outcomes__r`. Event and Task are their own tree requests with `WhatId` = `@{visit.id}`, a placeholder that nothing resolves (F-0033). Every `__c` and `__r` name is a proposal (AS-0070).
+- **Preview purity.** The preview reads the stored payload and the latest setup and returns text. It never rebuilds the payload from the visit fields. It refuses a payload whose sha256 is not the stored one, and it shows a 0.2 payload as stored, without a preview.
+- **No egress.** The new modules import no network library (T-0079), and the instance URL, a placeholder by default, is only ever shown as text.
+- **Unchanged.** The visit store tables and lookup rules (AS-0048 (visit key, exact lookup), AS-0058 (open visit store, no passcode)), the Brief, Talking points and Q&A tabs, the PDF, gen/ and gen/out.

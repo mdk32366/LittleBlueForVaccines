@@ -184,8 +184,9 @@ def visit_file(found: dict) -> bytes:
 
 
 def parse_visit_file(data: bytes) -> dict:
-    """'Load visit file': JSON, the visit-file schema, the payload schema, and the payload must match the visit
-    (rebuilt from the file's own fields). Anything else raises InvalidVisitFile."""
+    """'Load visit file': JSON, the visit-file schema, the payload schema of the payload's own version (0.3, or 0.2 for
+    a file saved before v0.2-f), and the payload must match the visit (rebuilt from the file's own fields in that same
+    version). Anything else raises InvalidVisitFile. Saving a loaded visit always writes a new 0.3 payload."""
     import jsonschema
     try:
         doc = json.loads(data)
@@ -200,8 +201,9 @@ def parse_visit_file(data: bytes) -> dict:
     except pl.InvalidPayload as e:
         raise InvalidVisitFile(f"payload: {e}") from None
     v = doc["visit"]
+    build = pl.BUILDERS[doc["payload"]["lb_schema_version"]]  # a pre-v0.2-f file is checked against the 0.2 shape
     try:
-        rebuilt = pl.build_payload(rep=v["rep"], visit_date=v["visit_date"], system_id=v["system_id"],
+        rebuilt = build(rep=v["rep"], visit_date=v["visit_date"], system_id=v["system_id"],
                                    system_name=v["system_name"], notes=v["notes"], outcomes=_outcomes_from(v["outcomes"]),
                                    start_time=v["start_time"], duration=v["duration"])
     except ValueError as e:
