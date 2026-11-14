@@ -82,6 +82,7 @@ def test_lookup_store_unreadable(tmp_path, monkeypatch):
     at = _app(monkeypatch, _dir_as_db(tmp_path))
     at.text_input(key="vr_l_rep").input("demo rep").run()
     at.date_input(key="vr_l_date").set_value(D).run()
+    assert at.selectbox(key="vr_l_sid_SYNCP000025").value == "SYNCP000025"  # keyed on the sidebar system (F-0025)
     at.button(key="vr_lookup").click().run()
     assert not at.exception, [e.value for e in at.exception]
     assert any(e.value.startswith("Lookup failed: the visit store can't be read") for e in at.error), \

@@ -84,6 +84,9 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "stt_prefill": (["test_t0046_stt_ui.py"], ["test_stub_prefills_notes_and_saves", "test_no_audio_on_disk_or_in_store"]),
     "stt_dedupe": (["test_t0046_stt_ui.py"], ["test_one_transcription_per_recording"]),
     "stt_cap": (["test_t0046_stt_ui.py"], ["test_transcript_cut_to_notes_limit"]),
+    # PR 6-hot: lookup Company follows the sidebar (T-0061, F-0025); upload limits equal (T-0062, F-0026)
+    "lookup_fixed_key": (["test_t0061_lookup_company_follows_sidebar.py"], ["test_lookup_company_follows_sidebar"]),
+    "upload_si": (["test_t0062_upload_limit_check.py"], ["test_caddy_sizes_in_bytes", "test_equal_limits_pass"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

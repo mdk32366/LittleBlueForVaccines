@@ -179,8 +179,9 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     lc = st.columns(3)
     l_rep = lc[0].text_input("Rep", key="vr_l_rep")
     l_date = lc[1].date_input("Visit date", value=_dt.date.today(), key="vr_l_date")
+    # Keyed on the sidebar system (F-0025): with a fixed key Streamlit keeps the first value and ignores `index`.
     l_sid = lc[2].selectbox("Company", system_ids, index=system_ids.index(sid) if sid in system_ids else 0,
-                            key="vr_l_sid")
+                            key=f"vr_l_sid_{sid}")
     if st.button(visits.LABELS["lookup"], key="vr_lookup"):
         try:
             st.session_state["vr_found"] = visits.lookup(l_rep, l_date.isoformat(), l_sid) or "none"

@@ -56,7 +56,7 @@ def test_save_then_lookup_round_trip(tmp_path, monkeypatch):
 
     at.text_input(key="vr_l_rep").input("demo rep").run()
     at.date_input(key="vr_l_date").set_value(D).run()
-    at.selectbox(key="vr_l_sid").set_value("SYNCP000025").run()
+    at.selectbox(key="vr_l_sid_SYNCP000025").set_value("SYNCP000025").run()
     at.button(key="vr_lookup").click().run()
     assert not at.exception
     assert any("version 1 of 1" in s.value for s in at.success)

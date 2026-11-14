@@ -289,6 +289,18 @@ def apply_mutation(name):
     elif name == "stt_cap":  # T-0046: the transcript is not cut to the notes limit
         from brief import visit_tab
         visit_tab._merge_notes = lambda typed, text: ((f"{typed.strip()}\n{text}" if typed.strip() else text), False)
+    elif name == "lookup_fixed_key":  # T-0061: the lookup Company picker gets its old fixed key back (F-0025)
+        from streamlit.elements.widgets.selectbox import SelectboxMixin
+        orig_sb = SelectboxMixin.selectbox
+
+        def fixed_key(self, *a, **k):
+            if str(k.get("key", "")).startswith("vr_l_sid_"):
+                k["key"] = "vr_l_sid"
+            return orig_sb(self, *a, **k)
+        SelectboxMixin.selectbox = fixed_key
+    elif name == "upload_si":  # T-0062: the upload-limit check reads Caddy's MiB as MB (base 1000)
+        from tools import upload_limit_check as ulc
+        ulc.CADDY_UNITS = dict(ulc.CADDY_UNITS, mib=1000 ** 2, kib=1000, gib=1000 ** 3)
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
