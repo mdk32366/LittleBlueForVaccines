@@ -1,4 +1,5 @@
-"""T-0040 (pending Trinity's numbering) Brief tab 'Contracts on file' shows the contract marker (AppTest, headless)."""
+"""T-0040 Brief tab 'Contracts on file' shows the contract marker (AppTest, headless).
+Re-pinned for schema_v1 (the Architect's ruling): 002 auto-renews, 021 expired, 025 live (were 036 / 014 / 025)."""
 from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
@@ -17,11 +18,11 @@ def _brief_text(sid):
 
 
 def test_brief_tab_markers():
-    heads, md = _brief_text("SYNCP000036")
+    heads, md = _brief_text("SYNCP000002")
     assert "Contracts on file" in heads
     assert contracts.AUTO_RENEW_MARKER in md and contracts.EXPIRED_MARKER not in md
     heads, md = _brief_text("SYNCP000025")
     assert "Contracts on file" in heads
     assert contracts.AUTO_RENEW_MARKER not in md and contracts.EXPIRED_MARKER not in md
-    heads, md = _brief_text("SYNCP000014")
+    heads, md = _brief_text("SYNCP000021")
     assert "Contracts on file" in heads and contracts.EXPIRED_MARKER in md and contracts.AUTO_RENEW_MARKER not in md

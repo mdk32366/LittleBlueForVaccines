@@ -1,5 +1,6 @@
 """Fixtures + REDPROOF mutations (test-side monkeypatches only; production code has no hooks)."""
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -63,8 +64,9 @@ def apply_mutation(name):
     elif name == "nosamesection":  # (b) drop the same-section check
         contracts.same_section = lambda a, b: True
     elif name == "briefmarker":  # (c) hide the marker on the Brief tab only (PDF untouched)
-        report.brief_contract_lines = lambda rows: [ln.replace(contracts.AUTO_RENEW_MARKER, "").replace(contracts.EXPIRED_MARKER, "")
-                                                    for ln in render.contract_lines(rows)]
+        report.brief_contract_lines = lambda rows, marker="": [
+            ln.replace(contracts.AUTO_RENEW_MARKER, "").replace(contracts.EXPIRED_MARKER, "")
+            for ln in render.contract_lines(rows, marker)]
     elif name == "schema_autorenew":  # T-0041: drop auto_renew on one MSA, make it a string on another
         orig = contracts.system_terms
 
@@ -110,6 +112,10 @@ def apply_mutation(name):
         bm.R1_NUM_SUBCLASSES = ("MenB",)
     elif name == "refusal_text":  # T-0068 app: the app's refusal string drifts
         contracts.REFUSAL = "not found in the contracts"
+    elif name == "footer_eats_body":  # T-0076: the last section ends at the first line after its heading
+        contracts.RULE_RE = re.compile(r"^\S", re.M)
+    elif name == "marker_hidden":  # T-0076: the app stops showing the documents' marker
+        contracts.system_marker = lambda system_id: ""
     elif name == "guard_open":  # T-0066: refuse_training_input accepts any path
         train_guard.refuse_training_input = lambda *a, **k: None
     # v0.2-a client metrics (T-0042, T-0043, T-0044, T-0053)
@@ -131,7 +137,6 @@ def apply_mutation(name):
     elif name == "a1_excl":  # T-0042/T-0044: A1 state reverts to the system-excluded denominator (can exceed 1)
         client_metrics.state_share = lambda sys_d, peer_d: (sys_d / peer_d, "ok") if peer_d > 0 else (None, "undefined")
     elif name == "tok_wide":  # T-0053: any F-number token is accepted
-        import re
         validator.TOKEN = re.compile(r"\{(F\d+\.[a-z0-9_]+)\}")
     # v0.2-b talking points, tabs and the client email 2026-11-13 items (T-0045, T-0052, T-0055..T-0058)
     elif name == "tp_digit":  # T-0045: a literal number in a template

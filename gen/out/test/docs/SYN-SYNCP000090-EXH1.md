@@ -105,6 +105,9 @@ Exhibit to the arrangement file of Silver Oak Medical Group 090 [SYNCP000090]. A
 
 * R7_FLU_TDAP Women's Health in season: Influenza to Tdap = 0.00 | same-state pool 0.86
 * R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap = 0.00 | same-state pool 0.00
+* R7 Boostrix share of the Women's Health season three = 100.0% | same-state pool 41.7% | countrywide 52.9%
+* R7 Influenza share of the Women's Health season three = 0.0% | same-state pool 58.3% | countrywide 26.7%
+* R7 RSV Vaccine share of the Women's Health season three = 0.0% | same-state pool 0.0% | countrywide 20.4%
 
 ## 11. Countrywide Aggregate
 

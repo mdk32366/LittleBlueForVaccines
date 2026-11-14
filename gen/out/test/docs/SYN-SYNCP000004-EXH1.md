@@ -106,6 +106,9 @@ Exhibit to the arrangement file of Pioneer Family Clinic 004 [SYNCP000004]. Acco
 
 * R7_FLU_TDAP Women's Health in season: Influenza to Tdap = 0.00 | same-state pool insufficient volume
 * R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap = 0.00 | same-state pool insufficient volume
+* R7 Boostrix share of the Women's Health season three = undefined | same-state pool 0.1% | countrywide 52.9%
+* R7 Influenza share of the Women's Health season three = undefined | same-state pool 99.9% | countrywide 26.7%
+* R7 RSV Vaccine share of the Women's Health season three = undefined | same-state pool 0.0% | countrywide 20.4%
 
 ## 11. Countrywide Aggregate
 

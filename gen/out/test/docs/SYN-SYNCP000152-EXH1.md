@@ -105,6 +105,9 @@ Exhibit to the arrangement file of Harborview Regional Hospital 152 [SYNCP000152
 
 * R7_FLU_TDAP Women's Health in season: Influenza to Tdap = undefined | same-state pool insufficient volume
 * R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap = undefined | same-state pool insufficient volume
+* R7 Boostrix share of the Women's Health season three = undefined | same-state pool undefined | countrywide 52.9%
+* R7 Influenza share of the Women's Health season three = undefined | same-state pool undefined | countrywide 26.7%
+* R7 RSV Vaccine share of the Women's Health season three = undefined | same-state pool undefined | countrywide 20.4%
 
 ## 11. Countrywide Aggregate
 

@@ -20,6 +20,8 @@ def _fid(base, f):
     lvl, item = q["level"], q["item"]
     if base in ("exh_ratio", "exh_ratio_state", "nat_ratio"):
         return f"F13.{item.lower()}{SFX[lvl]}"
+    if base in ("exh_r7_share", "exh_r7_share_state", "nat_r7_share"):
+        return f"F13.r7_{q['part']}{SFX[lvl]}"
     if base in ("exh_private_share", "exh_private_share_state", "nat_private_share"):
         return f"F11.private_share{SFX[lvl]}"
     if base in ("exh_age_share", "exh_age_share_state", "nat_age_share"):
@@ -43,7 +45,7 @@ def _exh_terms(root):
 
 
 def test_exhibit_figures_equal_app_facts(v1_inproc, real_client):
-    checked, bad = 0, []
+    checked, bad, seen = 0, [], set()
     for name, p in _exh_terms(v1_inproc).items():
         sid = name.split("-")[1]
         fs = real_client[sid].facts
@@ -51,6 +53,7 @@ def test_exhibit_figures_equal_app_facts(v1_inproc, real_client):
             fid = _fid(re.sub(r"-\d+$", "", k), f)
             if fid is None:
                 continue
+            seen.add(fid)
             st = f["qualifier"]["status"]
             app_st = fs.get(fid + "_st")
             if app_st is not None and app_st.value != st:
@@ -67,6 +70,9 @@ def test_exhibit_figures_equal_app_facts(v1_inproc, real_client):
             checked += 1
     assert not bad, f"{len(bad)} parity breaks, e.g. {bad[:5]}"
     assert checked > 180 * 20, checked
+    want = {f"F13.{r}{x}" for r in ("r1", "r2", "r3", "r4", "r5", "r6", "r7_flu_tdap", "r7_rsv_tdap",
+                                     "r7_boostrix", "r7_flu", "r7_rsv") for x in SFX.values()}
+    assert want <= seen, sorted(want - seen)  # the R1-R7 coverage this test claims, at all three levels
 
 
 def test_committed_out_equals_inprocess(v1_inproc):

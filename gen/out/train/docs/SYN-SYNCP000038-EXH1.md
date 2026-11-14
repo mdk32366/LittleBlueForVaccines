@@ -106,6 +106,9 @@ This schedule forms part of the contract file for Lakeside Community Health 038 
 
 - R7_FLU_TDAP Women's Health in season: Influenza to Tdap: 0.00 (in-state peers 0.86)
 - R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap: 0.00 (in-state peers 0.00)
+- R7 Boostrix share of the Women's Health season three: 100.0% (in-state peers 41.7%; national 52.9%)
+- R7 Influenza share of the Women's Health season three: 0.0% (in-state peers 58.3%; national 26.7%)
+- R7 RSV Vaccine share of the Women's Health season three: 0.0% (in-state peers 0.0%; national 20.4%)
 
 ## 11. National Pooled Figures
 

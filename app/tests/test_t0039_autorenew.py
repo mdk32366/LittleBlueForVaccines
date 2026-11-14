@@ -34,9 +34,9 @@ def test_rule_ignores_clause_wording():
     assert contracts.field_marker("expiration_date", EXP, [_auto(True, span="zzz qqq")], docs) == contracts.AUTO_RENEW_MARKER
 
 
-def test_pre_regen_split_9_12_stub_data(real_facts):
-    """PRE-REGEN (stub-v0 gen/out at manifest a16eb5a0; superseded by the GATE 2 count pin after the schema_v1
-    regeneration). NOT the final count pin: 21 expired = 9 auto-renew + 12 none, exact ids; edges 094/095/096 live."""
+def test_split_10_9_schema_v1(real_facts):
+    """GATE 2 count pin (schema_v1 gen/out, the Architect's ruling): 19 expired = 10 auto-renew + 9 none, exact ids;
+    edges 005/106 live. Was (stub-v0, manifest a16eb5a0): 21 = 9 + 12, edges 094/095/096."""
     auto, none = [], []
     for sid in sorted(real_facts):
         for h in contracts.lookup(sid, base="expiration_date"):
@@ -45,16 +45,16 @@ def test_pre_regen_split_9_12_stub_data(real_facts):
             elif h["marker"] == contracts.EXPIRED_MARKER:
                 none.append(sid)
     ids = lambda xs: ["SYNCP000" + x for x in xs.split()]  # noqa: E731
-    assert auto == ids("007 009 018 036 062 088 099 140 150"), auto
-    assert none == ids("014 068 083 090 101 130 135 141 146 148 149 164"), none
-    assert len(auto) + len(none) == 21
-    for sid in ids("094 095 096"):
+    assert auto == ids("002 012 024 028 050 053 081 113 138 146"), auto
+    assert none == ids("021 044 075 080 083 092 108 130 179"), none
+    assert len(auto) + len(none) == 19
+    for sid in ids("005 106"):
         assert all(h["marker"] == "" and not h["expired"] for h in contracts.lookup(sid, base="expiration_date")), sid
 
 
 def test_status_column_and_citations_use_marker():
-    marks = contracts.system_markers("SYNCP000036")
-    assert marks[("SYN-SYNCP000036-MSA1", "expiration_date")] == contracts.AUTO_RENEW_MARKER
-    assert contracts.system_markers("SYNCP000014")[("SYN-SYNCP000014-MSA1", "expiration_date")] == contracts.EXPIRED_MARKER
-    cites = contracts.answer("SYNCP000036", "When does the MSA expire?")["citations"]
+    marks = contracts.system_markers("SYNCP000002")
+    assert marks[("SYN-SYNCP000002-MSA1", "expiration_date")] == contracts.AUTO_RENEW_MARKER
+    assert contracts.system_markers("SYNCP000021")[("SYN-SYNCP000021-MSA1", "expiration_date")] == contracts.EXPIRED_MARKER
+    cites = contracts.answer("SYNCP000002", "When does the MSA expire?")["citations"]
     assert cites and all(h["marker"] == contracts.AUTO_RENEW_MARKER for h in cites)

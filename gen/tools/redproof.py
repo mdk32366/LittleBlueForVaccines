@@ -38,7 +38,7 @@ EXPECT = {
     "nat_invent": ["test_t0069_status.py::test_status_fields"],
     "inv_source": ["test_t0070_provenance.py::test_source_counts_recomputed"],
     "drop_r5": ["test_t0071_coverage.py::test_pool_covers_every_item_level"],
-    "exh_skip_one": ["test_t0072_counts.py::test_counts_structural"],
+    "exh_skip_one": ["test_t0072_counts.py::test_counts_structural", "test_t0072_counts.py::test_counts_pinned"],
     "nomarker": ["test_t0073_marker.py::test_marker_header_and_footer"],
     "nofooter": ["test_t0073_marker.py::test_marker_header_and_footer"],
     "marker_typo": ["test_t0073_marker.py::test_marker_header_and_footer",

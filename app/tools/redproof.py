@@ -21,9 +21,9 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "isolation": (["test_t0036_contracts.py"], ["test_free_text_isolated"]),  # example-question path is also doc_id-pinned (F-0011)
     "expired": (["test_t0038_expired.py"], ["test_flag_on_lookup", "test_rule_edges", "test_qa_citation_flagged",
                                             "test_pdf_snapshot_marked_and_one_page"]),
-    "expired_le": (["test_t0038_expired.py"], ["test_file_count_exactly_21_and_edge_systems_live", "test_rule_edges"]),
+    "expired_le": (["test_t0038_expired.py"], ["test_file_count_exactly_19_and_edge_systems_live", "test_rule_edges"]),
     "noautorenew": (["test_t0039_autorenew.py", "test_t0040_brief_contracts.py"], ["test_rule_unit_cases", "test_rule_ignores_clause_wording",
-                                                 "test_pre_regen_split_9_12_stub_data", "test_status_column_and_citations_use_marker",
+                                                 "test_split_10_9_schema_v1", "test_status_column_and_citations_use_marker",
                                                  "test_brief_tab_markers"]),
     "nosamesection": (["test_t0039_autorenew.py"], ["test_rule_unit_cases"]),
     "schema_autorenew": (["test_t0041_autorenew_schema.py"], ["test_auto_renew_present_on_every_msa",
@@ -84,6 +84,10 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
                                                  "test_committed_out_equals_inprocess"]),
     "nat_profile_r1": (["test_t0065_national_app.py"], ["test_exhibit_national_ratios_equal_app_profile"]),
     "refusal_text": (["test_t0068_refusals_app.py"], ["test_refusal_rows_use_app_string"]),
+    "footer_eats_body": (["test_t0076_footer_marker.py"], ["test_hand_built_order_and_no_body_dropped",
+                                                            "test_every_gen_out_doc_keeps_its_body"]),
+    "marker_hidden": (["test_t0076_footer_marker.py"], ["test_marker_reaches_qa_answer_and_reports",
+                                                         "test_marker_on_qa_and_brief_tabs"]),
     # v0.2-c voice notes (T-0046)
     "stt_nofallback": (["test_t0046_stt.py"], ["test_transcribe_bytes_falls_back"]),
     "stt_none": (["test_t0046_stt.py"], ["test_get_transcriber_config"]),

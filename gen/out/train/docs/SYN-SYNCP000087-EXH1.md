@@ -105,6 +105,9 @@ This schedule forms part of the contract file for Evergreen Health Network 087 (
 
 - R7_FLU_TDAP Women's Health in season: Influenza to Tdap: 0.00 (in-state peers too few in-state peers)
 - R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap: 0.00 (in-state peers too few in-state peers)
+- R7 Boostrix share of the Women's Health season three: 100.0% (in-state peers too few in-state peers; national 52.9%)
+- R7 Influenza share of the Women's Health season three: 0.0% (in-state peers too few in-state peers; national 26.7%)
+- R7 RSV Vaccine share of the Women's Health season three: 0.0% (in-state peers too few in-state peers; national 20.4%)
 
 ## 11. National Pooled Figures
 

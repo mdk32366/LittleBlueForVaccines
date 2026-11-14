@@ -105,6 +105,9 @@ This schedule forms part of the contract file for Clearwater Urgent Care 056 (ac
 
 - R7_FLU_TDAP Women's Health in season: Influenza to Tdap: undefined (in-state peers 0.53)
 - R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap: undefined (in-state peers 0.00)
+- R7 Boostrix share of the Women's Health season three: undefined (in-state peers 58.8%; national 52.9%)
+- R7 Influenza share of the Women's Health season three: undefined (in-state peers 41.2%; national 26.7%)
+- R7 RSV Vaccine share of the Women's Health season three: undefined (in-state peers 0.0%; national 20.4%)
 
 ## 11. National Pooled Figures
 

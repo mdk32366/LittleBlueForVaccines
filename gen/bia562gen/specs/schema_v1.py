@@ -46,6 +46,15 @@ ITEM_LABELS = {
     "R7_FLU_TDAP": "Women's Health in season: Influenza to Tdap",
     "R7_RSV_TDAP": "Women's Health in season: RSV Vaccine to Tdap",
 }
+R7_PARTS = (("boostrix", "r7_boostrix", "Boostrix"), ("flu", "r7_flu", "Influenza"), ("rsv", "r7_rsv", "RSV Vaccine"))
+
+
+def r7_share(c: dict, comp: str):
+    """The app's _r7 rule: comp over Boostrix + Influenza + RSV Vaccine doses in the R7 season, ratio rule, x100."""
+    v, st = PM.ratio_rule(c[comp], c["r7_boostrix"] + c["r7_flu"] + c["r7_rsv"])
+    return (None if v is None else v * 100), st
+
+
 RATIO_ITEMS = ("R1", "R2", "R3", "R4", "R5", "R6", "R7_FLU_TDAP", "R7_RSV_TDAP")
 # National A6-A9 have no national column (F-0014): they stay "not available: <reason>", the app's exact text
 # (availability.render_na), never an invented number (AS-0066 (national A6-A9 stay not available), T-0069).
@@ -88,6 +97,8 @@ CATALOG_EXH = [  # name, type, unit, clause_type, qualifiers, cardinality
     ("exh_age_share", "num", "pct", _E, ["age"], "*"), ("exh_age_share_state", "num", "pct", _E, ["age"], "*"),
     ("exh_mfr_share", "num", "pct", _E, ["manufacturer"], "*"), ("exh_brand_dollars", "num", "usd", _E, ["brand"], "*"),
     ("exh_ratio", "num", "ratio", _E, ["ratio"], "*"), ("exh_ratio_state", "num", "ratio", _E, ["ratio"], "*"),
+    ("exh_r7_share", "num", "pct", _E, ["part"], "*"), ("exh_r7_share_state", "num", "pct", _E, ["part"], "*"),
+    ("nat_r7_share", "num", "pct", _E, ["part"], "*"),
     ("exh_idx_state", "num", "index", _E, ["ratio"], "*"), ("exh_idx_nat", "num", "index", _E, ["ratio"], "*"),
     ("nat_total_dollars", "num", "usd", _E, [], "1"), ("nat_class_share", "num", "pct", _E, ["class"], "*"),
     ("nat_spec_share", "num", "pct", _E, ["specialty"], "*"), ("nat_brand_share", "num", "pct", _E, ["brand"], "*"),
@@ -377,6 +388,16 @@ def exhibit(system, nat: dict) -> dict:
             q(f"metric.{it}.system", f1, lab, "system")
             q(f"metric.{it}.state", f2, lab, "state")
             ratio_vals[it] = (f1[3], f2[3])
+        if anchor == "10":  # R7 three-share (Boostrix, Influenza, RSV Vaccine of their sum), pooled like the app's F13.r7_*
+            for part, comp, plabel in R7_PARTS:
+                vals = []
+                for c, base, lvl in ((s, "exh_r7_share", "system"), (pool, "exh_r7_share_state", "state"),
+                                     (nat, "nat_r7_share", "national")):
+                    v, st = (None, TOO_FEW) if c is None else r7_share(c, comp)
+                    vals.append(_fld(L, base, "num", v, st, f_pct, {"item": "R7", "level": lvl, "part": part}, True))
+                (f1, s1), (f2, s2), (f3, s3) = vals
+                L.line("exh_line3", dict(label=f"R7 {plabel} share of the Women's Health season three", value=s1,
+                                         state=s2, nat=s3), [f1, f2, f3])
     # §11 national (same for every system)
     L.section("11", "exh_11")
     f, sp = _fld(L, "nat_total_dollars", "num", nat["dollars"], "ok", f_usd, {"item": "A1", "level": "national"})

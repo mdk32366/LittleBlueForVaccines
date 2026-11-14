@@ -106,6 +106,9 @@ Exhibit to the arrangement file of Desert Bloom Family Clinic 054 [SYNCP000054].
 
 * R7_FLU_TDAP Women's Health in season: Influenza to Tdap = undefined | same-state pool 0.00
 * R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap = undefined | same-state pool 0.00
+* R7 Boostrix share of the Women's Health season three = undefined | same-state pool 100.0% | countrywide 52.9%
+* R7 Influenza share of the Women's Health season three = undefined | same-state pool 0.0% | countrywide 26.7%
+* R7 RSV Vaccine share of the Women's Health season three = undefined | same-state pool 0.0% | countrywide 20.4%
 
 ## 11. Countrywide Aggregate
 

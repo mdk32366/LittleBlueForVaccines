@@ -107,6 +107,9 @@ Exhibit to the arrangement file of Clearwater Urgent Care 076 [SYNCP000076]. Acc
 
 * R7_FLU_TDAP Women's Health in season: Influenza to Tdap = undefined | same-state pool 10.11
 * R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap = undefined | same-state pool 0.00
+* R7 Boostrix share of the Women's Health season three = undefined | same-state pool 0.1% | countrywide 52.9%
+* R7 Influenza share of the Women's Health season three = undefined | same-state pool 99.9% | countrywide 26.7%
+* R7 RSV Vaccine share of the Women's Health season three = undefined | same-state pool 0.0% | countrywide 20.4%
 
 ## 11. Countrywide Aggregate
 

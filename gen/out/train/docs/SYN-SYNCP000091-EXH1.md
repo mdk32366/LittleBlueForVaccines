@@ -105,6 +105,9 @@ This schedule forms part of the contract file for Highland Pediatric Center 091 
 
 - R7_FLU_TDAP Women's Health in season: Influenza to Tdap: insufficient volume (in-state peers 10.22)
 - R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap: insufficient volume (in-state peers 0.00)
+- R7 Boostrix share of the Women's Health season three: insufficient volume (in-state peers 0.0%; national 52.9%)
+- R7 Influenza share of the Women's Health season three: insufficient volume (in-state peers 100.0%; national 26.7%)
+- R7 RSV Vaccine share of the Women's Health season three: insufficient volume (in-state peers 0.0%; national 20.4%)
 
 ## 11. National Pooled Figures
 

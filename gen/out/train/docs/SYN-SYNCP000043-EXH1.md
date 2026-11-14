@@ -105,6 +105,9 @@ This schedule forms part of the contract file for Cedar Valley Physician Allianc
 
 - R7_FLU_TDAP Women's Health in season: Influenza to Tdap: undefined (in-state peers undefined)
 - R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap: undefined (in-state peers undefined)
+- R7 Boostrix share of the Women's Health season three: insufficient volume (in-state peers undefined; national 52.9%)
+- R7 Influenza share of the Women's Health season three: insufficient volume (in-state peers undefined; national 26.7%)
+- R7 RSV Vaccine share of the Women's Health season three: insufficient volume (in-state peers undefined; national 20.4%)
 
 ## 11. National Pooled Figures
 

@@ -59,7 +59,7 @@ with tab_brief:
         st.markdown(f"- {p}")
     st.subheader("Contracts on file")
     st.caption(f"Generated contracts (synthetic), cited spans; as of {config.AS_OF_DATE}.")
-    for line in report.brief_contract_lines(rows):
+    for line in report.brief_contract_lines(rows, contracts.system_marker(sid)):
         st.markdown(f"- {line}")
     st.subheader("System vs state peers vs national")
     st.caption(f"State column: {client_metrics.STATE_COLUMN} (AS-0031 (in-state peers)); national column: "
@@ -95,6 +95,8 @@ with tab_qa:
         res = contracts.answer(sid, question)
         st.markdown(f"**Answer:** {res['answer']}")
         st.caption(res["note"])
+        if res.get("marker"):
+            st.markdown(f"**{res['marker']}**")
         for h in res["citations"]:
             exp = f" · **{h['marker']}** (ended before {config.AS_OF_DATE})" if h.get("marker") else ""
             st.markdown(f"`{h['anchor']}` · {h['heading']} · span: **{h['span']}** "

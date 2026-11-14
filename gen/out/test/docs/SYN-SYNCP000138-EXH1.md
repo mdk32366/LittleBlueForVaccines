@@ -105,6 +105,9 @@ Exhibit to the arrangement file of Lakeside Community Health 138 [SYNCP000138]. 
 
 * R7_FLU_TDAP Women's Health in season: Influenza to Tdap = undefined | same-state pool insufficient volume
 * R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap = undefined | same-state pool insufficient volume
+* R7 Boostrix share of the Women's Health season three = undefined | same-state pool 12.0% | countrywide 52.9%
+* R7 Influenza share of the Women's Health season three = undefined | same-state pool 88.0% | countrywide 26.7%
+* R7 RSV Vaccine share of the Women's Health season three = undefined | same-state pool 0.0% | countrywide 20.4%
 
 ## 11. Countrywide Aggregate
 

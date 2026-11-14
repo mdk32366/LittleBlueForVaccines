@@ -1439,6 +1439,102 @@
    "type": "num",
    "value": null
   },
+  "exh_r7_share-1": {
+   "qualifier": {
+    "item": "R7",
+    "level": "system",
+    "part": "boostrix",
+    "provenance": "source",
+    "status": "insufficient volume"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "insufficient volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_r7_share-2": {
+   "qualifier": {
+    "item": "R7",
+    "level": "system",
+    "part": "flu",
+    "provenance": "source",
+    "status": "insufficient volume"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "insufficient volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_r7_share-3": {
+   "qualifier": {
+    "item": "R7",
+    "level": "system",
+    "part": "rsv",
+    "provenance": "source",
+    "status": "insufficient volume"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "insufficient volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_r7_share_state-1": {
+   "qualifier": {
+    "item": "R7",
+    "level": "state",
+    "part": "boostrix",
+    "provenance": "source",
+    "status": "undefined"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "undefined",
+   "type": "num",
+   "value": null
+  },
+  "exh_r7_share_state-2": {
+   "qualifier": {
+    "item": "R7",
+    "level": "state",
+    "part": "flu",
+    "provenance": "source",
+    "status": "undefined"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "undefined",
+   "type": "num",
+   "value": null
+  },
+  "exh_r7_share_state-3": {
+   "qualifier": {
+    "item": "R7",
+    "level": "state",
+    "part": "rsv",
+    "provenance": "source",
+    "status": "undefined"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "undefined",
+   "type": "num",
+   "value": null
+  },
   "exh_ratio-1": {
    "qualifier": {
     "item": "R1",
@@ -3627,6 +3723,54 @@
    "span": "64.1%",
    "type": "num",
    "value": 64.12312857188581
+  },
+  "nat_r7_share-1": {
+   "qualifier": {
+    "item": "R7",
+    "level": "national",
+    "part": "boostrix",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "52.9%",
+   "type": "num",
+   "value": 52.9329849321713
+  },
+  "nat_r7_share-2": {
+   "qualifier": {
+    "item": "R7",
+    "level": "national",
+    "part": "flu",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "26.7%",
+   "type": "num",
+   "value": 26.716840606468374
+  },
+  "nat_r7_share-3": {
+   "qualifier": {
+    "item": "R7",
+    "level": "national",
+    "part": "rsv",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000043-EXH1"
+   },
+   "span": "20.4%",
+   "type": "num",
+   "value": 20.35017446136033
   },
   "nat_ratio-1": {
    "qualifier": {

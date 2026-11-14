@@ -108,6 +108,9 @@ This schedule forms part of the contract file for Northstar Urgent Care 046 (acc
 
 - R7_FLU_TDAP Women's Health in season: Influenza to Tdap: undefined (in-state peers 10.11)
 - R7_RSV_TDAP Women's Health in season: RSV Vaccine to Tdap: undefined (in-state peers 0.00)
+- R7 Boostrix share of the Women's Health season three: undefined (in-state peers 0.1%; national 52.9%)
+- R7 Influenza share of the Women's Health season three: undefined (in-state peers 99.9%; national 26.7%)
+- R7 RSV Vaccine share of the Women's Health season three: undefined (in-state peers 0.0%; national 20.4%)
 
 ## 11. National Pooled Figures
 
