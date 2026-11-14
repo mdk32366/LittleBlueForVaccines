@@ -1,5 +1,5 @@
 {
- "date": "2025-08-11",
+ "date": "2026-04-07",
  "doc": {
   "doc_id": "SYN-SYNCP000101-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000101-P1, was presented by the Supplier to Prairie Pediatric Center 101 on August 11, 2025."
+    "text": "This proposal, SYN-SYNCP000101-P1, was presented by SANOFI (the Supplier) to Prairie Pediatric Center 101 on April 7, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.75%."
+    "text": "Supplier concession: a Tier 2 rebate of 3.5%."
    },
    {
     "anchor": "3",
@@ -22,7 +22,7 @@
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: accepted by the Customer."
    }
   ],
   "synthetic": true,
@@ -39,13 +39,13 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000101-P1#2",
-   "description": "an administrative fee of 2.75%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.75%"
+   "description": "a Tier 2 rebate of 3.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 3.5%"
   }
  ],
- "outcome": "lost",
+ "outcome": "won",
  "proposal_id": "SYN-SYNCP000101-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000101-AMD1",
  "system_id": "SYNCP000101"
 }

@@ -1,5 +1,5 @@
 {
- "date": "2025-12-13",
+ "date": "2026-02-14",
  "doc": {
   "doc_id": "SYN-SYNCP000072-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000072-P1, was presented by the Supplier to Harborview Regional Hospital 072 on December 13, 2025."
+    "text": "This proposal, SYN-SYNCP000072-P1, was presented by PFIZER (the Supplier) to Harborview Regional Hospital 072 on February 14, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.25%."
+    "text": "Supplier concession: an administrative fee of 1.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 50%."
+    "text": "Supplier request: a Pneumococcal share floor of 70%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000072-P1#3",
-   "description": "a Influenza share floor of 50%",
+   "description": "a Pneumococcal share floor of 70%",
    "kind": "exclusivity",
-   "span": "a Influenza share floor of 50%"
+   "span": "a Pneumococcal share floor of 70%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000072-P1#2",
-   "description": "an administrative fee of 2.25%",
+   "description": "an administrative fee of 1.75%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.25%"
+   "span": "an administrative fee of 1.75%"
   }
  ],
- "outcome": "won",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000072-P1",
- "resulted_in": "SYN-SYNCP000072-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000072"
 }

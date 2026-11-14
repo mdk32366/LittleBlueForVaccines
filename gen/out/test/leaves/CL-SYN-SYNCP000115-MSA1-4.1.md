@@ -8,7 +8,7 @@ edges: []
 anchor: "4.1"
 heading: "Volume Band 1"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000115-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-hepatitis", "tier": 1}, "span": "260", "unit": "doses", "value": 260}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000115-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-hepatitis", "tier": 1}, "span": "1.5 per cent", "unit": "pct", "value": 1.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000115-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 1}, "span": "250", "unit": "doses", "value": 250}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000115-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 1}, "span": "1.5 per cent", "unit": "pct", "value": 1.5}]
 ---
 
-Band 1 is reached once yearly Hepatitis volume hits 260 doses or more; qualifying spend then carries a 1.5 per cent rebate.
+Band 1 is reached once yearly Pneumococcal volume hits 250 doses or more; qualifying spend then carries a 1.5 per cent rebate.

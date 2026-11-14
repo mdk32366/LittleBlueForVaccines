@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000087-P1.md", "generator_seed": 562}
-edges: []
-date: "2024-11-01"
-gives: [{"anchor": "SYN-SYNCP000087-P1#2", "description": "an administrative fee of 2%", "kind": "admin_fee_change", "span": "an administrative fee of 2%"}]
-gets: [{"anchor": "SYN-SYNCP000087-P1#3", "description": "a Influenza share floor of 60%", "kind": "exclusivity", "span": "a Influenza share floor of 60%"}]
-outcome: "lost"
+edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000087-AMD1"}]
+date: "2025-06-05"
+gives: [{"anchor": "SYN-SYNCP000087-P1#2", "description": "a Tier 2 rebate of 4%", "kind": "rebate_change", "span": "a Tier 2 rebate of 4%"}]
+gets: [{"anchor": "SYN-SYNCP000087-P1#3", "description": "a commitment of 340 Pneumococcal doses per year", "kind": "volume_commitment", "span": "a commitment of 340 Pneumococcal doses per year"}]
+outcome: "won"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000087-P1, was presented by the Supplier to Evergreen Health Network 087 on November 1, 2024.
+This proposal, SYN-SYNCP000087-P1, was presented by PFIZER (the Supplier) to Evergreen Health Network 087 on June 5, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 2%.
+Supplier concession: a Tier 2 rebate of 4%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 60%.
+Supplier request: a commitment of 340 Pneumococcal doses per year.
 
 ## 4. Proposal Status
 
-Status of this proposal: declined by the Customer.
+Status of this proposal: accepted by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

@@ -1,0 +1,3752 @@
+{
+ "doc_id": "SYN-SYNCP000106-EXH1",
+ "fields": {
+  "exh_age_share-1": {
+   "qualifier": {
+    "age": "ped",
+    "item": "A11",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "12.7%",
+   "type": "num",
+   "value": 12.719790497568276
+  },
+  "exh_age_share-2": {
+   "qualifier": {
+    "age": "adult",
+    "item": "A11",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "16.2%",
+   "type": "num",
+   "value": 16.180321735877293
+  },
+  "exh_age_share-3": {
+   "qualifier": {
+    "age": "mixed",
+    "item": "A11",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "71.1%",
+   "type": "num",
+   "value": 71.09988776655443
+  },
+  "exh_age_share_state-1": {
+   "qualifier": {
+    "age": "ped",
+    "item": "A11",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "18.3%",
+   "type": "num",
+   "value": 18.304720252262268
+  },
+  "exh_age_share_state-2": {
+   "qualifier": {
+    "age": "adult",
+    "item": "A11",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "20.5%",
+   "type": "num",
+   "value": 20.519868069734567
+  },
+  "exh_age_share_state-3": {
+   "qualifier": {
+    "age": "mixed",
+    "item": "A11",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "61.2%",
+   "type": "num",
+   "value": 61.175411678003165
+  },
+  "exh_babies_private": {
+   "qualifier": {
+    "item": "A10",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "~28",
+   "type": "num",
+   "value": 28.0
+  },
+  "exh_babies_public": {
+   "qualifier": {
+    "item": "A10",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "~58",
+   "type": "num",
+   "value": 57.5
+  },
+  "exh_babies_total": {
+   "qualifier": {
+    "item": "A10",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "~86",
+   "type": "num",
+   "value": 85.5
+  },
+  "exh_brand_dollars-1": {
+   "qualifier": {
+    "brand": "BEYFORTUS",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "$84,449",
+   "type": "num",
+   "value": 84449.37
+  },
+  "exh_brand_dollars-2": {
+   "qualifier": {
+    "brand": "GARDASIL 9",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "$76,033",
+   "type": "num",
+   "value": 76032.57
+  },
+  "exh_brand_dollars-3": {
+   "qualifier": {
+    "brand": "COMIRNATY",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "$39,510",
+   "type": "num",
+   "value": 39510.22
+  },
+  "exh_brand_dollars-4": {
+   "qualifier": {
+    "brand": "VARIVAX",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "$36,771",
+   "type": "num",
+   "value": 36770.59
+  },
+  "exh_brand_dollars-5": {
+   "qualifier": {
+    "brand": "FLUZONE HIGH DOSE",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "$32,739",
+   "type": "num",
+   "value": 32738.68
+  },
+  "exh_brand_share_w1-1": {
+   "qualifier": {
+    "brand": "BEYFORTUS",
+    "class": "RSV",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "100.0%",
+   "type": "num",
+   "value": 100.0
+  },
+  "exh_brand_share_w1-2": {
+   "qualifier": {
+    "brand": "GARDASIL 9",
+    "class": "HPV",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "no volume",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "no volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_brand_share_w1-3": {
+   "qualifier": {
+    "brand": "FLULAVAL TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_brand_share_w1-4": {
+   "qualifier": {
+    "brand": "FLUZONE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "95.9%",
+   "type": "num",
+   "value": 95.94594594594594
+  },
+  "exh_brand_share_w1-5": {
+   "qualifier": {
+    "brand": "FLUZONE HIGH DOSE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "4.1%",
+   "type": "num",
+   "value": 4.054054054054054
+  },
+  "exh_brand_share_w2-1": {
+   "qualifier": {
+    "brand": "BEYFORTUS",
+    "class": "RSV",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "no volume",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "no volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_brand_share_w2-2": {
+   "qualifier": {
+    "brand": "GARDASIL 9",
+    "class": "HPV",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "100.0%",
+   "type": "num",
+   "value": 100.0
+  },
+  "exh_brand_share_w2-3": {
+   "qualifier": {
+    "brand": "FLULAVAL TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "76.1%",
+   "type": "num",
+   "value": 76.05633802816901
+  },
+  "exh_brand_share_w2-4": {
+   "qualifier": {
+    "brand": "FLUZONE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "23.9%",
+   "type": "num",
+   "value": 23.943661971830984
+  },
+  "exh_brand_share_w2-5": {
+   "qualifier": {
+    "brand": "FLUZONE HIGH DOSE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_cell_dose_share-1": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Primary Care"
+    ],
+    "item": "A4",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "18.9%",
+   "type": "num",
+   "value": 18.892630003741115
+  },
+  "exh_cell_dose_share-2": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Pediatric Medicine"
+    ],
+    "item": "A4",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "11.0%",
+   "type": "num",
+   "value": 11.036288814066591
+  },
+  "exh_cell_dose_share-3": {
+   "qualifier": {
+    "cell": [
+     "Coronavirus",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "6.5%",
+   "type": "num",
+   "value": 6.546950991395435
+  },
+  "exh_cell_dose_share-4": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5.2%",
+   "type": "num",
+   "value": 5.237560793116349
+  },
+  "exh_cell_dose_share-5": {
+   "qualifier": {
+    "cell": [
+     "HPV",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5.1%",
+   "type": "num",
+   "value": 5.05050505050505
+  },
+  "exh_cell_dose_share_nat-1": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Primary Care"
+    ],
+    "item": "A4",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "7.7%",
+   "type": "num",
+   "value": 7.73651103155357
+  },
+  "exh_cell_dose_share_nat-2": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Pediatric Medicine"
+    ],
+    "item": "A4",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "3.2%",
+   "type": "num",
+   "value": 3.1918260964134464
+  },
+  "exh_cell_dose_share_nat-3": {
+   "qualifier": {
+    "cell": [
+     "Coronavirus",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.4%",
+   "type": "num",
+   "value": 0.4315452448480273
+  },
+  "exh_cell_dose_share_nat-4": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2.4%",
+   "type": "num",
+   "value": 2.3529196611076313
+  },
+  "exh_cell_dose_share_nat-5": {
+   "qualifier": {
+    "cell": [
+     "HPV",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.2%",
+   "type": "num",
+   "value": 0.19830352735922727
+  },
+  "exh_cell_dose_share_state-1": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Primary Care"
+    ],
+    "item": "A4",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "4.1%",
+   "type": "num",
+   "value": 4.125841176257385
+  },
+  "exh_cell_dose_share_state-2": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Pediatric Medicine"
+    ],
+    "item": "A4",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "6.4%",
+   "type": "num",
+   "value": 6.386294716748619
+  },
+  "exh_cell_dose_share_state-3": {
+   "qualifier": {
+    "cell": [
+     "Coronavirus",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1.1%",
+   "type": "num",
+   "value": 1.1453286779185947
+  },
+  "exh_cell_dose_share_state-4": {
+   "qualifier": {
+    "cell": [
+     "Influenza",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "10.8%",
+   "type": "num",
+   "value": 10.790615070495704
+  },
+  "exh_cell_dose_share_state-5": {
+   "qualifier": {
+    "cell": [
+     "HPV",
+     "Other"
+    ],
+    "item": "A4",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "5",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.6%",
+   "type": "num",
+   "value": 0.6469657247103454
+  },
+  "exh_class_share-1": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "14.8%",
+   "type": "num",
+   "value": 14.777784559607534
+  },
+  "exh_class_share-2": {
+   "qualifier": {
+    "class": "HPV",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13.3%",
+   "type": "num",
+   "value": 13.304929793712839
+  },
+  "exh_class_share-3": {
+   "qualifier": {
+    "class": "Influenza",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "12.6%",
+   "type": "num",
+   "value": 12.621165613145966
+  },
+  "exh_class_share-4": {
+   "qualifier": {
+    "class": "Pneumococcal",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "9.3%",
+   "type": "num",
+   "value": 9.349152464546878
+  },
+  "exh_class_share-5": {
+   "qualifier": {
+    "class": "Coronavirus",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.4%",
+   "type": "num",
+   "value": 8.423918007864884
+  },
+  "exh_class_share_nat-1": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5.3%",
+   "type": "num",
+   "value": 5.2619464234471565
+  },
+  "exh_class_share_nat-2": {
+   "qualifier": {
+    "class": "HPV",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.6%",
+   "type": "num",
+   "value": 8.571226812224022
+  },
+  "exh_class_share_nat-3": {
+   "qualifier": {
+    "class": "Influenza",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "14.8%",
+   "type": "num",
+   "value": 14.754457511306333
+  },
+  "exh_class_share_nat-4": {
+   "qualifier": {
+    "class": "Pneumococcal",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "21.5%",
+   "type": "num",
+   "value": 21.50003266029383
+  },
+  "exh_class_share_nat-5": {
+   "qualifier": {
+    "class": "Coronavirus",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.8%",
+   "type": "num",
+   "value": 8.793815398113182
+  },
+  "exh_class_share_state-1": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "A2",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "6.7%",
+   "type": "num",
+   "value": 6.710035219496922
+  },
+  "exh_class_share_state-2": {
+   "qualifier": {
+    "class": "HPV",
+    "item": "A2",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.1%",
+   "type": "num",
+   "value": 8.096803838772953
+  },
+  "exh_class_share_state-3": {
+   "qualifier": {
+    "class": "Influenza",
+    "item": "A2",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "10.7%",
+   "type": "num",
+   "value": 10.684136957086078
+  },
+  "exh_class_share_state-4": {
+   "qualifier": {
+    "class": "Pneumococcal",
+    "item": "A2",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "20.0%",
+   "type": "num",
+   "value": 19.952127484177275
+  },
+  "exh_class_share_state-5": {
+   "qualifier": {
+    "class": "Coronavirus",
+    "item": "A2",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2.6%",
+   "type": "num",
+   "value": 2.6064231512319442
+  },
+  "exh_idx_nat-1": {
+   "qualifier": {
+    "item": "R1",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "39",
+   "type": "num",
+   "value": 39.082984902432386
+  },
+  "exh_idx_nat-2": {
+   "qualifier": {
+    "item": "R2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "159",
+   "type": "num",
+   "value": 159.10535159930112
+  },
+  "exh_idx_nat-3": {
+   "qualifier": {
+    "item": "R3",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "90",
+   "type": "num",
+   "value": 90.34930618566837
+  },
+  "exh_idx_nat-4": {
+   "qualifier": {
+    "item": "R4",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_idx_nat-5": {
+   "qualifier": {
+    "item": "R5",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "104",
+   "type": "num",
+   "value": 103.7164203365172
+  },
+  "exh_idx_nat-6": {
+   "qualifier": {
+    "item": "R6",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_idx_nat-7": {
+   "qualifier": {
+    "item": "R7_FLU_TDAP",
+    "level": "national",
+    "provenance": "national",
+    "status": "n/a"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "n/a",
+   "type": "num",
+   "value": null
+  },
+  "exh_idx_nat-8": {
+   "qualifier": {
+    "item": "R7_RSV_TDAP",
+    "level": "national",
+    "provenance": "national",
+    "status": "n/a"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "n/a",
+   "type": "num",
+   "value": null
+  },
+  "exh_idx_state-1": {
+   "qualifier": {
+    "item": "R1",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "36",
+   "type": "num",
+   "value": 36.40313692242476
+  },
+  "exh_idx_state-2": {
+   "qualifier": {
+    "item": "R2",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "197",
+   "type": "num",
+   "value": 196.81993983669963
+  },
+  "exh_idx_state-3": {
+   "qualifier": {
+    "item": "R3",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "39",
+   "type": "num",
+   "value": 39.01952510055483
+  },
+  "exh_idx_state-4": {
+   "qualifier": {
+    "item": "R4",
+    "level": "state",
+    "provenance": "source",
+    "status": "n/a"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "n/a",
+   "type": "num",
+   "value": null
+  },
+  "exh_idx_state-5": {
+   "qualifier": {
+    "item": "R5",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "81",
+   "type": "num",
+   "value": 81.21317157712305
+  },
+  "exh_idx_state-6": {
+   "qualifier": {
+    "item": "R6",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_idx_state-7": {
+   "qualifier": {
+    "item": "R7_FLU_TDAP",
+    "level": "state",
+    "provenance": "source",
+    "status": "n/a"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "n/a",
+   "type": "num",
+   "value": null
+  },
+  "exh_idx_state-8": {
+   "qualifier": {
+    "item": "R7_RSV_TDAP",
+    "level": "state",
+    "provenance": "source",
+    "status": "n/a"
+   },
+   "source": {
+    "anchor": "12",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "n/a",
+   "type": "num",
+   "value": null
+  },
+  "exh_mfr_share-1": {
+   "qualifier": {
+    "item": "HD",
+    "level": "system",
+    "manufacturer": "MERCK & COMPANY",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "32.3%",
+   "type": "num",
+   "value": 32.28003370444952
+  },
+  "exh_mfr_share-2": {
+   "qualifier": {
+    "item": "HD",
+    "level": "system",
+    "manufacturer": "SANOFI",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "31.0%",
+   "type": "num",
+   "value": 30.990067854773244
+  },
+  "exh_mfr_share-3": {
+   "qualifier": {
+    "item": "HD",
+    "level": "system",
+    "manufacturer": "GSK PHARM",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "18.8%",
+   "type": "num",
+   "value": 18.75000568717088
+  },
+  "exh_mfr_share-4": {
+   "qualifier": {
+    "item": "HD",
+    "level": "system",
+    "manufacturer": "PFIZER",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "11.4%",
+   "type": "num",
+   "value": 11.440990159899448
+  },
+  "exh_mfr_share-5": {
+   "qualifier": {
+    "item": "HD",
+    "level": "system",
+    "manufacturer": "MSP VACCINE COMP",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "3.3%",
+   "type": "num",
+   "value": 3.2612617707813247
+  },
+  "exh_n_sites": {
+   "qualifier": {
+    "item": "A8",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13",
+   "type": "int",
+   "value": 13
+  },
+  "exh_n_sites_state": {
+   "qualifier": {
+    "item": "A8",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13",
+   "type": "num",
+   "value": 13.0
+  },
+  "exh_n_subs": {
+   "qualifier": {
+    "item": "A7",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "18",
+   "type": "int",
+   "value": 18
+  },
+  "exh_n_subs_state": {
+   "qualifier": {
+    "item": "A7",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "25",
+   "type": "num",
+   "value": 25.0
+  },
+  "exh_nat_share": {
+   "qualifier": {
+    "item": "A1",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0019%",
+   "type": "num",
+   "value": 0.0019424079232323464
+  },
+  "exh_org_type": {
+   "qualifier": {
+    "item": "A5",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "Corporate Owner",
+   "type": "enum",
+   "value": "Corporate Owner"
+  },
+  "exh_party_share_w1": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "HD",
+    "level": "system",
+    "manufacturer": "SANOFI",
+    "provenance": "source",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "100.0%",
+   "type": "num",
+   "value": 100.0
+  },
+  "exh_party_share_w2": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "HD",
+    "level": "system",
+    "manufacturer": "SANOFI",
+    "provenance": "source",
+    "status": "no volume",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "no volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_private_share": {
+   "qualifier": {
+    "item": "A10",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "32.7%",
+   "type": "num",
+   "value": 32.748538011695906
+  },
+  "exh_private_share_state": {
+   "qualifier": {
+    "item": "A10",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "7",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "69.1%",
+   "type": "num",
+   "value": 69.0954954954955
+  },
+  "exh_ratio-1": {
+   "qualifier": {
+    "item": "R1",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.21",
+   "type": "num",
+   "value": 0.21428571428571427
+  },
+  "exh_ratio-2": {
+   "qualifier": {
+    "item": "R2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2.00",
+   "type": "num",
+   "value": 2.0
+  },
+  "exh_ratio-3": {
+   "qualifier": {
+    "item": "R3",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5.15",
+   "type": "num",
+   "value": 5.146341463414634
+  },
+  "exh_ratio-4": {
+   "qualifier": {
+    "item": "R4",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.00",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_ratio-5": {
+   "qualifier": {
+    "item": "R5",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.20",
+   "type": "num",
+   "value": 0.2
+  },
+  "exh_ratio-6": {
+   "qualifier": {
+    "item": "R6",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.00",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_ratio-7": {
+   "qualifier": {
+    "item": "R7_FLU_TDAP",
+    "level": "system",
+    "provenance": "source",
+    "status": "undefined"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "undefined",
+   "type": "num",
+   "value": null
+  },
+  "exh_ratio-8": {
+   "qualifier": {
+    "item": "R7_RSV_TDAP",
+    "level": "system",
+    "provenance": "source",
+    "status": "undefined"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "undefined",
+   "type": "num",
+   "value": null
+  },
+  "exh_ratio_state-1": {
+   "qualifier": {
+    "item": "R1",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.59",
+   "type": "num",
+   "value": 0.588646288209607
+  },
+  "exh_ratio_state-2": {
+   "qualifier": {
+    "item": "R2",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1.02",
+   "type": "num",
+   "value": 1.0161572052401746
+  },
+  "exh_ratio_state-3": {
+   "qualifier": {
+    "item": "R3",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13.19",
+   "type": "num",
+   "value": 13.189144281362504
+  },
+  "exh_ratio_state-4": {
+   "qualifier": {
+    "item": "R4",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.00",
+   "type": "num",
+   "value": 0.0
+  },
+  "exh_ratio_state-5": {
+   "qualifier": {
+    "item": "R5",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.25",
+   "type": "num",
+   "value": 0.2462654716175843
+  },
+  "exh_ratio_state-6": {
+   "qualifier": {
+    "item": "R6",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "9",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.06",
+   "type": "num",
+   "value": 0.062313273580879215
+  },
+  "exh_ratio_state-7": {
+   "qualifier": {
+    "item": "R7_FLU_TDAP",
+    "level": "state",
+    "provenance": "source",
+    "status": "insufficient volume"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "insufficient volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_ratio_state-8": {
+   "qualifier": {
+    "item": "R7_RSV_TDAP",
+    "level": "state",
+    "provenance": "source",
+    "status": "insufficient volume"
+   },
+   "source": {
+    "anchor": "10",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "insufficient volume",
+   "type": "num",
+   "value": null
+  },
+  "exh_sites_spec-1": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Other",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13",
+   "type": "int",
+   "value": 13
+  },
+  "exh_sites_spec-10": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Purchasing Agent",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1",
+   "type": "int",
+   "value": 1
+  },
+  "exh_sites_spec-2": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Pediatric Medicine",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13",
+   "type": "int",
+   "value": 13
+  },
+  "exh_sites_spec-3": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Primary Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "11",
+   "type": "int",
+   "value": 11
+  },
+  "exh_sites_spec-4": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Urgent Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8",
+   "type": "int",
+   "value": 8
+  },
+  "exh_sites_spec-5": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Critical Access",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5",
+   "type": "int",
+   "value": 5
+  },
+  "exh_sites_spec-6": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "General Acute",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5",
+   "type": "int",
+   "value": 5
+  },
+  "exh_sites_spec-7": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Risk-Based Specialty",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2",
+   "type": "int",
+   "value": 2
+  },
+  "exh_sites_spec-8": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Women's Health",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2",
+   "type": "int",
+   "value": 2
+  },
+  "exh_sites_spec-9": {
+   "qualifier": {
+    "item": "A9",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Multispecialty",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1",
+   "type": "int",
+   "value": 1
+  },
+  "exh_sites_spec_state-1": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Other",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13",
+   "type": "num",
+   "value": 13.0
+  },
+  "exh_sites_spec_state-10": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Purchasing Agent",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2",
+   "type": "num",
+   "value": 2.0
+  },
+  "exh_sites_spec_state-2": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Pediatric Medicine",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "12",
+   "type": "num",
+   "value": 12.0
+  },
+  "exh_sites_spec_state-3": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Primary Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "12",
+   "type": "num",
+   "value": 12.0
+  },
+  "exh_sites_spec_state-4": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Urgent Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "7.5",
+   "type": "num",
+   "value": 7.5
+  },
+  "exh_sites_spec_state-5": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Critical Access",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "4",
+   "type": "num",
+   "value": 4.0
+  },
+  "exh_sites_spec_state-6": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "General Acute",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8",
+   "type": "num",
+   "value": 8.0
+  },
+  "exh_sites_spec_state-7": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Risk-Based Specialty",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1",
+   "type": "num",
+   "value": 1.0
+  },
+  "exh_sites_spec_state-8": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Women's Health",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2",
+   "type": "num",
+   "value": 2.0
+  },
+  "exh_sites_spec_state-9": {
+   "qualifier": {
+    "item": "A9",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Multispecialty",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2",
+   "type": "num",
+   "value": 2.0
+  },
+  "exh_spec_share-1": {
+   "qualifier": {
+    "item": "A3",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Other",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "40.8%",
+   "type": "num",
+   "value": 40.81270266889655
+  },
+  "exh_spec_share-2": {
+   "qualifier": {
+    "item": "A3",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Pediatric Medicine",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "29.8%",
+   "type": "num",
+   "value": 29.801946111378534
+  },
+  "exh_spec_share-3": {
+   "qualifier": {
+    "item": "A3",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Primary Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "10.2%",
+   "type": "num",
+   "value": 10.216687510293779
+  },
+  "exh_spec_share-4": {
+   "qualifier": {
+    "item": "A3",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "General Acute",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "9.6%",
+   "type": "num",
+   "value": 9.600686408277552
+  },
+  "exh_spec_share-5": {
+   "qualifier": {
+    "item": "A3",
+    "level": "system",
+    "provenance": "source",
+    "specialty": "Urgent Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "7.2%",
+   "type": "num",
+   "value": 7.219593952097991
+  },
+  "exh_spec_share_nat-1": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Other",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "6.5%",
+   "type": "num",
+   "value": 6.485170869964355
+  },
+  "exh_spec_share_nat-2": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Pediatric Medicine",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "19.3%",
+   "type": "num",
+   "value": 19.261099663128775
+  },
+  "exh_spec_share_nat-3": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Primary Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "19.5%",
+   "type": "num",
+   "value": 19.483600628542696
+  },
+  "exh_spec_share_nat-4": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "General Acute",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "26.4%",
+   "type": "num",
+   "value": 26.367430609943693
+  },
+  "exh_spec_share_nat-5": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Urgent Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.9%",
+   "type": "num",
+   "value": 0.8733976098005812
+  },
+  "exh_spec_share_state-1": {
+   "qualifier": {
+    "item": "A3",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Other",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "32.9%",
+   "type": "num",
+   "value": 32.91241223813148
+  },
+  "exh_spec_share_state-2": {
+   "qualifier": {
+    "item": "A3",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Pediatric Medicine",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "21.2%",
+   "type": "num",
+   "value": 21.168570807088336
+  },
+  "exh_spec_share_state-3": {
+   "qualifier": {
+    "item": "A3",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Primary Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "18.6%",
+   "type": "num",
+   "value": 18.606229088102847
+  },
+  "exh_spec_share_state-4": {
+   "qualifier": {
+    "item": "A3",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "General Acute",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.2%",
+   "type": "num",
+   "value": 8.175563411608982
+  },
+  "exh_spec_share_state-5": {
+   "qualifier": {
+    "item": "A3",
+    "level": "state",
+    "provenance": "source",
+    "specialty": "Urgent Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "4",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "6.4%",
+   "type": "num",
+   "value": 6.446353166133865
+  },
+  "exh_state": {
+   "qualifier": {
+    "item": "A6",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "TX",
+   "type": "enum",
+   "value": "TX"
+  },
+  "exh_state_peers": {
+   "qualifier": {
+    "item": "A1",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "32",
+   "type": "int",
+   "value": 32
+  },
+  "exh_state_share": {
+   "qualifier": {
+    "item": "A1",
+    "level": "state",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "2.9%",
+   "type": "num",
+   "value": 2.900808374283754
+  },
+  "exh_switch_gainer-1": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "no volume"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "no volume",
+   "type": "enum",
+   "value": null
+  },
+  "exh_switch_gainer-2": {
+   "qualifier": {
+    "class": "HPV",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "no volume"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "no volume",
+   "type": "enum",
+   "value": null
+  },
+  "exh_switch_gainer-3": {
+   "qualifier": {
+    "class": "Influenza",
+    "item": "HD",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "FLULAVAL TRIVALENT",
+   "type": "enum",
+   "value": "FLULAVAL TRIVALENT"
+  },
+  "exh_t12_class_doses-1": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "T12"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0",
+   "type": "int",
+   "value": 0
+  },
+  "exh_t12_class_doses-2": {
+   "qualifier": {
+    "class": "Influenza",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "T12"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1,280",
+   "type": "int",
+   "value": 1280
+  },
+  "exh_t12_class_doses-3": {
+   "qualifier": {
+    "class": "Coronavirus",
+    "item": "A2",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok",
+    "window": "T12"
+   },
+   "source": {
+    "anchor": "3",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "390",
+   "type": "int",
+   "value": 390
+  },
+  "exh_total_dollars": {
+   "qualifier": {
+    "item": "A1",
+    "level": "system",
+    "provenance": "source",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "2",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "$571,462",
+   "type": "num",
+   "value": 571461.64
+  },
+  "exh_type_share_nat": {
+   "qualifier": {
+    "item": "A5",
+    "level": "national",
+    "org_type": "Corporate Owner",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "6",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "35.4%",
+   "type": "num",
+   "value": 35.37557820403179
+  },
+  "nat_age_share-1": {
+   "qualifier": {
+    "age": "ped",
+    "item": "A11",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "15.5%",
+   "type": "num",
+   "value": 15.461848302784128
+  },
+  "nat_age_share-2": {
+   "qualifier": {
+    "age": "adult",
+    "item": "A11",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "19.3%",
+   "type": "num",
+   "value": 19.268193350288048
+  },
+  "nat_age_share-3": {
+   "qualifier": {
+    "age": "mixed",
+    "item": "A11",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "65.2%",
+   "type": "num",
+   "value": 65.24584461636285
+  },
+  "nat_brand_share-1": {
+   "qualifier": {
+    "brand": "PREVNAR 20",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "17.9%",
+   "type": "num",
+   "value": 17.92838245949327
+  },
+  "nat_brand_share-2": {
+   "qualifier": {
+    "brand": "GARDASIL 9",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.6%",
+   "type": "num",
+   "value": 8.571226812224022
+  },
+  "nat_brand_share-3": {
+   "qualifier": {
+    "brand": "COMIRNATY",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5.6%",
+   "type": "num",
+   "value": 5.605789075967629
+  },
+  "nat_brand_share-4": {
+   "qualifier": {
+    "brand": "PROQUAD",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "4.8%",
+   "type": "num",
+   "value": 4.782337916009222
+  },
+  "nat_brand_share-5": {
+   "qualifier": {
+    "brand": "VARIVAX",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "4.5%",
+   "type": "num",
+   "value": 4.497382613844148
+  },
+  "nat_brand_share_w1-1": {
+   "qualifier": {
+    "brand": "ABRYSVO",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "43.4%",
+   "type": "num",
+   "value": 43.426966369280166
+  },
+  "nat_brand_share_w1-10": {
+   "qualifier": {
+    "brand": "FLUAD TRIV",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "10.0%",
+   "type": "num",
+   "value": 9.979606529897055
+  },
+  "nat_brand_share_w1-11": {
+   "qualifier": {
+    "brand": "FLUARIX QUAD",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w1-12": {
+   "qualifier": {
+    "brand": "FLUARIX TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "13.1%",
+   "type": "num",
+   "value": 13.133072019750863
+  },
+  "nat_brand_share_w1-13": {
+   "qualifier": {
+    "brand": "FLUBLOK QUAD",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w1-14": {
+   "qualifier": {
+    "brand": "FLUBLOK TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "3.2%",
+   "type": "num",
+   "value": 3.1780654790013387
+  },
+  "nat_brand_share_w1-15": {
+   "qualifier": {
+    "brand": "FLUCELVAX QUADVAL",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w1-16": {
+   "qualifier": {
+    "brand": "FLUCELVAX TRIVAL",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "14.8%",
+   "type": "num",
+   "value": 14.780733415059085
+  },
+  "nat_brand_share_w1-17": {
+   "qualifier": {
+    "brand": "FLULAVAL QUADRIVAL",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w1-18": {
+   "qualifier": {
+    "brand": "FLULAVAL TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "27.2%",
+   "type": "num",
+   "value": 27.232559754639237
+  },
+  "nat_brand_share_w1-19": {
+   "qualifier": {
+    "brand": "FLUMIST",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.7%",
+   "type": "num",
+   "value": 0.7040659273381182
+  },
+  "nat_brand_share_w1-2": {
+   "qualifier": {
+    "brand": "AREXVY",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "12.6%",
+   "type": "num",
+   "value": 12.619587412270523
+  },
+  "nat_brand_share_w1-20": {
+   "qualifier": {
+    "brand": "FLUZONE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "15.2%",
+   "type": "num",
+   "value": 15.194946608531593
+  },
+  "nat_brand_share_w1-21": {
+   "qualifier": {
+    "brand": "FLUZONE HD QUADRI",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w1-22": {
+   "qualifier": {
+    "brand": "FLUZONE HIGH DOSE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "11.9%",
+   "type": "num",
+   "value": 11.91548329644917
+  },
+  "nat_brand_share_w1-3": {
+   "qualifier": {
+    "brand": "BEYFORTUS",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "43.2%",
+   "type": "num",
+   "value": 43.15068116935102
+  },
+  "nat_brand_share_w1-4": {
+   "qualifier": {
+    "brand": "ENFLONSIA",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w1-5": {
+   "qualifier": {
+    "brand": "MRESVIA",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.8%",
+   "type": "num",
+   "value": 0.8027650490982968
+  },
+  "nat_brand_share_w1-6": {
+   "qualifier": {
+    "brand": "GARDASIL 9",
+    "class": "HPV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "100.0%",
+   "type": "num",
+   "value": 100.0
+  },
+  "nat_brand_share_w1-7": {
+   "qualifier": {
+    "brand": "AFLURIA QUAD",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w1-8": {
+   "qualifier": {
+    "brand": "AFLURIA TRIV",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "3.9%",
+   "type": "num",
+   "value": 3.881466969333543
+  },
+  "nat_brand_share_w1-9": {
+   "qualifier": {
+    "brand": "FLUAD QUADRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202410-202503"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w2-1": {
+   "qualifier": {
+    "brand": "ABRYSVO",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "39.3%",
+   "type": "num",
+   "value": 39.32422599993464
+  },
+  "nat_brand_share_w2-10": {
+   "qualifier": {
+    "brand": "FLUAD TRIV",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "10.8%",
+   "type": "num",
+   "value": 10.806006707340199
+  },
+  "nat_brand_share_w2-11": {
+   "qualifier": {
+    "brand": "FLUARIX QUAD",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w2-12": {
+   "qualifier": {
+    "brand": "FLUARIX TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "9.8%",
+   "type": "num",
+   "value": 9.790254032984304
+  },
+  "nat_brand_share_w2-13": {
+   "qualifier": {
+    "brand": "FLUBLOK QUAD",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w2-14": {
+   "qualifier": {
+    "brand": "FLUBLOK TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "4.2%",
+   "type": "num",
+   "value": 4.216365549530624
+  },
+  "nat_brand_share_w2-15": {
+   "qualifier": {
+    "brand": "FLUCELVAX QUADVAL",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w2-16": {
+   "qualifier": {
+    "brand": "FLUCELVAX TRIVAL",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "14.8%",
+   "type": "num",
+   "value": 14.832868382011918
+  },
+  "nat_brand_share_w2-17": {
+   "qualifier": {
+    "brand": "FLULAVAL QUADRIVAL",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w2-18": {
+   "qualifier": {
+    "brand": "FLULAVAL TRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "21.4%",
+   "type": "num",
+   "value": 21.37928547897753
+  },
+  "nat_brand_share_w2-19": {
+   "qualifier": {
+    "brand": "FLUMIST",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.8%",
+   "type": "num",
+   "value": 0.8308917932449373
+  },
+  "nat_brand_share_w2-2": {
+   "qualifier": {
+    "brand": "AREXVY",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "14.7%",
+   "type": "num",
+   "value": 14.680156803924572
+  },
+  "nat_brand_share_w2-20": {
+   "qualifier": {
+    "brand": "FLUZONE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "21.1%",
+   "type": "num",
+   "value": 21.091096727845905
+  },
+  "nat_brand_share_w2-21": {
+   "qualifier": {
+    "brand": "FLUZONE HD QUADRI",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_brand_share_w2-22": {
+   "qualifier": {
+    "brand": "FLUZONE HIGH DOSE",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "12.5%",
+   "type": "num",
+   "value": 12.462118358244213
+  },
+  "nat_brand_share_w2-3": {
+   "qualifier": {
+    "brand": "BEYFORTUS",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "43.6%",
+   "type": "num",
+   "value": 43.60786634168325
+  },
+  "nat_brand_share_w2-4": {
+   "qualifier": {
+    "brand": "ENFLONSIA",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1.4%",
+   "type": "num",
+   "value": 1.3870851774192716
+  },
+  "nat_brand_share_w2-5": {
+   "qualifier": {
+    "brand": "MRESVIA",
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1.0%",
+   "type": "num",
+   "value": 1.0006656770382705
+  },
+  "nat_brand_share_w2-6": {
+   "qualifier": {
+    "brand": "GARDASIL 9",
+    "class": "HPV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "100.0%",
+   "type": "num",
+   "value": 100.0
+  },
+  "nat_brand_share_w2-7": {
+   "qualifier": {
+    "brand": "AFLURIA QUAD",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.000850365155301338
+  },
+  "nat_brand_share_w2-8": {
+   "qualifier": {
+    "brand": "AFLURIA TRIV",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "4.6%",
+   "type": "num",
+   "value": 4.590262604665069
+  },
+  "nat_brand_share_w2-9": {
+   "qualifier": {
+    "brand": "FLUAD QUADRIVALENT",
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok",
+    "window": "202510-202603"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.0%",
+   "type": "num",
+   "value": 0.0
+  },
+  "nat_class_share-1": {
+   "qualifier": {
+    "class": "Pneumococcal",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "21.5%",
+   "type": "num",
+   "value": 21.50003266029383
+  },
+  "nat_class_share-2": {
+   "qualifier": {
+    "class": "Influenza",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "14.8%",
+   "type": "num",
+   "value": 14.754457511306333
+  },
+  "nat_class_share-3": {
+   "qualifier": {
+    "class": "Coronavirus",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.8%",
+   "type": "num",
+   "value": 8.793815398113182
+  },
+  "nat_class_share-4": {
+   "qualifier": {
+    "class": "HPV",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.6%",
+   "type": "num",
+   "value": 8.571226812224022
+  },
+  "nat_class_share-5": {
+   "qualifier": {
+    "class": "MMR",
+    "item": "A2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "6.5%",
+   "type": "num",
+   "value": 6.471000907509243
+  },
+  "nat_private_share": {
+   "qualifier": {
+    "item": "A10",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "64.1%",
+   "type": "num",
+   "value": 64.12312857188581
+  },
+  "nat_ratio-1": {
+   "qualifier": {
+    "item": "R1",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.55",
+   "type": "num",
+   "value": 0.5482839010906199
+  },
+  "nat_ratio-2": {
+   "qualifier": {
+    "item": "R2",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "1.26",
+   "type": "num",
+   "value": 1.2570287422115758
+  },
+  "nat_ratio-3": {
+   "qualifier": {
+    "item": "R3",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "5.70",
+   "type": "num",
+   "value": 5.696049787962812
+  },
+  "nat_ratio-4": {
+   "qualifier": {
+    "item": "R4",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.60",
+   "type": "num",
+   "value": 0.595583412805116
+  },
+  "nat_ratio-5": {
+   "qualifier": {
+    "item": "R5",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.19",
+   "type": "num",
+   "value": 0.19283349671255728
+  },
+  "nat_ratio-6": {
+   "qualifier": {
+    "item": "R6",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.08",
+   "type": "num",
+   "value": 0.0801848983438221
+  },
+  "nat_ratio-7": {
+   "qualifier": {
+    "item": "R7_FLU_TDAP",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.35",
+   "type": "num",
+   "value": 0.34519938676146034
+  },
+  "nat_ratio-8": {
+   "qualifier": {
+    "item": "R7_RSV_TDAP",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "0.26",
+   "type": "num",
+   "value": 0.2629378169381876
+  },
+  "nat_sites": {
+   "qualifier": {
+    "item": "A8",
+    "level": "national",
+    "provenance": "national",
+    "status": "not available: the national file has no outlet column"
+   },
+   "source": {
+    "anchor": "11.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "not available: the national file has no outlet column",
+   "type": "int",
+   "value": null
+  },
+  "nat_sites_by_specialty": {
+   "qualifier": {
+    "item": "A9",
+    "level": "national",
+    "provenance": "national",
+    "status": "not available: the national file has no outlet column"
+   },
+   "source": {
+    "anchor": "11.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "not available: the national file has no outlet column",
+   "type": "text",
+   "value": null
+  },
+  "nat_spec_share-1": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "General Acute",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "26.4%",
+   "type": "num",
+   "value": 26.367430609943693
+  },
+  "nat_spec_share-2": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Primary Care",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "19.5%",
+   "type": "num",
+   "value": 19.483600628542696
+  },
+  "nat_spec_share-3": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Pediatric Medicine",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "19.3%",
+   "type": "num",
+   "value": 19.261099663128775
+  },
+  "nat_spec_share-4": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Multispecialty",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "8.6%",
+   "type": "num",
+   "value": 8.552393034864236
+  },
+  "nat_spec_share-5": {
+   "qualifier": {
+    "item": "A3",
+    "level": "national",
+    "provenance": "national",
+    "specialty": "Other",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "6.5%",
+   "type": "num",
+   "value": 6.485170869964355
+  },
+  "nat_state": {
+   "qualifier": {
+    "item": "A6",
+    "level": "national",
+    "provenance": "national",
+    "status": "not available: the national file has no state column"
+   },
+   "source": {
+    "anchor": "11.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "not available: the national file has no state column",
+   "type": "enum",
+   "value": null
+  },
+  "nat_subs": {
+   "qualifier": {
+    "item": "A7",
+    "level": "national",
+    "provenance": "national",
+    "status": "not available: the national file has no subsidiary column"
+   },
+   "source": {
+    "anchor": "11.1",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "not available: the national file has no subsidiary column",
+   "type": "int",
+   "value": null
+  },
+  "nat_switch_gainer-1": {
+   "qualifier": {
+    "class": "RSV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "steady",
+   "type": "enum",
+   "value": "steady"
+  },
+  "nat_switch_gainer-2": {
+   "qualifier": {
+    "class": "HPV",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "steady",
+   "type": "enum",
+   "value": "steady"
+  },
+  "nat_switch_gainer-3": {
+   "qualifier": {
+    "class": "Influenza",
+    "item": "HD",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "13",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "steady",
+   "type": "enum",
+   "value": "steady"
+  },
+  "nat_total_dollars": {
+   "qualifier": {
+    "item": "A1",
+    "level": "national",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "$29,420,269,201",
+   "type": "num",
+   "value": 29420269201.17969
+  },
+  "nat_type_share-1": {
+   "qualifier": {
+    "item": "A5",
+    "level": "national",
+    "org_type": "IDN",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "64.6%",
+   "type": "num",
+   "value": 64.6244217959682
+  },
+  "nat_type_share-2": {
+   "qualifier": {
+    "item": "A5",
+    "level": "national",
+    "org_type": "Corporate Owner",
+    "provenance": "national",
+    "status": "ok"
+   },
+   "source": {
+    "anchor": "11",
+    "doc_id": "SYN-SYNCP000106-EXH1"
+   },
+   "span": "35.4%",
+   "type": "num",
+   "value": 35.37557820403179
+  }
+ }
+}

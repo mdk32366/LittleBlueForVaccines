@@ -3,22 +3,24 @@ doc_id: "SYN-SYNCP000119-MSA1"
 system_id: "SYNCP000119"
 doc_type: "MSA"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000119-MSA1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Parties and Scope
 
-This Master Supply Agreement (the "Agreement") is made between Horizon Wellness Center 119 (the "Customer", account SYNCP000119) and Synthetic Supplier Co. (the "Supplier"). The Agreement covers these products: PRD-syn-influenza, PRD-syn-mmr, PRD-syn-dtap.
+This Master Supply Agreement (the "Agreement") is made between Horizon Wellness Center 119 (the "Customer", account SYNCP000119) and SANOFI (the "Supplier"). The Agreement covers these products: FLUZONE HD QUADRI. Participating sites: 13. Participating subsidiaries: 18. Member organisation type: IDN. Covered specialty: Primary Care.
 
 ## 2. Term and Renewal
 
-The Agreement takes effect on July 1, 2025 and remains in force through June 30, 2028. The Agreement does not renew automatically. Written notice regarding renewal is due no later than 30 days before the term ends.
+The Agreement takes effect on July 1, 2025 and remains in force through June 30, 2028. The Agreement does not renew automatically. Written notice regarding renewal is due no later than 120 days before the term ends.
 
 ## 3. Termination
 
@@ -34,25 +36,28 @@ Tier 2 applies when the Customer purchases at least 2,650 doses of Influenza pro
 
 ## 4.3. Rebate Tier 3
 
-Tier 3 applies when the Customer purchases at least 3,530 doses of Influenza products in a contract year, and earns a rebate of 4.5% on those purchases.
+Tier 3 applies when the Customer purchases at least 3,530 doses of Influenza products in a contract year, and earns a rebate of 5% on those purchases.
 
 ## 5.1. Volume Commitment: Influenza
 
-The Customer commits to purchase not less than 3,530 doses of Influenza products in each contract year.
+The Customer commits to purchase not less than 2,350 doses of Influenza products in each contract year.
 
 ## 5.2. Volume Commitment: MMR
 
-The Customer commits to purchase not less than 510 doses of MMR products in each contract year.
+The Customer commits to purchase not less than 550 doses of MMR products in each contract year.
 
 ## 6. Exclusivity and Share Floor
 
-The Supplier is the exclusive contracted source for Influenza products. The Customer will maintain a share floor of 75% of its Influenza doses with the Supplier.
+The Supplier is the exclusive contracted source for Influenza products. The Customer will maintain a share floor of 85% of its Influenza doses with the Supplier.
 
 ## 7. Administrative Fee
 
-The Supplier will pay the Customer an administrative fee equal to 2.25% of eligible purchases.
+The Supplier will pay the Customer an administrative fee equal to 2.5% of eligible purchases.
 
 ## 8. General Provisions
 
 This Agreement is fictional test material generated for a classroom project. Its terms are confidential between the parties and governed by the laws of the State of LA.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

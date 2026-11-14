@@ -1,0 +1,21 @@
+---
+id: "CL-SYN-SYNCP000035-EXH1-12"
+type: "Clause"
+ontology_version: 1
+synthetic: true
+source: {"anchor": "12", "file": "train/docs/SYN-SYNCP000035-EXH1.md", "generator_seed": 562}
+edges: []
+anchor: "12"
+heading: "Indices against State and National"
+clause_type: "exhibit"
+terms: [{"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-1", "qualifier": {"item": "R1", "level": "state", "provenance": "source", "status": "ok"}, "span": "17", "unit": "index", "value": 16.703621581670365}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-1", "qualifier": {"item": "R1", "level": "national", "provenance": "national", "status": "ok"}, "span": "18", "unit": "index", "value": 18.238726287801782}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-2", "qualifier": {"item": "R2", "level": "state", "provenance": "source", "status": "ok"}, "span": "37", "unit": "index", "value": 37.247630819942316}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-2", "qualifier": {"item": "R2", "level": "national", "provenance": "national", "status": "ok"}, "span": "32", "unit": "index", "value": 31.821070319860222}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-3", "qualifier": {"item": "R3", "level": "state", "provenance": "source", "status": "ok"}, "span": "1", "unit": "index", "value": 1.268335583206296}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-3", "qualifier": {"item": "R3", "level": "national", "provenance": "national", "status": "ok"}, "span": "3", "unit": "index", "value": 3.3577099519963247}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-4", "qualifier": {"item": "R4", "level": "state", "provenance": "source", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-4", "qualifier": {"item": "R4", "level": "national", "provenance": "national", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-5", "qualifier": {"item": "R5", "level": "state", "provenance": "source", "status": "ok"}, "span": "353", "unit": "index", "value": 353.12422820449495}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-5", "qualifier": {"item": "R5", "level": "national", "provenance": "national", "status": "ok"}, "span": "444", "unit": "index", "value": 444.49894429935944}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-6", "qualifier": {"item": "R6", "level": "state", "provenance": "source", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-6", "qualifier": {"item": "R6", "level": "national", "provenance": "national", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-7", "qualifier": {"item": "R7_FLU_TDAP", "level": "state", "provenance": "source", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-7", "qualifier": {"item": "R7_FLU_TDAP", "level": "national", "provenance": "national", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_state-8", "qualifier": {"item": "R7_RSV_TDAP", "level": "state", "provenance": "source", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000035-EXH1-12-exh_idx_nat-8", "qualifier": {"item": "R7_RSV_TDAP", "level": "national", "provenance": "national", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}]
+---
+
+- R1: index vs in-state peers 17; index vs national 18
+- R2: index vs in-state peers 37; index vs national 32
+- R3: index vs in-state peers 1; index vs national 3
+- R4: index vs in-state peers n/a; index vs national 0
+- R5: index vs in-state peers 353; index vs national 444
+- R6: index vs in-state peers 0; index vs national 0
+- R7_FLU_TDAP: index vs in-state peers n/a; index vs national n/a
+- R7_RSV_TDAP: index vs in-state peers n/a; index vs national n/a

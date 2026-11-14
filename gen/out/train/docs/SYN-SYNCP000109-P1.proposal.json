@@ -1,5 +1,5 @@
 {
- "date": "2026-07-07",
+ "date": "2025-05-10",
  "doc": {
   "doc_id": "SYN-SYNCP000109-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000109-P1, was presented by the Supplier to Summit Wellness Center 109 on July 7, 2026."
+    "text": "This proposal, SYN-SYNCP000109-P1, was presented by MERCK & COMPANY (the Supplier) to Summit Wellness Center 109 on May 10, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 4.5%."
+    "text": "Supplier concession: a Tier 2 rebate of 4%."
    },
    {
     "anchor": "3",
@@ -22,7 +22,7 @@
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: countered by the Customer."
    }
   ],
   "synthetic": true,
@@ -39,13 +39,13 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000109-P1#2",
-   "description": "a Tier 3 rebate of 4.5%",
+   "description": "a Tier 2 rebate of 4%",
    "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 4.5%"
+   "span": "a Tier 2 rebate of 4%"
   }
  ],
- "outcome": "lost",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000109-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000109-AMD1",
  "system_id": "SYNCP000109"
 }

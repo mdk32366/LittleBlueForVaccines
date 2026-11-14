@@ -1,5 +1,5 @@
 {
- "date": "2026-08-04",
+ "date": "2025-11-04",
  "doc": {
   "doc_id": "SYN-SYNCP000100-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000100-P1, was presented by the Supplier to Blue Ridge Medical Group 100 on August 4, 2026."
+    "text": "This proposal, SYN-SYNCP000100-P1, was presented by MODERNA INC (the Supplier) to Blue Ridge Medical Group 100 on November 4, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 3%."
+    "text": "Supplier concession: an administrative fee of 2.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 430 Pneumococcal doses per year."
+    "text": "Supplier request: a commitment of 10 Coronavirus doses per year."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000100-P1#3",
-   "description": "a commitment of 430 Pneumococcal doses per year",
+   "description": "a commitment of 10 Coronavirus doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 430 Pneumococcal doses per year"
+   "span": "a commitment of 10 Coronavirus doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000100-P1#2",
-   "description": "an administrative fee of 3%",
+   "description": "an administrative fee of 2.75%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 3%"
+   "span": "an administrative fee of 2.75%"
   }
  ],
  "outcome": "countered",

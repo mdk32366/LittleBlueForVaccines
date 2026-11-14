@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Minimum Take: MMR"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000069-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-mmr"}, "span": "350", "unit": "doses", "value": 350}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000069-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-mmr", "provenance": "invented"}, "span": "380", "unit": "doses", "value": 380}]
 ---
 
-Each year the Customer undertakes to take 350 or more MMR doses.
+Each year the Customer undertakes to take 380 or more MMR doses.

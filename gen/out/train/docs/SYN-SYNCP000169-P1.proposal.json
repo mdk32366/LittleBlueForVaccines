@@ -1,5 +1,5 @@
 {
- "date": "2026-02-07",
+ "date": "2026-03-17",
  "doc": {
   "doc_id": "SYN-SYNCP000169-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000169-P1, was presented by the Supplier to Summit Wellness Center 169 on February 7, 2026."
+    "text": "This proposal, SYN-SYNCP000169-P1, was presented by PFIZER (the Supplier) to Summit Wellness Center 169 on March 17, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.75%."
+    "text": "Supplier concession: an administrative fee of 3%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 760 Tdap doses per year."
+    "text": "Supplier request: a Pneumococcal share floor of 80%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: accepted by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000169-P1#3",
-   "description": "a commitment of 760 Tdap doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 760 Tdap doses per year"
+   "description": "a Pneumococcal share floor of 80%",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal share floor of 80%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000169-P1#2",
-   "description": "an administrative fee of 2.75%",
+   "description": "an administrative fee of 3%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.75%"
+   "span": "an administrative fee of 3%"
   }
  ],
- "outcome": "lost",
+ "outcome": "won",
  "proposal_id": "SYN-SYNCP000169-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000169-AMD1",
  "system_id": "SYNCP000169"
 }

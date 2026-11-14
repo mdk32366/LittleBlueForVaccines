@@ -8,7 +8,7 @@ edges: []
 anchor: "7"
 heading: "Service Charge to Group"
 clause_type: "admin_fee"
-terms: [{"field": "admin_fee_pct", "id": "TM-SYN-SYNCP000118-MSA1-7-admin_fee_pct", "qualifier": null, "span": "2 per cent", "unit": "pct", "value": 2.0}]
+terms: [{"field": "admin_fee_pct", "id": "TM-SYN-SYNCP000118-MSA1-7-admin_fee_pct", "qualifier": {"provenance": "invented"}, "span": "2.25 per cent", "unit": "pct", "value": 2.25}]
 ---
 
-A 2 per cent charge on qualifying purchases goes from Supplier to Customer for group administration.
+A 2.25 per cent charge on qualifying purchases goes from Supplier to Customer for group administration.

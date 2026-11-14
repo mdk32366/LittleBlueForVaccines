@@ -30,8 +30,11 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
                                                               "test_auto_renew_is_bool_in_term_section"]),
     "briefmarker": (["test_t0040_brief_contracts.py"], ["test_brief_tab_markers"]),
     "bench": (["test_t0037_benchmark.py"], ["test_national_mode", "test_missing_national_falls_back"]),
-    "trainguard": (["test_t0025_train_guard.py"], ["test_refuses_national_path", "test_refuses_outside_train_dirs_and_copies",
+    "trainguard": (["test_t0066_train_guard.py"], ["test_accepts_national_only_by_recorded_sha",
+                                                    "test_still_refuses_visits_and_other_files",
                                                     "test_refuses_non_synthetic_record", "test_scan_flags_planted_reference"]),
+    "guard_open": (["test_t0066_train_guard.py"], ["test_accepts_national_only_by_recorded_sha",
+                                                    "test_still_refuses_visits_and_other_files"]),
     # v0.2-a client metrics
     "kr_abcwy": (["test_t0042_client_formulas.py"], ["test_ratios_hand_computed", "test_national_file_pins",
                                                      "test_syncp000025_pins"]),
@@ -75,6 +78,12 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "ro_store_errors": (["test_t0060_visit_store_unwritable.py"], ["test_typed_save_not_writable",
                                                                   "test_loaded_save_not_writable",
                                                                   "test_lookup_store_unreadable"]),
+    # GATE 2 path B (schema_v1, spec v1.1 §8)
+    "exh_window": (["test_t0064_parity.py"], ["test_exhibit_figures_equal_app_facts", "test_committed_out_equals_inprocess"]),
+    "exh_peer_incl": (["test_t0064_parity.py"], ["test_exhibit_figures_equal_app_facts",
+                                                 "test_committed_out_equals_inprocess"]),
+    "nat_profile_r1": (["test_t0065_national_app.py"], ["test_exhibit_national_ratios_equal_app_profile"]),
+    "refusal_text": (["test_t0068_refusals_app.py"], ["test_refusal_rows_use_app_string"]),
     # v0.2-c voice notes (T-0046)
     "stt_nofallback": (["test_t0046_stt.py"], ["test_transcribe_bytes_falls_back"]),
     "stt_none": (["test_t0046_stt.py"], ["test_get_transcriber_config"]),

@@ -1,5 +1,5 @@
 {
- "date": "2025-03-20",
+ "date": "2025-06-01",
  "doc": {
   "doc_id": "SYN-SYNCP000015-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 20 March 2025, pitch SYN-SYNCP000015-P1 was put before Redwood Care Partners 015 on behalf of Supplier."
+    "text": "Prepared on 1 June 2025, pitch SYN-SYNCP000015-P1 was put before Redwood Care Partners 015 on behalf of PFIZER."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a group service charge of 1.75 per cent."
+    "text": "In exchange the Supplier put forward a Band 1 rebate of 2.5 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Tdap minimum take of 650 doses in return."
+    "text": "The Supplier sought a yearly Pneumococcal minimum take of 290 doses in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer signed off on the terms."
+    "text": "Recorded result: the Customer has not yet responded."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000015-P1#3",
-   "description": "a yearly Tdap minimum take of 650 doses",
+   "description": "a yearly Pneumococcal minimum take of 290 doses",
    "kind": "volume_commitment",
-   "span": "a yearly Tdap minimum take of 650 doses"
+   "span": "a yearly Pneumococcal minimum take of 290 doses"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000015-P1#2",
-   "description": "a group service charge of 1.75 per cent",
-   "kind": "admin_fee_change",
-   "span": "a group service charge of 1.75 per cent"
+   "description": "a Band 1 rebate of 2.5 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 1 rebate of 2.5 per cent"
   }
  ],
- "outcome": "won",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000015-P1",
- "resulted_in": "SYN-SYNCP000015-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000015"
 }

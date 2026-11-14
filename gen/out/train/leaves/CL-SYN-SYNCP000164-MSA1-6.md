@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Exclusivity and Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000164-MSA1-6-exclusivity_class", "qualifier": null, "span": "Tdap", "unit": "id", "value": "CLS-tdap"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000164-MSA1-6-share_floor_pct", "qualifier": null, "span": "55%", "unit": "pct", "value": 55}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000164-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "Meningococcal", "unit": "id", "value": "CLS-meningococcal"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000164-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "65%", "unit": "pct", "value": 65}]
 ---
 
-The Supplier is the exclusive contracted source for Tdap products. The Customer will maintain a share floor of 55% of its Tdap doses with the Supplier.
+The Supplier is the exclusive contracted source for Meningococcal products. The Customer will maintain a share floor of 65% of its Meningococcal doses with the Supplier.

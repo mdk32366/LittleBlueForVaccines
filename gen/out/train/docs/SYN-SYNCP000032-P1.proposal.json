@@ -1,5 +1,5 @@
 {
- "date": "2026-10-02",
+ "date": "2025-01-20",
  "doc": {
   "doc_id": "SYN-SYNCP000032-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000032-P1, was presented by the Supplier to Harborview Regional Hospital 032 on October 2, 2026."
+    "text": "This proposal, SYN-SYNCP000032-P1, was presented by MERCK & COMPANY (the Supplier) to Harborview Regional Hospital 032 on January 20, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.75%."
+    "text": "Supplier concession: a Tier 3 rebate of 5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 690 Hepatitis doses per year."
+    "text": "Supplier request: a HPV share floor of 55%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: countered by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,20 +31,20 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000032-P1#3",
-   "description": "a commitment of 690 Hepatitis doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 690 Hepatitis doses per year"
+   "description": "a HPV share floor of 55%",
+   "kind": "exclusivity",
+   "span": "a HPV share floor of 55%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000032-P1#2",
-   "description": "an administrative fee of 2.75%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.75%"
+   "description": "a Tier 3 rebate of 5%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 5%"
   }
  ],
- "outcome": "won",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000032-P1",
  "resulted_in": "SYN-SYNCP000032-AMD1",
  "system_id": "SYNCP000032"

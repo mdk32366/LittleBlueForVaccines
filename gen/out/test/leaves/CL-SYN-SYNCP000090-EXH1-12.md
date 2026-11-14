@@ -1,0 +1,21 @@
+---
+id: "CL-SYN-SYNCP000090-EXH1-12"
+type: "Clause"
+ontology_version: 1
+synthetic: true
+source: {"anchor": "12", "file": "test/docs/SYN-SYNCP000090-EXH1.md", "generator_seed": 562}
+edges: []
+anchor: "12"
+heading: "Relative Standing"
+clause_type: "exhibit"
+terms: [{"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-1", "qualifier": {"item": "R1", "level": "state", "provenance": "source", "status": "ok"}, "span": "371", "unit": "index", "value": 371.2971222008356}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-1", "qualifier": {"item": "R1", "level": "national", "provenance": "national", "status": "ok"}, "span": "393", "unit": "index", "value": 393.3842924819992}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-2", "qualifier": {"item": "R2", "level": "state", "provenance": "source", "status": "ok"}, "span": "228", "unit": "index", "value": 228.41243793654803}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-2", "qualifier": {"item": "R2", "level": "national", "provenance": "national", "status": "ok"}, "span": "236", "unit": "index", "value": 235.5383146224948}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-3", "qualifier": {"item": "R3", "level": "state", "provenance": "source", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-3", "qualifier": {"item": "R3", "level": "national", "provenance": "national", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-4", "qualifier": {"item": "R4", "level": "state", "provenance": "source", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-4", "qualifier": {"item": "R4", "level": "national", "provenance": "national", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-5", "qualifier": {"item": "R5", "level": "state", "provenance": "source", "status": "ok"}, "span": "44", "unit": "index", "value": 43.54531865742628}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-5", "qualifier": {"item": "R5", "level": "national", "provenance": "national", "status": "ok"}, "span": "41", "unit": "index", "value": 40.857983768931014}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-6", "qualifier": {"item": "R6", "level": "state", "provenance": "source", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-6", "qualifier": {"item": "R6", "level": "national", "provenance": "national", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-7", "qualifier": {"item": "R7_FLU_TDAP", "level": "state", "provenance": "source", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-7", "qualifier": {"item": "R7_FLU_TDAP", "level": "national", "provenance": "national", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}, {"field": "exh_idx_state", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_state-8", "qualifier": {"item": "R7_RSV_TDAP", "level": "state", "provenance": "source", "status": "n/a"}, "span": "n/a", "unit": "index", "value": null}, {"field": "exh_idx_nat", "id": "TM-SYN-SYNCP000090-EXH1-12-exh_idx_nat-8", "qualifier": {"item": "R7_RSV_TDAP", "level": "national", "provenance": "national", "status": "ok"}, "span": "0", "unit": "index", "value": 0.0}]
+---
+
+* R1 = relative to same-state pool 371 | relative to countrywide 393
+* R2 = relative to same-state pool 228 | relative to countrywide 236
+* R3 = relative to same-state pool n/a | relative to countrywide n/a
+* R4 = relative to same-state pool n/a | relative to countrywide 0
+* R5 = relative to same-state pool 44 | relative to countrywide 41
+* R6 = relative to same-state pool 0 | relative to countrywide 0
+* R7_FLU_TDAP = relative to same-state pool 0 | relative to countrywide 0
+* R7_RSV_TDAP = relative to same-state pool n/a | relative to countrywide 0

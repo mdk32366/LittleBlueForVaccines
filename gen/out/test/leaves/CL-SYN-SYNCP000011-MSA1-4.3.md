@@ -8,7 +8,7 @@ edges: []
 anchor: "4.3"
 heading: "Volume Band 3"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000011-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-tdap", "tier": 3}, "span": "1,090", "unit": "doses", "value": 1090}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000011-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-tdap", "tier": 3}, "span": "4 per cent", "unit": "pct", "value": 4.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000011-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-mmr", "provenance": "invented", "tier": 3}, "span": "550", "unit": "doses", "value": 550}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000011-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-mmr", "provenance": "invented", "tier": 3}, "span": "4 per cent", "unit": "pct", "value": 4.0}]
 ---
 
-Band 3 is reached once yearly Tdap volume hits 1,090 doses or more; qualifying spend then carries a 4 per cent rebate.
+Band 3 is reached once yearly MMR volume hits 550 doses or more; qualifying spend then carries a 4 per cent rebate.

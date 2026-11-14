@@ -5,24 +5,26 @@ ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000131-P1.md", "generator_seed": 562}
 edges: []
-date: "2025-02-15"
-gives: [{"anchor": "SYN-SYNCP000131-P1#2", "description": "a Tier 2 rebate of 4%", "kind": "rebate_change", "span": "a Tier 2 rebate of 4%"}]
-gets: [{"anchor": "SYN-SYNCP000131-P1#3", "description": "a Hepatitis share floor of 80%", "kind": "exclusivity", "span": "a Hepatitis share floor of 80%"}]
+date: "2026-06-12"
+gives: [{"anchor": "SYN-SYNCP000131-P1#2", "description": "an administrative fee of 2.5%", "kind": "admin_fee_change", "span": "an administrative fee of 2.5%"}]
+gets: [{"anchor": "SYN-SYNCP000131-P1#3", "description": "a commitment of 220 Pneumococcal doses per year", "kind": "volume_commitment", "span": "a commitment of 220 Pneumococcal doses per year"}]
 outcome: "pending"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000131-P1, was presented by the Supplier to Highland Pediatric Center 131 on February 15, 2025.
+This proposal, SYN-SYNCP000131-P1, was presented by PFIZER (the Supplier) to Highland Pediatric Center 131 on June 12, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 2 rebate of 4%.
+Supplier concession: an administrative fee of 2.5%.
 
 ## 3. Supplier Request
 
-Supplier request: a Hepatitis share floor of 80%.
+Supplier request: a commitment of 220 Pneumococcal doses per year.
 
 ## 4. Proposal Status
 
 Status of this proposal: awaiting a Customer decision.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

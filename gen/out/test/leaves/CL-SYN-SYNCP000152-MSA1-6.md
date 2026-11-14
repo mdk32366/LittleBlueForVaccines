@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000152-MSA1-6-exclusivity_class", "qualifier": null, "span": "Influenza", "unit": "id", "value": "CLS-influenza"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000152-MSA1-6-share_floor_pct", "qualifier": null, "span": "85 per cent", "unit": "pct", "value": 85}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000152-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "Influenza", "unit": "id", "value": "CLS-influenza"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000152-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "75 per cent", "unit": "pct", "value": 75}]
 ---
 
-For Influenza, the Supplier holds sole preferred standing. No less than 85 per cent of Influenza volume is to flow to the Supplier.
+For Influenza, the Supplier holds sole preferred standing. No less than 75 per cent of Influenza volume is to flow to the Supplier.

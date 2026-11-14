@@ -2,131 +2,203 @@
  "doc_id": "SYN-SYNCP000178-MSA1",
  "fields": {
   "admin_fee_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "7",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "1.25%",
+   "span": "2.25%",
    "type": "pct",
-   "value": 1.25
+   "value": 2.25
   },
   "auto_renew": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "renews automatically",
+   "span": "does not renew automatically",
    "type": "enum",
-   "value": true
+   "value": false
   },
   "commitment_doses_per_year-1": {
    "qualifier": {
-    "class": "CLS-influenza"
+    "class": "CLS-influenza",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.1",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "510",
+   "span": "650",
    "type": "int",
-   "value": 510
+   "value": 650
   },
   "commitment_doses_per_year-2": {
    "qualifier": {
-    "class": "CLS-pneumococcal"
+    "class": "CLS-pneumococcal",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.2",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "410",
+   "span": "400",
    "type": "int",
-   "value": 410
+   "value": 400
   },
   "covered_product-1": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "PRD-syn-influenza",
+   "span": "PREVNAR 20",
    "type": "enum",
-   "value": "PRD-syn-influenza"
+   "value": "PREVNAR 20"
   },
-  "covered_product-2": {
-   "qualifier": null,
+  "covered_specialty": {
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "PRD-syn-pneumococcal",
+   "span": "Pediatric Medicine",
    "type": "enum",
-   "value": "PRD-syn-pneumococcal"
-  },
-  "covered_product-3": {
-   "qualifier": null,
-   "source": {
-    "anchor": "1",
-    "doc_id": "SYN-SYNCP000178-MSA1"
-   },
-   "span": "PRD-syn-tdap",
-   "type": "enum",
-   "value": "PRD-syn-tdap"
+   "value": "Pediatric Medicine"
   },
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "March 1, 2025",
+   "span": "June 1, 2025",
    "type": "date",
-   "value": "2025-03-01"
+   "value": "2025-06-01"
   },
   "exclusivity_class": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "Influenza",
+   "span": "Pneumococcal",
    "type": "enum",
-   "value": "CLS-influenza"
+   "value": "CLS-pneumococcal"
   },
   "expiration_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "February 29, 2028",
+   "span": "May 31, 2029",
    "type": "date",
-   "value": "2028-02-29"
+   "value": "2029-05-31"
+  },
+  "governing_state": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000178-MSA1"
+   },
+   "span": "UT",
+   "type": "enum",
+   "value": "UT"
+  },
+  "member_org_type": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000178-MSA1"
+   },
+   "span": "Corporate Owner",
+   "type": "enum",
+   "value": "Corporate Owner"
+  },
+  "participating_sites": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000178-MSA1"
+   },
+   "span": "13",
+   "type": "int",
+   "value": 13
+  },
+  "participating_subsidiaries": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000178-MSA1"
+   },
+   "span": "25",
+   "type": "int",
+   "value": 25
   },
   "renewal_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "120",
+   "span": "30",
    "type": "int",
-   "value": 120
+   "value": 30
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "55%",
+   "span": "65%",
    "type": "pct",
-   "value": 55
+   "value": 65
+  },
+  "supplier_name": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000178-MSA1"
+   },
+   "span": "PFIZER",
+   "type": "enum",
+   "value": "PFIZER"
   },
   "termination_for_convenience": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000178-MSA1"
@@ -136,57 +208,63 @@
    "value": true
   },
   "termination_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "60",
+   "span": "180",
    "type": "int",
-   "value": 60
+   "value": 180
   },
   "tier_min_doses-1": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "370",
+   "span": "200",
    "type": "int",
-   "value": 370
+   "value": 200
   },
   "tier_min_doses-2": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "550",
+   "span": "310",
    "type": "int",
-   "value": 550
+   "value": 310
   },
   "tier_min_doses-3": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000178-MSA1"
    },
-   "span": "730",
+   "span": "410",
    "type": "int",
-   "value": 730
+   "value": 410
   },
   "tier_rebate_pct-1": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
@@ -199,7 +277,8 @@
   },
   "tier_rebate_pct-2": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
@@ -212,7 +291,8 @@
   },
   "tier_rebate_pct-3": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {

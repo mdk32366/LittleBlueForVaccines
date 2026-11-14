@@ -3,28 +3,33 @@ doc_id: "SYN-SYNCP000125-P1"
 system_id: "SYNCP000125"
 doc_type: "PROPOSAL"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "B"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000125-P1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Pitch Overview
 
-Prepared on 7 November 2024, pitch SYN-SYNCP000125-P1 was put before Sunrise Care Partners 125 on behalf of Supplier.
+Prepared on 7 March 2025, pitch SYN-SYNCP000125-P1 was put before Sunrise Care Partners 125 on behalf of SANOFI.
 
 ## 2. Put Forward in Exchange
 
-In exchange the Supplier put forward a group service charge of 2.5 per cent.
+In exchange the Supplier put forward a Band 1 rebate of 2 per cent.
 
 ## 3. Sought in Return
 
-The Supplier sought a yearly Influenza minimum take of 650 doses in return.
+The Supplier sought a RSV preferred-position minimum of 65 per cent in return.
 
 ## 4. Recorded Result
 
-Recorded result: the Customer came back with a counter.
+Recorded result: the Customer turned the terms down.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

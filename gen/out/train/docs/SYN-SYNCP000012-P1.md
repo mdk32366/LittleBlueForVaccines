@@ -3,28 +3,33 @@ doc_id: "SYN-SYNCP000012-P1"
 system_id: "SYNCP000012"
 doc_type: "PROPOSAL"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000012-P1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000012-P1, was presented by the Supplier to Harborview Regional Hospital 012 on February 14, 2026.
+This proposal, SYN-SYNCP000012-P1, was presented by MERCK & COMPANY (the Supplier) to Harborview Regional Hospital 012 on October 2, 2024.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 3 rebate of 5.5%.
+Supplier concession: an administrative fee of 3.25%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 1,110 Influenza doses per year.
+Supplier request: a commitment of 130 HPV doses per year.
 
 ## 4. Proposal Status
 
-Status of this proposal: declined by the Customer.
+Status of this proposal: awaiting a Customer decision.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

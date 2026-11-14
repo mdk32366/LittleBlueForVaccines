@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000097-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000097-AMD1"}]
-date: "2026-04-14"
-gives: [{"anchor": "SYN-SYNCP000097-P1#2", "description": "a Tier 1 rebate of 3%", "kind": "rebate_change", "span": "a Tier 1 rebate of 3%"}]
-gets: [{"anchor": "SYN-SYNCP000097-P1#3", "description": "a Influenza share floor of 55%", "kind": "exclusivity", "span": "a Influenza share floor of 55%"}]
-outcome: "won"
+edges: []
+date: "2025-09-10"
+gives: [{"anchor": "SYN-SYNCP000097-P1#2", "description": "an administrative fee of 3.25%", "kind": "admin_fee_change", "span": "an administrative fee of 3.25%"}]
+gets: [{"anchor": "SYN-SYNCP000097-P1#3", "description": "a HPV share floor of 85%", "kind": "exclusivity", "span": "a HPV share floor of 85%"}]
+outcome: "lost"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000097-P1, was presented by the Supplier to Atlantic Health Network 097 on April 14, 2026.
+This proposal, SYN-SYNCP000097-P1, was presented by MERCK & COMPANY (the Supplier) to Atlantic Health Network 097 on September 10, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 1 rebate of 3%.
+Supplier concession: an administrative fee of 3.25%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 55%.
+Supplier request: a HPV share floor of 85%.
 
 ## 4. Proposal Status
 
-Status of this proposal: accepted by the Customer.
+Status of this proposal: declined by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

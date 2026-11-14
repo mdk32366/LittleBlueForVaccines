@@ -1,5 +1,5 @@
 {
- "date": "2025-09-17",
+ "date": "2025-11-06",
  "doc": {
   "doc_id": "SYN-SYNCP000056-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000056-P1, was presented by the Supplier to Clearwater Urgent Care 056 on September 17, 2025."
+    "text": "This proposal, SYN-SYNCP000056-P1, was presented by PFIZER (the Supplier) to Clearwater Urgent Care 056 on November 6, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.75%."
+    "text": "Supplier concession: a Tier 2 rebate of 4%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 530 Influenza doses per year."
+    "text": "Supplier request: a Pneumococcal share floor of 85%."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000056-P1#3",
-   "description": "a commitment of 530 Influenza doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 530 Influenza doses per year"
+   "description": "a Pneumococcal share floor of 85%",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal share floor of 85%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000056-P1#2",
-   "description": "an administrative fee of 1.75%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.75%"
+   "description": "a Tier 2 rebate of 4%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 4%"
   }
  ],
  "outcome": "won",

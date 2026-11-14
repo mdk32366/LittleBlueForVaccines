@@ -1,5 +1,5 @@
 {
- "date": "2026-08-11",
+ "date": "2026-06-11",
  "doc": {
   "doc_id": "SYN-SYNCP000120-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 11 August 2026, pitch SYN-SYNCP000120-P1 was put before Blue Ridge Medical Group 120 on behalf of Supplier."
+    "text": "Prepared on 11 June 2026, pitch SYN-SYNCP000120-P1 was put before Blue Ridge Medical Group 120 on behalf of SANOFI."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a group service charge of 1.25 per cent."
+    "text": "In exchange the Supplier put forward a Band 1 rebate of 3 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a Influenza preferred-position minimum of 55 per cent in return."
+    "text": "The Supplier sought a Influenza preferred-position minimum of 60 per cent in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer signed off on the terms."
+    "text": "Recorded result: the Customer has not yet responded."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000120-P1#3",
-   "description": "a Influenza preferred-position minimum of 55 per cent",
+   "description": "a Influenza preferred-position minimum of 60 per cent",
    "kind": "exclusivity",
-   "span": "a Influenza preferred-position minimum of 55 per cent"
+   "span": "a Influenza preferred-position minimum of 60 per cent"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000120-P1#2",
-   "description": "a group service charge of 1.25 per cent",
-   "kind": "admin_fee_change",
-   "span": "a group service charge of 1.25 per cent"
+   "description": "a Band 1 rebate of 3 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 1 rebate of 3 per cent"
   }
  ],
- "outcome": "won",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000120-P1",
- "resulted_in": "SYN-SYNCP000120-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000120"
 }

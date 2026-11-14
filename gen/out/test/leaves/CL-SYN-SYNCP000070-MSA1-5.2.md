@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Minimum Take: Tdap"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000070-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-tdap"}, "span": "240", "unit": "doses", "value": 240}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000070-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-tdap", "provenance": "invented"}, "span": "340", "unit": "doses", "value": 340}]
 ---
 
-Each year the Customer undertakes to take 240 or more Tdap doses.
+Each year the Customer undertakes to take 340 or more Tdap doses.

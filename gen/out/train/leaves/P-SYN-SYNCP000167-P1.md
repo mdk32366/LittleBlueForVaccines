@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000167-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000167-AMD1"}]
-date: "2026-04-08"
-gives: [{"anchor": "SYN-SYNCP000167-P1#2", "description": "a Tier 2 rebate of 3.5%", "kind": "rebate_change", "span": "a Tier 2 rebate of 3.5%"}]
-gets: [{"anchor": "SYN-SYNCP000167-P1#3", "description": "a commitment of 1,100 Tdap doses per year", "kind": "volume_commitment", "span": "a commitment of 1,100 Tdap doses per year"}]
-outcome: "countered"
+edges: []
+date: "2025-04-11"
+gives: [{"anchor": "SYN-SYNCP000167-P1#2", "description": "an administrative fee of 2.75%", "kind": "admin_fee_change", "span": "an administrative fee of 2.75%"}]
+gets: [{"anchor": "SYN-SYNCP000167-P1#3", "description": "a MMR share floor of 70%", "kind": "exclusivity", "span": "a MMR share floor of 70%"}]
+outcome: "lost"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000167-P1, was presented by the Supplier to Evergreen Health Network 167 on April 8, 2026.
+This proposal, SYN-SYNCP000167-P1, was presented by MERCK & COMPANY (the Supplier) to Evergreen Health Network 167 on April 11, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 2 rebate of 3.5%.
+Supplier concession: an administrative fee of 2.75%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 1,100 Tdap doses per year.
+Supplier request: a MMR share floor of 70%.
 
 ## 4. Proposal Status
 
-Status of this proposal: countered by the Customer.
+Status of this proposal: declined by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

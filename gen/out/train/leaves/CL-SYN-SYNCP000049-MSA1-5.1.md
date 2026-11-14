@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Volume Commitment: Tdap"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000049-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-tdap"}, "span": "470", "unit": "doses", "value": 470}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000049-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-tdap", "provenance": "invented"}, "span": "700", "unit": "doses", "value": 700}]
 ---
 
-The Customer commits to purchase not less than 470 doses of Tdap products in each contract year.
+The Customer commits to purchase not less than 700 doses of Tdap products in each contract year.

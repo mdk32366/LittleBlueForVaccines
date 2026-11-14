@@ -5,24 +5,26 @@ ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000172-P1.md", "generator_seed": 562}
 edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000172-AMD1"}]
-date: "2026-01-15"
-gives: [{"anchor": "SYN-SYNCP000172-P1#2", "description": "an administrative fee of 3.25%", "kind": "admin_fee_change", "span": "an administrative fee of 3.25%"}]
-gets: [{"anchor": "SYN-SYNCP000172-P1#3", "description": "a commitment of 670 Influenza doses per year", "kind": "volume_commitment", "span": "a commitment of 670 Influenza doses per year"}]
-outcome: "countered"
+date: "2026-06-01"
+gives: [{"anchor": "SYN-SYNCP000172-P1#2", "description": "a Tier 1 rebate of 2.5%", "kind": "rebate_change", "span": "a Tier 1 rebate of 2.5%"}]
+gets: [{"anchor": "SYN-SYNCP000172-P1#3", "description": "a commitment of 290 Pneumococcal doses per year", "kind": "volume_commitment", "span": "a commitment of 290 Pneumococcal doses per year"}]
+outcome: "won"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000172-P1, was presented by the Supplier to Harborview Regional Hospital 172 on January 15, 2026.
+This proposal, SYN-SYNCP000172-P1, was presented by PFIZER (the Supplier) to Harborview Regional Hospital 172 on June 1, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 3.25%.
+Supplier concession: a Tier 1 rebate of 2.5%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 670 Influenza doses per year.
+Supplier request: a commitment of 290 Pneumococcal doses per year.
 
 ## 4. Proposal Status
 
-Status of this proposal: countered by the Customer.
+Status of this proposal: accepted by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

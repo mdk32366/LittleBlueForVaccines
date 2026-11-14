@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 5 April 2026, pitch SYN-SYNCP000004-P1 was put before Pioneer Family Clinic 004 on behalf of Supplier."
+    "text": "Prepared on 5 April 2026, pitch SYN-SYNCP000004-P1 was put before Pioneer Family Clinic 004 on behalf of PFIZER."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 3 rebate of 4.5 per cent."
+    "text": "In exchange the Supplier put forward a Band 2 rebate of 4 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a Influenza preferred-position minimum of 75 per cent in return."
+    "text": "The Supplier sought a Pneumococcal preferred-position minimum of 70 per cent in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer has not yet responded."
+    "text": "Recorded result: the Customer came back with a counter."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000004-P1#3",
-   "description": "a Influenza preferred-position minimum of 75 per cent",
+   "description": "a Pneumococcal preferred-position minimum of 70 per cent",
    "kind": "exclusivity",
-   "span": "a Influenza preferred-position minimum of 75 per cent"
+   "span": "a Pneumococcal preferred-position minimum of 70 per cent"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000004-P1#2",
-   "description": "a Band 3 rebate of 4.5 per cent",
+   "description": "a Band 2 rebate of 4 per cent",
    "kind": "rebate_change",
-   "span": "a Band 3 rebate of 4.5 per cent"
+   "span": "a Band 2 rebate of 4 per cent"
   }
  ],
- "outcome": "pending",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000004-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000004-AMD1",
  "system_id": "SYNCP000004"
 }

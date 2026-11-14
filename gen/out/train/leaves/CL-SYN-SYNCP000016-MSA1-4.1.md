@@ -8,7 +8,7 @@ edges: []
 anchor: "4.1"
 heading: "Rebate Tier 1"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000016-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "330", "unit": "doses", "value": 330}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000016-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "2.5%", "unit": "pct", "value": 2.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000016-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-meningococcal", "provenance": "invented", "tier": 1}, "span": "150", "unit": "doses", "value": 150}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000016-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-meningococcal", "provenance": "invented", "tier": 1}, "span": "2.5%", "unit": "pct", "value": 2.5}]
 ---
 
-Tier 1 applies when the Customer purchases at least 330 doses of Tdap products in a contract year, and earns a rebate of 2.5% on those purchases.
+Tier 1 applies when the Customer purchases at least 150 doses of Meningococcal products in a contract year, and earns a rebate of 2.5% on those purchases.

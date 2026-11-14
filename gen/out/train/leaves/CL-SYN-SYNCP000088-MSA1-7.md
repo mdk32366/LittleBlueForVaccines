@@ -8,7 +8,7 @@ edges: []
 anchor: "7"
 heading: "Administrative Fee"
 clause_type: "admin_fee"
-terms: [{"field": "admin_fee_pct", "id": "TM-SYN-SYNCP000088-MSA1-7-admin_fee_pct", "qualifier": null, "span": "1.5%", "unit": "pct", "value": 1.5}]
+terms: [{"field": "admin_fee_pct", "id": "TM-SYN-SYNCP000088-MSA1-7-admin_fee_pct", "qualifier": {"provenance": "invented"}, "span": "1%", "unit": "pct", "value": 1.0}]
 ---
 
-The Supplier will pay the Customer an administrative fee equal to 1.5% of eligible purchases.
+The Supplier will pay the Customer an administrative fee equal to 1% of eligible purchases.

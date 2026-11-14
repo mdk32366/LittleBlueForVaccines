@@ -1,5 +1,5 @@
 {
- "date": "2025-02-11",
+ "date": "2025-12-11",
  "doc": {
   "doc_id": "SYN-SYNCP000076-P1",
   "doc_type": "PROPOSAL",
@@ -7,7 +7,7 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 11 February 2025, pitch SYN-SYNCP000076-P1 was put before Clearwater Urgent Care 076 on behalf of Supplier."
+    "text": "Prepared on 11 December 2025, pitch SYN-SYNCP000076-P1 was put before Clearwater Urgent Care 076 on behalf of PFIZER."
    },
    {
     "anchor": "2",
@@ -17,12 +17,12 @@
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Hepatitis minimum take of 870 doses in return."
+    "text": "The Supplier sought a Pneumococcal preferred-position minimum of 65 per cent in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer came back with a counter."
+    "text": "Recorded result: the Customer turned the terms down."
    }
   ],
   "synthetic": true,
@@ -31,9 +31,9 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000076-P1#3",
-   "description": "a yearly Hepatitis minimum take of 870 doses",
-   "kind": "volume_commitment",
-   "span": "a yearly Hepatitis minimum take of 870 doses"
+   "description": "a Pneumococcal preferred-position minimum of 65 per cent",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal preferred-position minimum of 65 per cent"
   }
  ],
  "gives": [
@@ -44,8 +44,8 @@
    "span": "a Band 2 rebate of 3.5 per cent"
   }
  ],
- "outcome": "countered",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000076-P1",
- "resulted_in": "SYN-SYNCP000076-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000076"
 }

@@ -3,28 +3,33 @@ doc_id: "SYN-SYNCP000031-P1"
 system_id: "SYNCP000031"
 doc_type: "PROPOSAL"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000031-P1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000031-P1, was presented by the Supplier to Highland Pediatric Center 031 on January 7, 2026.
+This proposal, SYN-SYNCP000031-P1, was presented by GSK PHARM (the Supplier) to Highland Pediatric Center 031 on November 12, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 2 rebate of 4.5%.
+Supplier concession: an administrative fee of 1.75%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 750 DTaP doses per year.
+Supplier request: a Shingles share floor of 70%.
 
 ## 4. Proposal Status
 
 Status of this proposal: countered by the Customer.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

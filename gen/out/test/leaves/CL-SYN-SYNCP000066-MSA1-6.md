@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000066-MSA1-6-exclusivity_class", "qualifier": null, "span": "Tdap", "unit": "id", "value": "CLS-tdap"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000066-MSA1-6-share_floor_pct", "qualifier": null, "span": "60 per cent", "unit": "pct", "value": 60}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000066-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "Pneumococcal", "unit": "id", "value": "CLS-pneumococcal"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000066-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "55 per cent", "unit": "pct", "value": 55}]
 ---
 
-For Tdap, the Supplier holds sole preferred standing. No less than 60 per cent of Tdap volume is to flow to the Supplier.
+For Pneumococcal, the Supplier holds sole preferred standing. No less than 55 per cent of Pneumococcal volume is to flow to the Supplier.

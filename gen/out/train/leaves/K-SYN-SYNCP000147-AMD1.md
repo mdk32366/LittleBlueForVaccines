@@ -9,8 +9,10 @@ doc_type: "AMD"
 title: "SYNTHETIC AMD SYN-SYNCP000147-AMD1"
 effective_date: "2026-09-01"
 expiration_date: null
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 synthetic_stamp: true
 ---
 
-SYNTHETIC contract SYN-SYNCP000147-AMD1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC contract SYN-SYNCP000147-AMD1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

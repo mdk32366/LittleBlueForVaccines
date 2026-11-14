@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Revised Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000141-AMD1-2-share_floor_pct", "qualifier": null, "span": "85%", "unit": "pct", "value": 85}]
+terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000141-AMD1-2-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "55%", "unit": "pct", "value": 55}]
 ---
 
-From the amendment date, the MMR share floor becomes 85% of the Customer's MMR doses.
+From the amendment date, the MMR share floor becomes 55% of the Customer's MMR doses.

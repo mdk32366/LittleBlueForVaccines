@@ -1,5 +1,5 @@
 {
- "date": "2026-11-11",
+ "date": "2025-05-16",
  "doc": {
   "doc_id": "SYN-SYNCP000124-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000124-P1, was presented by the Supplier to Pioneer Family Clinic 124 on November 11, 2026."
+    "text": "This proposal, SYN-SYNCP000124-P1, was presented by MERCK & COMPANY (the Supplier) to Pioneer Family Clinic 124 on May 16, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 4%."
+    "text": "Supplier concession: an administrative fee of 2%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Tdap share floor of 60%."
+    "text": "Supplier request: a commitment of 480 MMR doses per year."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000124-P1#3",
-   "description": "a Tdap share floor of 60%",
-   "kind": "exclusivity",
-   "span": "a Tdap share floor of 60%"
+   "description": "a commitment of 480 MMR doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 480 MMR doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000124-P1#2",
-   "description": "a Tier 3 rebate of 4%",
-   "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 4%"
+   "description": "an administrative fee of 2%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 2%"
   }
  ],
  "outcome": "lost",

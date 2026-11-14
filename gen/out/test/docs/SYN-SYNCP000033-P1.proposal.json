@@ -1,5 +1,5 @@
 {
- "date": "2026-01-20",
+ "date": "2025-07-14",
  "doc": {
   "doc_id": "SYN-SYNCP000033-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 20 January 2026, pitch SYN-SYNCP000033-P1 was put before Riverbend Physician Alliance 033 on behalf of Supplier."
+    "text": "Prepared on 14 July 2025, pitch SYN-SYNCP000033-P1 was put before Riverbend Physician Alliance 033 on behalf of GSK PHARM."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 1 rebate of 2.5 per cent."
+    "text": "In exchange the Supplier put forward a Band 2 rebate of 3.5 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a Tdap preferred-position minimum of 60 per cent in return."
+    "text": "The Supplier sought a yearly Tdap minimum take of 1,330 doses in return."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000033-P1#3",
-   "description": "a Tdap preferred-position minimum of 60 per cent",
-   "kind": "exclusivity",
-   "span": "a Tdap preferred-position minimum of 60 per cent"
+   "description": "a yearly Tdap minimum take of 1,330 doses",
+   "kind": "volume_commitment",
+   "span": "a yearly Tdap minimum take of 1,330 doses"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000033-P1#2",
-   "description": "a Band 1 rebate of 2.5 per cent",
+   "description": "a Band 2 rebate of 3.5 per cent",
    "kind": "rebate_change",
-   "span": "a Band 1 rebate of 2.5 per cent"
+   "span": "a Band 2 rebate of 3.5 per cent"
   }
  ],
  "outcome": "countered",

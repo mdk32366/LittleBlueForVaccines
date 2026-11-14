@@ -3,28 +3,33 @@ doc_id: "SYN-SYNCP000023-P1"
 system_id: "SYNCP000023"
 doc_type: "PROPOSAL"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "B"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000023-P1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Pitch Overview
 
-Prepared on 1 December 2025, pitch SYN-SYNCP000023-P1 was put before Cedar Valley Physician Alliance 023 on behalf of Supplier.
+Prepared on 1 March 2026, pitch SYN-SYNCP000023-P1 was put before Cedar Valley Physician Alliance 023 on behalf of PFIZER.
 
 ## 2. Put Forward in Exchange
 
-In exchange the Supplier put forward a group service charge of 2.25 per cent.
+In exchange the Supplier put forward a Band 1 rebate of 3 per cent.
 
 ## 3. Sought in Return
 
-The Supplier sought a Influenza preferred-position minimum of 45 per cent in return.
+The Supplier sought a Pneumococcal preferred-position minimum of 70 per cent in return.
 
 ## 4. Recorded Result
 
-Recorded result: the Customer signed off on the terms.
+Recorded result: the Customer turned the terms down.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

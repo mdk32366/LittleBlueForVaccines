@@ -8,7 +8,7 @@ edges: []
 anchor: "4.2"
 heading: "Rebate Tier 2"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000061-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-tdap", "tier": 2}, "span": "390", "unit": "doses", "value": 390}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000061-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-tdap", "tier": 2}, "span": "2.5%", "unit": "pct", "value": 2.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000061-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 2}, "span": "190", "unit": "doses", "value": 190}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000061-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 2}, "span": "3.5%", "unit": "pct", "value": 3.5}]
 ---
 
-Tier 2 applies when the Customer purchases at least 390 doses of Tdap products in a contract year, and earns a rebate of 2.5% on those purchases.
+Tier 2 applies when the Customer purchases at least 190 doses of HPV products in a contract year, and earns a rebate of 3.5% on those purchases.

@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Volume Commitment: Pneumococcal"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000013-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-pneumococcal"}, "span": "530", "unit": "doses", "value": 530}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000013-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented"}, "span": "440", "unit": "doses", "value": 440}]
 ---
 
-The Customer commits to purchase not less than 530 doses of Pneumococcal products in each contract year.
+The Customer commits to purchase not less than 440 doses of Pneumococcal products in each contract year.

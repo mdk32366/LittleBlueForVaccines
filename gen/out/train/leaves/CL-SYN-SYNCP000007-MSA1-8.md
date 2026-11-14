@@ -8,7 +8,7 @@ edges: []
 anchor: "8"
 heading: "General Provisions"
 clause_type: "other"
-terms: []
+terms: [{"field": "governing_state", "id": "TM-SYN-SYNCP000007-MSA1-8-governing_state", "qualifier": {"provenance": "source"}, "span": "MO", "unit": "id", "value": "MO"}]
 ---
 
 This Agreement is fictional test material generated for a classroom project. Its terms are confidential between the parties and governed by the laws of the State of MO.

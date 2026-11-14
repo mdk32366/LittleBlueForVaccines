@@ -11,7 +11,7 @@ jobs:
   gen:
     name: gen (pytest, T-0027, redproof)
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30  # schema_v1: 32 gen mutations, each a full real regeneration
     defaults:
       run:
         working-directory: gen
@@ -31,7 +31,7 @@ jobs:
         timeout-minutes: 5
         run: python -m pytest -v tests/test_vault.py
       - name: Red-proof (every guard can go red)
-        timeout-minutes: 10
+        timeout-minutes: 20
         run: python -u tools/redproof.py
 
   app:

@@ -2,17 +2,21 @@
  "doc_id": "SYN-SYNCP000005-MSA1",
  "fields": {
   "admin_fee_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "7",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "1.75 per cent",
+   "span": "1 per cent",
    "type": "pct",
-   "value": 1.75
+   "value": 1.0
   },
   "auto_renew": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000005-MSA1"
@@ -23,70 +27,70 @@
   },
   "commitment_doses_per_year-1": {
    "qualifier": {
-    "class": "CLS-tdap"
+    "class": "CLS-tdap",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.1",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "1,160",
+   "span": "980",
    "type": "int",
-   "value": 1160
+   "value": 980
   },
   "commitment_doses_per_year-2": {
    "qualifier": {
-    "class": "CLS-influenza"
+    "class": "CLS-influenza",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.2",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "1,060",
+   "span": "670",
    "type": "int",
-   "value": 1060
+   "value": 670
   },
   "covered_product-1": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "PRD-syn-tdap",
+   "span": "ADACEL TDAP",
    "type": "enum",
-   "value": "PRD-syn-tdap"
+   "value": "ADACEL TDAP"
   },
-  "covered_product-2": {
-   "qualifier": null,
+  "covered_specialty": {
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "PRD-syn-influenza",
+   "span": "Primary Care",
    "type": "enum",
-   "value": "PRD-syn-influenza"
-  },
-  "covered_product-3": {
-   "qualifier": null,
-   "source": {
-    "anchor": "1",
-    "doc_id": "SYN-SYNCP000005-MSA1"
-   },
-   "span": "PRD-syn-hepatitis",
-   "type": "enum",
-   "value": "PRD-syn-hepatitis"
+   "value": "Primary Care"
   },
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "1 March 2024",
+   "span": "1 October 2024",
    "type": "date",
-   "value": "2024-03-01"
+   "value": "2024-10-01"
   },
   "exclusivity_class": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000005-MSA1"
@@ -96,37 +100,105 @@
    "value": "CLS-tdap"
   },
   "expiration_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "29 February 2028",
+   "span": "30 September 2026",
    "type": "date",
-   "value": "2028-02-29"
+   "value": "2026-09-30"
+  },
+  "governing_state": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000005-MSA1"
+   },
+   "span": "TX",
+   "type": "enum",
+   "value": "TX"
+  },
+  "member_org_type": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000005-MSA1"
+   },
+   "span": "IDN",
+   "type": "enum",
+   "value": "IDN"
+  },
+  "participating_sites": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000005-MSA1"
+   },
+   "span": "13",
+   "type": "int",
+   "value": 13
+  },
+  "participating_subsidiaries": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000005-MSA1"
+   },
+   "span": "23",
+   "type": "int",
+   "value": 23
   },
   "renewal_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "120",
+   "span": "60",
    "type": "int",
-   "value": 120
+   "value": 60
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "60 per cent",
+   "span": "50 per cent",
    "type": "pct",
-   "value": 60
+   "value": 50
+  },
+  "supplier_name": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000005-MSA1"
+   },
+   "span": "SANOFI",
+   "type": "enum",
+   "value": "SANOFI"
   },
   "termination_for_convenience": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000005-MSA1"
@@ -136,18 +208,21 @@
    "value": true
   },
   "termination_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "180",
+   "span": "90",
    "type": "int",
-   "value": 180
+   "value": 90
   },
   "tier_min_doses-1": {
    "qualifier": {
     "class": "CLS-tdap",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
@@ -161,6 +236,7 @@
   "tier_min_doses-2": {
    "qualifier": {
     "class": "CLS-tdap",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
@@ -174,6 +250,7 @@
   "tier_min_doses-3": {
    "qualifier": {
     "class": "CLS-tdap",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
@@ -187,41 +264,44 @@
   "tier_rebate_pct-1": {
    "qualifier": {
     "class": "CLS-tdap",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "2.5 per cent",
+   "span": "2 per cent",
    "type": "pct",
-   "value": 2.5
+   "value": 2.0
   },
   "tier_rebate_pct-2": {
    "qualifier": {
     "class": "CLS-tdap",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "4 per cent",
+   "span": "3.5 per cent",
    "type": "pct",
-   "value": 4.0
+   "value": 3.5
   },
   "tier_rebate_pct-3": {
    "qualifier": {
     "class": "CLS-tdap",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000005-MSA1"
    },
-   "span": "5.5 per cent",
+   "span": "5 per cent",
    "type": "pct",
-   "value": 5.5
+   "value": 5.0
   }
  }
 }

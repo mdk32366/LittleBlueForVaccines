@@ -8,7 +8,7 @@ edges: []
 anchor: "8"
 heading: "General Provisions"
 clause_type: "other"
-terms: []
+terms: [{"field": "governing_state", "id": "TM-SYN-SYNCP000159-MSA1-8-governing_state", "qualifier": {"provenance": "source"}, "span": "ID", "unit": "id", "value": "ID"}]
 ---
 
 This Agreement is fictional test material generated for a classroom project. Its terms are confidential between the parties and governed by the laws of the State of ID.

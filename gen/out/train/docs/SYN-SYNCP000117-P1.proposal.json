@@ -1,5 +1,5 @@
 {
- "date": "2026-04-01",
+ "date": "2025-02-08",
  "doc": {
   "doc_id": "SYN-SYNCP000117-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000117-P1, was presented by the Supplier to Atlantic Health Network 117 on April 1, 2026."
+    "text": "This proposal, SYN-SYNCP000117-P1, was presented by SEQIRUS (the Supplier) to Atlantic Health Network 117 on February 8, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.25%."
+    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
    },
    {
     "anchor": "3",
@@ -22,7 +22,7 @@
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: awaiting a Customer decision."
+    "text": "Status of this proposal: accepted by the Customer."
    }
   ],
   "synthetic": true,
@@ -39,13 +39,13 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000117-P1#2",
-   "description": "an administrative fee of 1.25%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.25%"
+   "description": "a Tier 3 rebate of 5.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 5.5%"
   }
  ],
- "outcome": "pending",
+ "outcome": "won",
  "proposal_id": "SYN-SYNCP000117-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000117-AMD1",
  "system_id": "SYNCP000117"
 }

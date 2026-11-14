@@ -3,28 +3,33 @@ doc_id: "SYN-SYNCP000009-P1"
 system_id: "SYNCP000009"
 doc_type: "PROPOSAL"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000009-P1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000009-P1, was presented by the Supplier to Summit Wellness Center 009 on November 4, 2024.
+This proposal, SYN-SYNCP000009-P1, was presented by SANOFI (the Supplier) to Summit Wellness Center 009 on December 16, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 3%.
+Supplier concession: a Tier 3 rebate of 4.5%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 90%.
+Supplier request: a commitment of 2,870 Influenza doses per year.
 
 ## 4. Proposal Status
 
 Status of this proposal: countered by the Customer.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

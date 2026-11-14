@@ -8,7 +8,7 @@ edges: []
 anchor: "1"
 heading: "What This Changes"
 clause_type: "term_renewal"
-terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000018-AMD1-1-effective_date", "qualifier": null, "span": "1 September 2025", "unit": "date", "value": "2025-09-01"}]
+terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000018-AMD1-1-effective_date", "qualifier": {"provenance": "invented"}, "span": "1 February 2027", "unit": "date", "value": "2027-02-01"}]
 ---
 
-Starting 1 September 2025, instrument SYN-SYNCP000018-AMD1 revises SYN-SYNCP000018-MSA1.
+Starting 1 February 2027, instrument SYN-SYNCP000018-AMD1 agreed with SANOFI revises SYN-SYNCP000018-MSA1.

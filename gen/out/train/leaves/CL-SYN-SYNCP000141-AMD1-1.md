@@ -8,7 +8,7 @@ edges: []
 anchor: "1"
 heading: "Amendment Purpose"
 clause_type: "term_renewal"
-terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000141-AMD1-1-effective_date", "qualifier": null, "span": "August 1, 2025", "unit": "date", "value": "2025-08-01"}]
+terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000141-AMD1-1-effective_date", "qualifier": {"provenance": "invented"}, "span": "November 1, 2026", "unit": "date", "value": "2026-11-01"}]
 ---
 
-This amendment, SYN-SYNCP000141-AMD1, modifies SYN-SYNCP000141-MSA1 with effect from August 1, 2025.
+This amendment, SYN-SYNCP000141-AMD1, between the Customer and MERCK & COMPANY, modifies SYN-SYNCP000141-MSA1 with effect from November 1, 2026.

@@ -1,5 +1,5 @@
 {
- "date": "2026-06-03",
+ "date": "2025-04-12",
  "doc": {
   "doc_id": "SYN-SYNCP000044-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000044-P1, was presented by the Supplier to Pioneer Family Clinic 044 on June 3, 2026."
+    "text": "This proposal, SYN-SYNCP000044-P1, was presented by MERCK & COMPANY (the Supplier) to Pioneer Family Clinic 044 on April 12, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.25%."
+    "text": "Supplier concession: a Tier 3 rebate of 4%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 1,340 Influenza doses per year."
+    "text": "Supplier request: a commitment of 790 MMR doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: countered by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,20 +31,20 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000044-P1#3",
-   "description": "a commitment of 1,340 Influenza doses per year",
+   "description": "a commitment of 790 MMR doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 1,340 Influenza doses per year"
+   "span": "a commitment of 790 MMR doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000044-P1#2",
-   "description": "an administrative fee of 1.25%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.25%"
+   "description": "a Tier 3 rebate of 4%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 4%"
   }
  ],
- "outcome": "won",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000044-P1",
  "resulted_in": "SYN-SYNCP000044-AMD1",
  "system_id": "SYNCP000044"

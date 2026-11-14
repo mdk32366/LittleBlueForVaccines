@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Volume Commitment: Coronavirus"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000110-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-coronavirus"}, "span": "840", "unit": "doses", "value": 840}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000110-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-coronavirus", "provenance": "invented"}, "span": "780", "unit": "doses", "value": 780}]
 ---
 
-The Customer commits to purchase not less than 840 doses of Coronavirus products in each contract year.
+The Customer commits to purchase not less than 780 doses of Coronavirus products in each contract year.

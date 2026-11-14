@@ -1,5 +1,5 @@
 {
- "date": "2024-09-20",
+ "date": "2025-04-04",
  "doc": {
   "doc_id": "SYN-SYNCP000068-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 20 September 2024, pitch SYN-SYNCP000068-P1 was put before Keystone Community Health 068 on behalf of Supplier."
+    "text": "Prepared on 4 April 2025, pitch SYN-SYNCP000068-P1 was put before Keystone Community Health 068 on behalf of MERCK & COMPANY."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a group service charge of 3.25 per cent."
+    "text": "In exchange the Supplier put forward a Band 3 rebate of 5 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Pneumococcal minimum take of 390 doses in return."
+    "text": "The Supplier sought a HPV preferred-position minimum of 70 per cent in return."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000068-P1#3",
-   "description": "a yearly Pneumococcal minimum take of 390 doses",
-   "kind": "volume_commitment",
-   "span": "a yearly Pneumococcal minimum take of 390 doses"
+   "description": "a HPV preferred-position minimum of 70 per cent",
+   "kind": "exclusivity",
+   "span": "a HPV preferred-position minimum of 70 per cent"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000068-P1#2",
-   "description": "a group service charge of 3.25 per cent",
-   "kind": "admin_fee_change",
-   "span": "a group service charge of 3.25 per cent"
+   "description": "a Band 3 rebate of 5 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 3 rebate of 5 per cent"
   }
  ],
  "outcome": "countered",

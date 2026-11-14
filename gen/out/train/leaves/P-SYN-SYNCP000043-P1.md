@@ -5,24 +5,26 @@ ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000043-P1.md", "generator_seed": 562}
 edges: []
-date: "2025-03-09"
-gives: [{"anchor": "SYN-SYNCP000043-P1#2", "description": "a Tier 3 rebate of 5%", "kind": "rebate_change", "span": "a Tier 3 rebate of 5%"}]
-gets: [{"anchor": "SYN-SYNCP000043-P1#3", "description": "a Influenza share floor of 85%", "kind": "exclusivity", "span": "a Influenza share floor of 85%"}]
+date: "2025-02-14"
+gives: [{"anchor": "SYN-SYNCP000043-P1#2", "description": "an administrative fee of 2%", "kind": "admin_fee_change", "span": "an administrative fee of 2%"}]
+gets: [{"anchor": "SYN-SYNCP000043-P1#3", "description": "a commitment of 1,360 Influenza doses per year", "kind": "volume_commitment", "span": "a commitment of 1,360 Influenza doses per year"}]
 outcome: "pending"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000043-P1, was presented by the Supplier to Cedar Valley Physician Alliance 043 on March 9, 2025.
+This proposal, SYN-SYNCP000043-P1, was presented by SANOFI (the Supplier) to Cedar Valley Physician Alliance 043 on February 14, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 3 rebate of 5%.
+Supplier concession: an administrative fee of 2%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 85%.
+Supplier request: a commitment of 1,360 Influenza doses per year.
 
 ## 4. Proposal Status
 
 Status of this proposal: awaiting a Customer decision.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

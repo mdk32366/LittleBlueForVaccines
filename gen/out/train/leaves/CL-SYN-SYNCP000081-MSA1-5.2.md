@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Volume Commitment: Meningococcal"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000081-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-meningococcal"}, "span": "150", "unit": "doses", "value": 150}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000081-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-meningococcal", "provenance": "invented"}, "span": "180", "unit": "doses", "value": 180}]
 ---
 
-The Customer commits to purchase not less than 150 doses of Meningococcal products in each contract year.
+The Customer commits to purchase not less than 180 doses of Meningococcal products in each contract year.

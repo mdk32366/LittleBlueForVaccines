@@ -15,6 +15,7 @@ EXPIRED_MARKER = "[EXPIRED]"  # shown when a contract's end date is before the a
 # never splits the label; DejaVu Sans has the glyph (checked by render, pdftotext and pdffonts, GATE 2 r2).
 AUTO_RENEW_MARKER = "[TERM ENDED · auto\u2011renews]"
 SEC_RE = re.compile(r"^## (\d+(?:\.\d+)*[a-z]?)\. (.+)$", re.M)
+RULE_RE = re.compile(r"^---$", re.M)  # schema_v1: the footer rule before the SYNTHETIC marker ends the last section
 
 KEYWORDS = [  # (pattern, field base) for free-text questions; order matters
     (r"\b(expire|expiry|expiration|lapse|end date|term end)", "expiration_date"),
@@ -38,7 +39,11 @@ def parse_doc(text: str):
     ms = list(SEC_RE.finditer(text))
     secs = {}
     for i, m in enumerate(ms):
-        end = ms[i + 1].start() if i + 1 < len(ms) else len(text)
+        if i + 1 < len(ms):
+            end = ms[i + 1].start()
+        else:
+            rule = RULE_RE.search(text, m.end())
+            end = rule.start() if rule else len(text)
         secs[m.group(1)] = {"heading": m.group(2), "text": text[m.end():end].strip("\n")}
     return meta, secs
 

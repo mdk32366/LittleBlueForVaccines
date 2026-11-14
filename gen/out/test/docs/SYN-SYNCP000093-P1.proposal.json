@@ -1,5 +1,5 @@
 {
- "date": "2025-04-04",
+ "date": "2025-11-19",
  "doc": {
   "doc_id": "SYN-SYNCP000093-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 4 April 2025, pitch SYN-SYNCP000093-P1 was put before Riverbend Physician Alliance 093 on behalf of Supplier."
+    "text": "Prepared on 19 November 2025, pitch SYN-SYNCP000093-P1 was put before Riverbend Physician Alliance 093 on behalf of PFIZER."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 2 rebate of 3 per cent."
+    "text": "In exchange the Supplier put forward a group service charge of 1.75 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Influenza minimum take of 1,670 doses in return."
+    "text": "The Supplier sought a yearly Pneumococcal minimum take of 560 doses in return."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000093-P1#3",
-   "description": "a yearly Influenza minimum take of 1,670 doses",
+   "description": "a yearly Pneumococcal minimum take of 560 doses",
    "kind": "volume_commitment",
-   "span": "a yearly Influenza minimum take of 1,670 doses"
+   "span": "a yearly Pneumococcal minimum take of 560 doses"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000093-P1#2",
-   "description": "a Band 2 rebate of 3 per cent",
-   "kind": "rebate_change",
-   "span": "a Band 2 rebate of 3 per cent"
+   "description": "a group service charge of 1.75 per cent",
+   "kind": "admin_fee_change",
+   "span": "a group service charge of 1.75 per cent"
   }
  ],
  "outcome": "won",

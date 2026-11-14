@@ -1,5 +1,5 @@
 {
- "date": "2025-03-02",
+ "date": "2025-11-17",
  "doc": {
   "doc_id": "SYN-SYNCP000145-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000145-P1, was presented by the Supplier to Sunrise Care Partners 145 on March 2, 2025."
+    "text": "This proposal, SYN-SYNCP000145-P1, was presented by SANOFI (the Supplier) to Sunrise Care Partners 145 on November 17, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
+    "text": "Supplier concession: a Tier 1 rebate of 3%."
    },
    {
     "anchor": "3",
@@ -22,7 +22,7 @@
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: countered by the Customer."
    }
   ],
   "synthetic": true,
@@ -39,13 +39,13 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000145-P1#2",
-   "description": "a Tier 3 rebate of 5.5%",
+   "description": "a Tier 1 rebate of 3%",
    "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 5.5%"
+   "span": "a Tier 1 rebate of 3%"
   }
  ],
- "outcome": "lost",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000145-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000145-AMD1",
  "system_id": "SYNCP000145"
 }

@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Updated Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000070-AMD1-2-share_floor_pct", "qualifier": null, "span": "75 per cent", "unit": "pct", "value": 75}]
+terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000070-AMD1-2-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "90 per cent", "unit": "pct", "value": 90}]
 ---
 
-Going forward the Influenza minimum flowing to the Supplier is set at 75 per cent.
+Going forward the Meningococcal minimum flowing to the Supplier is set at 90 per cent.

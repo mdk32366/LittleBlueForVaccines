@@ -5,24 +5,26 @@ ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000111-P1.md", "generator_seed": 562}
 edges: []
-date: "2026-09-20"
-gives: [{"anchor": "SYN-SYNCP000111-P1#2", "description": "an administrative fee of 2.75%", "kind": "admin_fee_change", "span": "an administrative fee of 2.75%"}]
-gets: [{"anchor": "SYN-SYNCP000111-P1#3", "description": "a Influenza share floor of 55%", "kind": "exclusivity", "span": "a Influenza share floor of 55%"}]
-outcome: "pending"
+date: "2024-10-02"
+gives: [{"anchor": "SYN-SYNCP000111-P1#2", "description": "a Tier 1 rebate of 2%", "kind": "rebate_change", "span": "a Tier 1 rebate of 2%"}]
+gets: [{"anchor": "SYN-SYNCP000111-P1#3", "description": "a Meningococcal share floor of 80%", "kind": "exclusivity", "span": "a Meningococcal share floor of 80%"}]
+outcome: "lost"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000111-P1, was presented by the Supplier to Highland Pediatric Center 111 on September 20, 2026.
+This proposal, SYN-SYNCP000111-P1, was presented by GSK PHARM (the Supplier) to Highland Pediatric Center 111 on October 2, 2024.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 2.75%.
+Supplier concession: a Tier 1 rebate of 2%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 55%.
+Supplier request: a Meningococcal share floor of 80%.
 
 ## 4. Proposal Status
 
-Status of this proposal: awaiting a Customer decision.
+Status of this proposal: declined by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

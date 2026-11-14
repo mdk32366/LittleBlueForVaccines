@@ -8,7 +8,7 @@ edges: []
 anchor: "4.3"
 heading: "Rebate Tier 3"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000172-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-influenza", "tier": 3}, "span": "730", "unit": "doses", "value": 730}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000172-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-influenza", "tier": 3}, "span": "4%", "unit": "pct", "value": 4.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000172-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 3}, "span": "310", "unit": "doses", "value": 310}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000172-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 3}, "span": "4%", "unit": "pct", "value": 4.0}]
 ---
 
-Tier 3 applies when the Customer purchases at least 730 doses of Influenza products in a contract year, and earns a rebate of 4% on those purchases.
+Tier 3 applies when the Customer purchases at least 310 doses of Pneumococcal products in a contract year, and earns a rebate of 4% on those purchases.

@@ -8,7 +8,7 @@ edges: []
 anchor: "3"
 heading: "Ending the Arrangement Early"
 clause_type: "termination"
-terms: [{"field": "termination_for_convenience", "id": "TM-SYN-SYNCP000093-MSA1-3-termination_for_convenience", "qualifier": null, "span": "a party can walk away from the arrangement", "unit": "bool", "value": true}, {"field": "termination_notice_days", "id": "TM-SYN-SYNCP000093-MSA1-3-termination_notice_days", "qualifier": null, "span": "60", "unit": "days", "value": 60}]
+terms: [{"field": "termination_for_convenience", "id": "TM-SYN-SYNCP000093-MSA1-3-termination_for_convenience", "qualifier": {"provenance": "invented"}, "span": "a party can walk away from the arrangement", "unit": "bool", "value": true}, {"field": "termination_notice_days", "id": "TM-SYN-SYNCP000093-MSA1-3-termination_notice_days", "qualifier": {"provenance": "invented"}, "span": "180", "unit": "days", "value": 180}]
 ---
 
-Without needing a reason, a party can walk away from the arrangement. Early ending becomes effective 60 days after the counterparty receives notice.
+Without needing a reason, a party can walk away from the arrangement. Early ending becomes effective 180 days after the counterparty receives notice.

@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Updated Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000068-AMD1-2-share_floor_pct", "qualifier": null, "span": "65 per cent", "unit": "pct", "value": 65}]
+terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000068-AMD1-2-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "70 per cent", "unit": "pct", "value": 70}]
 ---
 
-Going forward the Pneumococcal minimum flowing to the Supplier is set at 65 per cent.
+Going forward the HPV minimum flowing to the Supplier is set at 70 per cent.

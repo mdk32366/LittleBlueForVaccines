@@ -3,28 +3,33 @@ doc_id: "SYN-SYNCP000002-P1"
 system_id: "SYNCP000002"
 doc_type: "PROPOSAL"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "B"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000002-P1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Pitch Overview
 
-Prepared on 21 March 2026, pitch SYN-SYNCP000002-P1 was put before Maple Grove Regional Hospital 002 on behalf of Supplier.
+Prepared on 12 March 2025, pitch SYN-SYNCP000002-P1 was put before Maple Grove Regional Hospital 002 on behalf of PFIZER.
 
 ## 2. Put Forward in Exchange
 
-In exchange the Supplier put forward a Band 3 rebate of 4.5 per cent.
+In exchange the Supplier put forward a group service charge of 3 per cent.
 
 ## 3. Sought in Return
 
-The Supplier sought a DTaP preferred-position minimum of 80 per cent in return.
+The Supplier sought a yearly Pneumococcal minimum take of 520 doses in return.
 
 ## 4. Recorded Result
 
-Recorded result: the Customer signed off on the terms.
+Recorded result: the Customer has not yet responded.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

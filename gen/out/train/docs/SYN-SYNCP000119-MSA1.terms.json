@@ -2,17 +2,21 @@
  "doc_id": "SYN-SYNCP000119-MSA1",
  "fields": {
   "admin_fee_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "7",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "2.25%",
+   "span": "2.5%",
    "type": "pct",
-   "value": 2.25
+   "value": 2.5
   },
   "auto_renew": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000119-MSA1"
@@ -23,60 +27,58 @@
   },
   "commitment_doses_per_year-1": {
    "qualifier": {
-    "class": "CLS-influenza"
+    "class": "CLS-influenza",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.1",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "3,530",
+   "span": "2,350",
    "type": "int",
-   "value": 3530
+   "value": 2350
   },
   "commitment_doses_per_year-2": {
    "qualifier": {
-    "class": "CLS-mmr"
+    "class": "CLS-mmr",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.2",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "510",
+   "span": "550",
    "type": "int",
-   "value": 510
+   "value": 550
   },
   "covered_product-1": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "PRD-syn-influenza",
+   "span": "FLUZONE HD QUADRI",
    "type": "enum",
-   "value": "PRD-syn-influenza"
+   "value": "FLUZONE HD QUADRI"
   },
-  "covered_product-2": {
-   "qualifier": null,
+  "covered_specialty": {
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "PRD-syn-mmr",
+   "span": "Primary Care",
    "type": "enum",
-   "value": "PRD-syn-mmr"
-  },
-  "covered_product-3": {
-   "qualifier": null,
-   "source": {
-    "anchor": "1",
-    "doc_id": "SYN-SYNCP000119-MSA1"
-   },
-   "span": "PRD-syn-dtap",
-   "type": "enum",
-   "value": "PRD-syn-dtap"
+   "value": "Primary Care"
   },
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000119-MSA1"
@@ -86,7 +88,9 @@
    "value": "2025-07-01"
   },
   "exclusivity_class": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000119-MSA1"
@@ -96,7 +100,9 @@
    "value": "CLS-influenza"
   },
   "expiration_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000119-MSA1"
@@ -105,28 +111,94 @@
    "type": "date",
    "value": "2028-06-30"
   },
+  "governing_state": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000119-MSA1"
+   },
+   "span": "LA",
+   "type": "enum",
+   "value": "LA"
+  },
+  "member_org_type": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000119-MSA1"
+   },
+   "span": "IDN",
+   "type": "enum",
+   "value": "IDN"
+  },
+  "participating_sites": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000119-MSA1"
+   },
+   "span": "13",
+   "type": "int",
+   "value": 13
+  },
+  "participating_subsidiaries": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000119-MSA1"
+   },
+   "span": "18",
+   "type": "int",
+   "value": 18
+  },
   "renewal_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "30",
+   "span": "120",
    "type": "int",
-   "value": 30
+   "value": 120
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "75%",
+   "span": "85%",
    "type": "pct",
-   "value": 75
+   "value": 85
+  },
+  "supplier_name": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000119-MSA1"
+   },
+   "span": "SANOFI",
+   "type": "enum",
+   "value": "SANOFI"
   },
   "termination_for_convenience": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000119-MSA1"
@@ -136,7 +208,9 @@
    "value": true
   },
   "termination_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000119-MSA1"
@@ -148,6 +222,7 @@
   "tier_min_doses-1": {
    "qualifier": {
     "class": "CLS-influenza",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
@@ -161,6 +236,7 @@
   "tier_min_doses-2": {
    "qualifier": {
     "class": "CLS-influenza",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
@@ -174,6 +250,7 @@
   "tier_min_doses-3": {
    "qualifier": {
     "class": "CLS-influenza",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
@@ -187,6 +264,7 @@
   "tier_rebate_pct-1": {
    "qualifier": {
     "class": "CLS-influenza",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
@@ -200,6 +278,7 @@
   "tier_rebate_pct-2": {
    "qualifier": {
     "class": "CLS-influenza",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
@@ -213,15 +292,16 @@
   "tier_rebate_pct-3": {
    "qualifier": {
     "class": "CLS-influenza",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000119-MSA1"
    },
-   "span": "4.5%",
+   "span": "5%",
    "type": "pct",
-   "value": 4.5
+   "value": 5.0
   }
  }
 }

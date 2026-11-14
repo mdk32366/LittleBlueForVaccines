@@ -24,6 +24,29 @@ EXPECT = {
                       "test_spec_dropin.py::test_as0041_violations_rejected[dropped]"],
     "dropin_appfields": ["test_spec_dropin.py::test_app_field_rename_rejected",
                          "test_spec_dropin.py::test_toy_spec_is_not_a_contract_spec_for_the_app"],
+    # ---- schema_v1 (GATE 2 path B, spec v1.1 §8) ----
+    "nat_fallback": ["test_t0065_national.py::test_missing_national_file_raises",
+                     "test_t0065_national.py::test_altered_national_file_raises"],
+    "nat_drop": ["test_t0065_national.py::test_national_pins_in_every_exhibit"],
+    "nat_window": ["test_t0065_national.py::test_national_pins_in_every_exhibit"],
+    "nat_sha": ["test_t0065_national.py::test_manifest_benchmark_source"],
+    "nat_cols": ["test_t0065_national.py::test_only_listed_columns_are_read"],
+    "band_gt": ["test_t0067_contract_sales.py::test_rule_edges", "test_t0067_contract_sales.py::test_values_recomputed"],
+    "floor_ignore_amd": ["test_t0067_contract_sales.py::test_rule_edges"],
+    "refuse_leak": ["test_t0068_refusals.py::test_refusal_rows_exact"],
+    "status_number": ["test_t0069_status.py::test_status_fields"],
+    "nat_invent": ["test_t0069_status.py::test_status_fields"],
+    "inv_source": ["test_t0070_provenance.py::test_source_counts_recomputed"],
+    "drop_r5": ["test_t0071_coverage.py::test_pool_covers_every_item_level"],
+    "exh_skip_one": ["test_t0072_counts.py::test_counts_structural"],
+    "nomarker": ["test_t0073_marker.py::test_marker_header_and_footer"],
+    "nofooter": ["test_t0073_marker.py::test_marker_header_and_footer"],
+    "marker_typo": ["test_t0073_marker.py::test_marker_header_and_footer",
+                    "test_t0073_marker.py::test_marker_in_contract_and_proposal_leaves"],
+    "noflag": ["test_t0073_marker.py::test_manifest_flag_and_row_flag"],
+    "party_rng": ["test_t0074_counterparty.py::test_party_and_brands"],
+    "rival_brand": ["test_t0074_counterparty.py::test_party_and_brands"],
+    "exh_rng": ["test_t0075_exhibit_determinism.py::test_exhibit_identical_across_seeds"],
 }
 RUN_TIMEOUT = int(os.environ.get("REDPROOF_TIMEOUT", "300"))  # per pytest run; a hang fails loudly
 lines, ok_all = [], True
@@ -31,13 +54,13 @@ for name, expect in EXPECT.items():
     env = dict(os.environ, REDPROOF=name)
     print(f"[redproof] REDPROOF={name} ...", flush=True)
     try:
-        r = subprocess.run([PY, "-m", "pytest", "-q", "-rf", "-p", "no:cacheprovider", "tests"], cwd=ROOT, env=env,
+        r = subprocess.run([PY, "-m", "pytest", "-q", "-rfE", "-p", "no:cacheprovider", "tests"], cwd=ROOT, env=env,
                            capture_output=True, text=True, timeout=RUN_TIMEOUT, stdin=subprocess.DEVNULL)
     except subprocess.TimeoutExpired:
         ok_all = False
         lines.append(f"## REDPROOF={name}: TIMEOUT after {RUN_TIMEOUT}s (counts as FAIL)")
         continue
-    failed = sorted(set(re.findall(r"^FAILED tests/(\S+?)(?: - |$)", r.stdout, re.M)))
+    failed = sorted(set(re.findall(r"^(?:FAILED|ERROR) tests/(\S+?)(?: - |$)", r.stdout, re.M)))
     summary = r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr[-200:]
     hit = all(e in failed for e in expect)
     ok_all &= hit

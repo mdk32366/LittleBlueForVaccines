@@ -1,5 +1,5 @@
 {
- "date": "2025-08-21",
+ "date": "2026-05-20",
  "doc": {
   "doc_id": "SYN-SYNCP000026-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 21 August 2025, pitch SYN-SYNCP000026-P1 was put before Northstar Urgent Care 026 on behalf of Supplier."
+    "text": "Prepared on 20 May 2026, pitch SYN-SYNCP000026-P1 was put before Northstar Urgent Care 026 on behalf of SANOFI."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a group service charge of 2.5 per cent."
+    "text": "In exchange the Supplier put forward a group service charge of 2 per cent."
    },
    {
     "anchor": "3",
@@ -39,9 +39,9 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000026-P1#2",
-   "description": "a group service charge of 2.5 per cent",
+   "description": "a group service charge of 2 per cent",
    "kind": "admin_fee_change",
-   "span": "a group service charge of 2.5 per cent"
+   "span": "a group service charge of 2 per cent"
   }
  ],
  "outcome": "won",

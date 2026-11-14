@@ -1,5 +1,5 @@
 {
- "date": "2026-04-03",
+ "date": "2025-12-15",
  "doc": {
   "doc_id": "SYN-SYNCP000112-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 3 April 2026, pitch SYN-SYNCP000112-P1 was put before Harborview Regional Hospital 112 on behalf of Supplier."
+    "text": "Prepared on 15 December 2025, pitch SYN-SYNCP000112-P1 was put before Harborview Regional Hospital 112 on behalf of PFIZER."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 1 rebate of 3 per cent."
+    "text": "In exchange the Supplier put forward a Band 2 rebate of 4 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Influenza minimum take of 2,650 doses in return."
+    "text": "The Supplier sought a Pneumococcal preferred-position minimum of 85 per cent in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer signed off on the terms."
+    "text": "Recorded result: the Customer turned the terms down."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000112-P1#3",
-   "description": "a yearly Influenza minimum take of 2,650 doses",
-   "kind": "volume_commitment",
-   "span": "a yearly Influenza minimum take of 2,650 doses"
+   "description": "a Pneumococcal preferred-position minimum of 85 per cent",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal preferred-position minimum of 85 per cent"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000112-P1#2",
-   "description": "a Band 1 rebate of 3 per cent",
+   "description": "a Band 2 rebate of 4 per cent",
    "kind": "rebate_change",
-   "span": "a Band 1 rebate of 3 per cent"
+   "span": "a Band 2 rebate of 4 per cent"
   }
  ],
- "outcome": "won",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000112-P1",
- "resulted_in": "SYN-SYNCP000112-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000112"
 }

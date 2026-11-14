@@ -8,7 +8,7 @@ edges: []
 anchor: "1"
 heading: "Amendment Purpose"
 clause_type: "term_renewal"
-terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000077-AMD1-1-effective_date", "qualifier": null, "span": "June 1, 2025", "unit": "date", "value": "2025-06-01"}]
+terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000077-AMD1-1-effective_date", "qualifier": {"provenance": "invented"}, "span": "September 1, 2025", "unit": "date", "value": "2025-09-01"}]
 ---
 
-This amendment, SYN-SYNCP000077-AMD1, modifies SYN-SYNCP000077-MSA1 with effect from June 1, 2025.
+This amendment, SYN-SYNCP000077-AMD1, between the Customer and SANOFI, modifies SYN-SYNCP000077-MSA1 with effect from September 1, 2025.

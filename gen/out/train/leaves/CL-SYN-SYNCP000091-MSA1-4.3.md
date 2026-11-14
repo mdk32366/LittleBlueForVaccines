@@ -8,7 +8,7 @@ edges: []
 anchor: "4.3"
 heading: "Rebate Tier 3"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000091-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-tdap", "tier": 3}, "span": "510", "unit": "doses", "value": 510}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000091-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-tdap", "tier": 3}, "span": "5%", "unit": "pct", "value": 5.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000091-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 3}, "span": "170", "unit": "doses", "value": 170}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000091-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 3}, "span": "5%", "unit": "pct", "value": 5.0}]
 ---
 
-Tier 3 applies when the Customer purchases at least 510 doses of Tdap products in a contract year, and earns a rebate of 5% on those purchases.
+Tier 3 applies when the Customer purchases at least 170 doses of Pneumococcal products in a contract year, and earns a rebate of 5% on those purchases.

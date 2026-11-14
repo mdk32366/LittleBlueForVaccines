@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000079-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000079-AMD1"}]
-date: "2025-06-10"
-gives: [{"anchor": "SYN-SYNCP000079-P1#2", "description": "an administrative fee of 3%", "kind": "admin_fee_change", "span": "an administrative fee of 3%"}]
-gets: [{"anchor": "SYN-SYNCP000079-P1#3", "description": "a commitment of 730 Tdap doses per year", "kind": "volume_commitment", "span": "a commitment of 730 Tdap doses per year"}]
-outcome: "won"
+edges: []
+date: "2026-02-05"
+gives: [{"anchor": "SYN-SYNCP000079-P1#2", "description": "a Tier 3 rebate of 5.5%", "kind": "rebate_change", "span": "a Tier 3 rebate of 5.5%"}]
+gets: [{"anchor": "SYN-SYNCP000079-P1#3", "description": "a commitment of 200 Meningococcal doses per year", "kind": "volume_commitment", "span": "a commitment of 200 Meningococcal doses per year"}]
+outcome: "lost"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000079-P1, was presented by the Supplier to Horizon Wellness Center 079 on June 10, 2025.
+This proposal, SYN-SYNCP000079-P1, was presented by SANOFI (the Supplier) to Horizon Wellness Center 079 on February 5, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 3%.
+Supplier concession: a Tier 3 rebate of 5.5%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 730 Tdap doses per year.
+Supplier request: a commitment of 200 Meningococcal doses per year.
 
 ## 4. Proposal Status
 
-Status of this proposal: accepted by the Customer.
+Status of this proposal: declined by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

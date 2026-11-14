@@ -3,20 +3,25 @@ doc_id: "SYN-SYNCP000009-AMD1"
 system_id: "SYNCP000009"
 doc_type: "AMD"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000009-AMD1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Amendment Purpose
 
-This amendment, SYN-SYNCP000009-AMD1, modifies SYN-SYNCP000009-MSA1 with effect from January 1, 2025.
+This amendment, SYN-SYNCP000009-AMD1, between the Customer and SANOFI, modifies SYN-SYNCP000009-MSA1 with effect from February 1, 2027.
 
 ## 2. Revised Share Floor
 
-From the amendment date, the Influenza share floor becomes 90% of the Customer's Influenza doses.
+From the amendment date, the Influenza share floor becomes 80% of the Customer's Influenza doses.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

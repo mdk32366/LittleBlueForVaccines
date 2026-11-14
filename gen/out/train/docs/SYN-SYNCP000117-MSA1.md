@@ -3,26 +3,28 @@ doc_id: "SYN-SYNCP000117-MSA1"
 system_id: "SYNCP000117"
 doc_type: "MSA"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000117-MSA1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Parties and Scope
 
-This Master Supply Agreement (the "Agreement") is made between Atlantic Health Network 117 (the "Customer", account SYNCP000117) and Synthetic Supplier Co. (the "Supplier"). The Agreement covers these products: PRD-syn-influenza, PRD-syn-tdap, PRD-syn-pneumococcal.
+This Master Supply Agreement (the "Agreement") is made between Atlantic Health Network 117 (the "Customer", account SYNCP000117) and SEQIRUS (the "Supplier"). The Agreement covers these products: FLUAD TRIV. Participating sites: 14. Participating subsidiaries: 22. Member organisation type: IDN. Covered specialty: Pediatric Medicine.
 
 ## 2. Term and Renewal
 
-The Agreement takes effect on September 1, 2025 and remains in force through August 31, 2029. At the end of the term the Agreement renews automatically for one-year periods. Written notice regarding renewal is due no later than 120 days before the term ends.
+The Agreement takes effect on April 1, 2024 and remains in force through March 31, 2027. At the end of the term the Agreement renews automatically for one-year periods. Written notice regarding renewal is due no later than 60 days before the term ends.
 
 ## 3. Termination
 
-Either party may terminate this Agreement for convenience. Any termination takes effect 180 days after written notice is delivered.
+Either party may terminate this Agreement for convenience. Any termination takes effect 90 days after written notice is delivered.
 
 ## 4.1. Rebate Tier 1
 
@@ -30,7 +32,7 @@ Tier 1 applies when the Customer purchases at least 890 doses of Influenza produ
 
 ## 4.2. Rebate Tier 2
 
-Tier 2 applies when the Customer purchases at least 1,330 doses of Influenza products in a contract year, and earns a rebate of 4% on those purchases.
+Tier 2 applies when the Customer purchases at least 1,330 doses of Influenza products in a contract year, and earns a rebate of 3.5% on those purchases.
 
 ## 4.3. Rebate Tier 3
 
@@ -38,15 +40,15 @@ Tier 3 applies when the Customer purchases at least 1,780 doses of Influenza pro
 
 ## 5.1. Volume Commitment: Influenza
 
-The Customer commits to purchase not less than 1,300 doses of Influenza products in each contract year.
+The Customer commits to purchase not less than 1,820 doses of Influenza products in each contract year.
 
 ## 5.2. Volume Commitment: Tdap
 
-The Customer commits to purchase not less than 310 doses of Tdap products in each contract year.
+The Customer commits to purchase not less than 400 doses of Tdap products in each contract year.
 
 ## 6. Exclusivity and Share Floor
 
-The Supplier is the exclusive contracted source for Influenza products. The Customer will maintain a share floor of 60% of its Influenza doses with the Supplier.
+The Supplier is the exclusive contracted source for Influenza products. The Customer will maintain a share floor of 50% of its Influenza doses with the Supplier.
 
 ## 7. Administrative Fee
 
@@ -56,3 +58,6 @@ The Supplier will pay the Customer an administrative fee equal to 1% of eligible
 
 This Agreement is fictional test material generated for a classroom project. Its terms are confidential between the parties and governed by the laws of the State of VA.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

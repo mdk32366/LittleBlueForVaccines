@@ -1,5 +1,5 @@
 {
- "date": "2024-09-14",
+ "date": "2024-12-11",
  "doc": {
   "doc_id": "SYN-SYNCP000130-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000130-P1, was presented by the Supplier to Silver Oak Medical Group 130 on September 14, 2024."
+    "text": "This proposal, SYN-SYNCP000130-P1, was presented by PFIZER (the Supplier) to Silver Oak Medical Group 130 on December 11, 2024."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.25%."
+    "text": "Supplier concession: an administrative fee of 2.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 45%."
+    "text": "Supplier request: a commitment of 360 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: awaiting a Customer decision."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000130-P1#3",
-   "description": "a Influenza share floor of 45%",
-   "kind": "exclusivity",
-   "span": "a Influenza share floor of 45%"
+   "description": "a commitment of 360 Pneumococcal doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 360 Pneumococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000130-P1#2",
-   "description": "an administrative fee of 1.25%",
+   "description": "an administrative fee of 2.5%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.25%"
+   "span": "an administrative fee of 2.5%"
   }
  ],
- "outcome": "won",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000130-P1",
- "resulted_in": "SYN-SYNCP000130-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000130"
 }

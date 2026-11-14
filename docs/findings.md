@@ -46,3 +46,9 @@ Evidence: the box probe output for this PR (counts below), re-checked by T-0042 
   - Planned at Deploy-3: the per-app Caddyfile goes to `max_size 10MiB` (10,485,760 B). The edge proxy stays byte-identical. The deploy runs `app/tools/upload_limit_check.py` against its own files, which stay outside this repository (Q-M7); T-0062 guards it with mutation upload_si.
   - Even with equal numbers, the proxy limits the whole multipart request body, while Streamlit limits each file and allows 1 MiB of framing on the body. A file within a few hundred bytes of 10 MiB is therefore still refused by the proxy.
   - At 16 kHz mono 16-bit (32,000 B/s), 10 MiB is about 5.5 minutes of recording.
+
+## GATE 2 path B: schema_v1 (spec v1.1)
+- **F-0027:** three kept stub questions matched the app validator's CLINICAL pattern: family A effective_date and proposal_outcome ("effective", "outcome") and family B termination_notice_days. They are reworded in `templates_v1.py`; T-0068 checks that no answerable question trips the validator.
+- **F-0028:** the schema_v1 regeneration gives 623 documents and 8,363 Q&A rows against the spec's estimate of about 635 and 8,400. The difference is the AMD redraw (spec_version keys the RNG): 83 systems drew an AMD, against the estimate's 95.
+- **F-0029:** the spec gives two readings of the share floor: §5.1 (the party manufacturer's share of the exclusivity class) and §6.3 (a brand share). The build uses §5.1, the later same-season window. For the Architect to confirm.
+- **F-0030:** the drop-in was not generator-neutral: `generate.py` gained the marker header and footer, the footer rule in `parse_doc_md`, `manifest_extra()` (it refuses to override an existing key) and `terms_invented` on every row. The app's `contracts.parse_doc` also stops the last section at the footer rule.

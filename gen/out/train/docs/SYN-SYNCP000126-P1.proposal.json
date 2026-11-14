@@ -1,5 +1,5 @@
 {
- "date": "2026-02-21",
+ "date": "2024-07-02",
  "doc": {
   "doc_id": "SYN-SYNCP000126-P1",
   "doc_type": "PROPOSAL",
@@ -7,7 +7,7 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000126-P1, was presented by the Supplier to Northstar Urgent Care 126 on February 21, 2026."
+    "text": "This proposal, SYN-SYNCP000126-P1, was presented by PFIZER (the Supplier) to Northstar Urgent Care 126 on July 2, 2024."
    },
    {
     "anchor": "2",
@@ -17,12 +17,12 @@
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 1,300 Influenza doses per year."
+    "text": "Supplier request: a Pneumococcal share floor of 80%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: awaiting a Customer decision."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,9 +31,9 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000126-P1#3",
-   "description": "a commitment of 1,300 Influenza doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 1,300 Influenza doses per year"
+   "description": "a Pneumococcal share floor of 80%",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal share floor of 80%"
   }
  ],
  "gives": [
@@ -44,7 +44,7 @@
    "span": "an administrative fee of 2.75%"
   }
  ],
- "outcome": "pending",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000126-P1",
  "resulted_in": null,
  "system_id": "SYNCP000126"

@@ -1,5 +1,5 @@
 {
- "date": "2026-01-07",
+ "date": "2025-11-12",
  "doc": {
   "doc_id": "SYN-SYNCP000031-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000031-P1, was presented by the Supplier to Highland Pediatric Center 031 on January 7, 2026."
+    "text": "This proposal, SYN-SYNCP000031-P1, was presented by GSK PHARM (the Supplier) to Highland Pediatric Center 031 on November 12, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 2 rebate of 4.5%."
+    "text": "Supplier concession: an administrative fee of 1.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 750 DTaP doses per year."
+    "text": "Supplier request: a Shingles share floor of 70%."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000031-P1#3",
-   "description": "a commitment of 750 DTaP doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 750 DTaP doses per year"
+   "description": "a Shingles share floor of 70%",
+   "kind": "exclusivity",
+   "span": "a Shingles share floor of 70%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000031-P1#2",
-   "description": "a Tier 2 rebate of 4.5%",
-   "kind": "rebate_change",
-   "span": "a Tier 2 rebate of 4.5%"
+   "description": "an administrative fee of 1.75%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 1.75%"
   }
  ],
  "outcome": "countered",

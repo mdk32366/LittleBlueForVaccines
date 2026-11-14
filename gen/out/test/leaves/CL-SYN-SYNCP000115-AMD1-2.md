@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Updated Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000115-AMD1-2-share_floor_pct", "qualifier": null, "span": "65 per cent", "unit": "pct", "value": 65}]
+terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000115-AMD1-2-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "95 per cent", "unit": "pct", "value": 95}]
 ---
 
-Going forward the Hepatitis minimum flowing to the Supplier is set at 65 per cent.
+Going forward the Pneumococcal minimum flowing to the Supplier is set at 95 per cent.

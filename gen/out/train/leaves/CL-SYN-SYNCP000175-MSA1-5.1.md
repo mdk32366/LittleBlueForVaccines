@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Volume Commitment: Shingles"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000175-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-shingles"}, "span": "610", "unit": "doses", "value": 610}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000175-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-shingles", "provenance": "invented"}, "span": "640", "unit": "doses", "value": 640}]
 ---
 
-The Customer commits to purchase not less than 610 doses of Shingles products in each contract year.
+The Customer commits to purchase not less than 640 doses of Shingles products in each contract year.

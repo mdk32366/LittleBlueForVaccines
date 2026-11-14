@@ -1,5 +1,5 @@
 {
- "date": "2024-12-08",
+ "date": "2024-11-20",
  "doc": {
   "doc_id": "SYN-SYNCP000146-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000146-P1, was presented by the Supplier to Northstar Urgent Care 146 on December 8, 2024."
+    "text": "This proposal, SYN-SYNCP000146-P1, was presented by GSK PHARM (the Supplier) to Northstar Urgent Care 146 on November 20, 2024."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2%."
+    "text": "Supplier concession: an administrative fee of 2.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 1,160 Influenza doses per year."
+    "text": "Supplier request: a commitment of 230 Meningococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: countered by the Customer."
+    "text": "Status of this proposal: awaiting a Customer decision."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000146-P1#3",
-   "description": "a commitment of 1,160 Influenza doses per year",
+   "description": "a commitment of 230 Meningococcal doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 1,160 Influenza doses per year"
+   "span": "a commitment of 230 Meningococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000146-P1#2",
-   "description": "an administrative fee of 2%",
+   "description": "an administrative fee of 2.75%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 2%"
+   "span": "an administrative fee of 2.75%"
   }
  ],
- "outcome": "countered",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000146-P1",
- "resulted_in": "SYN-SYNCP000146-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000146"
 }

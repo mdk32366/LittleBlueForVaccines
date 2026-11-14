@@ -1,5 +1,5 @@
 {
- "date": "2024-10-09",
+ "date": "2025-10-04",
  "doc": {
   "doc_id": "SYN-SYNCP000039-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000039-P1, was presented by the Supplier to Horizon Wellness Center 039 on October 9, 2024."
+    "text": "This proposal, SYN-SYNCP000039-P1, was presented by SANOFI (the Supplier) to Horizon Wellness Center 039 on October 4, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.75%."
+    "text": "Supplier concession: a Tier 1 rebate of 3%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Tdap share floor of 55%."
+    "text": "Supplier request: a RSV share floor of 45%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: countered by the Customer."
+    "text": "Status of this proposal: accepted by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,20 +31,20 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000039-P1#3",
-   "description": "a Tdap share floor of 55%",
+   "description": "a RSV share floor of 45%",
    "kind": "exclusivity",
-   "span": "a Tdap share floor of 55%"
+   "span": "a RSV share floor of 45%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000039-P1#2",
-   "description": "an administrative fee of 2.75%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.75%"
+   "description": "a Tier 1 rebate of 3%",
+   "kind": "rebate_change",
+   "span": "a Tier 1 rebate of 3%"
   }
  ],
- "outcome": "countered",
+ "outcome": "won",
  "proposal_id": "SYN-SYNCP000039-P1",
  "resulted_in": "SYN-SYNCP000039-AMD1",
  "system_id": "SYNCP000039"

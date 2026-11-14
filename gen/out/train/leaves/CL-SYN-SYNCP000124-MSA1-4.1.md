@@ -8,7 +8,7 @@ edges: []
 anchor: "4.1"
 heading: "Rebate Tier 1"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000124-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "300", "unit": "doses", "value": 300}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000124-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "1.5%", "unit": "pct", "value": 1.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000124-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-mmr", "provenance": "invented", "tier": 1}, "span": "260", "unit": "doses", "value": 260}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000124-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-mmr", "provenance": "invented", "tier": 1}, "span": "2.5%", "unit": "pct", "value": 2.5}]
 ---
 
-Tier 1 applies when the Customer purchases at least 300 doses of Tdap products in a contract year, and earns a rebate of 1.5% on those purchases.
+Tier 1 applies when the Customer purchases at least 260 doses of MMR products in a contract year, and earns a rebate of 2.5% on those purchases.

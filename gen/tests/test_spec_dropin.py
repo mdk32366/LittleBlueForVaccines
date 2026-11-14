@@ -1,4 +1,4 @@
-"""schema_v1 drop-in seam (proposed T entry, number pending the Architect): specs/conformance.py gates a candidate spec
+"""T-0063 (schema_v1 drop-in conformance): specs/conformance.py gates a candidate spec
 on the seam, the app's field names and AS-0041 (schema_v1 keeps auto_renew boolean in term section). Bad candidates
 are built here from the stub by subclassing; no production code knows them."""
 import dataclasses

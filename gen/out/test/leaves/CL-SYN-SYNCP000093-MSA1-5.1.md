@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Minimum Take: Influenza"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000093-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-influenza"}, "span": "1,360", "unit": "doses", "value": 1360}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000093-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-influenza", "provenance": "invented"}, "span": "1,670", "unit": "doses", "value": 1670}]
 ---
 
-Each year the Customer undertakes to take 1,360 or more Influenza doses.
+Each year the Customer undertakes to take 1,670 or more Influenza doses.

@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000016-P1.md", "generator_seed": 562}
-edges: []
-date: "2025-08-21"
-gives: [{"anchor": "SYN-SYNCP000016-P1#2", "description": "an administrative fee of 1.25%", "kind": "admin_fee_change", "span": "an administrative fee of 1.25%"}]
-gets: [{"anchor": "SYN-SYNCP000016-P1#3", "description": "a Tdap share floor of 90%", "kind": "exclusivity", "span": "a Tdap share floor of 90%"}]
-outcome: "lost"
+edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000016-AMD1"}]
+date: "2026-04-04"
+gives: [{"anchor": "SYN-SYNCP000016-P1#2", "description": "an administrative fee of 1.75%", "kind": "admin_fee_change", "span": "an administrative fee of 1.75%"}]
+gets: [{"anchor": "SYN-SYNCP000016-P1#3", "description": "a commitment of 280 Meningococcal doses per year", "kind": "volume_commitment", "span": "a commitment of 280 Meningococcal doses per year"}]
+outcome: "won"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000016-P1, was presented by the Supplier to Clearwater Urgent Care 016 on August 21, 2025.
+This proposal, SYN-SYNCP000016-P1, was presented by GSK PHARM (the Supplier) to Clearwater Urgent Care 016 on April 4, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 1.25%.
+Supplier concession: an administrative fee of 1.75%.
 
 ## 3. Supplier Request
 
-Supplier request: a Tdap share floor of 90%.
+Supplier request: a commitment of 280 Meningococcal doses per year.
 
 ## 4. Proposal Status
 
-Status of this proposal: declined by the Customer.
+Status of this proposal: accepted by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

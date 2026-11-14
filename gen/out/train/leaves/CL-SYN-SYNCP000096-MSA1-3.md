@@ -8,7 +8,7 @@ edges: []
 anchor: "3"
 heading: "Termination"
 clause_type: "termination"
-terms: [{"field": "termination_for_convenience", "id": "TM-SYN-SYNCP000096-MSA1-3-termination_for_convenience", "qualifier": null, "span": "may terminate this Agreement for convenience", "unit": "bool", "value": true}, {"field": "termination_notice_days", "id": "TM-SYN-SYNCP000096-MSA1-3-termination_notice_days", "qualifier": null, "span": "90", "unit": "days", "value": 90}]
+terms: [{"field": "termination_for_convenience", "id": "TM-SYN-SYNCP000096-MSA1-3-termination_for_convenience", "qualifier": {"provenance": "invented"}, "span": "may terminate this Agreement for convenience", "unit": "bool", "value": true}, {"field": "termination_notice_days", "id": "TM-SYN-SYNCP000096-MSA1-3-termination_notice_days", "qualifier": {"provenance": "invented"}, "span": "90", "unit": "days", "value": 90}]
 ---
 
 Either party may terminate this Agreement for convenience. Any termination takes effect 90 days after written notice is delivered.

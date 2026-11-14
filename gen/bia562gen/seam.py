@@ -8,8 +8,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field, asdict
 from typing import Any, Optional, Protocol, runtime_checkable
 
-FIELD_TYPES = ("date", "int", "pct", "enum", "text")  # TermSet Field.type, §7.2
-ANSWER_TYPES = ("date", "int", "pct", "enum", "span", "unanswerable")  # QAPair, §7.7
+FIELD_TYPES = ("date", "int", "pct", "enum", "text", "num")  # TermSet Field.type, §7.2; "num" added by schema_v1 (Q8 default)
+ANSWER_TYPES = ("date", "int", "pct", "enum", "span", "unanswerable", "num")  # QAPair, §7.7; "num" added by schema_v1 (Q8)
 DOC_TYPES = ("MSA", "EXH", "AMD", "NOTE")  # ONTOLOGY §4 doc_type vocab
 REFUSAL = "not in the contracts"  # §9.2 task A refusal output
 
@@ -117,6 +117,8 @@ class SystemProfile:
     state_cd: str
     org_type: str
     class_doses: tuple  # tuple[(class_name, doses_t12), ...] sorted desc
+    metrics: dict = field(default_factory=dict, compare=False, hash=False)  # schema_v1 seam addition (D-0028-style):
+    # profile_metrics.system_metrics() output; empty for stub-v0 fixtures. Ignored by stub-v0.
 
 
 @runtime_checkable

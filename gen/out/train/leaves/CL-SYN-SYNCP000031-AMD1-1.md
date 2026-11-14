@@ -8,7 +8,7 @@ edges: []
 anchor: "1"
 heading: "Amendment Purpose"
 clause_type: "term_renewal"
-terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000031-AMD1-1-effective_date", "qualifier": null, "span": "March 1, 2026", "unit": "date", "value": "2026-03-01"}]
+terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000031-AMD1-1-effective_date", "qualifier": {"provenance": "invented"}, "span": "January 1, 2026", "unit": "date", "value": "2026-01-01"}]
 ---
 
-This amendment, SYN-SYNCP000031-AMD1, modifies SYN-SYNCP000031-MSA1 with effect from March 1, 2026.
+This amendment, SYN-SYNCP000031-AMD1, between the Customer and GSK PHARM, modifies SYN-SYNCP000031-MSA1 with effect from January 1, 2026.

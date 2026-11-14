@@ -1,5 +1,5 @@
 {
- "date": "2026-02-07",
+ "date": "2025-04-17",
  "doc": {
   "doc_id": "SYN-SYNCP000115-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 7 February 2026, pitch SYN-SYNCP000115-P1 was put before Redwood Care Partners 115 on behalf of Supplier."
+    "text": "Prepared on 17 April 2025, pitch SYN-SYNCP000115-P1 was put before Redwood Care Partners 115 on behalf of PFIZER."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 1 rebate of 2 per cent."
+    "text": "In exchange the Supplier put forward a Band 2 rebate of 3 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Hepatitis minimum take of 480 doses in return."
+    "text": "The Supplier sought a Pneumococcal preferred-position minimum of 95 per cent in return."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000115-P1#3",
-   "description": "a yearly Hepatitis minimum take of 480 doses",
-   "kind": "volume_commitment",
-   "span": "a yearly Hepatitis minimum take of 480 doses"
+   "description": "a Pneumococcal preferred-position minimum of 95 per cent",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal preferred-position minimum of 95 per cent"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000115-P1#2",
-   "description": "a Band 1 rebate of 2 per cent",
+   "description": "a Band 2 rebate of 3 per cent",
    "kind": "rebate_change",
-   "span": "a Band 1 rebate of 2 per cent"
+   "span": "a Band 2 rebate of 3 per cent"
   }
  ],
  "outcome": "countered",

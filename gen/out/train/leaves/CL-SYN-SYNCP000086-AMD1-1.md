@@ -8,7 +8,7 @@ edges: []
 anchor: "1"
 heading: "Amendment Purpose"
 clause_type: "term_renewal"
-terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000086-AMD1-1-effective_date", "qualifier": null, "span": "October 1, 2026", "unit": "date", "value": "2026-10-01"}]
+terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000086-AMD1-1-effective_date", "qualifier": {"provenance": "invented"}, "span": "November 1, 2024", "unit": "date", "value": "2024-11-01"}]
 ---
 
-This amendment, SYN-SYNCP000086-AMD1, modifies SYN-SYNCP000086-MSA1 with effect from October 1, 2026.
+This amendment, SYN-SYNCP000086-AMD1, between the Customer and PFIZER, modifies SYN-SYNCP000086-MSA1 with effect from November 1, 2024.

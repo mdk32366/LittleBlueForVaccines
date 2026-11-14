@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000134-MSA1-6-exclusivity_class", "qualifier": null, "span": "DTaP", "unit": "id", "value": "CLS-dtap"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000134-MSA1-6-share_floor_pct", "qualifier": null, "span": "85 per cent", "unit": "pct", "value": 85}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000134-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "DTaP", "unit": "id", "value": "CLS-dtap"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000134-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "65 per cent", "unit": "pct", "value": 65}]
 ---
 
-For DTaP, the Supplier holds sole preferred standing. No less than 85 per cent of DTaP volume is to flow to the Supplier.
+For DTaP, the Supplier holds sole preferred standing. No less than 65 per cent of DTaP volume is to flow to the Supplier.

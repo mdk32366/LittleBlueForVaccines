@@ -1,5 +1,5 @@
 {
- "date": "2025-01-03",
+ "date": "2025-08-02",
  "doc": {
   "doc_id": "SYN-SYNCP000005-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 3 January 2025, pitch SYN-SYNCP000005-P1 was put before Sunrise Care Partners 005 on behalf of Supplier."
+    "text": "Prepared on 2 August 2025, pitch SYN-SYNCP000005-P1 was put before Sunrise Care Partners 005 on behalf of SANOFI."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 3 rebate of 6 per cent."
+    "text": "In exchange the Supplier put forward a Band 1 rebate of 2.5 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Tdap minimum take of 1,030 doses in return."
+    "text": "The Supplier sought a Tdap preferred-position minimum of 55 per cent in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer turned the terms down."
+    "text": "Recorded result: the Customer has not yet responded."
    }
   ],
   "synthetic": true,
@@ -31,20 +31,20 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000005-P1#3",
-   "description": "a yearly Tdap minimum take of 1,030 doses",
-   "kind": "volume_commitment",
-   "span": "a yearly Tdap minimum take of 1,030 doses"
+   "description": "a Tdap preferred-position minimum of 55 per cent",
+   "kind": "exclusivity",
+   "span": "a Tdap preferred-position minimum of 55 per cent"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000005-P1#2",
-   "description": "a Band 3 rebate of 6 per cent",
+   "description": "a Band 1 rebate of 2.5 per cent",
    "kind": "rebate_change",
-   "span": "a Band 3 rebate of 6 per cent"
+   "span": "a Band 1 rebate of 2.5 per cent"
   }
  ],
- "outcome": "lost",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000005-P1",
  "resulted_in": null,
  "system_id": "SYNCP000005"

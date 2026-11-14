@@ -1,5 +1,5 @@
 {
- "date": "2025-12-20",
+ "date": "2026-06-17",
  "doc": {
   "doc_id": "SYN-SYNCP000061-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000061-P1, was presented by the Supplier to Prairie Pediatric Center 061 on December 20, 2025."
+    "text": "This proposal, SYN-SYNCP000061-P1, was presented by MERCK & COMPANY (the Supplier) to Prairie Pediatric Center 061 on June 17, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.25%."
+    "text": "Supplier concession: an administrative fee of 2.25%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 470 Tdap doses per year."
+    "text": "Supplier request: a commitment of 230 HPV doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: countered by the Customer."
+    "text": "Status of this proposal: awaiting a Customer decision."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000061-P1#3",
-   "description": "a commitment of 470 Tdap doses per year",
+   "description": "a commitment of 230 HPV doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 470 Tdap doses per year"
+   "span": "a commitment of 230 HPV doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000061-P1#2",
-   "description": "an administrative fee of 1.25%",
+   "description": "an administrative fee of 2.25%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.25%"
+   "span": "an administrative fee of 2.25%"
   }
  ],
- "outcome": "countered",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000061-P1",
- "resulted_in": "SYN-SYNCP000061-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000061"
 }

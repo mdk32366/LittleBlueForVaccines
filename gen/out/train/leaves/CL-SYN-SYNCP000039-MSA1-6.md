@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Exclusivity and Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000039-MSA1-6-exclusivity_class", "qualifier": null, "span": "Tdap", "unit": "id", "value": "CLS-tdap"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000039-MSA1-6-share_floor_pct", "qualifier": null, "span": "50%", "unit": "pct", "value": 50}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000039-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "RSV", "unit": "id", "value": "CLS-rsv"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000039-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "50%", "unit": "pct", "value": 50}]
 ---
 
-The Supplier is the exclusive contracted source for Tdap products. The Customer will maintain a share floor of 50% of its Tdap doses with the Supplier.
+The Supplier is the exclusive contracted source for RSV products. The Customer will maintain a share floor of 50% of its RSV doses with the Supplier.

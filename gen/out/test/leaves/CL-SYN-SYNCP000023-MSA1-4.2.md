@@ -8,7 +8,7 @@ edges: []
 anchor: "4.2"
 heading: "Volume Band 2"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000023-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-influenza", "tier": 2}, "span": "1,200", "unit": "doses", "value": 1200}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000023-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-influenza", "tier": 2}, "span": "2.5 per cent", "unit": "pct", "value": 2.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000023-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 2}, "span": "640", "unit": "doses", "value": 640}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000023-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 2}, "span": "4 per cent", "unit": "pct", "value": 4.0}]
 ---
 
-Band 2 is reached once yearly Influenza volume hits 1,200 doses or more; qualifying spend then carries a 2.5 per cent rebate.
+Band 2 is reached once yearly Pneumococcal volume hits 640 doses or more; qualifying spend then carries a 4 per cent rebate.

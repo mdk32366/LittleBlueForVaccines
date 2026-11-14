@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Exclusivity and Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000055-MSA1-6-exclusivity_class", "qualifier": null, "span": "Influenza", "unit": "id", "value": "CLS-influenza"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000055-MSA1-6-share_floor_pct", "qualifier": null, "span": "75%", "unit": "pct", "value": 75}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000055-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "Influenza", "unit": "id", "value": "CLS-influenza"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000055-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "70%", "unit": "pct", "value": 70}]
 ---
 
-The Supplier is the exclusive contracted source for Influenza products. The Customer will maintain a share floor of 75% of its Influenza doses with the Supplier.
+The Supplier is the exclusive contracted source for Influenza products. The Customer will maintain a share floor of 70% of its Influenza doses with the Supplier.

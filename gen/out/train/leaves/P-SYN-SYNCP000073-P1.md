@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000073-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000073-AMD1"}]
-date: "2024-12-17"
-gives: [{"anchor": "SYN-SYNCP000073-P1#2", "description": "an administrative fee of 2%", "kind": "admin_fee_change", "span": "an administrative fee of 2%"}]
-gets: [{"anchor": "SYN-SYNCP000073-P1#3", "description": "a Influenza share floor of 50%", "kind": "exclusivity", "span": "a Influenza share floor of 50%"}]
-outcome: "countered"
+edges: []
+date: "2025-02-05"
+gives: [{"anchor": "SYN-SYNCP000073-P1#2", "description": "an administrative fee of 1.5%", "kind": "admin_fee_change", "span": "an administrative fee of 1.5%"}]
+gets: [{"anchor": "SYN-SYNCP000073-P1#3", "description": "a Pneumococcal share floor of 85%", "kind": "exclusivity", "span": "a Pneumococcal share floor of 85%"}]
+outcome: "pending"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000073-P1, was presented by the Supplier to Riverbend Physician Alliance 073 on December 17, 2024.
+This proposal, SYN-SYNCP000073-P1, was presented by PFIZER (the Supplier) to Riverbend Physician Alliance 073 on February 5, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 2%.
+Supplier concession: an administrative fee of 1.5%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 50%.
+Supplier request: a Pneumococcal share floor of 85%.
 
 ## 4. Proposal Status
 
-Status of this proposal: countered by the Customer.
+Status of this proposal: awaiting a Customer decision.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

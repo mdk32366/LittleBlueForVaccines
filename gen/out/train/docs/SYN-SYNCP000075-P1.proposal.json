@@ -1,5 +1,5 @@
 {
- "date": "2025-01-02",
+ "date": "2025-09-10",
  "doc": {
   "doc_id": "SYN-SYNCP000075-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000075-P1, was presented by the Supplier to Redwood Care Partners 075 on January 2, 2025."
+    "text": "This proposal, SYN-SYNCP000075-P1, was presented by MERCK & COMPANY (the Supplier) to Redwood Care Partners 075 on September 10, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.25%."
+    "text": "Supplier concession: an administrative fee of 2.25%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 230 DTaP doses per year."
+    "text": "Supplier request: a commitment of 200 MMR doses per year."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000075-P1#3",
-   "description": "a commitment of 230 DTaP doses per year",
+   "description": "a commitment of 200 MMR doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 230 DTaP doses per year"
+   "span": "a commitment of 200 MMR doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000075-P1#2",
-   "description": "an administrative fee of 1.25%",
+   "description": "an administrative fee of 2.25%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.25%"
+   "span": "an administrative fee of 2.25%"
   }
  ],
  "outcome": "countered",

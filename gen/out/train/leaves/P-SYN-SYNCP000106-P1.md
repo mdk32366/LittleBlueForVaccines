@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000106-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000106-AMD1"}]
-date: "2026-03-13"
-gives: [{"anchor": "SYN-SYNCP000106-P1#2", "description": "an administrative fee of 1.25%", "kind": "admin_fee_change", "span": "an administrative fee of 1.25%"}]
-gets: [{"anchor": "SYN-SYNCP000106-P1#3", "description": "a Influenza share floor of 70%", "kind": "exclusivity", "span": "a Influenza share floor of 70%"}]
-outcome: "countered"
+edges: []
+date: "2025-02-06"
+gives: [{"anchor": "SYN-SYNCP000106-P1#2", "description": "a Tier 1 rebate of 2%", "kind": "rebate_change", "span": "a Tier 1 rebate of 2%"}]
+gets: [{"anchor": "SYN-SYNCP000106-P1#3", "description": "a RSV share floor of 55%", "kind": "exclusivity", "span": "a RSV share floor of 55%"}]
+outcome: "pending"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000106-P1, was presented by the Supplier to Northstar Urgent Care 106 on March 13, 2026.
+This proposal, SYN-SYNCP000106-P1, was presented by SANOFI (the Supplier) to Northstar Urgent Care 106 on February 6, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 1.25%.
+Supplier concession: a Tier 1 rebate of 2%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 70%.
+Supplier request: a RSV share floor of 55%.
 
 ## 4. Proposal Status
 
-Status of this proposal: countered by the Customer.
+Status of this proposal: awaiting a Customer decision.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

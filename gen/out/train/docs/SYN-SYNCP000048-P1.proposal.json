@@ -1,5 +1,5 @@
 {
- "date": "2025-09-10",
+ "date": "2026-03-12",
  "doc": {
   "doc_id": "SYN-SYNCP000048-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000048-P1, was presented by the Supplier to Keystone Community Health 048 on September 10, 2025."
+    "text": "This proposal, SYN-SYNCP000048-P1, was presented by MERCK & COMPANY (the Supplier) to Keystone Community Health 048 on March 12, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 2 rebate of 4%."
+    "text": "Supplier concession: an administrative fee of 3%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Tdap share floor of 45%."
+    "text": "Supplier request: a commitment of 40 HPV doses per year."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000048-P1#3",
-   "description": "a Tdap share floor of 45%",
-   "kind": "exclusivity",
-   "span": "a Tdap share floor of 45%"
+   "description": "a commitment of 40 HPV doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 40 HPV doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000048-P1#2",
-   "description": "a Tier 2 rebate of 4%",
-   "kind": "rebate_change",
-   "span": "a Tier 2 rebate of 4%"
+   "description": "an administrative fee of 3%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 3%"
   }
  ],
  "outcome": "countered",

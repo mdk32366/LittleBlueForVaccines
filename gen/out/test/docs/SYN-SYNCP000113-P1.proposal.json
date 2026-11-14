@@ -1,5 +1,5 @@
 {
- "date": "2026-01-03",
+ "date": "2024-12-07",
  "doc": {
   "doc_id": "SYN-SYNCP000113-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 3 January 2026, pitch SYN-SYNCP000113-P1 was put before Riverbend Physician Alliance 113 on behalf of Supplier."
+    "text": "Prepared on 7 December 2024, pitch SYN-SYNCP000113-P1 was put before Riverbend Physician Alliance 113 on behalf of MERCK & COMPANY."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 1 rebate of 3 per cent."
+    "text": "In exchange the Supplier put forward a group service charge of 2.75 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a Influenza preferred-position minimum of 65 per cent in return."
+    "text": "The Supplier sought a HPV preferred-position minimum of 75 per cent in return."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000113-P1#3",
-   "description": "a Influenza preferred-position minimum of 65 per cent",
+   "description": "a HPV preferred-position minimum of 75 per cent",
    "kind": "exclusivity",
-   "span": "a Influenza preferred-position minimum of 65 per cent"
+   "span": "a HPV preferred-position minimum of 75 per cent"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000113-P1#2",
-   "description": "a Band 1 rebate of 3 per cent",
-   "kind": "rebate_change",
-   "span": "a Band 1 rebate of 3 per cent"
+   "description": "a group service charge of 2.75 per cent",
+   "kind": "admin_fee_change",
+   "span": "a group service charge of 2.75 per cent"
   }
  ],
  "outcome": "lost",

@@ -1,5 +1,5 @@
 {
- "date": "2024-12-08",
+ "date": "2025-08-19",
  "doc": {
   "doc_id": "SYN-SYNCP000081-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000081-P1, was presented by the Supplier to Prairie Pediatric Center 081 on December 8, 2024."
+    "text": "This proposal, SYN-SYNCP000081-P1, was presented by PFIZER (the Supplier) to Prairie Pediatric Center 081 on August 19, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.75%."
+    "text": "Supplier concession: an administrative fee of 2.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Pneumococcal share floor of 65%."
+    "text": "Supplier request: a Pneumococcal share floor of 90%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000081-P1#3",
-   "description": "a Pneumococcal share floor of 65%",
+   "description": "a Pneumococcal share floor of 90%",
    "kind": "exclusivity",
-   "span": "a Pneumococcal share floor of 65%"
+   "span": "a Pneumococcal share floor of 90%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000081-P1#2",
-   "description": "an administrative fee of 1.75%",
+   "description": "an administrative fee of 2.75%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.75%"
+   "span": "an administrative fee of 2.75%"
   }
  ],
- "outcome": "won",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000081-P1",
- "resulted_in": "SYN-SYNCP000081-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000081"
 }

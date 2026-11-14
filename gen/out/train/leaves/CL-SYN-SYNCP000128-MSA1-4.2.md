@@ -8,7 +8,7 @@ edges: []
 anchor: "4.2"
 heading: "Rebate Tier 2"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000128-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-influenza", "tier": 2}, "span": "670", "unit": "doses", "value": 670}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000128-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-influenza", "tier": 2}, "span": "4%", "unit": "pct", "value": 4.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000128-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-influenza", "provenance": "invented", "tier": 2}, "span": "670", "unit": "doses", "value": 670}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000128-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-influenza", "provenance": "invented", "tier": 2}, "span": "2.5%", "unit": "pct", "value": 2.5}]
 ---
 
-Tier 2 applies when the Customer purchases at least 670 doses of Influenza products in a contract year, and earns a rebate of 4% on those purchases.
+Tier 2 applies when the Customer purchases at least 670 doses of Influenza products in a contract year, and earns a rebate of 2.5% on those purchases.
