@@ -9,8 +9,10 @@ doc_type: "MSA"
 title: "SYNTHETIC MSA SYN-SYNCP000023-MSA1"
 effective_date: "2025-08-01"
 expiration_date: "2029-07-31"
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 synthetic_stamp: true
 ---
 
-SYNTHETIC contract SYN-SYNCP000023-MSA1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC contract SYN-SYNCP000023-MSA1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

@@ -1,5 +1,5 @@
 {
- "date": "2026-02-14",
+ "date": "2024-10-02",
  "doc": {
   "doc_id": "SYN-SYNCP000012-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000012-P1, was presented by the Supplier to Harborview Regional Hospital 012 on February 14, 2026."
+    "text": "This proposal, SYN-SYNCP000012-P1, was presented by MERCK & COMPANY (the Supplier) to Harborview Regional Hospital 012 on October 2, 2024."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
+    "text": "Supplier concession: an administrative fee of 3.25%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 1,110 Influenza doses per year."
+    "text": "Supplier request: a commitment of 130 HPV doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: awaiting a Customer decision."
    }
   ],
   "synthetic": true,
@@ -31,20 +31,20 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000012-P1#3",
-   "description": "a commitment of 1,110 Influenza doses per year",
+   "description": "a commitment of 130 HPV doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 1,110 Influenza doses per year"
+   "span": "a commitment of 130 HPV doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000012-P1#2",
-   "description": "a Tier 3 rebate of 5.5%",
-   "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 5.5%"
+   "description": "an administrative fee of 3.25%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 3.25%"
   }
  ],
- "outcome": "lost",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000012-P1",
  "resulted_in": null,
  "system_id": "SYNCP000012"

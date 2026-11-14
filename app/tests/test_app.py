@@ -29,7 +29,7 @@ def test_qa_tab():
     at.text_input(key="qa_text").input("When does the MSA expire?").run()
     assert not at.exception
     md = " ".join(m.value for m in at.markdown)
-    assert "SYN-SYNCP000001-MSA1#2" in md and "July 31, 2027" in md
+    assert "SYN-SYNCP000001-MSA1#2" in md and "June 30, 2027" in md  # schema_v1 re-pin (was July 31, 2027)
 
 
 def test_benchmark_toggle_national():

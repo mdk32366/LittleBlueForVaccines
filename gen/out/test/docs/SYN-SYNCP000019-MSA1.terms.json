@@ -2,131 +2,215 @@
  "doc_id": "SYN-SYNCP000019-MSA1",
  "fields": {
   "admin_fee_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "7",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "1.5 per cent",
+   "span": "3 per cent",
    "type": "pct",
-   "value": 1.5
+   "value": 3.0
   },
   "auto_renew": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "rolls over each year without further action",
+   "span": "No rollover occurs",
    "type": "enum",
-   "value": true
+   "value": false
   },
   "commitment_doses_per_year-1": {
    "qualifier": {
-    "class": "CLS-influenza"
+    "class": "CLS-influenza",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.1",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "590",
+   "span": "540",
    "type": "int",
-   "value": 590
+   "value": 540
   },
   "commitment_doses_per_year-2": {
    "qualifier": {
-    "class": "CLS-tdap"
+    "class": "CLS-tdap",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.2",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "350",
+   "span": "390",
    "type": "int",
-   "value": 350
+   "value": 390
   },
   "covered_product-1": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "PRD-syn-influenza",
+   "span": "VARIVAX",
    "type": "enum",
-   "value": "PRD-syn-influenza"
+   "value": "VARIVAX"
   },
   "covered_product-2": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "PRD-syn-tdap",
+   "span": "GARDASIL 9",
    "type": "enum",
-   "value": "PRD-syn-tdap"
+   "value": "GARDASIL 9"
   },
-  "covered_product-3": {
-   "qualifier": null,
+  "covered_specialty": {
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "PRD-syn-dtap",
+   "span": "Primary Care",
    "type": "enum",
-   "value": "PRD-syn-dtap"
+   "value": "Primary Care"
   },
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "1 July 2025",
+   "span": "1 May 2025",
    "type": "date",
-   "value": "2025-07-01"
+   "value": "2025-05-01"
   },
   "exclusivity_class": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "Influenza",
+   "span": "Varicella",
    "type": "enum",
-   "value": "CLS-influenza"
+   "value": "CLS-varicella"
   },
   "expiration_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "30 June 2028",
+   "span": "30 April 2027",
    "type": "date",
-   "value": "2028-06-30"
+   "value": "2027-04-30"
+  },
+  "governing_state": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000019-MSA1"
+   },
+   "span": "CA",
+   "type": "enum",
+   "value": "CA"
+  },
+  "member_org_type": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000019-MSA1"
+   },
+   "span": "IDN",
+   "type": "enum",
+   "value": "IDN"
+  },
+  "participating_sites": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000019-MSA1"
+   },
+   "span": "14",
+   "type": "int",
+   "value": 14
+  },
+  "participating_subsidiaries": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000019-MSA1"
+   },
+   "span": "25",
+   "type": "int",
+   "value": 25
   },
   "renewal_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "60",
+   "span": "120",
    "type": "int",
-   "value": 60
+   "value": 120
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "85 per cent",
+   "span": "70 per cent",
    "type": "pct",
-   "value": 85
+   "value": 70
+  },
+  "supplier_name": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000019-MSA1"
+   },
+   "span": "MERCK & COMPANY",
+   "type": "enum",
+   "value": "MERCK & COMPANY"
   },
   "termination_for_convenience": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000019-MSA1"
@@ -136,7 +220,9 @@
    "value": false
   },
   "termination_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000019-MSA1"
@@ -147,81 +233,87 @@
   },
   "tier_min_doses-1": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-varicella",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "320",
+   "span": "10",
    "type": "int",
-   "value": 320
+   "value": 10
   },
   "tier_min_doses-2": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-varicella",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "490",
+   "span": "20",
    "type": "int",
-   "value": 490
+   "value": 20
   },
   "tier_min_doses-3": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-varicella",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "650",
+   "span": "30",
    "type": "int",
-   "value": 650
+   "value": 30
   },
   "tier_rebate_pct-1": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-varicella",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "2 per cent",
+   "span": "2.5 per cent",
    "type": "pct",
-   "value": 2.0
+   "value": 2.5
   },
   "tier_rebate_pct-2": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-varicella",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "3 per cent",
+   "span": "4 per cent",
    "type": "pct",
-   "value": 3.0
+   "value": 4.0
   },
   "tier_rebate_pct-3": {
    "qualifier": {
-    "class": "CLS-influenza",
+    "class": "CLS-varicella",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000019-MSA1"
    },
-   "span": "4.5 per cent",
+   "span": "5 per cent",
    "type": "pct",
-   "value": 4.5
+   "value": 5.0
   }
  }
 }

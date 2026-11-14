@@ -1,5 +1,5 @@
 {
- "date": "2025-02-15",
+ "date": "2026-06-12",
  "doc": {
   "doc_id": "SYN-SYNCP000131-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000131-P1, was presented by the Supplier to Highland Pediatric Center 131 on February 15, 2025."
+    "text": "This proposal, SYN-SYNCP000131-P1, was presented by PFIZER (the Supplier) to Highland Pediatric Center 131 on June 12, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 2 rebate of 4%."
+    "text": "Supplier concession: an administrative fee of 2.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Hepatitis share floor of 80%."
+    "text": "Supplier request: a commitment of 220 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000131-P1#3",
-   "description": "a Hepatitis share floor of 80%",
-   "kind": "exclusivity",
-   "span": "a Hepatitis share floor of 80%"
+   "description": "a commitment of 220 Pneumococcal doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 220 Pneumococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000131-P1#2",
-   "description": "a Tier 2 rebate of 4%",
-   "kind": "rebate_change",
-   "span": "a Tier 2 rebate of 4%"
+   "description": "an administrative fee of 2.5%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 2.5%"
   }
  ],
  "outcome": "pending",

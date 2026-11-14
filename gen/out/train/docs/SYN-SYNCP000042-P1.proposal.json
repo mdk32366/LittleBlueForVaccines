@@ -1,5 +1,5 @@
 {
- "date": "2026-04-03",
+ "date": "2025-01-03",
  "doc": {
   "doc_id": "SYN-SYNCP000042-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000042-P1, was presented by the Supplier to Maple Grove Regional Hospital 042 on April 3, 2026."
+    "text": "This proposal, SYN-SYNCP000042-P1, was presented by PFIZER (the Supplier) to Maple Grove Regional Hospital 042 on January 3, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 3.25%."
+    "text": "Supplier concession: an administrative fee of 1.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 70%."
+    "text": "Supplier request: a commitment of 350 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: awaiting a Customer decision."
+    "text": "Status of this proposal: countered by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000042-P1#3",
-   "description": "a Influenza share floor of 70%",
-   "kind": "exclusivity",
-   "span": "a Influenza share floor of 70%"
+   "description": "a commitment of 350 Pneumococcal doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 350 Pneumococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000042-P1#2",
-   "description": "an administrative fee of 3.25%",
+   "description": "an administrative fee of 1.5%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 3.25%"
+   "span": "an administrative fee of 1.5%"
   }
  ],
- "outcome": "pending",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000042-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000042-AMD1",
  "system_id": "SYNCP000042"
 }

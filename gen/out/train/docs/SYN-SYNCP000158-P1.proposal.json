@@ -1,5 +1,5 @@
 {
- "date": "2024-07-08",
+ "date": "2025-07-04",
  "doc": {
   "doc_id": "SYN-SYNCP000158-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000158-P1, was presented by the Supplier to Lakeside Community Health 158 on July 8, 2024."
+    "text": "This proposal, SYN-SYNCP000158-P1, was presented by PFIZER (the Supplier) to Lakeside Community Health 158 on July 4, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 5%."
+    "text": "Supplier concession: an administrative fee of 1.75%."
    },
    {
     "anchor": "3",
@@ -22,7 +22,7 @@
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: awaiting a Customer decision."
    }
   ],
   "synthetic": true,
@@ -39,13 +39,13 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000158-P1#2",
-   "description": "a Tier 3 rebate of 5%",
-   "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 5%"
+   "description": "an administrative fee of 1.75%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 1.75%"
   }
  ],
- "outcome": "won",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000158-P1",
- "resulted_in": "SYN-SYNCP000158-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000158"
 }

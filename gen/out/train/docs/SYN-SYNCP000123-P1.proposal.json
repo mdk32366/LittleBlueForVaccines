@@ -1,5 +1,5 @@
 {
- "date": "2026-06-04",
+ "date": "2025-05-03",
  "doc": {
   "doc_id": "SYN-SYNCP000123-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000123-P1, was presented by the Supplier to Cedar Valley Physician Alliance 123 on June 4, 2026."
+    "text": "This proposal, SYN-SYNCP000123-P1, was presented by SANOFI (the Supplier) to Cedar Valley Physician Alliance 123 on May 3, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 3.25%."
+    "text": "Supplier concession: an administrative fee of 2%."
    },
    {
     "anchor": "3",
@@ -22,7 +22,7 @@
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: awaiting a Customer decision."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -39,12 +39,12 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000123-P1#2",
-   "description": "an administrative fee of 3.25%",
+   "description": "an administrative fee of 2%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 3.25%"
+   "span": "an administrative fee of 2%"
   }
  ],
- "outcome": "pending",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000123-P1",
  "resulted_in": null,
  "system_id": "SYNCP000123"

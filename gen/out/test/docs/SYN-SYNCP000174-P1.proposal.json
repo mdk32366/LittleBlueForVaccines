@@ -1,5 +1,5 @@
 {
- "date": "2025-02-02",
+ "date": "2025-08-09",
  "doc": {
   "doc_id": "SYN-SYNCP000174-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 2 February 2025, pitch SYN-SYNCP000174-P1 was put before Desert Bloom Family Clinic 174 on behalf of Supplier."
+    "text": "Prepared on 9 August 2025, pitch SYN-SYNCP000174-P1 was put before Desert Bloom Family Clinic 174 on behalf of PFIZER."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a group service charge of 3 per cent."
+    "text": "In exchange the Supplier put forward a Band 3 rebate of 5 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Influenza minimum take of 750 doses in return."
+    "text": "The Supplier sought a yearly Pneumococcal minimum take of 260 doses in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer came back with a counter."
+    "text": "Recorded result: the Customer turned the terms down."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000174-P1#3",
-   "description": "a yearly Influenza minimum take of 750 doses",
+   "description": "a yearly Pneumococcal minimum take of 260 doses",
    "kind": "volume_commitment",
-   "span": "a yearly Influenza minimum take of 750 doses"
+   "span": "a yearly Pneumococcal minimum take of 260 doses"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000174-P1#2",
-   "description": "a group service charge of 3 per cent",
-   "kind": "admin_fee_change",
-   "span": "a group service charge of 3 per cent"
+   "description": "a Band 3 rebate of 5 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 3 rebate of 5 per cent"
   }
  ],
- "outcome": "countered",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000174-P1",
- "resulted_in": "SYN-SYNCP000174-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000174"
 }

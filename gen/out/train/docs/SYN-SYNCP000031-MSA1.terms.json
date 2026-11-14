@@ -2,17 +2,21 @@
  "doc_id": "SYN-SYNCP000031-MSA1",
  "fields": {
   "admin_fee_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "7",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "1%",
+   "span": "1.5%",
    "type": "pct",
-   "value": 1.0
+   "value": 1.5
   },
   "auto_renew": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000031-MSA1"
@@ -23,90 +27,166 @@
   },
   "commitment_doses_per_year-1": {
    "qualifier": {
-    "class": "CLS-dtap"
+    "class": "CLS-dtap",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.1",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "790",
+   "span": "610",
    "type": "int",
-   "value": 790
+   "value": 610
   },
   "commitment_doses_per_year-2": {
    "qualifier": {
-    "class": "CLS-tdap"
+    "class": "CLS-tdap",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.2",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "520",
+   "span": "550",
    "type": "int",
-   "value": 520
+   "value": 550
   },
   "covered_product-1": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "PRD-syn-dtap",
+   "span": "SHINGRIX",
    "type": "enum",
-   "value": "PRD-syn-dtap"
+   "value": "SHINGRIX"
   },
   "covered_product-2": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "PRD-syn-tdap",
+   "span": "PEDIARIX",
    "type": "enum",
-   "value": "PRD-syn-tdap"
+   "value": "PEDIARIX"
   },
   "covered_product-3": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "PRD-syn-influenza",
+   "span": "BEXSERO",
    "type": "enum",
-   "value": "PRD-syn-influenza"
+   "value": "BEXSERO"
+  },
+  "covered_specialty": {
+   "qualifier": {
+    "provenance": "invented"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000031-MSA1"
+   },
+   "span": "Purchasing Agent",
+   "type": "enum",
+   "value": "Purchasing Agent"
   },
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "January 1, 2025",
+   "span": "June 1, 2025",
    "type": "date",
-   "value": "2025-01-01"
+   "value": "2025-06-01"
   },
   "exclusivity_class": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "DTaP",
+   "span": "Shingles",
    "type": "enum",
-   "value": "CLS-dtap"
+   "value": "CLS-shingles"
   },
   "expiration_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "December 31, 2028",
+   "span": "May 31, 2028",
    "type": "date",
-   "value": "2028-12-31"
+   "value": "2028-05-31"
+  },
+  "governing_state": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000031-MSA1"
+   },
+   "span": "TX",
+   "type": "enum",
+   "value": "TX"
+  },
+  "member_org_type": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000031-MSA1"
+   },
+   "span": "IDN",
+   "type": "enum",
+   "value": "IDN"
+  },
+  "participating_sites": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000031-MSA1"
+   },
+   "span": "14",
+   "type": "int",
+   "value": 14
+  },
+  "participating_subsidiaries": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000031-MSA1"
+   },
+   "span": "28",
+   "type": "int",
+   "value": 28
   },
   "renewal_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000031-MSA1"
@@ -116,7 +196,9 @@
    "value": 60
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000031-MSA1"
@@ -125,8 +207,22 @@
    "type": "pct",
    "value": 75
   },
+  "supplier_name": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000031-MSA1"
+   },
+   "span": "GSK PHARM",
+   "type": "enum",
+   "value": "GSK PHARM"
+  },
   "termination_for_convenience": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000031-MSA1"
@@ -136,57 +232,63 @@
    "value": false
   },
   "termination_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "60",
+   "span": "90",
    "type": "int",
-   "value": 60
+   "value": 90
   },
   "tier_min_doses-1": {
    "qualifier": {
-    "class": "CLS-dtap",
+    "class": "CLS-shingles",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "410",
+   "span": "10",
    "type": "int",
-   "value": 410
+   "value": 10
   },
   "tier_min_doses-2": {
    "qualifier": {
-    "class": "CLS-dtap",
+    "class": "CLS-shingles",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "610",
+   "span": "20",
    "type": "int",
-   "value": 610
+   "value": 20
   },
   "tier_min_doses-3": {
    "qualifier": {
-    "class": "CLS-dtap",
+    "class": "CLS-shingles",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "820",
+   "span": "30",
    "type": "int",
-   "value": 820
+   "value": 30
   },
   "tier_rebate_pct-1": {
    "qualifier": {
-    "class": "CLS-dtap",
+    "class": "CLS-shingles",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
@@ -199,7 +301,8 @@
   },
   "tier_rebate_pct-2": {
    "qualifier": {
-    "class": "CLS-dtap",
+    "class": "CLS-shingles",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
@@ -212,16 +315,17 @@
   },
   "tier_rebate_pct-3": {
    "qualifier": {
-    "class": "CLS-dtap",
+    "class": "CLS-shingles",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000031-MSA1"
    },
-   "span": "5.5%",
+   "span": "5%",
    "type": "pct",
-   "value": 5.5
+   "value": 5.0
   }
  }
 }

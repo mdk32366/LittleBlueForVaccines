@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Exclusivity and Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000032-MSA1-6-exclusivity_class", "qualifier": null, "span": "Hepatitis", "unit": "id", "value": "CLS-hepatitis"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000032-MSA1-6-share_floor_pct", "qualifier": null, "span": "65%", "unit": "pct", "value": 65}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000032-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "HPV", "unit": "id", "value": "CLS-hpv"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000032-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "60%", "unit": "pct", "value": 60}]
 ---
 
-The Supplier is the exclusive contracted source for Hepatitis products. The Customer will maintain a share floor of 65% of its Hepatitis doses with the Supplier.
+The Supplier is the exclusive contracted source for HPV products. The Customer will maintain a share floor of 60% of its HPV doses with the Supplier.

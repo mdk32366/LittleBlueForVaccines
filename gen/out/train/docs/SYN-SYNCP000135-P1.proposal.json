@@ -1,5 +1,5 @@
 {
- "date": "2025-06-03",
+ "date": "2026-12-06",
  "doc": {
   "doc_id": "SYN-SYNCP000135-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000135-P1, was presented by the Supplier to Redwood Care Partners 135 on June 3, 2025."
+    "text": "This proposal, SYN-SYNCP000135-P1, was presented by PFIZER (the Supplier) to Redwood Care Partners 135 on December 6, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.75%."
+    "text": "Supplier concession: an administrative fee of 2.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 75%."
+    "text": "Supplier request: a Pneumococcal share floor of 60%."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000135-P1#3",
-   "description": "a Influenza share floor of 75%",
+   "description": "a Pneumococcal share floor of 60%",
    "kind": "exclusivity",
-   "span": "a Influenza share floor of 75%"
+   "span": "a Pneumococcal share floor of 60%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000135-P1#2",
-   "description": "an administrative fee of 2.75%",
+   "description": "an administrative fee of 2.5%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.75%"
+   "span": "an administrative fee of 2.5%"
   }
  ],
  "outcome": "countered",

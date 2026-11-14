@@ -8,7 +8,7 @@ edges: []
 anchor: "8"
 heading: "Miscellany"
 clause_type: "other"
-terms: []
+terms: [{"field": "governing_state", "id": "TM-SYN-SYNCP000125-MSA1-8-governing_state", "qualifier": {"provenance": "source"}, "span": "FL", "unit": "id", "value": "FL"}]
 ---
 
 Everything here is invented for coursework. Confidentiality binds both sides; the law of FL governs.

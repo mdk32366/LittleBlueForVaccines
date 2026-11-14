@@ -8,7 +8,7 @@ edges: []
 anchor: "4.1"
 heading: "Volume Band 1"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000033-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "730", "unit": "doses", "value": 730}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000033-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "2 per cent", "unit": "pct", "value": 2.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000033-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-tdap", "provenance": "invented", "tier": 1}, "span": "730", "unit": "doses", "value": 730}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000033-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-tdap", "provenance": "invented", "tier": 1}, "span": "1.5 per cent", "unit": "pct", "value": 1.5}]
 ---
 
-Band 1 is reached once yearly Tdap volume hits 730 doses or more; qualifying spend then carries a 2 per cent rebate.
+Band 1 is reached once yearly Tdap volume hits 730 doses or more; qualifying spend then carries a 1.5 per cent rebate.

@@ -18,7 +18,24 @@ The generator turns one seed plus the synthetic sales CSV into a small, fully fi
 
 `bia562gen/seam.py` defines the frozen record types and the `ContractSpec` protocol. The generator, leaf writer and checks import only from the seam, never from a spec module. A spec provides `spec_version`, `families`, `doc_types()`, `field_catalog()`, `plan(...)`, `render(...)`, `terms(...)`, `proposals(...)`, `qa(...)` and `template_text(family)`; the last three seam members were added under D-0028 (seam additions).
 
-Stub v0 lives in `bia562gen/specs/schema_stub.py` with its templates in `templates_stub.py`. The owner's schema_v1 drops in as a new `bia562gen/specs/schema_v1.py` plus one `REGISTRY` line in `bia562gen/specs/__init__.py` (or `--spec module:Class`), with `config.json` naming it. No generator code changes. `tests/test_seam.py` proves this with a three-field toy spec that only the test suite knows about.
+Stub v0 lives in `bia562gen/specs/schema_stub.py` with its templates in `templates_stub.py`. `tests/test_seam.py` proves the seam with a three-field toy spec that only the test suite knows about.
+
+### schema_v1 drop-in (GATE 2)
+
+- **Slot:** `REGISTRY["v1"]` in `bia562gen/specs/__init__.py` already points at `bia562gen.specs.schema_v1:SchemaV1Spec`. Until that module exists, `load_spec("v1")` raises `SpecNotDroppedIn`. The drop-in is one new file, `bia562gen/specs/schema_v1.py`, plus `config.json` set to `{"spec": "v1"}`. No generator code changes.
+- **Two shapes:** if schema_v1 changes only the field catalog or template text, subclass `StubV0Spec` and set `spec_version`, `CATALOG` and `TEMPLATES` (`schema_v1_scaffold.py` is the copyable starting point). A structural change implements `ContractSpec` directly.
+- **Gate:** `python tools/check_spec.py --spec v1` runs `specs/conformance.py` before any regeneration and writes nothing. Errors block: seam shape, families A and B, the doc_type vocabulary, catalog types, the field names the app reads (`effective_date`, `expiration_date`, `auto_renew`), and AS-0041 (schema_v1 keeps auto_renew boolean in term section) on a seeded fixture. A missing app Q&A field or a one-sided `auto_renew` draw is a warning for the Architect. Renaming a field the app reads is a spec change, never a silent remap.
+- **Note:** `spec_version` is part of the per-system RNG key, so a new spec version redraws every system's terms, including the expired MSAs and their `auto_renew` values.
+
+### schema_v1 (GATE 2 path B, live)
+- `config.json` is `{"spec": "v1"}`; `specs/schema_v1.py` subclasses `StubV0Spec` (spec_version `schema-v1`), keeps the stub's MSA, AMD and proposal shapes and its catalog (the MSA adds `supplier_name`, `covered_specialty`, participating sites and subsidiaries, member type, governing state), and adds one EXH1 "Purchasing profile schedule" per system. Templates are `specs/templates_v1.py`: the stub families with a `{party}` slot.
+- **Inputs:** the synthetic sales file, read by `systems.load_csv`, which attaches `profile_metrics` figures (stdlib, exact integer-unit dollars, the app's FULL window, R7 season and ratio, share and status rules); and the national file via `national.py` (D-0041 (national file is generator and training input)): sha256-checked, ten listed columns, pooled totals only, fail closed.
+- **EXH1** states the system's figures, its in-state peer figures (peer pools exclude the system) and the national figures as clause text, each a TermSet field with `provenance` (source, national or invented) and a status label when not ok. It is built without the RNG (T-0075) and packed into sections of at most 1,500 bytes (`11`, `11.1`, ...).
+- **Counterparty** (D-0044 (real manufacturer as the contract party)): the top-dollar manufacturer of the system's primary class; covered products are that manufacturer's top brand in each of the top three dollar classes.
+- **Marker** (T-0073): every document has "SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented." after its title and again after a closing `---` rule; `parse_doc_md` (gen) and `contracts.parse_doc` (app) end the last section at that rule. The manifest carries `contract_terms`, `counterparty` and `benchmark_source`; every Q&A row carries `terms_invented: true`.
+- **R7** in EXH1 §10: the two Tdap ratios and the three-share (Boostrix, Influenza, RSV Vaccine of their season sum) at system, in-state peer and national level (F-0032).
+- **The app shows the marker** (T-0076): `contracts.doc_marker` reads it from the header and footer (both must match), `system_marker` gives the one every document of a system carries, and the Q&A answer, the Brief tab's "Contracts on file" and the PDF contract block show it first.
+- **Q&A per system:** the stub rows, 4 contract x sales rows (band, commitment, floor, switching), 3 refusals (pricing, clinical, real data; exactly "not in the contracts") plus the stub's unanswerable items, and 12 metric reads on EXH1 (always A1 and R1 at system level, one national item, the rest picked by the RNG).
 
 ### Families and split
 
@@ -44,7 +61,7 @@ Each answer is a slot template plus verbatim spans, following D-0020 (answer for
 gen/
   bia562gen/        generator package (seam, generate, leaves, caps, checks, vault_guard, specs/)
   tests/            pytest suite (T-0014, T-0017, T-0021, T-0022, T-0027 to T-0033)
-  tools/            gen_contracts.py (CLI), redproof.py (proves each guard can go red)
+  tools/            gen_contracts.py (CLI), check_spec.py (schema_v1 drop-in gate), redproof.py (proves each guard can go red)
   out/              accepted seed-562 run; tests re-check it
   config.json       active spec name
   requirements.txt  pinned test dependencies (the package itself is standard library only)

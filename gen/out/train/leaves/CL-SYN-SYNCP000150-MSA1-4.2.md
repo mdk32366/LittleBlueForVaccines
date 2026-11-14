@@ -8,7 +8,7 @@ edges: []
 anchor: "4.2"
 heading: "Rebate Tier 2"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000150-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-pneumococcal", "tier": 2}, "span": "310", "unit": "doses", "value": 310}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000150-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-pneumococcal", "tier": 2}, "span": "3%", "unit": "pct", "value": 3.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000150-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 2}, "span": "170", "unit": "doses", "value": 170}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000150-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 2}, "span": "2.5%", "unit": "pct", "value": 2.5}]
 ---
 
-Tier 2 applies when the Customer purchases at least 310 doses of Pneumococcal products in a contract year, and earns a rebate of 3% on those purchases.
+Tier 2 applies when the Customer purchases at least 170 doses of HPV products in a contract year, and earns a rebate of 2.5% on those purchases.

@@ -1,4 +1,4 @@
-"""Stub v0 ContractSpec (ONTOLOGY §3 catalog v0). Matt's schema_v1 replaces this module, not the generator."""
+"""Stub v0 ContractSpec (ONTOLOGY §3 catalog v0). The owner's schema_v1 replaces this module, not the generator."""
 from __future__ import annotations
 
 import datetime as dt
@@ -40,8 +40,12 @@ def _fmt_int(n: int) -> str:
 
 
 class StubV0Spec:
+    """Also the base for a schema_v1 drop-in that only changes the catalog and/or template text: subclass, set
+    spec_version, CATALOG and TEMPLATES (see specs/schema_v1_scaffold.py). Structural changes implement ContractSpec."""
     spec_version = "stub-v0"
     families = ("A", "B")
+    CATALOG = CATALOG_V0   # [(name, type, unit, clause_type, qualifiers, cardinality)], ONTOLOGY §3
+    TEMPLATES = FAMILIES   # {"A": {...}, "B": {...}} with the keys templates_stub.FAMILIES uses
 
     # ---- catalog ----
     def doc_types(self):
@@ -49,10 +53,10 @@ class StubV0Spec:
 
     def field_catalog(self):
         return [dict(name=n, type=t, unit=u, clause_type=c, qualifiers=q, cardinality=k)
-                for n, t, u, c, q, k in CATALOG_V0]
+                for n, t, u, c, q, k in self.CATALOG]
 
     def template_text(self, family):
-        return static_fragments(family)
+        return static_fragments(family, self.TEMPLATES)
 
     # ---- plan: all values are family-independent; family only changes phrasing ----
     def plan(self, system: SystemProfile, rng, family: str):
@@ -113,7 +117,7 @@ class StubV0Spec:
     # ---- render ----
     def _sections(self, ds: DocSpec):
         """Return [(anchor, heading, text, [(field_key, Field-args...)])]"""
-        F = FAMILIES[ds.family]
+        F = self.TEMPLATES[ds.family]
         H, C, SP = F["headings"], F["clauses"], F["spans"]
         fd, fp = F["date"], F["pct"]
         m, amd = ds.data["msa"], ds.data["amd"]
@@ -180,7 +184,7 @@ class StubV0Spec:
 
     # ---- proposals ----
     def _gg(self, fam, kind, vals, m):
-        F = FAMILIES[fam]
+        F = self.TEMPLATES[fam]
         fp = F["pct"]
         tpl = F["givegets"][kind]
         if kind == "rebate_change":
@@ -196,7 +200,7 @@ class StubV0Spec:
     def proposals(self, ds: DocSpec):
         if ds.doc_type != "MSA":
             return []
-        F = FAMILIES[ds.family]
+        F = self.TEMPLATES[ds.family]
         H, C = F["headings"], F["clauses"]
         p, m = ds.data["prop"], ds.data["msa"]
         give = self._gg(ds.family, p["give_kind"], p["give_vals"], m)
@@ -216,7 +220,7 @@ class StubV0Spec:
 
     # ---- qa ----
     def qa(self, ds: DocSpec):
-        F = FAMILIES[ds.family]
+        F = self.TEMPLATES[ds.family]
         Q, A = F["questions"], F["answers"]
         m, amd, p = ds.data["msa"], ds.data["amd"], ds.data["prop"]
         ts = self.terms(ds)

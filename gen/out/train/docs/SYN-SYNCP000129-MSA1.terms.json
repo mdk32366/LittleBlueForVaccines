@@ -2,17 +2,21 @@
  "doc_id": "SYN-SYNCP000129-MSA1",
  "fields": {
   "admin_fee_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "7",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "2.5%",
+   "span": "1.75%",
    "type": "pct",
-   "value": 2.5
+   "value": 1.75
   },
   "auto_renew": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000129-MSA1"
@@ -23,90 +27,142 @@
   },
   "commitment_doses_per_year-1": {
    "qualifier": {
-    "class": "CLS-tdap"
+    "class": "CLS-tdap",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.1",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "310",
+   "span": "400",
    "type": "int",
-   "value": 310
+   "value": 400
   },
   "commitment_doses_per_year-2": {
    "qualifier": {
-    "class": "CLS-influenza"
+    "class": "CLS-influenza",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.2",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "210",
+   "span": "180",
    "type": "int",
-   "value": 210
+   "value": 180
   },
   "covered_product-1": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "PRD-syn-tdap",
+   "span": "PREVNAR 20",
    "type": "enum",
-   "value": "PRD-syn-tdap"
+   "value": "PREVNAR 20"
   },
-  "covered_product-2": {
-   "qualifier": null,
+  "covered_specialty": {
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "PRD-syn-influenza",
+   "span": "Other",
    "type": "enum",
-   "value": "PRD-syn-influenza"
-  },
-  "covered_product-3": {
-   "qualifier": null,
-   "source": {
-    "anchor": "1",
-    "doc_id": "SYN-SYNCP000129-MSA1"
-   },
-   "span": "PRD-syn-hepatitis",
-   "type": "enum",
-   "value": "PRD-syn-hepatitis"
+   "value": "Other"
   },
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "April 1, 2024",
+   "span": "July 1, 2025",
    "type": "date",
-   "value": "2024-04-01"
+   "value": "2025-07-01"
   },
   "exclusivity_class": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "Tdap",
+   "span": "Pneumococcal",
    "type": "enum",
-   "value": "CLS-tdap"
+   "value": "CLS-pneumococcal"
   },
   "expiration_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "March 31, 2028",
+   "span": "June 30, 2029",
    "type": "date",
-   "value": "2028-03-31"
+   "value": "2029-06-30"
+  },
+  "governing_state": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000129-MSA1"
+   },
+   "span": "CA",
+   "type": "enum",
+   "value": "CA"
+  },
+  "member_org_type": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000129-MSA1"
+   },
+   "span": "IDN",
+   "type": "enum",
+   "value": "IDN"
+  },
+  "participating_sites": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000129-MSA1"
+   },
+   "span": "13",
+   "type": "int",
+   "value": 13
+  },
+  "participating_subsidiaries": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000129-MSA1"
+   },
+   "span": "25",
+   "type": "int",
+   "value": 25
   },
   "renewal_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000129-MSA1"
@@ -116,27 +172,45 @@
    "value": 60
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "60%",
+   "span": "75%",
    "type": "pct",
-   "value": 60
+   "value": 75
+  },
+  "supplier_name": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000129-MSA1"
+   },
+   "span": "PFIZER",
+   "type": "enum",
+   "value": "PFIZER"
   },
   "termination_for_convenience": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "Neither party may terminate this Agreement for convenience",
+   "span": "may terminate this Agreement for convenience",
    "type": "enum",
-   "value": false
+   "value": true
   },
   "termination_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000129-MSA1"
@@ -147,59 +221,64 @@
   },
   "tier_min_doses-1": {
    "qualifier": {
-    "class": "CLS-tdap",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "190",
+   "span": "130",
    "type": "int",
-   "value": 190
+   "value": 130
   },
   "tier_min_doses-2": {
    "qualifier": {
-    "class": "CLS-tdap",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "290",
+   "span": "200",
    "type": "int",
-   "value": 290
+   "value": 200
   },
   "tier_min_doses-3": {
    "qualifier": {
-    "class": "CLS-tdap",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "380",
+   "span": "260",
    "type": "int",
-   "value": 380
+   "value": 260
   },
   "tier_rebate_pct-1": {
    "qualifier": {
-    "class": "CLS-tdap",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000129-MSA1"
    },
-   "span": "1.5%",
+   "span": "2%",
    "type": "pct",
-   "value": 1.5
+   "value": 2.0
   },
   "tier_rebate_pct-2": {
    "qualifier": {
-    "class": "CLS-tdap",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
@@ -212,7 +291,8 @@
   },
   "tier_rebate_pct-3": {
    "qualifier": {
-    "class": "CLS-tdap",
+    "class": "CLS-pneumococcal",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {

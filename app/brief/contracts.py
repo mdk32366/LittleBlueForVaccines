@@ -15,6 +15,7 @@ EXPIRED_MARKER = "[EXPIRED]"  # shown when a contract's end date is before the a
 # never splits the label; DejaVu Sans has the glyph (checked by render, pdftotext and pdffonts, GATE 2 r2).
 AUTO_RENEW_MARKER = "[TERM ENDED · auto\u2011renews]"
 SEC_RE = re.compile(r"^## (\d+(?:\.\d+)*[a-z]?)\. (.+)$", re.M)
+RULE_RE = re.compile(r"^---$", re.M)  # schema_v1: the footer rule before the SYNTHETIC marker ends the last section
 
 KEYWORDS = [  # (pattern, field base) for free-text questions; order matters
     (r"\b(expire|expiry|expiration|lapse|end date|term end)", "expiration_date"),
@@ -38,9 +39,30 @@ def parse_doc(text: str):
     ms = list(SEC_RE.finditer(text))
     secs = {}
     for i, m in enumerate(ms):
-        end = ms[i + 1].start() if i + 1 < len(ms) else len(text)
+        if i + 1 < len(ms):
+            end = ms[i + 1].start()
+        else:
+            rule = RULE_RE.search(text, m.end())
+            end = rule.start() if rule else len(text)
         secs[m.group(1)] = {"heading": m.group(2), "text": text[m.end():end].strip("\n")}
     return meta, secs
+
+
+def doc_marker(text: str) -> str:
+    """schema_v1 (T-0073, T-0076): the marker line is the first line after the title and the last line after the
+    footer rule; it counts only when both are present and equal. '' for stub-v0 documents."""
+    lines = text.split("\n")
+    title = next((i for i, ln in enumerate(lines) if ln.startswith("# ")), None)
+    head = next((ln for ln in lines[title + 1:] if ln.strip()), "") if title is not None else ""
+    rule = [m.end() for m in RULE_RE.finditer(text)]
+    foot = text[rule[-1]:].strip() if rule else ""
+    return head if head and head == foot and not head.startswith(("#", ">")) else ""
+
+
+def system_marker(system_id: str) -> str:
+    """The marker every document of this system carries, or '' when any document lacks it (the app then shows none)."""
+    marks = {doc_marker(p.read_text()) for _m, _s, p in system_docs(system_id).values()}
+    return marks.pop() if len(marks) == 1 else ""
 
 
 def gen_out() -> Path:
@@ -156,7 +178,8 @@ def answer(system_id: str, question: str) -> dict:
         if row.get("field_name"):
             hits = [h for h in lookup(system_id, field_key=row["field_name"]) if h["doc_id"] == row["doc_id"]]
             if hits:
-                return {"answer": hits[0]["span"], "citations": hits, "note": "TermSet lookup"}
+                return {"answer": hits[0]["span"], "citations": hits, "note": "TermSet lookup",
+                        "marker": system_marker(system_id)}
         note = ("unanswerable" if row["answer_type"] == "unanswerable"
                 else "needs retrieval over clause text; LLM off, TermSet lookup only")
         return {"answer": REFUSAL, "citations": [], "note": note}
@@ -165,5 +188,6 @@ def answer(system_id: str, question: str) -> dict:
         if re.search(pat, q):
             hits = lookup(system_id, base=base, tier=int(tier.group(1)) if tier and base.startswith("tier_") else None)
             if hits:
-                return {"answer": "; ".join(h["span"] for h in hits), "citations": hits, "note": "keyword TermSet lookup"}
+                return {"answer": "; ".join(h["span"] for h in hits), "citations": hits, "note": "keyword TermSet lookup",
+                        "marker": system_marker(system_id)}
     return {"answer": REFUSAL, "citations": [], "note": "no TermSet field matched"}

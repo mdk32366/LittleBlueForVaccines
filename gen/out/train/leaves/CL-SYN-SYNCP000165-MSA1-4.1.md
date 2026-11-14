@@ -8,7 +8,7 @@ edges: []
 anchor: "4.1"
 heading: "Rebate Tier 1"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000165-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "490", "unit": "doses", "value": 490}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000165-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "1.5%", "unit": "pct", "value": 1.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000165-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 1}, "span": "20", "unit": "doses", "value": 20}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000165-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 1}, "span": "1.5%", "unit": "pct", "value": 1.5}]
 ---
 
-Tier 1 applies when the Customer purchases at least 490 doses of Tdap products in a contract year, and earns a rebate of 1.5% on those purchases.
+Tier 1 applies when the Customer purchases at least 20 doses of HPV products in a contract year, and earns a rebate of 1.5% on those purchases.

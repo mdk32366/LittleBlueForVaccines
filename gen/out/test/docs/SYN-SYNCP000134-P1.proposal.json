@@ -1,5 +1,5 @@
 {
- "date": "2024-12-20",
+ "date": "2026-06-02",
  "doc": {
   "doc_id": "SYN-SYNCP000134-P1",
   "doc_type": "PROPOSAL",
@@ -7,12 +7,12 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 20 December 2024, pitch SYN-SYNCP000134-P1 was put before Desert Bloom Family Clinic 134 on behalf of Supplier."
+    "text": "Prepared on 2 June 2026, pitch SYN-SYNCP000134-P1 was put before Desert Bloom Family Clinic 134 on behalf of SANOFI."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a group service charge of 1.5 per cent."
+    "text": "In exchange the Supplier put forward a Band 1 rebate of 2 per cent."
    },
    {
     "anchor": "3",
@@ -22,7 +22,7 @@
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer came back with a counter."
+    "text": "Recorded result: the Customer turned the terms down."
    }
   ],
   "synthetic": true,
@@ -39,13 +39,13 @@
  "gives": [
   {
    "anchor": "SYN-SYNCP000134-P1#2",
-   "description": "a group service charge of 1.5 per cent",
-   "kind": "admin_fee_change",
-   "span": "a group service charge of 1.5 per cent"
+   "description": "a Band 1 rebate of 2 per cent",
+   "kind": "rebate_change",
+   "span": "a Band 1 rebate of 2 per cent"
   }
  ],
- "outcome": "countered",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000134-P1",
- "resulted_in": "SYN-SYNCP000134-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000134"
 }

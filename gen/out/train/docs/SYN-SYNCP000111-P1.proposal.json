@@ -1,5 +1,5 @@
 {
- "date": "2026-09-20",
+ "date": "2024-10-02",
  "doc": {
   "doc_id": "SYN-SYNCP000111-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000111-P1, was presented by the Supplier to Highland Pediatric Center 111 on September 20, 2026."
+    "text": "This proposal, SYN-SYNCP000111-P1, was presented by GSK PHARM (the Supplier) to Highland Pediatric Center 111 on October 2, 2024."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.75%."
+    "text": "Supplier concession: a Tier 1 rebate of 2%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 55%."
+    "text": "Supplier request: a Meningococcal share floor of 80%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: awaiting a Customer decision."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,20 +31,20 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000111-P1#3",
-   "description": "a Influenza share floor of 55%",
+   "description": "a Meningococcal share floor of 80%",
    "kind": "exclusivity",
-   "span": "a Influenza share floor of 55%"
+   "span": "a Meningococcal share floor of 80%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000111-P1#2",
-   "description": "an administrative fee of 2.75%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.75%"
+   "description": "a Tier 1 rebate of 2%",
+   "kind": "rebate_change",
+   "span": "a Tier 1 rebate of 2%"
   }
  ],
- "outcome": "pending",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000111-P1",
  "resulted_in": null,
  "system_id": "SYNCP000111"

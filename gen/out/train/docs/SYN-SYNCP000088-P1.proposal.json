@@ -1,5 +1,5 @@
 {
- "date": "2024-09-16",
+ "date": "2026-04-03",
  "doc": {
   "doc_id": "SYN-SYNCP000088-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000088-P1, was presented by the Supplier to Keystone Community Health 088 on September 16, 2024."
+    "text": "This proposal, SYN-SYNCP000088-P1, was presented by SANOFI (the Supplier) to Keystone Community Health 088 on April 3, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.75%."
+    "text": "Supplier concession: a Tier 2 rebate of 3%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 85%."
+    "text": "Supplier request: a commitment of 1,030 Influenza doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: countered by the Customer."
+    "text": "Status of this proposal: awaiting a Customer decision."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000088-P1#3",
-   "description": "a Influenza share floor of 85%",
-   "kind": "exclusivity",
-   "span": "a Influenza share floor of 85%"
+   "description": "a commitment of 1,030 Influenza doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 1,030 Influenza doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000088-P1#2",
-   "description": "an administrative fee of 1.75%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.75%"
+   "description": "a Tier 2 rebate of 3%",
+   "kind": "rebate_change",
+   "span": "a Tier 2 rebate of 3%"
   }
  ],
- "outcome": "countered",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000088-P1",
- "resulted_in": "SYN-SYNCP000088-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000088"
 }

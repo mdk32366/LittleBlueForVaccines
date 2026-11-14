@@ -1,5 +1,5 @@
 {
- "date": "2025-03-03",
+ "date": "2026-04-15",
  "doc": {
   "doc_id": "SYN-SYNCP000017-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000017-P1, was presented by the Supplier to Atlantic Health Network 017 on March 3, 2025."
+    "text": "This proposal, SYN-SYNCP000017-P1, was presented by MERCK & COMPANY (the Supplier) to Atlantic Health Network 017 on April 15, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.25%."
+    "text": "Supplier concession: an administrative fee of 3%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 670 HPV doses per year."
+    "text": "Supplier request: a HPV share floor of 55%."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000017-P1#3",
-   "description": "a commitment of 670 HPV doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 670 HPV doses per year"
+   "description": "a HPV share floor of 55%",
+   "kind": "exclusivity",
+   "span": "a HPV share floor of 55%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000017-P1#2",
-   "description": "an administrative fee of 1.25%",
+   "description": "an administrative fee of 3%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.25%"
+   "span": "an administrative fee of 3%"
   }
  ],
  "outcome": "pending",

@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Revised Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000177-AMD1-2-share_floor_pct", "qualifier": null, "span": "65%", "unit": "pct", "value": 65}]
+terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000177-AMD1-2-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "50%", "unit": "pct", "value": 50}]
 ---
 
-From the amendment date, the Tdap share floor becomes 65% of the Customer's Tdap doses.
+From the amendment date, the Pneumococcal share floor becomes 50% of the Customer's Pneumococcal doses.

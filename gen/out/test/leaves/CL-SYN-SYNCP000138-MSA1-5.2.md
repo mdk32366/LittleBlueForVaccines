@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Minimum Take: Coronavirus"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000138-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-coronavirus"}, "span": "650", "unit": "doses", "value": 650}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000138-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-coronavirus", "provenance": "invented"}, "span": "630", "unit": "doses", "value": 630}]
 ---
 
-Each year the Customer undertakes to take 650 or more Coronavirus doses.
+Each year the Customer undertakes to take 630 or more Coronavirus doses.

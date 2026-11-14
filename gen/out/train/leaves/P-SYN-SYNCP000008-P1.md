@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000008-P1.md", "generator_seed": 562}
-edges: []
-date: "2026-05-12"
-gives: [{"anchor": "SYN-SYNCP000008-P1#2", "description": "a Tier 2 rebate of 4%", "kind": "rebate_change", "span": "a Tier 2 rebate of 4%"}]
-gets: [{"anchor": "SYN-SYNCP000008-P1#3", "description": "a Tdap share floor of 60%", "kind": "exclusivity", "span": "a Tdap share floor of 60%"}]
-outcome: "lost"
+edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000008-AMD1"}]
+date: "2026-08-03"
+gives: [{"anchor": "SYN-SYNCP000008-P1#2", "description": "an administrative fee of 2.5%", "kind": "admin_fee_change", "span": "an administrative fee of 2.5%"}]
+gets: [{"anchor": "SYN-SYNCP000008-P1#3", "description": "a Pneumococcal share floor of 50%", "kind": "exclusivity", "span": "a Pneumococcal share floor of 50%"}]
+outcome: "won"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000008-P1, was presented by the Supplier to Keystone Community Health 008 on May 12, 2026.
+This proposal, SYN-SYNCP000008-P1, was presented by PFIZER (the Supplier) to Keystone Community Health 008 on August 3, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 2 rebate of 4%.
+Supplier concession: an administrative fee of 2.5%.
 
 ## 3. Supplier Request
 
-Supplier request: a Tdap share floor of 60%.
+Supplier request: a Pneumococcal share floor of 50%.
 
 ## 4. Proposal Status
 
-Status of this proposal: declined by the Customer.
+Status of this proposal: accepted by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

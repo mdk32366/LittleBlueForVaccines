@@ -2,131 +2,215 @@
  "doc_id": "SYN-SYNCP000068-MSA1",
  "fields": {
   "admin_fee_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "7",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "3 per cent",
+   "span": "2.75 per cent",
    "type": "pct",
-   "value": 3.0
+   "value": 2.75
   },
   "auto_renew": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "No rollover occurs",
+   "span": "rolls over each year without further action",
    "type": "enum",
-   "value": false
+   "value": true
   },
   "commitment_doses_per_year-1": {
    "qualifier": {
-    "class": "CLS-pneumococcal"
+    "class": "CLS-pneumococcal",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.1",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "340",
+   "span": "250",
    "type": "int",
-   "value": 340
+   "value": 250
   },
   "commitment_doses_per_year-2": {
    "qualifier": {
-    "class": "CLS-tdap"
+    "class": "CLS-tdap",
+    "provenance": "invented"
    },
    "source": {
     "anchor": "5.2",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "350",
+   "span": "260",
    "type": "int",
-   "value": 350
+   "value": 260
   },
   "covered_product-1": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "PRD-syn-pneumococcal",
+   "span": "GARDASIL 9",
    "type": "enum",
-   "value": "PRD-syn-pneumococcal"
+   "value": "GARDASIL 9"
   },
   "covered_product-2": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "PRD-syn-tdap",
+   "span": "CAPVAXIVE",
    "type": "enum",
-   "value": "PRD-syn-tdap"
+   "value": "CAPVAXIVE"
   },
-  "covered_product-3": {
-   "qualifier": null,
+  "covered_specialty": {
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "PRD-syn-meningococcal",
+   "span": "Multispecialty",
    "type": "enum",
-   "value": "PRD-syn-meningococcal"
+   "value": "Multispecialty"
   },
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "1 May 2024",
+   "span": "1 April 2024",
    "type": "date",
-   "value": "2024-05-01"
+   "value": "2024-04-01"
   },
   "exclusivity_class": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "source"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "Pneumococcal",
+   "span": "HPV",
    "type": "enum",
-   "value": "CLS-pneumococcal"
+   "value": "CLS-hpv"
   },
   "expiration_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "30 April 2026",
+   "span": "31 March 2028",
    "type": "date",
-   "value": "2026-04-30"
+   "value": "2028-03-31"
+  },
+  "governing_state": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "8",
+    "doc_id": "SYN-SYNCP000068-MSA1"
+   },
+   "span": "OH",
+   "type": "enum",
+   "value": "OH"
+  },
+  "member_org_type": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000068-MSA1"
+   },
+   "span": "Corporate Owner",
+   "type": "enum",
+   "value": "Corporate Owner"
+  },
+  "participating_sites": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000068-MSA1"
+   },
+   "span": "14",
+   "type": "int",
+   "value": 14
+  },
+  "participating_subsidiaries": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000068-MSA1"
+   },
+   "span": "27",
+   "type": "int",
+   "value": 27
   },
   "renewal_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "90",
+   "span": "60",
    "type": "int",
-   "value": 90
+   "value": 60
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "6",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "55 per cent",
+   "span": "60 per cent",
    "type": "pct",
-   "value": 55
+   "value": 60
+  },
+  "supplier_name": {
+   "qualifier": {
+    "provenance": "source"
+   },
+   "source": {
+    "anchor": "1",
+    "doc_id": "SYN-SYNCP000068-MSA1"
+   },
+   "span": "MERCK & COMPANY",
+   "type": "enum",
+   "value": "MERCK & COMPANY"
   },
   "termination_for_convenience": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000068-MSA1"
@@ -136,92 +220,100 @@
    "value": true
   },
   "termination_notice_days": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "3",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "90",
+   "span": "60",
    "type": "int",
-   "value": 90
+   "value": 60
   },
   "tier_min_doses-1": {
    "qualifier": {
-    "class": "CLS-pneumococcal",
+    "class": "CLS-hpv",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "210",
+   "span": "50",
    "type": "int",
-   "value": 210
+   "value": 50
   },
   "tier_min_doses-2": {
    "qualifier": {
-    "class": "CLS-pneumococcal",
+    "class": "CLS-hpv",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "320",
+   "span": "70",
    "type": "int",
-   "value": 320
+   "value": 70
   },
   "tier_min_doses-3": {
    "qualifier": {
-    "class": "CLS-pneumococcal",
+    "class": "CLS-hpv",
+    "provenance": "invented",
     "tier": 3
    },
    "source": {
     "anchor": "4.3",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "420",
+   "span": "100",
    "type": "int",
-   "value": 420
+   "value": 100
   },
   "tier_rebate_pct-1": {
    "qualifier": {
-    "class": "CLS-pneumococcal",
+    "class": "CLS-hpv",
+    "provenance": "invented",
     "tier": 1
    },
    "source": {
     "anchor": "4.1",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
-   "span": "1.5 per cent",
+   "span": "2 per cent",
    "type": "pct",
-   "value": 1.5
+   "value": 2.0
   },
   "tier_rebate_pct-2": {
    "qualifier": {
-    "class": "CLS-pneumococcal",
+    "class": "CLS-hpv",
+    "provenance": "invented",
     "tier": 2
    },
    "source": {
     "anchor": "4.2",
-    "doc_id": "SYN-SYNCP000068-MSA1"
-   },
-   "span": "2.5 per cent",
-   "type": "pct",
-   "value": 2.5
-  },
-  "tier_rebate_pct-3": {
-   "qualifier": {
-    "class": "CLS-pneumococcal",
-    "tier": 3
-   },
-   "source": {
-    "anchor": "4.3",
     "doc_id": "SYN-SYNCP000068-MSA1"
    },
    "span": "3.5 per cent",
    "type": "pct",
    "value": 3.5
+  },
+  "tier_rebate_pct-3": {
+   "qualifier": {
+    "class": "CLS-hpv",
+    "provenance": "invented",
+    "tier": 3
+   },
+   "source": {
+    "anchor": "4.3",
+    "doc_id": "SYN-SYNCP000068-MSA1"
+   },
+   "span": "4.5 per cent",
+   "type": "pct",
+   "value": 4.5
   }
  }
 }

@@ -1,5 +1,5 @@
 {
- "date": "2025-10-11",
+ "date": "2024-09-11",
  "doc": {
   "doc_id": "SYN-SYNCP000108-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000108-P1, was presented by the Supplier to Keystone Community Health 108 on October 11, 2025."
+    "text": "This proposal, SYN-SYNCP000108-P1, was presented by PFIZER (the Supplier) to Keystone Community Health 108 on September 11, 2024."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 1.5%."
+    "text": "Supplier concession: an administrative fee of 2.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 75%."
+    "text": "Supplier request: a Pneumococcal share floor of 80%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000108-P1#3",
-   "description": "a Influenza share floor of 75%",
+   "description": "a Pneumococcal share floor of 80%",
    "kind": "exclusivity",
-   "span": "a Influenza share floor of 75%"
+   "span": "a Pneumococcal share floor of 80%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000108-P1#2",
-   "description": "an administrative fee of 1.5%",
+   "description": "an administrative fee of 2.5%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 1.5%"
+   "span": "an administrative fee of 2.5%"
   }
  ],
- "outcome": "won",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000108-P1",
- "resulted_in": "SYN-SYNCP000108-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000108"
 }

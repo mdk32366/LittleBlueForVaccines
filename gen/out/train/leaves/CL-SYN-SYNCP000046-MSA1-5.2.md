@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Volume Commitment: DTaP"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000046-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-dtap"}, "span": "180", "unit": "doses", "value": 180}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000046-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-dtap", "provenance": "invented"}, "span": "270", "unit": "doses", "value": 270}]
 ---
 
-The Customer commits to purchase not less than 180 doses of DTaP products in each contract year.
+The Customer commits to purchase not less than 270 doses of DTaP products in each contract year.

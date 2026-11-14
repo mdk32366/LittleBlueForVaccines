@@ -3,20 +3,25 @@ doc_id: "SYN-SYNCP000039-AMD1"
 system_id: "SYNCP000039"
 doc_type: "AMD"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000039-AMD1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Amendment Purpose
 
-This amendment, SYN-SYNCP000039-AMD1, modifies SYN-SYNCP000039-MSA1 with effect from December 1, 2024.
+This amendment, SYN-SYNCP000039-AMD1, between the Customer and SANOFI, modifies SYN-SYNCP000039-MSA1 with effect from December 1, 2025.
 
 ## 2. Revised Share Floor
 
-From the amendment date, the Tdap share floor becomes 55% of the Customer's Tdap doses.
+From the amendment date, the RSV share floor becomes 45% of the Customer's RSV doses.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

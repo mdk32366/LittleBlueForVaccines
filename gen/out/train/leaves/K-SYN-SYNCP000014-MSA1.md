@@ -8,9 +8,11 @@ edges: [{"rel": "has_clause", "to": "CL-SYN-SYNCP000014-MSA1-1"}, {"rel": "has_c
 doc_type: "MSA"
 title: "SYNTHETIC MSA SYN-SYNCP000014-MSA1"
 effective_date: "2024-07-01"
-expiration_date: "2026-06-30"
-spec_version: "stub-v0"
+expiration_date: "2028-06-30"
+spec_version: "schema-v1"
 synthetic_stamp: true
 ---
 
-SYNTHETIC contract SYN-SYNCP000014-MSA1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC contract SYN-SYNCP000014-MSA1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

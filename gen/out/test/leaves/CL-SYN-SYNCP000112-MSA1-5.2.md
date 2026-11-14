@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Minimum Take: Pneumococcal"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000112-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-pneumococcal"}, "span": "440", "unit": "doses", "value": 440}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000112-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented"}, "span": "730", "unit": "doses", "value": 730}]
 ---
 
-Each year the Customer undertakes to take 440 or more Pneumococcal doses.
+Each year the Customer undertakes to take 730 or more Pneumococcal doses.

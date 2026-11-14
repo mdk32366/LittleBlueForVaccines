@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Updated Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000011-AMD1-2-share_floor_pct", "qualifier": null, "span": "70 per cent", "unit": "pct", "value": 70}]
+terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000011-AMD1-2-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "60 per cent", "unit": "pct", "value": 60}]
 ---
 
-Going forward the Tdap minimum flowing to the Supplier is set at 70 per cent.
+Going forward the MMR minimum flowing to the Supplier is set at 60 per cent.

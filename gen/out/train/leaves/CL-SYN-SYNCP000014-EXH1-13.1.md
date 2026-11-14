@@ -1,0 +1,18 @@
+---
+id: "CL-SYN-SYNCP000014-EXH1-13.1"
+type: "Clause"
+ontology_version: 1
+synthetic: true
+source: {"anchor": "13.1", "file": "train/docs/SYN-SYNCP000014-EXH1.md", "generator_seed": 562}
+edges: []
+anchor: "13.1"
+heading: "Brand Shares across Seasons, continued"
+clause_type: "exhibit"
+terms: [{"field": "nat_brand_share_w1", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w1-13", "qualifier": {"brand": "PENTACEL", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202410-202503"}, "span": "20.2%", "unit": "pct", "value": 20.24412829009485}, {"field": "nat_brand_share_w2", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w2-13", "qualifier": {"brand": "PENTACEL", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202510-202603"}, "span": "18.7%", "unit": "pct", "value": 18.660700666090406}, {"field": "nat_brand_share_w1", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w1-14", "qualifier": {"brand": "QUADRACEL", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202410-202503"}, "span": "8.1%", "unit": "pct", "value": 8.073732254784161}, {"field": "nat_brand_share_w2", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w2-14", "qualifier": {"brand": "QUADRACEL", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202510-202603"}, "span": "8.4%", "unit": "pct", "value": 8.395670262817081}, {"field": "nat_brand_share_w1", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w1-15", "qualifier": {"brand": "TDVAX", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202410-202503"}, "span": "0.0%", "unit": "pct", "value": 0.0}, {"field": "nat_brand_share_w2", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w2-15", "qualifier": {"brand": "TDVAX", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202510-202603"}, "span": "0.0%", "unit": "pct", "value": 0.0}, {"field": "nat_brand_share_w1", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w1-16", "qualifier": {"brand": "VAXELIS", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202410-202503"}, "span": "19.7%", "unit": "pct", "value": 19.728329820075505}, {"field": "nat_brand_share_w2", "id": "TM-SYN-SYNCP000014-EXH1-13.1-nat_brand_share_w2-16", "qualifier": {"brand": "VAXELIS", "class": "DTaP", "item": "HD", "level": "national", "provenance": "national", "status": "ok", "window": "202510-202603"}, "span": "21.3%", "unit": "pct", "value": 21.337624387223748}, {"field": "exh_party_share_w1", "id": "TM-SYN-SYNCP000014-EXH1-13.1-exh_party_share_w1", "qualifier": {"class": "MMR", "item": "HD", "level": "system", "manufacturer": "MERCK & COMPANY", "provenance": "source", "status": "ok", "window": "202410-202503"}, "span": "100.0%", "unit": "pct", "value": 100.0}, {"field": "exh_party_share_w2", "id": "TM-SYN-SYNCP000014-EXH1-13.1-exh_party_share_w2", "qualifier": {"class": "MMR", "item": "HD", "level": "system", "manufacturer": "MERCK & COMPANY", "provenance": "source", "status": "ok", "window": "202510-202603"}, "span": "100.0%", "unit": "pct", "value": 100.0}]
+---
+
+- National DTaP, PENTACEL: earlier season 20.2%, later season 18.7%
+- National DTaP, QUADRACEL: earlier season 8.1%, later season 8.4%
+- National DTaP, TDVAX: earlier season 0.0%, later season 0.0%
+- National DTaP, VAXELIS: earlier season 19.7%, later season 21.3%
+- MERCK & COMPANY share of MMR doses: earlier season 100.0%, later season 100.0%

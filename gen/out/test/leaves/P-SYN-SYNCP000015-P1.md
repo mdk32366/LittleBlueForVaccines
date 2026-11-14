@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "test/docs/SYN-SYNCP000015-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000015-AMD1"}]
-date: "2025-03-20"
-gives: [{"anchor": "SYN-SYNCP000015-P1#2", "description": "a group service charge of 1.75 per cent", "kind": "admin_fee_change", "span": "a group service charge of 1.75 per cent"}]
-gets: [{"anchor": "SYN-SYNCP000015-P1#3", "description": "a yearly Tdap minimum take of 650 doses", "kind": "volume_commitment", "span": "a yearly Tdap minimum take of 650 doses"}]
-outcome: "won"
+edges: []
+date: "2025-06-01"
+gives: [{"anchor": "SYN-SYNCP000015-P1#2", "description": "a Band 1 rebate of 2.5 per cent", "kind": "rebate_change", "span": "a Band 1 rebate of 2.5 per cent"}]
+gets: [{"anchor": "SYN-SYNCP000015-P1#3", "description": "a yearly Pneumococcal minimum take of 290 doses", "kind": "volume_commitment", "span": "a yearly Pneumococcal minimum take of 290 doses"}]
+outcome: "pending"
 ---
 
 ## 1. Pitch Overview
 
-Prepared on 20 March 2025, pitch SYN-SYNCP000015-P1 was put before Redwood Care Partners 015 on behalf of Supplier.
+Prepared on 1 June 2025, pitch SYN-SYNCP000015-P1 was put before Redwood Care Partners 015 on behalf of PFIZER.
 
 ## 2. Put Forward in Exchange
 
-In exchange the Supplier put forward a group service charge of 1.75 per cent.
+In exchange the Supplier put forward a Band 1 rebate of 2.5 per cent.
 
 ## 3. Sought in Return
 
-The Supplier sought a yearly Tdap minimum take of 650 doses in return.
+The Supplier sought a yearly Pneumococcal minimum take of 290 doses in return.
 
 ## 4. Recorded Result
 
-Recorded result: the Customer signed off on the terms.
+Recorded result: the Customer has not yet responded.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

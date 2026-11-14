@@ -1,5 +1,5 @@
 {
- "date": "2026-02-08",
+ "date": "2025-10-03",
  "doc": {
   "doc_id": "SYN-SYNCP000114-P1",
   "doc_type": "PROPOSAL",
@@ -7,7 +7,7 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 8 February 2026, pitch SYN-SYNCP000114-P1 was put before Desert Bloom Family Clinic 114 on behalf of Supplier."
+    "text": "Prepared on 3 October 2025, pitch SYN-SYNCP000114-P1 was put before Desert Bloom Family Clinic 114 on behalf of PFIZER."
    },
    {
     "anchor": "2",
@@ -17,12 +17,12 @@
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a Tdap preferred-position minimum of 85 per cent in return."
+    "text": "The Supplier sought a Pneumococcal preferred-position minimum of 90 per cent in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer turned the terms down."
+    "text": "Recorded result: the Customer has not yet responded."
    }
   ],
   "synthetic": true,
@@ -31,9 +31,9 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000114-P1#3",
-   "description": "a Tdap preferred-position minimum of 85 per cent",
+   "description": "a Pneumococcal preferred-position minimum of 90 per cent",
    "kind": "exclusivity",
-   "span": "a Tdap preferred-position minimum of 85 per cent"
+   "span": "a Pneumococcal preferred-position minimum of 90 per cent"
   }
  ],
  "gives": [
@@ -44,7 +44,7 @@
    "span": "a Band 2 rebate of 3.5 per cent"
   }
  ],
- "outcome": "lost",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000114-P1",
  "resulted_in": null,
  "system_id": "SYNCP000114"

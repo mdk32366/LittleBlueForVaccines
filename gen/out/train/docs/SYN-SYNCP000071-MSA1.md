@@ -3,22 +3,24 @@ doc_id: "SYN-SYNCP000071-MSA1"
 system_id: "SYNCP000071"
 doc_type: "MSA"
 synthetic: true
-spec_version: "stub-v0"
+spec_version: "schema-v1"
 family: "A"
 generator_seed: 562
 ---
 
 # SYNTHETIC — SYN-SYNCP000071-MSA1
 
-> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
+
+> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
 
 ## 1. Parties and Scope
 
-This Master Supply Agreement (the "Agreement") is made between Highland Pediatric Center 071 (the "Customer", account SYNCP000071) and Synthetic Supplier Co. (the "Supplier"). The Agreement covers these products: PRD-syn-pneumococcal, PRD-syn-coronavirus, PRD-syn-mmr.
+This Master Supply Agreement (the "Agreement") is made between Highland Pediatric Center 071 (the "Customer", account SYNCP000071) and PFIZER (the "Supplier"). The Agreement covers these products: PREVNAR 20. Participating sites: 13. Participating subsidiaries: 27. Member organisation type: IDN. Covered specialty: Travel.
 
 ## 2. Term and Renewal
 
-The Agreement takes effect on June 1, 2025 and remains in force through May 31, 2029. The Agreement does not renew automatically. Written notice regarding renewal is due no later than 90 days before the term ends.
+The Agreement takes effect on August 1, 2025 and remains in force through July 31, 2027. At the end of the term the Agreement renews automatically for one-year periods. Written notice regarding renewal is due no later than 90 days before the term ends.
 
 ## 3. Termination
 
@@ -26,11 +28,11 @@ Either party may terminate this Agreement for convenience. Any termination takes
 
 ## 4.1. Rebate Tier 1
 
-Tier 1 applies when the Customer purchases at least 300 doses of Pneumococcal products in a contract year, and earns a rebate of 2% on those purchases.
+Tier 1 applies when the Customer purchases at least 300 doses of Pneumococcal products in a contract year, and earns a rebate of 2.5% on those purchases.
 
 ## 4.2. Rebate Tier 2
 
-Tier 2 applies when the Customer purchases at least 450 doses of Pneumococcal products in a contract year, and earns a rebate of 3% on those purchases.
+Tier 2 applies when the Customer purchases at least 450 doses of Pneumococcal products in a contract year, and earns a rebate of 3.5% on those purchases.
 
 ## 4.3. Rebate Tier 3
 
@@ -38,21 +40,24 @@ Tier 3 applies when the Customer purchases at least 600 doses of Pneumococcal pr
 
 ## 5.1. Volume Commitment: Pneumococcal
 
-The Customer commits to purchase not less than 440 doses of Pneumococcal products in each contract year.
+The Customer commits to purchase not less than 620 doses of Pneumococcal products in each contract year.
 
 ## 5.2. Volume Commitment: Coronavirus
 
-The Customer commits to purchase not less than 530 doses of Coronavirus products in each contract year.
+The Customer commits to purchase not less than 300 doses of Coronavirus products in each contract year.
 
 ## 6. Exclusivity and Share Floor
 
-The Supplier is the exclusive contracted source for Pneumococcal products. The Customer will maintain a share floor of 60% of its Pneumococcal doses with the Supplier.
+The Supplier is the exclusive contracted source for Pneumococcal products. The Customer will maintain a share floor of 70% of its Pneumococcal doses with the Supplier.
 
 ## 7. Administrative Fee
 
-The Supplier will pay the Customer an administrative fee equal to 2% of eligible purchases.
+The Supplier will pay the Customer an administrative fee equal to 1.75% of eligible purchases.
 
 ## 8. General Provisions
 
 This Agreement is fictional test material generated for a classroom project. Its terms are confidential between the parties and governed by the laws of the State of OH.
 
+---
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

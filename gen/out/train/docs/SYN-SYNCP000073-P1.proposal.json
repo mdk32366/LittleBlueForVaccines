@@ -1,5 +1,5 @@
 {
- "date": "2024-12-17",
+ "date": "2025-02-05",
  "doc": {
   "doc_id": "SYN-SYNCP000073-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000073-P1, was presented by the Supplier to Riverbend Physician Alliance 073 on December 17, 2024."
+    "text": "This proposal, SYN-SYNCP000073-P1, was presented by PFIZER (the Supplier) to Riverbend Physician Alliance 073 on February 5, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2%."
+    "text": "Supplier concession: an administrative fee of 1.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 50%."
+    "text": "Supplier request: a Pneumococcal share floor of 85%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: countered by the Customer."
+    "text": "Status of this proposal: awaiting a Customer decision."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000073-P1#3",
-   "description": "a Influenza share floor of 50%",
+   "description": "a Pneumococcal share floor of 85%",
    "kind": "exclusivity",
-   "span": "a Influenza share floor of 50%"
+   "span": "a Pneumococcal share floor of 85%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000073-P1#2",
-   "description": "an administrative fee of 2%",
+   "description": "an administrative fee of 1.5%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 2%"
+   "span": "an administrative fee of 1.5%"
   }
  ],
- "outcome": "countered",
+ "outcome": "pending",
  "proposal_id": "SYN-SYNCP000073-P1",
- "resulted_in": "SYN-SYNCP000073-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000073"
 }

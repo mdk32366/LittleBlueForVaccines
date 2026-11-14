@@ -8,7 +8,7 @@ edges: []
 anchor: "4.1"
 heading: "Rebate Tier 1"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000103-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-influenza", "tier": 1}, "span": "230", "unit": "doses", "value": 230}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000103-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-influenza", "tier": 1}, "span": "2%", "unit": "pct", "value": 2.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000103-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 1}, "span": "210", "unit": "doses", "value": 210}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000103-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-hpv", "provenance": "invented", "tier": 1}, "span": "2%", "unit": "pct", "value": 2.0}]
 ---
 
-Tier 1 applies when the Customer purchases at least 230 doses of Influenza products in a contract year, and earns a rebate of 2% on those purchases.
+Tier 1 applies when the Customer purchases at least 210 doses of HPV products in a contract year, and earns a rebate of 2% on those purchases.

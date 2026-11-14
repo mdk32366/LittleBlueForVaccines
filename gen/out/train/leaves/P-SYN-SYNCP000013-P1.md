@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000013-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000013-AMD1"}]
-date: "2025-10-11"
-gives: [{"anchor": "SYN-SYNCP000013-P1#2", "description": "an administrative fee of 1.5%", "kind": "admin_fee_change", "span": "an administrative fee of 1.5%"}]
-gets: [{"anchor": "SYN-SYNCP000013-P1#3", "description": "a commitment of 980 Tdap doses per year", "kind": "volume_commitment", "span": "a commitment of 980 Tdap doses per year"}]
-outcome: "won"
+edges: []
+date: "2025-03-16"
+gives: [{"anchor": "SYN-SYNCP000013-P1#2", "description": "an administrative fee of 3.25%", "kind": "admin_fee_change", "span": "an administrative fee of 3.25%"}]
+gets: [{"anchor": "SYN-SYNCP000013-P1#3", "description": "a Pneumococcal share floor of 90%", "kind": "exclusivity", "span": "a Pneumococcal share floor of 90%"}]
+outcome: "pending"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000013-P1, was presented by the Supplier to Riverbend Physician Alliance 013 on October 11, 2025.
+This proposal, SYN-SYNCP000013-P1, was presented by PFIZER (the Supplier) to Riverbend Physician Alliance 013 on March 16, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 1.5%.
+Supplier concession: an administrative fee of 3.25%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 980 Tdap doses per year.
+Supplier request: a Pneumococcal share floor of 90%.
 
 ## 4. Proposal Status
 
-Status of this proposal: accepted by the Customer.
+Status of this proposal: awaiting a Customer decision.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

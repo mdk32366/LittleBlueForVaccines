@@ -1,5 +1,5 @@
 {
- "date": "2025-12-05",
+ "date": "2025-11-15",
  "doc": {
   "doc_id": "SYN-SYNCP000105-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000105-P1, was presented by the Supplier to Sunrise Care Partners 105 on December 5, 2025."
+    "text": "This proposal, SYN-SYNCP000105-P1, was presented by MERCK & COMPANY (the Supplier) to Sunrise Care Partners 105 on November 15, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
+    "text": "Supplier concession: an administrative fee of 2%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Tdap share floor of 75%."
+    "text": "Supplier request: a commitment of 130 HPV doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: countered by the Customer."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000105-P1#3",
-   "description": "a Tdap share floor of 75%",
-   "kind": "exclusivity",
-   "span": "a Tdap share floor of 75%"
+   "description": "a commitment of 130 HPV doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 130 HPV doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000105-P1#2",
-   "description": "a Tier 3 rebate of 5.5%",
-   "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 5.5%"
+   "description": "an administrative fee of 2%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 2%"
   }
  ],
- "outcome": "countered",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000105-P1",
- "resulted_in": "SYN-SYNCP000105-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000105"
 }

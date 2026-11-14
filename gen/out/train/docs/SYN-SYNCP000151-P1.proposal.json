@@ -1,5 +1,5 @@
 {
- "date": "2026-01-20",
+ "date": "2026-09-12",
  "doc": {
   "doc_id": "SYN-SYNCP000151-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000151-P1, was presented by the Supplier to Highland Pediatric Center 151 on January 20, 2026."
+    "text": "This proposal, SYN-SYNCP000151-P1, was presented by PFIZER (the Supplier) to Highland Pediatric Center 151 on September 12, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 2 rebate of 3.5%."
+    "text": "Supplier concession: an administrative fee of 1.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Hepatitis share floor of 60%."
+    "text": "Supplier request: a commitment of 450 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: awaiting a Customer decision."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,20 +31,20 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000151-P1#3",
-   "description": "a Hepatitis share floor of 60%",
-   "kind": "exclusivity",
-   "span": "a Hepatitis share floor of 60%"
+   "description": "a commitment of 450 Pneumococcal doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 450 Pneumococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000151-P1#2",
-   "description": "a Tier 2 rebate of 3.5%",
-   "kind": "rebate_change",
-   "span": "a Tier 2 rebate of 3.5%"
+   "description": "an administrative fee of 1.75%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 1.75%"
   }
  ],
- "outcome": "pending",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000151-P1",
  "resulted_in": null,
  "system_id": "SYNCP000151"

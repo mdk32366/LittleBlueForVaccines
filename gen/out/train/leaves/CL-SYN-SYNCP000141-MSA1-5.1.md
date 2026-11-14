@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Volume Commitment: MMR"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000141-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-mmr"}, "span": "550", "unit": "doses", "value": 550}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000141-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-mmr", "provenance": "invented"}, "span": "430", "unit": "doses", "value": 430}]
 ---
 
-The Customer commits to purchase not less than 550 doses of MMR products in each contract year.
+The Customer commits to purchase not less than 430 doses of MMR products in each contract year.

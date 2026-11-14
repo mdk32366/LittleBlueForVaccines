@@ -1,5 +1,5 @@
 {
- "date": "2025-04-02",
+ "date": "2026-11-20",
  "doc": {
   "doc_id": "SYN-SYNCP000121-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000121-P1, was presented by the Supplier to Prairie Pediatric Center 121 on April 2, 2025."
+    "text": "This proposal, SYN-SYNCP000121-P1, was presented by GSK PHARM (the Supplier) to Prairie Pediatric Center 121 on November 20, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 1 rebate of 2.5%."
+    "text": "Supplier concession: a Tier 1 rebate of 2%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 65%."
+    "text": "Supplier request: a Meningococcal share floor of 80%."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: accepted by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000121-P1#3",
-   "description": "a Influenza share floor of 65%",
+   "description": "a Meningococcal share floor of 80%",
    "kind": "exclusivity",
-   "span": "a Influenza share floor of 65%"
+   "span": "a Meningococcal share floor of 80%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000121-P1#2",
-   "description": "a Tier 1 rebate of 2.5%",
+   "description": "a Tier 1 rebate of 2%",
    "kind": "rebate_change",
-   "span": "a Tier 1 rebate of 2.5%"
+   "span": "a Tier 1 rebate of 2%"
   }
  ],
- "outcome": "lost",
+ "outcome": "won",
  "proposal_id": "SYN-SYNCP000121-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000121-AMD1",
  "system_id": "SYNCP000121"
 }

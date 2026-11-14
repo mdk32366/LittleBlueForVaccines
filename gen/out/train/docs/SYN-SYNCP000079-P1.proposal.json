@@ -1,5 +1,5 @@
 {
- "date": "2025-06-10",
+ "date": "2026-02-05",
  "doc": {
   "doc_id": "SYN-SYNCP000079-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000079-P1, was presented by the Supplier to Horizon Wellness Center 079 on June 10, 2025."
+    "text": "This proposal, SYN-SYNCP000079-P1, was presented by SANOFI (the Supplier) to Horizon Wellness Center 079 on February 5, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 3%."
+    "text": "Supplier concession: a Tier 3 rebate of 5.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 730 Tdap doses per year."
+    "text": "Supplier request: a commitment of 200 Meningococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000079-P1#3",
-   "description": "a commitment of 730 Tdap doses per year",
+   "description": "a commitment of 200 Meningococcal doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 730 Tdap doses per year"
+   "span": "a commitment of 200 Meningococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000079-P1#2",
-   "description": "an administrative fee of 3%",
-   "kind": "admin_fee_change",
-   "span": "an administrative fee of 3%"
+   "description": "a Tier 3 rebate of 5.5%",
+   "kind": "rebate_change",
+   "span": "a Tier 3 rebate of 5.5%"
   }
  ],
- "outcome": "won",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000079-P1",
- "resulted_in": "SYN-SYNCP000079-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000079"
 }

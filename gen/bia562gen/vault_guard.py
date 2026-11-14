@@ -1,4 +1,4 @@
-"""ONTOLOGY §5 rules V1-V4 (Matt: "none of my leaves make it into this project"). T-0027 trips each."""
+"""ONTOLOGY §5 rules V1-V4 (the owner: "none of my leaves make it into this project"). T-0027 trips each."""
 import re
 from pathlib import Path
 

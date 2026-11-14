@@ -8,7 +8,7 @@ edges: []
 anchor: "1"
 heading: "What This Changes"
 clause_type: "term_renewal"
-terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000093-AMD1-1-effective_date", "qualifier": null, "span": "1 June 2025", "unit": "date", "value": "2025-06-01"}]
+terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000093-AMD1-1-effective_date", "qualifier": {"provenance": "invented"}, "span": "1 January 2026", "unit": "date", "value": "2026-01-01"}]
 ---
 
-Starting 1 June 2025, instrument SYN-SYNCP000093-AMD1 revises SYN-SYNCP000093-MSA1.
+Starting 1 January 2026, instrument SYN-SYNCP000093-AMD1 agreed with PFIZER revises SYN-SYNCP000093-MSA1.

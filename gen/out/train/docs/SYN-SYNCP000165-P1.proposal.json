@@ -1,5 +1,5 @@
 {
- "date": "2026-02-07",
+ "date": "2026-03-04",
  "doc": {
   "doc_id": "SYN-SYNCP000165-P1",
   "doc_type": "PROPOSAL",
@@ -7,7 +7,7 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000165-P1, was presented by the Supplier to Sunrise Care Partners 165 on February 7, 2026."
+    "text": "This proposal, SYN-SYNCP000165-P1, was presented by MERCK & COMPANY (the Supplier) to Sunrise Care Partners 165 on March 4, 2026."
    },
    {
     "anchor": "2",
@@ -17,7 +17,7 @@
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 890 Tdap doses per year."
+    "text": "Supplier request: a HPV share floor of 85%."
    },
    {
     "anchor": "4",
@@ -31,9 +31,9 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000165-P1#3",
-   "description": "a commitment of 890 Tdap doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 890 Tdap doses per year"
+   "description": "a HPV share floor of 85%",
+   "kind": "exclusivity",
+   "span": "a HPV share floor of 85%"
   }
  ],
  "gives": [

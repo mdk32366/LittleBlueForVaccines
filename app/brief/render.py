@@ -42,15 +42,15 @@ def fit_points(points, width=POINT_WIDTH, max_lines=POINT_LINES) -> list:
     return lines
 
 
-def contract_lines(contract_rows) -> list:
-    out = []
+def contract_lines(contract_rows, marker: str = "") -> list:
+    out = [marker] if marker and contract_rows else []  # T-0076: the documents' SYNTHETIC marker, first
     for r in contract_rows[:6]:
         mark = f" {r['marker']}" if r.get("marker") else ""
         out.append(f"{r['label']}: {r['span']}{mark}  ({r['anchor']})")
     return out or ["No generated contracts found for this system."]
 
 
-def build_figure(fs, narrative, contract_rows=()):
+def build_figure(fs, narrative, contract_rows=(), marker: str = ""):
     fig = plt.figure(figsize=LETTER)
     fig.text(0.05, 0.965, header_text(), fontsize=15, weight="bold", color=charts.BLUE)
     fig.text(0.05, 0.945, f"{fs.name} ({fs.system_id}), {fs.state}   SYNTHETIC", fontsize=10)
@@ -69,14 +69,14 @@ def build_figure(fs, narrative, contract_rows=()):
     fig.text(0.05, 0.335, "Talking points (templated from fact tokens; LLM off)", fontsize=9, weight="bold")
     fig.text(0.05, 0.325, "\n".join(fit_points(narrative.rendered)), fontsize=7, va="top", family="DejaVu Sans")
     fig.text(0.56, 0.335, "Contracts on file (generated, cited)", fontsize=9, weight="bold")
-    fig.text(0.56, 0.325, "\n".join(textwrap.fill(x, 52) for x in contract_lines(list(contract_rows))),
+    fig.text(0.56, 0.325, "\n".join(textwrap.fill(x, 52) for x in contract_lines(list(contract_rows), marker)),
              fontsize=6.5, va="top")
     fig.text(0.05, 0.03, "\n".join(textwrap.wrap(footer_text(fs), 150)), fontsize=6.5, color="#555555", va="bottom")
     return fig
 
 
-def render_pdf_bytes(fs, narrative, contract_rows=()) -> bytes:
-    fig = build_figure(fs, narrative, contract_rows)
+def render_pdf_bytes(fs, narrative, contract_rows=(), marker: str = "") -> bytes:
+    fig = build_figure(fs, narrative, contract_rows, marker)
     buf = io.BytesIO()
     with PdfPages(buf, metadata={"Title": f"{config.APP_NAME}: {fs.system_id}", "Creator": config.APP_NAME}) as pdf:
         pdf.savefig(fig)

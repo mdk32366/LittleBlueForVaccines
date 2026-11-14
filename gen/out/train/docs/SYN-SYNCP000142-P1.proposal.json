@@ -1,5 +1,5 @@
 {
- "date": "2024-11-06",
+ "date": "2025-11-03",
  "doc": {
   "doc_id": "SYN-SYNCP000142-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000142-P1, was presented by the Supplier to Maple Grove Regional Hospital 142 on November 6, 2024."
+    "text": "This proposal, SYN-SYNCP000142-P1, was presented by BAVARIAN NORDIC (the Supplier) to Maple Grove Regional Hospital 142 on November 3, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 1 rebate of 3%."
+    "text": "Supplier concession: a Tier 1 rebate of 2.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Tdap share floor of 60%."
+    "text": "Supplier request: a commitment of 10 Other doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: declined by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000142-P1#3",
-   "description": "a Tdap share floor of 60%",
-   "kind": "exclusivity",
-   "span": "a Tdap share floor of 60%"
+   "description": "a commitment of 10 Other doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 10 Other doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000142-P1#2",
-   "description": "a Tier 1 rebate of 3%",
+   "description": "a Tier 1 rebate of 2.5%",
    "kind": "rebate_change",
-   "span": "a Tier 1 rebate of 3%"
+   "span": "a Tier 1 rebate of 2.5%"
   }
  ],
- "outcome": "won",
+ "outcome": "lost",
  "proposal_id": "SYN-SYNCP000142-P1",
- "resulted_in": "SYN-SYNCP000142-AMD1",
+ "resulted_in": null,
  "system_id": "SYNCP000142"
 }

@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Exclusivity and Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000081-MSA1-6-exclusivity_class", "qualifier": null, "span": "Pneumococcal", "unit": "id", "value": "CLS-pneumococcal"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000081-MSA1-6-share_floor_pct", "qualifier": null, "span": "60%", "unit": "pct", "value": 60}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000081-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "Pneumococcal", "unit": "id", "value": "CLS-pneumococcal"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000081-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "85%", "unit": "pct", "value": 85}]
 ---
 
-The Supplier is the exclusive contracted source for Pneumococcal products. The Customer will maintain a share floor of 60% of its Pneumococcal doses with the Supplier.
+The Supplier is the exclusive contracted source for Pneumococcal products. The Customer will maintain a share floor of 85% of its Pneumococcal doses with the Supplier.

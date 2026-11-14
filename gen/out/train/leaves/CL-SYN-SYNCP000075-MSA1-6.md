@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Exclusivity and Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000075-MSA1-6-exclusivity_class", "qualifier": null, "span": "DTaP", "unit": "id", "value": "CLS-dtap"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000075-MSA1-6-share_floor_pct", "qualifier": null, "span": "75%", "unit": "pct", "value": 75}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000075-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "MMR", "unit": "id", "value": "CLS-mmr"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000075-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "75%", "unit": "pct", "value": 75}]
 ---
 
-The Supplier is the exclusive contracted source for DTaP products. The Customer will maintain a share floor of 75% of its DTaP doses with the Supplier.
+The Supplier is the exclusive contracted source for MMR products. The Customer will maintain a share floor of 75% of its MMR doses with the Supplier.

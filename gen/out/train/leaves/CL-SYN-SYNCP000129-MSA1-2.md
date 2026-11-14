@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Term and Renewal"
 clause_type: "term_renewal"
-terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000129-MSA1-2-effective_date", "qualifier": null, "span": "April 1, 2024", "unit": "date", "value": "2024-04-01"}, {"field": "expiration_date", "id": "TM-SYN-SYNCP000129-MSA1-2-expiration_date", "qualifier": null, "span": "March 31, 2028", "unit": "date", "value": "2028-03-31"}, {"field": "auto_renew", "id": "TM-SYN-SYNCP000129-MSA1-2-auto_renew", "qualifier": null, "span": "does not renew automatically", "unit": "bool", "value": false}, {"field": "renewal_notice_days", "id": "TM-SYN-SYNCP000129-MSA1-2-renewal_notice_days", "qualifier": null, "span": "60", "unit": "days", "value": 60}]
+terms: [{"field": "effective_date", "id": "TM-SYN-SYNCP000129-MSA1-2-effective_date", "qualifier": {"provenance": "invented"}, "span": "July 1, 2025", "unit": "date", "value": "2025-07-01"}, {"field": "expiration_date", "id": "TM-SYN-SYNCP000129-MSA1-2-expiration_date", "qualifier": {"provenance": "invented"}, "span": "June 30, 2029", "unit": "date", "value": "2029-06-30"}, {"field": "auto_renew", "id": "TM-SYN-SYNCP000129-MSA1-2-auto_renew", "qualifier": {"provenance": "invented"}, "span": "does not renew automatically", "unit": "bool", "value": false}, {"field": "renewal_notice_days", "id": "TM-SYN-SYNCP000129-MSA1-2-renewal_notice_days", "qualifier": {"provenance": "invented"}, "span": "60", "unit": "days", "value": 60}]
 ---
 
-The Agreement takes effect on April 1, 2024 and remains in force through March 31, 2028. The Agreement does not renew automatically. Written notice regarding renewal is due no later than 60 days before the term ends.
+The Agreement takes effect on July 1, 2025 and remains in force through June 30, 2029. The Agreement does not renew automatically. Written notice regarding renewal is due no later than 60 days before the term ends.

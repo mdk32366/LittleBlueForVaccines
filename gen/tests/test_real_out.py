@@ -1,12 +1,12 @@
-"""Same guards run against the committed-style run in gen/out (seed 562, synthetic CSV). Skips if absent."""
+"""Same guards run against the committed run in gen/out (seed 562, synthetic CSV, the spec in config.json: schema_v1
+since GATE 2). Skips if absent (CI fails on any skip)."""
 import hashlib
 import json
 from pathlib import Path
 
 import pytest
 
-from bia562gen import checks, systems as S
-from bia562gen.generate import generate
+from bia562gen import checks
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
@@ -18,13 +18,12 @@ def test_real_manifest_and_hashes():
     assert checks.manifest_ok(OUT) == []
 
 
-def test_real_regeneration_identical(tmp_path, spec):
-    if not CSV.exists():
-        pytest.skip("synthetic CSV absent")
-    src = {"kind": "csv", "file": CSV.name, "sha256": hashlib.sha256(CSV.read_bytes()).hexdigest()}
+def test_real_regeneration_identical(v1_out):
+    """T-0028 on the committed data: the in-process regeneration (conftest v1_out, the config.json spec, seed 562)
+    is byte-identical to gen/out."""
     m = json.loads((OUT / "manifest.json").read_text())
-    generate(spec, S.load_csv(CSV), tmp_path / "re", m["seed"], systems_source=src)
-    regen, accepted = (tmp_path / "re" / "manifest.json").read_bytes(), (OUT / "manifest.json").read_bytes()
+    assert m["seed"] == 562 and json.loads((ROOT / "config.json").read_text())["spec"] == "v1"
+    regen, accepted = (v1_out / "manifest.json").read_bytes(), (OUT / "manifest.json").read_bytes()
     # Compare digests, not raw bytes: pytest's full diff of two ~400 KB blobs never finishes under CI=true
     # (no assertion truncation on CI), which hung the redproof famsplit run in GitHub Actions.
     if regen != accepted:
@@ -34,7 +33,8 @@ def test_real_regeneration_identical(tmp_path, spec):
     assert hashlib.sha256(regen).hexdigest() == hashlib.sha256(accepted).hexdigest()
 
 
-def test_real_guards(spec):
+def test_real_guards(v1_spec):
+    spec = v1_spec
     assert checks.spans_verbatim(OUT) == []
     assert checks.answers_digit_free(OUT) == []
     assert checks.systems_disjoint(OUT) == []

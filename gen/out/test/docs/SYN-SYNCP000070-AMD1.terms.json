@@ -2,24 +2,28 @@
  "doc_id": "SYN-SYNCP000070-AMD1",
  "fields": {
   "effective_date": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "1",
     "doc_id": "SYN-SYNCP000070-AMD1"
    },
-   "span": "1 November 2026",
+   "span": "1 August 2025",
    "type": "date",
-   "value": "2026-11-01"
+   "value": "2025-08-01"
   },
   "share_floor_pct": {
-   "qualifier": null,
+   "qualifier": {
+    "provenance": "invented"
+   },
    "source": {
     "anchor": "2",
     "doc_id": "SYN-SYNCP000070-AMD1"
    },
-   "span": "75 per cent",
+   "span": "90 per cent",
    "type": "pct",
-   "value": 75
+   "value": 90
   }
  }
 }

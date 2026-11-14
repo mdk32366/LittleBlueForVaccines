@@ -1,5 +1,5 @@
 {
- "date": "2025-08-04",
+ "date": "2025-03-10",
  "doc": {
   "doc_id": "SYN-SYNCP000069-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Pitch Overview",
-    "text": "Prepared on 4 August 2025, pitch SYN-SYNCP000069-P1 was put before Summit Wellness Center 069 on behalf of Supplier."
+    "text": "Prepared on 10 March 2025, pitch SYN-SYNCP000069-P1 was put before Summit Wellness Center 069 on behalf of GSK PHARM."
    },
    {
     "anchor": "2",
     "heading": "Put Forward in Exchange",
-    "text": "In exchange the Supplier put forward a Band 2 rebate of 4.5 per cent."
+    "text": "In exchange the Supplier put forward a group service charge of 2.25 per cent."
    },
    {
     "anchor": "3",
     "heading": "Sought in Return",
-    "text": "The Supplier sought a yearly Tdap minimum take of 510 doses in return."
+    "text": "The Supplier sought a yearly Meningococcal minimum take of 130 doses in return."
    },
    {
     "anchor": "4",
     "heading": "Recorded Result",
-    "text": "Recorded result: the Customer has not yet responded."
+    "text": "Recorded result: the Customer came back with a counter."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000069-P1#3",
-   "description": "a yearly Tdap minimum take of 510 doses",
+   "description": "a yearly Meningococcal minimum take of 130 doses",
    "kind": "volume_commitment",
-   "span": "a yearly Tdap minimum take of 510 doses"
+   "span": "a yearly Meningococcal minimum take of 130 doses"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000069-P1#2",
-   "description": "a Band 2 rebate of 4.5 per cent",
-   "kind": "rebate_change",
-   "span": "a Band 2 rebate of 4.5 per cent"
+   "description": "a group service charge of 2.25 per cent",
+   "kind": "admin_fee_change",
+   "span": "a group service charge of 2.25 per cent"
   }
  ],
- "outcome": "pending",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000069-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000069-AMD1",
  "system_id": "SYNCP000069"
 }

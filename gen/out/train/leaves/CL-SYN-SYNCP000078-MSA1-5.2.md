@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Volume Commitment: Varicella"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000078-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-varicella"}, "span": "390", "unit": "doses", "value": 390}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000078-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-varicella", "provenance": "invented"}, "span": "370", "unit": "doses", "value": 370}]
 ---
 
-The Customer commits to purchase not less than 390 doses of Varicella products in each contract year.
+The Customer commits to purchase not less than 370 doses of Varicella products in each contract year.

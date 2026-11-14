@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "test/docs/SYN-SYNCP000083-P1.md", "generator_seed": 562}
-edges: []
-date: "2025-02-07"
-gives: [{"anchor": "SYN-SYNCP000083-P1#2", "description": "a group service charge of 1.75 per cent", "kind": "admin_fee_change", "span": "a group service charge of 1.75 per cent"}]
-gets: [{"anchor": "SYN-SYNCP000083-P1#3", "description": "a RSV preferred-position minimum of 60 per cent", "kind": "exclusivity", "span": "a RSV preferred-position minimum of 60 per cent"}]
-outcome: "lost"
+edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000083-AMD1"}]
+date: "2024-11-16"
+gives: [{"anchor": "SYN-SYNCP000083-P1#2", "description": "a group service charge of 1.25 per cent", "kind": "admin_fee_change", "span": "a group service charge of 1.25 per cent"}]
+gets: [{"anchor": "SYN-SYNCP000083-P1#3", "description": "a yearly RSV minimum take of 2,690 doses", "kind": "volume_commitment", "span": "a yearly RSV minimum take of 2,690 doses"}]
+outcome: "won"
 ---
 
 ## 1. Pitch Overview
 
-Prepared on 7 February 2025, pitch SYN-SYNCP000083-P1 was put before Cedar Valley Physician Alliance 083 on behalf of Supplier.
+Prepared on 16 November 2024, pitch SYN-SYNCP000083-P1 was put before Cedar Valley Physician Alliance 083 on behalf of SANOFI.
 
 ## 2. Put Forward in Exchange
 
-In exchange the Supplier put forward a group service charge of 1.75 per cent.
+In exchange the Supplier put forward a group service charge of 1.25 per cent.
 
 ## 3. Sought in Return
 
-The Supplier sought a RSV preferred-position minimum of 60 per cent in return.
+The Supplier sought a yearly RSV minimum take of 2,690 doses in return.
 
 ## 4. Recorded Result
 
-Recorded result: the Customer turned the terms down.
+Recorded result: the Customer signed off on the terms.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

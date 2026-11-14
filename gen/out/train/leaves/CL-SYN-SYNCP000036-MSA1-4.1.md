@@ -8,7 +8,7 @@ edges: []
 anchor: "4.1"
 heading: "Rebate Tier 1"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000036-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "190", "unit": "doses", "value": 190}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000036-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-tdap", "tier": 1}, "span": "2.5%", "unit": "pct", "value": 2.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000036-MSA1-4.1-tier_min_doses-1", "qualifier": {"class": "CLS-rsv", "provenance": "invented", "tier": 1}, "span": "100", "unit": "doses", "value": 100}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000036-MSA1-4.1-tier_rebate_pct-1", "qualifier": {"class": "CLS-rsv", "provenance": "invented", "tier": 1}, "span": "2.5%", "unit": "pct", "value": 2.5}]
 ---
 
-Tier 1 applies when the Customer purchases at least 190 doses of Tdap products in a contract year, and earns a rebate of 2.5% on those purchases.
+Tier 1 applies when the Customer purchases at least 100 doses of RSV products in a contract year, and earns a rebate of 2.5% on those purchases.

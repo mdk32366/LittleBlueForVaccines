@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Exclusivity and Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000007-MSA1-6-exclusivity_class", "qualifier": null, "span": "Hepatitis", "unit": "id", "value": "CLS-hepatitis"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000007-MSA1-6-share_floor_pct", "qualifier": null, "span": "70%", "unit": "pct", "value": 70}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000007-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "DTaP", "unit": "id", "value": "CLS-dtap"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000007-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "85%", "unit": "pct", "value": 85}]
 ---
 
-The Supplier is the exclusive contracted source for Hepatitis products. The Customer will maintain a share floor of 70% of its Hepatitis doses with the Supplier.
+The Supplier is the exclusive contracted source for DTaP products. The Customer will maintain a share floor of 85% of its DTaP doses with the Supplier.

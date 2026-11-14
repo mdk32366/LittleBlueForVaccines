@@ -8,7 +8,7 @@ edges: []
 anchor: "2"
 heading: "Revised Share Floor"
 clause_type: "exclusivity_share"
-terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000148-AMD1-2-share_floor_pct", "qualifier": null, "span": "45%", "unit": "pct", "value": 45}]
+terms: [{"field": "share_floor_pct", "id": "TM-SYN-SYNCP000148-AMD1-2-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "65%", "unit": "pct", "value": 65}]
 ---
 
-From the amendment date, the Influenza share floor becomes 45% of the Customer's Influenza doses.
+From the amendment date, the Hepatitis share floor becomes 65% of the Customer's Hepatitis doses.

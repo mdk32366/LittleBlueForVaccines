@@ -1,5 +1,5 @@
 {
- "date": "2025-09-12",
+ "date": "2026-04-02",
  "doc": {
   "doc_id": "SYN-SYNCP000010-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000010-P1, was presented by the Supplier to Silver Oak Medical Group 010 on September 12, 2025."
+    "text": "This proposal, SYN-SYNCP000010-P1, was presented by PFIZER (the Supplier) to Silver Oak Medical Group 010 on April 2, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 4.5%."
+    "text": "Supplier concession: an administrative fee of 2%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 800 Tdap doses per year."
+    "text": "Supplier request: a Pneumococcal share floor of 70%."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000010-P1#3",
-   "description": "a commitment of 800 Tdap doses per year",
-   "kind": "volume_commitment",
-   "span": "a commitment of 800 Tdap doses per year"
+   "description": "a Pneumococcal share floor of 70%",
+   "kind": "exclusivity",
+   "span": "a Pneumococcal share floor of 70%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000010-P1#2",
-   "description": "a Tier 3 rebate of 4.5%",
-   "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 4.5%"
+   "description": "an administrative fee of 2%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 2%"
   }
  ],
  "outcome": "lost",

@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Volume Commitment: HPV"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000017-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-hpv"}, "span": "540", "unit": "doses", "value": 540}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000017-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-hpv", "provenance": "invented"}, "span": "570", "unit": "doses", "value": 570}]
 ---
 
-The Customer commits to purchase not less than 540 doses of HPV products in each contract year.
+The Customer commits to purchase not less than 570 doses of HPV products in each contract year.

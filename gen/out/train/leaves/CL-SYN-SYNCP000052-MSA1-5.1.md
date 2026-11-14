@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Volume Commitment: Influenza"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000052-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-influenza"}, "span": "1,270", "unit": "doses", "value": 1270}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000052-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-influenza", "provenance": "invented"}, "span": "1,400", "unit": "doses", "value": 1400}]
 ---
 
-The Customer commits to purchase not less than 1,270 doses of Influenza products in each contract year.
+The Customer commits to purchase not less than 1,400 doses of Influenza products in each contract year.

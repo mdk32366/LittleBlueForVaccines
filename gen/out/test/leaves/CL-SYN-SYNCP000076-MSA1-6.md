@@ -8,7 +8,7 @@ edges: []
 anchor: "6"
 heading: "Preferred Position"
 clause_type: "exclusivity_share"
-terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000076-MSA1-6-exclusivity_class", "qualifier": null, "span": "Hepatitis", "unit": "id", "value": "CLS-hepatitis"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000076-MSA1-6-share_floor_pct", "qualifier": null, "span": "70 per cent", "unit": "pct", "value": 70}]
+terms: [{"field": "exclusivity_class", "id": "TM-SYN-SYNCP000076-MSA1-6-exclusivity_class", "qualifier": {"provenance": "source"}, "span": "Pneumococcal", "unit": "id", "value": "CLS-pneumococcal"}, {"field": "share_floor_pct", "id": "TM-SYN-SYNCP000076-MSA1-6-share_floor_pct", "qualifier": {"provenance": "invented"}, "span": "60 per cent", "unit": "pct", "value": 60}]
 ---
 
-For Hepatitis, the Supplier holds sole preferred standing. No less than 70 per cent of Hepatitis volume is to flow to the Supplier.
+For Pneumococcal, the Supplier holds sole preferred standing. No less than 60 per cent of Pneumococcal volume is to flow to the Supplier.

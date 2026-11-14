@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Minimum Take: Hepatitis"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000076-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-hepatitis"}, "span": "1,030", "unit": "doses", "value": 1030}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000076-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-hepatitis", "provenance": "invented"}, "span": "720", "unit": "doses", "value": 720}]
 ---
 
-Each year the Customer undertakes to take 1,030 or more Hepatitis doses.
+Each year the Customer undertakes to take 720 or more Hepatitis doses.

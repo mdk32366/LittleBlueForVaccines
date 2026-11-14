@@ -8,7 +8,7 @@ edges: []
 anchor: "4.3"
 heading: "Rebate Tier 3"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000098-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-tdap", "tier": 3}, "span": "910", "unit": "doses", "value": 910}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000098-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-tdap", "tier": 3}, "span": "4.5%", "unit": "pct", "value": 4.5}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000098-MSA1-4.3-tier_min_doses-3", "qualifier": {"class": "CLS-rsv", "provenance": "invented", "tier": 3}, "span": "720", "unit": "doses", "value": 720}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000098-MSA1-4.3-tier_rebate_pct-3", "qualifier": {"class": "CLS-rsv", "provenance": "invented", "tier": 3}, "span": "4.5%", "unit": "pct", "value": 4.5}]
 ---
 
-Tier 3 applies when the Customer purchases at least 910 doses of Tdap products in a contract year, and earns a rebate of 4.5% on those purchases.
+Tier 3 applies when the Customer purchases at least 720 doses of RSV products in a contract year, and earns a rebate of 4.5% on those purchases.

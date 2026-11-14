@@ -44,3 +44,13 @@ def test_question_type_coverage(out):
 
 def test_synthetic_stamp(out):
     assert checks.synthetic_stamp(out) == []
+
+
+def test_stamp_cites_decisions_by_name(out):
+    """T-0014: the stamp cites decisions by name, never a bare number (GATE 2 STAMP fix), and docs carry it verbatim."""
+    import re
+    from bia562gen import generate as G
+    assert "D-0022 (fake data)" in G.STAMP
+    assert re.findall(r"D-\d{4}(?! \([a-z])", G.STAMP) == [], G.STAMP
+    doc = next((out / "train" / "docs").glob("*.md")).read_text()
+    assert G.STAMP in doc

@@ -1,5 +1,5 @@
 {
- "date": "2026-09-02",
+ "date": "2025-11-01",
  "doc": {
   "doc_id": "SYN-SYNCP000177-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000177-P1, was presented by the Supplier to Atlantic Health Network 177 on September 2, 2026."
+    "text": "This proposal, SYN-SYNCP000177-P1, was presented by PFIZER (the Supplier) to Atlantic Health Network 177 on November 1, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 3.25%."
+    "text": "Supplier concession: an administrative fee of 1.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Tdap share floor of 65%."
+    "text": "Supplier request: a commitment of 260 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000177-P1#3",
-   "description": "a Tdap share floor of 65%",
-   "kind": "exclusivity",
-   "span": "a Tdap share floor of 65%"
+   "description": "a commitment of 260 Pneumococcal doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 260 Pneumococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000177-P1#2",
-   "description": "an administrative fee of 3.25%",
+   "description": "an administrative fee of 1.75%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 3.25%"
+   "span": "an administrative fee of 1.75%"
   }
  ],
  "outcome": "countered",

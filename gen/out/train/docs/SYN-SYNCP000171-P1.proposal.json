@@ -1,5 +1,5 @@
 {
- "date": "2025-12-05",
+ "date": "2025-02-11",
  "doc": {
   "doc_id": "SYN-SYNCP000171-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000171-P1, was presented by the Supplier to Highland Pediatric Center 171 on December 5, 2025."
+    "text": "This proposal, SYN-SYNCP000171-P1, was presented by PFIZER (the Supplier) to Highland Pediatric Center 171 on February 11, 2025."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: an administrative fee of 2.75%."
+    "text": "Supplier concession: an administrative fee of 1.75%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 1,760 Influenza doses per year."
+    "text": "Supplier request: a commitment of 260 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: countered by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000171-P1#3",
-   "description": "a commitment of 1,760 Influenza doses per year",
+   "description": "a commitment of 260 Pneumococcal doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 1,760 Influenza doses per year"
+   "span": "a commitment of 260 Pneumococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000171-P1#2",
-   "description": "an administrative fee of 2.75%",
+   "description": "an administrative fee of 1.75%",
    "kind": "admin_fee_change",
-   "span": "an administrative fee of 2.75%"
+   "span": "an administrative fee of 1.75%"
   }
  ],
- "outcome": "lost",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000171-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000171-AMD1",
  "system_id": "SYNCP000171"
 }

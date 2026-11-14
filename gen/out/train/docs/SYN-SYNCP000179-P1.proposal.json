@@ -1,5 +1,5 @@
 {
- "date": "2025-11-02",
+ "date": "2024-06-10",
  "doc": {
   "doc_id": "SYN-SYNCP000179-P1",
   "doc_type": "PROPOSAL",
@@ -7,22 +7,22 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000179-P1, was presented by the Supplier to Horizon Wellness Center 179 on November 2, 2025."
+    "text": "This proposal, SYN-SYNCP000179-P1, was presented by PFIZER (the Supplier) to Horizon Wellness Center 179 on June 10, 2024."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 1 rebate of 3%."
+    "text": "Supplier concession: an administrative fee of 1.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 55%."
+    "text": "Supplier request: a commitment of 150 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: declined by the Customer."
+    "text": "Status of this proposal: accepted by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,21 +31,21 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000179-P1#3",
-   "description": "a Influenza share floor of 55%",
-   "kind": "exclusivity",
-   "span": "a Influenza share floor of 55%"
+   "description": "a commitment of 150 Pneumococcal doses per year",
+   "kind": "volume_commitment",
+   "span": "a commitment of 150 Pneumococcal doses per year"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000179-P1#2",
-   "description": "a Tier 1 rebate of 3%",
-   "kind": "rebate_change",
-   "span": "a Tier 1 rebate of 3%"
+   "description": "an administrative fee of 1.5%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 1.5%"
   }
  ],
- "outcome": "lost",
+ "outcome": "won",
  "proposal_id": "SYN-SYNCP000179-P1",
- "resulted_in": null,
+ "resulted_in": "SYN-SYNCP000179-AMD1",
  "system_id": "SYNCP000179"
 }

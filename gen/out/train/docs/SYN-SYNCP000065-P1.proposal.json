@@ -1,5 +1,5 @@
 {
- "date": "2025-12-21",
+ "date": "2025-06-18",
  "doc": {
   "doc_id": "SYN-SYNCP000065-P1",
   "doc_type": "PROPOSAL",
@@ -7,7 +7,7 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000065-P1, was presented by the Supplier to Sunrise Care Partners 065 on December 21, 2025."
+    "text": "This proposal, SYN-SYNCP000065-P1, was presented by PFIZER (the Supplier) to Sunrise Care Partners 065 on June 18, 2025."
    },
    {
     "anchor": "2",
@@ -17,12 +17,12 @@
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a commitment of 480 Influenza doses per year."
+    "text": "Supplier request: a commitment of 210 Pneumococcal doses per year."
    },
    {
     "anchor": "4",
     "heading": "Proposal Status",
-    "text": "Status of this proposal: accepted by the Customer."
+    "text": "Status of this proposal: countered by the Customer."
    }
   ],
   "synthetic": true,
@@ -31,9 +31,9 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000065-P1#3",
-   "description": "a commitment of 480 Influenza doses per year",
+   "description": "a commitment of 210 Pneumococcal doses per year",
    "kind": "volume_commitment",
-   "span": "a commitment of 480 Influenza doses per year"
+   "span": "a commitment of 210 Pneumococcal doses per year"
   }
  ],
  "gives": [
@@ -44,7 +44,7 @@
    "span": "a Tier 2 rebate of 3.5%"
   }
  ],
- "outcome": "won",
+ "outcome": "countered",
  "proposal_id": "SYN-SYNCP000065-P1",
  "resulted_in": "SYN-SYNCP000065-AMD1",
  "system_id": "SYNCP000065"

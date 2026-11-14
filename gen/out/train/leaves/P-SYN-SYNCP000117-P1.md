@@ -4,20 +4,20 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000117-P1.md", "generator_seed": 562}
-edges: []
-date: "2026-04-01"
-gives: [{"anchor": "SYN-SYNCP000117-P1#2", "description": "an administrative fee of 1.25%", "kind": "admin_fee_change", "span": "an administrative fee of 1.25%"}]
+edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000117-AMD1"}]
+date: "2025-02-08"
+gives: [{"anchor": "SYN-SYNCP000117-P1#2", "description": "a Tier 3 rebate of 5.5%", "kind": "rebate_change", "span": "a Tier 3 rebate of 5.5%"}]
 gets: [{"anchor": "SYN-SYNCP000117-P1#3", "description": "a commitment of 1,630 Influenza doses per year", "kind": "volume_commitment", "span": "a commitment of 1,630 Influenza doses per year"}]
-outcome: "pending"
+outcome: "won"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000117-P1, was presented by the Supplier to Atlantic Health Network 117 on April 1, 2026.
+This proposal, SYN-SYNCP000117-P1, was presented by SEQIRUS (the Supplier) to Atlantic Health Network 117 on February 8, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 1.25%.
+Supplier concession: a Tier 3 rebate of 5.5%.
 
 ## 3. Supplier Request
 
@@ -25,4 +25,6 @@ Supplier request: a commitment of 1,630 Influenza doses per year.
 
 ## 4. Proposal Status
 
-Status of this proposal: awaiting a Customer decision.
+Status of this proposal: accepted by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

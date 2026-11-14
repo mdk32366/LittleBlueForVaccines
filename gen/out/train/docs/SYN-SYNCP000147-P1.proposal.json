@@ -1,5 +1,5 @@
 {
- "date": "2026-07-19",
+ "date": "2026-07-03",
  "doc": {
   "doc_id": "SYN-SYNCP000147-P1",
   "doc_type": "PROPOSAL",
@@ -7,17 +7,17 @@
    {
     "anchor": "1",
     "heading": "Proposal Summary",
-    "text": "This proposal, SYN-SYNCP000147-P1, was presented by the Supplier to Evergreen Health Network 147 on July 19, 2026."
+    "text": "This proposal, SYN-SYNCP000147-P1, was presented by PFIZER (the Supplier) to Evergreen Health Network 147 on July 3, 2026."
    },
    {
     "anchor": "2",
     "heading": "Supplier Concession",
-    "text": "Supplier concession: a Tier 3 rebate of 5%."
+    "text": "Supplier concession: an administrative fee of 2.5%."
    },
    {
     "anchor": "3",
     "heading": "Supplier Request",
-    "text": "Supplier request: a Influenza share floor of 80%."
+    "text": "Supplier request: a Pneumococcal share floor of 45%."
    },
    {
     "anchor": "4",
@@ -31,17 +31,17 @@
  "gets": [
   {
    "anchor": "SYN-SYNCP000147-P1#3",
-   "description": "a Influenza share floor of 80%",
+   "description": "a Pneumococcal share floor of 45%",
    "kind": "exclusivity",
-   "span": "a Influenza share floor of 80%"
+   "span": "a Pneumococcal share floor of 45%"
   }
  ],
  "gives": [
   {
    "anchor": "SYN-SYNCP000147-P1#2",
-   "description": "a Tier 3 rebate of 5%",
-   "kind": "rebate_change",
-   "span": "a Tier 3 rebate of 5%"
+   "description": "an administrative fee of 2.5%",
+   "kind": "admin_fee_change",
+   "span": "an administrative fee of 2.5%"
   }
  ],
  "outcome": "countered",

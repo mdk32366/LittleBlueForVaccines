@@ -5,24 +5,26 @@ ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000025-P1.md", "generator_seed": 562}
 edges: []
-date: "2024-06-07"
-gives: [{"anchor": "SYN-SYNCP000025-P1#2", "description": "an administrative fee of 1.25%", "kind": "admin_fee_change", "span": "an administrative fee of 1.25%"}]
-gets: [{"anchor": "SYN-SYNCP000025-P1#3", "description": "a Pneumococcal share floor of 55%", "kind": "exclusivity", "span": "a Pneumococcal share floor of 55%"}]
-outcome: "pending"
+date: "2026-02-10"
+gives: [{"anchor": "SYN-SYNCP000025-P1#2", "description": "a Tier 2 rebate of 3.5%", "kind": "rebate_change", "span": "a Tier 2 rebate of 3.5%"}]
+gets: [{"anchor": "SYN-SYNCP000025-P1#3", "description": "a Pneumococcal share floor of 60%", "kind": "exclusivity", "span": "a Pneumococcal share floor of 60%"}]
+outcome: "lost"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000025-P1, was presented by the Supplier to Sunrise Care Partners 025 on June 7, 2024.
+This proposal, SYN-SYNCP000025-P1, was presented by PFIZER (the Supplier) to Sunrise Care Partners 025 on February 10, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 1.25%.
+Supplier concession: a Tier 2 rebate of 3.5%.
 
 ## 3. Supplier Request
 
-Supplier request: a Pneumococcal share floor of 55%.
+Supplier request: a Pneumococcal share floor of 60%.
 
 ## 4. Proposal Status
 
-Status of this proposal: awaiting a Customer decision.
+Status of this proposal: declined by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

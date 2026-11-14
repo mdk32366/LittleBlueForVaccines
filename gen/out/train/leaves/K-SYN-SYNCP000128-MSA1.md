@@ -7,10 +7,12 @@ source: {"file": "train/docs/SYN-SYNCP000128-MSA1.md", "generator_seed": 562}
 edges: [{"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-1"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-2"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-3"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-4.1"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-4.2"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-4.3"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-5.1"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-5.2"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-6"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-7"}, {"rel": "has_clause", "to": "CL-SYN-SYNCP000128-MSA1-8"}]
 doc_type: "MSA"
 title: "SYNTHETIC MSA SYN-SYNCP000128-MSA1"
-effective_date: "2025-01-01"
-expiration_date: "2026-12-31"
-spec_version: "stub-v0"
+effective_date: "2024-02-01"
+expiration_date: "2027-01-31"
+spec_version: "schema-v1"
 synthetic_stamp: true
 ---
 
-SYNTHETIC contract SYN-SYNCP000128-MSA1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal.
+SYNTHETIC contract SYN-SYNCP000128-MSA1. SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

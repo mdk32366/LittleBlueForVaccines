@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000176-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000176-AMD1"}]
-date: "2026-06-15"
-gives: [{"anchor": "SYN-SYNCP000176-P1#2", "description": "a Tier 2 rebate of 4.5%", "kind": "rebate_change", "span": "a Tier 2 rebate of 4.5%"}]
-gets: [{"anchor": "SYN-SYNCP000176-P1#3", "description": "a commitment of 920 Influenza doses per year", "kind": "volume_commitment", "span": "a commitment of 920 Influenza doses per year"}]
-outcome: "countered"
+edges: []
+date: "2025-09-15"
+gives: [{"anchor": "SYN-SYNCP000176-P1#2", "description": "a Tier 3 rebate of 5%", "kind": "rebate_change", "span": "a Tier 3 rebate of 5%"}]
+gets: [{"anchor": "SYN-SYNCP000176-P1#3", "description": "a commitment of 290 DTaP doses per year", "kind": "volume_commitment", "span": "a commitment of 290 DTaP doses per year"}]
+outcome: "pending"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000176-P1, was presented by the Supplier to Clearwater Urgent Care 176 on June 15, 2026.
+This proposal, SYN-SYNCP000176-P1, was presented by MSP VACCINE COMP (the Supplier) to Clearwater Urgent Care 176 on September 15, 2025.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 2 rebate of 4.5%.
+Supplier concession: a Tier 3 rebate of 5%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 920 Influenza doses per year.
+Supplier request: a commitment of 290 DTaP doses per year.
 
 ## 4. Proposal Status
 
-Status of this proposal: countered by the Customer.
+Status of this proposal: awaiting a Customer decision.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

@@ -8,7 +8,7 @@ edges: []
 anchor: "5.1"
 heading: "Minimum Take: DTaP"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000134-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-dtap"}, "span": "360", "unit": "doses", "value": 360}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000134-MSA1-5.1-commitment_doses_per_year-1", "qualifier": {"class": "CLS-dtap", "provenance": "invented"}, "span": "430", "unit": "doses", "value": 430}]
 ---
 
-Each year the Customer undertakes to take 360 or more DTaP doses.
+Each year the Customer undertakes to take 430 or more DTaP doses.

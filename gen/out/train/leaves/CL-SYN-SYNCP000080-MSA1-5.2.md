@@ -8,7 +8,7 @@ edges: []
 anchor: "5.2"
 heading: "Volume Commitment: Hepatitis"
 clause_type: "volume_commitment"
-terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000080-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-hepatitis"}, "span": "130", "unit": "doses", "value": 130}]
+terms: [{"field": "commitment_doses_per_year", "id": "TM-SYN-SYNCP000080-MSA1-5.2-commitment_doses_per_year-2", "qualifier": {"class": "CLS-hepatitis", "provenance": "invented"}, "span": "160", "unit": "doses", "value": 160}]
 ---
 
-The Customer commits to purchase not less than 130 doses of Hepatitis products in each contract year.
+The Customer commits to purchase not less than 160 doses of Hepatitis products in each contract year.

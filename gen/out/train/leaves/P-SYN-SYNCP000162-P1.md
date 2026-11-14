@@ -4,25 +4,27 @@ type: "Proposal"
 ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000162-P1.md", "generator_seed": 562}
-edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000162-AMD1"}]
-date: "2026-03-10"
-gives: [{"anchor": "SYN-SYNCP000162-P1#2", "description": "an administrative fee of 1.5%", "kind": "admin_fee_change", "span": "an administrative fee of 1.5%"}]
-gets: [{"anchor": "SYN-SYNCP000162-P1#3", "description": "a Influenza share floor of 95%", "kind": "exclusivity", "span": "a Influenza share floor of 95%"}]
-outcome: "won"
+edges: []
+date: "2026-06-14"
+gives: [{"anchor": "SYN-SYNCP000162-P1#2", "description": "a Tier 3 rebate of 5%", "kind": "rebate_change", "span": "a Tier 3 rebate of 5%"}]
+gets: [{"anchor": "SYN-SYNCP000162-P1#3", "description": "a MMR share floor of 55%", "kind": "exclusivity", "span": "a MMR share floor of 55%"}]
+outcome: "pending"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000162-P1, was presented by the Supplier to Maple Grove Regional Hospital 162 on March 10, 2026.
+This proposal, SYN-SYNCP000162-P1, was presented by MERCK & COMPANY (the Supplier) to Maple Grove Regional Hospital 162 on June 14, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: an administrative fee of 1.5%.
+Supplier concession: a Tier 3 rebate of 5%.
 
 ## 3. Supplier Request
 
-Supplier request: a Influenza share floor of 95%.
+Supplier request: a MMR share floor of 55%.
 
 ## 4. Proposal Status
 
-Status of this proposal: accepted by the Customer.
+Status of this proposal: awaiting a Customer decision.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.

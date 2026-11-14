@@ -8,7 +8,7 @@ edges: []
 anchor: "4.2"
 heading: "Volume Band 2"
 clause_type: "tier_rebate"
-terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000066-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-tdap", "tier": 2}, "span": "590", "unit": "doses", "value": 590}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000066-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-tdap", "tier": 2}, "span": "3 per cent", "unit": "pct", "value": 3.0}]
+terms: [{"field": "tier_min_doses", "id": "TM-SYN-SYNCP000066-MSA1-4.2-tier_min_doses-2", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 2}, "span": "150", "unit": "doses", "value": 150}, {"field": "tier_rebate_pct", "id": "TM-SYN-SYNCP000066-MSA1-4.2-tier_rebate_pct-2", "qualifier": {"class": "CLS-pneumococcal", "provenance": "invented", "tier": 2}, "span": "4 per cent", "unit": "pct", "value": 4.0}]
 ---
 
-Band 2 is reached once yearly Tdap volume hits 590 doses or more; qualifying spend then carries a 3 per cent rebate.
+Band 2 is reached once yearly Pneumococcal volume hits 150 doses or more; qualifying spend then carries a 4 per cent rebate.

@@ -14,7 +14,12 @@ from .seam import ANSWER_TYPES, FIELD_TYPES, REFUSAL, to_jsonable
 
 DIGIT = re.compile(r"\d")
 SLOT = re.compile(r"\{(S\d+)\}")
-STAMP = "> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 (D-0022). Not a real agreement or proposal."
+STAMP = "> SYNTHETIC DOCUMENT. Fictional test data generated for BIA 562 under D-0022 (fake data). Not a real agreement or proposal."
+# T-0073 (synthetic marker), D-0044 (real manufacturer as the contract party): generator-level, in no template family.
+MARKER = "SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented."
+FOOTER_RULE = "---"
+CONTRACT_TERMS = "invented"  # manifest flag (T-0073)
+TERMS_DOC = re.compile(r"-(MSA|AMD)\d+$|-P\d+$")  # a span citing one of these carries terms_invented: true
 MIN_UNANSWERABLE = 0.15
 TEST_FRACTION = 0.25
 SPLITS = ("train", "test")
@@ -55,9 +60,10 @@ def make_rng(key: str):
 # ---------- doc rendering ----------
 def render_doc_md(doc, meta: dict) -> str:
     head = "---\n" + "".join(f"{k}: {json.dumps(v)}\n" for k, v in meta.items()) + "---\n\n"
-    out = [head, f"# SYNTHETIC — {doc.doc_id}\n\n", STAMP, "\n\n"]
+    out = [head, f"# SYNTHETIC — {doc.doc_id}\n\n", MARKER, "\n\n", STAMP, "\n\n"]
     for s in doc.sections:
         out.append(f"## {s.anchor}. {s.heading}\n\n{s.text}\n\n")
+    out.append(f"{FOOTER_RULE}\n\n{MARKER}\n")  # footer: after the rule, outside every numbered section (§5.3)
     return "".join(out)
 
 
@@ -70,9 +76,18 @@ def parse_doc_md(text: str) -> tuple:
     secs = {}
     ms = list(SEC_RE.finditer(text))
     for i, m in enumerate(ms):
-        end = ms[i + 1].start() if i + 1 < len(ms) else len(text)
+        end = ms[i + 1].start() if i + 1 < len(ms) else footer_start(text, m.end())
         secs[m.group(1)] = {"heading": m.group(2), "text": text[m.end():end].strip("\n")}
     return meta, secs
+
+
+RULE_RE = re.compile(r"^---$", re.M)
+
+
+def footer_start(text: str, pos: int) -> int:
+    """The last section ends at the footer rule (§5.3), else at the end of the file (pre-marker docs)."""
+    m = RULE_RE.search(text, pos)
+    return m.start() if m else len(text)
 
 
 # ---------- validation (fail-closed) ----------
@@ -92,8 +107,10 @@ def validate_bundle(spec, system_id, docs: dict, termsets: list, qas: list, cata
             if s.anchor in seen:
                 raise GenerationError(f"{did} duplicate anchor {s.anchor}")
             seen.add(s.anchor)
-            if s.text != s.text.strip() or not s.text or SEC_RE.search(s.text):
+            if s.text != s.text.strip() or not s.text or SEC_RE.search(s.text) or RULE_RE.search(s.text):
                 raise GenerationError(f"{did}#{s.anchor} text not clean")
+            if MARKER in s.text:
+                raise GenerationError(f"T-0073: {did}#{s.anchor} carries the MARKER inside a section")
     for ts in termsets:
         for name, f in ts.fields.items():
             base = name.rsplit("-", 1)[0] if re.search(r"-\d+$", name) else name
@@ -157,12 +174,12 @@ def build_leaves(spec, doc, termset, rel_file: str, seed: int, catalog: dict, am
                "expiration_date": f["expiration_date"].value if "expiration_date" in f else None,
                "spec_version": spec.spec_version, "synthetic_stamp": True}
     out.insert(0, leaves.make_leaf(kid, "Contract", src, edges, kfields,
-                                   f"SYNTHETIC contract {doc.doc_id}. {STAMP[2:]}"))
+                                   f"SYNTHETIC contract {doc.doc_id}. {STAMP[2:]}\n\n{MARKER}"))
     return out
 
 
 def proposal_leaf(pr, rel_file: str, seed: int):
-    body = "\n\n".join(f"## {s.anchor}. {s.heading}\n\n{s.text}" for s in pr.doc.sections)
+    body = "\n\n".join(f"## {s.anchor}. {s.heading}\n\n{s.text}" for s in pr.doc.sections) + f"\n\n{MARKER}"
     edges = [{"rel": "resulted_in", "to": "K-" + pr.resulted_in}] if pr.resulted_in else []
     return leaves.make_leaf("P-" + pr.proposal_id, "Proposal", {"file": rel_file, "generator_seed": seed}, edges,
                             {"date": pr.date, "gives": to_jsonable(list(pr.gives)), "gets": to_jsonable(list(pr.gets)),
@@ -244,6 +261,7 @@ def generate(spec, systems, out_dir, seed: int, overwrite: bool = False, test_fr
             for q in qas:
                 rec = to_jsonable(q)
                 rec["synthetic"] = True
+                rec["terms_invented"] = True  # dataset-wide per build order; never a tag inside `answer`
                 rec["spec_version"] = spec.spec_version
                 qa_lines.append(json.dumps(rec, sort_keys=True, ensure_ascii=False))
                 n_unans += q.answer_type == "unanswerable"
@@ -257,10 +275,17 @@ def generate(spec, systems, out_dir, seed: int, overwrite: bool = False, test_fr
     manifest = {
         "generator_version": GENERATOR_VERSION, "spec_version": spec.spec_version, "seed": seed,
         "synthetic": True, "test_fraction": test_fraction, "systems_source": systems_source,
+        "contract_terms": CONTRACT_TERMS,
         "split": {sp: {"family": FAMILY_OF_SPLIT[sp], "systems": split[sp]} for sp in SPLITS},
         "counts": counts,
         "files": {rel: sha256_bytes(b) for rel, b in sorted(files.items())},
     }
+    extra = getattr(spec, "manifest_extra", None)
+    if extra is not None:
+        for k, v in extra().items():
+            if k in manifest:
+                raise GenerationError(f"spec manifest_extra may not override {k}")
+            manifest[k] = v
     mbytes = (json.dumps(manifest, indent=1, sort_keys=True) + "\n").encode()
     out.mkdir(parents=True, exist_ok=True)
     for rel, b in sorted(files.items()):

@@ -5,24 +5,26 @@ ontology_version: 1
 synthetic: true
 source: {"file": "train/docs/SYN-SYNCP000140-P1.md", "generator_seed": 562}
 edges: [{"rel": "resulted_in", "to": "K-SYN-SYNCP000140-AMD1"}]
-date: "2025-07-04"
-gives: [{"anchor": "SYN-SYNCP000140-P1#2", "description": "a Tier 1 rebate of 2%", "kind": "rebate_change", "span": "a Tier 1 rebate of 2%"}]
-gets: [{"anchor": "SYN-SYNCP000140-P1#3", "description": "a commitment of 600 Influenza doses per year", "kind": "volume_commitment", "span": "a commitment of 600 Influenza doses per year"}]
+date: "2026-05-14"
+gives: [{"anchor": "SYN-SYNCP000140-P1#2", "description": "an administrative fee of 2.25%", "kind": "admin_fee_change", "span": "an administrative fee of 2.25%"}]
+gets: [{"anchor": "SYN-SYNCP000140-P1#3", "description": "a Hepatitis share floor of 85%", "kind": "exclusivity", "span": "a Hepatitis share floor of 85%"}]
 outcome: "countered"
 ---
 
 ## 1. Proposal Summary
 
-This proposal, SYN-SYNCP000140-P1, was presented by the Supplier to Blue Ridge Medical Group 140 on July 4, 2025.
+This proposal, SYN-SYNCP000140-P1, was presented by GSK PHARM (the Supplier) to Blue Ridge Medical Group 140 on May 14, 2026.
 
 ## 2. Supplier Concession
 
-Supplier concession: a Tier 1 rebate of 2%.
+Supplier concession: an administrative fee of 2.25%.
 
 ## 3. Supplier Request
 
-Supplier request: a commitment of 600 Influenza doses per year.
+Supplier request: a Hepatitis share floor of 85%.
 
 ## 4. Proposal Status
 
 Status of this proposal: countered by the Customer.
+
+SYNTHETIC TRAINING DOCUMENT. NOT A REAL AGREEMENT. Terms are invented.
