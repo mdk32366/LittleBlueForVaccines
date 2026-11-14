@@ -100,6 +100,14 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     # PR 6-hot: lookup Company follows the sidebar (T-0061, F-0025); upload limits equal (T-0062, F-0026)
     "lookup_fixed_key": (["test_t0061_lookup_company_follows_sidebar.py"], ["test_lookup_company_follows_sidebar"]),
     "upload_si": (["test_t0062_upload_limit_check.py"], ["test_caddy_sizes_in_bytes", "test_equal_limits_pass"]),
+    # v0.2-f Salesforce dry run (D-0045): re-root on Visit__c, setup non-secret only, preview never sends
+    "root_event": (["test_t0047_payload.py"], ["test_payload_validates_against_schema", "test_outcomes_only_under_visit"]),
+    "net_call": (["test_t0079_sf_no_egress.py"], ["test_no_network_imports", "test_setup_and_preview_with_network_blocked"]),
+    "secret_ok": (["test_t0077_sf_config.py"], ["test_secret_values_refused"]),
+    "secret_col": (["test_t0077_sf_config.py"], ["test_no_secret_fields_or_columns"]),
+    "body_drift": (["test_t0078_sf_preview.py"], ["test_body_is_the_stored_payload"]),
+    "send_label": (["test_t0080_sf_dryrun_ui.py"], ["test_preview_after_save_and_lookup_and_no_send"]),
+    "url_lax": (["test_t0077_sf_config.py"], ["test_instance_url_pattern", "test_export_import_round_trip"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

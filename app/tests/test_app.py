@@ -19,7 +19,7 @@ def test_picker_brief_download():
     assert any("SYNCP000025" in h.value for h in at.header)
     md = " ".join(m.value for m in at.markdown)
     assert "Size: purchases of" in md
-    dl = at.get("download_button")
+    dl = [b for b in at.get("download_button") if b.key != "ig_download"]  # v0.2-f: the dry-run setup download (T-0080)
     assert len(dl) == 1 and "Download PDF report" in dl[0].proto.label
 
 

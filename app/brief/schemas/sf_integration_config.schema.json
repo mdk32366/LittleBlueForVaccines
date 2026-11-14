@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lb-sf-config-0.1",
+  "title": "Little Blue Salesforce dry-run setup (non-secret fields only; stored in sf_integration_config, never used to connect)",
+  "description": "AS-0071 (dry-run setup, non-secret fields only): no field holds a token, key, password, secret or session id, and no such field may be added (T-0077). Every __c and __r name is a proposal (AS-0070).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lb_config_version",
+    "instance_url",
+    "api_version",
+    "visit_object",
+    "outcome_object",
+    "outcome_relationship",
+    "account_relationship",
+    "account_external_id_field",
+    "record_type_id",
+    "owner_mapping"
+  ],
+  "properties": {
+    "lb_config_version": {
+      "const": "lb-sf-config-0.1"
+    },
+    "instance_url": {
+      "type": "string",
+      "pattern": "^https://[a-z0-9-]+\\.my\\.salesforce\\.com$",
+      "maxLength": 200
+    },
+    "api_version": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]\\.0$"
+    },
+    "visit_object": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]{0,36}__c$"
+    },
+    "outcome_object": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]{0,36}__c$"
+    },
+    "outcome_relationship": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]{0,36}__r$"
+    },
+    "account_relationship": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]{0,36}__r$"
+    },
+    "account_external_id_field": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]{0,36}__c$"
+    },
+    "record_type_id": {
+      "type": "string",
+      "pattern": "^([A-Za-z0-9]{15}|[A-Za-z0-9]{18})?$"
+    },
+    "owner_mapping": {
+      "enum": [
+        "<NOT MAPPED: records stay with the integration user>",
+        "<PLACEHOLDER: rep key to a Salesforce user, not configured>"
+      ]
+    }
+  }
+}

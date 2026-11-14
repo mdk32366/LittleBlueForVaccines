@@ -1,13 +1,22 @@
-"""payload.py (v0.2-d, PR 8): a FAKE Salesforce-shaped visit record, built and validated locally, never sent.
+"""payload.py (v0.2-d, PR 8; re-rooted on Visit__c in v0.2-f): a FAKE Salesforce-shaped visit record, built and
+validated locally, never sent.
 
 The owner's rule, AS-0057 (sf payload is a database record, not a send): "No actual send. Just create the payload and
 place it into a database record." This module only builds a dict and checks it against a JSON Schema. It has no
-Salesforce client and imports no HTTP or socket library (T-0049 (no egress) guards that).
+Salesforce client and imports no HTTP or socket library (T-0049 (no egress) and T-0079 (dry-run no egress) guard that).
 
-Shape, AS-0049 (sf payload field names): an sObject Tree (Composite Tree) request body per root type, kept side by side:
-  trees.Event = {"records": [Event + nested Talking_Point_Outcomes__r child records]}
-  trees.Task  = {"records": [one Task per non-empty follow-up]} (omitted when there are none)
-Every field ending in __c is a proposal and has not been checked against any org.
+Shape lb-sf-tree-0.3, AS-0070 (sf payload lb-sf-tree-0.3, Visit__c root), D-0045 (Salesforce dry run): one sObject Tree
+(Composite Tree) request body per root type, kept side by side, each sent as its own tree request in a real build:
+  trees.Visit__c = {"records": [Visit__c (the Event fields, Account by external id on the system id, the rep)
+                                + nested Talking_Point_Outcomes__r master-detail child records]}
+  trees.Event    = {"records": [one Event, WhatId = VISIT_REF]}
+  trees.Task     = {"records": [one Task per non-empty follow-up, WhatId = VISIT_REF]} (omitted when there are none)
+VISIT_REF "@{visit.id}" is a placeholder for the Id the Visit__c request returns; separate tree requests can't
+reference each other, so a real integration fills it in (F-0033).
+Every __c and __r name (Visit__c, Talking_Point_Outcome__c, Talking_Point_Outcomes__r, Account__r and every custom
+field) is still a proposal and has not been checked against any org (AS-0070).
+Rows saved before v0.2-f keep lb-sf-tree-0.2 (Event root, AS-0049 (sf payload field names)); `validate` checks each
+payload against the schema of its own version and `build_payload_v02` rebuilds the old shape for an old visit file.
 """
 from __future__ import annotations
 
@@ -23,13 +32,20 @@ from pathlib import Path
 import jsonschema
 
 FAKE_MARKER = "FAKE-SYNTHETIC"
-SCHEMA_VERSION = "lb-sf-tree-0.2"
+SCHEMA_VERSION = "lb-sf-tree-0.3"
+LEGACY_VERSION = "lb-sf-tree-0.2"
 SCHEMA_PATH = Path(__file__).resolve().parent / "schemas" / "visit_payload.schema.json"
+SCHEMA_PATHS = {SCHEMA_VERSION: SCHEMA_PATH, LEGACY_VERSION: SCHEMA_PATH.parent / "visit_payload-0.2.schema.json"}
 ADDRESSED = ("Raised", "Partially", "Not raised")
 RESPONSES = ("Positive", "Neutral", "Negative", "Objection")
 DEFAULT_START = "09:00"
 DEFAULT_DURATION = 30
 CHILD_REL = "Talking_Point_Outcomes__r"
+ROOT_OBJECT = "Visit__c"
+ACCOUNT_REL = "Account__r"
+ACCOUNT_EXT_ID = "LB_System_Id__c"
+VISIT_REF = "@{visit.id}"  # placeholder for the Visit__c Id (F-0033); the dry run never resolves it
+TREE_ORDER = (ROOT_OBJECT, "Event", "Task")  # request order: the Visit__c tree first
 SYSTEM_ID = re.compile(r"^SYNCP\d{6}$")
 
 
@@ -117,42 +133,95 @@ def _outcome_record(i: int, o: Outcome) -> dict:
             "Evidence_Quote__c": o.evidence or "", "Follow_Up__c": o.follow_up or ""}
 
 
-def build_payload(*, rep: str, visit_date: str, system_id: str, system_name: str, notes: str,
-                  outcomes: list, start_time: str = DEFAULT_START, duration: int = DEFAULT_DURATION) -> dict:
-    """The FAKE payload for one visit. Pure: same inputs give the same dict (no clock, no network)."""
+def _common(rep, visit_date, system_id, system_name, notes, start_time):
     key = visit_key(rep, visit_date, system_id)
     sid = key.rsplit("|", 1)[1]
     hh, mm = (int(x) for x in str(start_time).split(":"))
-    account = {"attributes": {"type": "Account"}, "LB_System_Id__c": sid}
-    event = {"attributes": {"type": "Event", "referenceId": "visit"},
-             "Subject": f"Vaccine rep visit – {system_name or sid}",
+    return {"key": key, "sid": sid, "rep_key": key.split("|", 1)[0],
+            "subject": f"Vaccine rep visit – {system_name or sid}", "start": f"{visit_date}T{hh:02d}:{mm:02d}:00Z",
+            "description": f"{FAKE_MARKER} demo record, synthetic data, never sent. Visit notes: {notes or ''}"}
+
+
+def _tasks(outcomes, visit_date, key, what_key, what) -> list:
+    return [{"attributes": {"type": "Task", "referenceId": f"followup{i}"},
+             "Subject": f"Follow-up: {o.point.key}", "ActivityDate": str(visit_date), "Status": "Not Started",
+             "Priority": "Normal", "Description": f"{FAKE_MARKER} follow-up from a demo visit: {o.follow_up}",
+             what_key: what() if callable(what) else what, "LB_Visit_Key__c": key, "LB_Synthetic__c": True}
+            for i, o in enumerate(outcomes or [], 1) if (o.follow_up or "").strip()]
+
+
+def _envelope(version: str, key: str, trees: dict, as_ref: str) -> dict:
+    return {"lb_marker": FAKE_MARKER, "lb_schema_version": version, "lb_visit_key": key,
+            "lb_note": "Synthetic demo payload stored as a database record. Nothing is sent to Salesforce. "
+                       f"Field names are proposals ({as_ref}).",
+            "trees": trees}
+
+
+def build_payload(*, rep: str, visit_date: str, system_id: str, system_name: str, notes: str,
+                  outcomes: list, start_time: str = DEFAULT_START, duration: int = DEFAULT_DURATION) -> dict:
+    """The FAKE lb-sf-tree-0.3 payload for one visit. Pure: same inputs give the same dict (no clock, no network)."""
+    c = _common(rep, visit_date, system_id, system_name, notes, start_time)
+    visit = {"attributes": {"type": ROOT_OBJECT, "referenceId": "visit"},
+             "Subject__c": c["subject"],
+             "Visit_Date__c": str(visit_date),
+             "Start_DateTime__c": c["start"],
+             "Duration_Minutes__c": int(duration),
+             "Description__c": c["description"],
+             ACCOUNT_REL: {"attributes": {"type": "Account"}, ACCOUNT_EXT_ID: c["sid"]},
+             "Rep_Name__c": " ".join(rep.split()),
+             "LB_Rep_Key__c": c["rep_key"],
+             "LB_Visit_Key__c": c["key"],
+             "LB_Synthetic__c": True}
+    if outcomes:
+        visit[CHILD_REL] = {"records": [_outcome_record(i, o) for i, o in enumerate(outcomes, 1)]}
+    event = {"attributes": {"type": "Event", "referenceId": "event"},
+             "Subject": c["subject"],
              "ActivityDate": str(visit_date),
-             "StartDateTime": f"{visit_date}T{hh:02d}:{mm:02d}:00Z",
+             "StartDateTime": c["start"],
              "DurationInMinutes": int(duration),
-             "Description": f"{FAKE_MARKER} demo record, synthetic data, never sent. Visit notes: {notes or ''}",
+             "Description": c["description"],
+             "WhatId": VISIT_REF,
+             "LB_Rep_Key__c": c["rep_key"],
+             "LB_Visit_Key__c": c["key"],
+             "LB_Synthetic__c": True}
+    trees = {ROOT_OBJECT: {"records": [visit]}, "Event": {"records": [event]}}
+    tasks = _tasks(outcomes, visit_date, c["key"], "WhatId", VISIT_REF)
+    if tasks:
+        trees["Task"] = {"records": tasks}
+    return _envelope(SCHEMA_VERSION, c["key"], trees, "AS-0070")
+
+
+def build_payload_v02(*, rep: str, visit_date: str, system_id: str, system_name: str, notes: str,
+                      outcomes: list, start_time: str = DEFAULT_START, duration: int = DEFAULT_DURATION) -> dict:
+    """The legacy lb-sf-tree-0.2 shape (Event root, AS-0049), kept only to check a visit file saved before v0.2-f.
+    New saves always use build_payload (0.3)."""
+    c = _common(rep, visit_date, system_id, system_name, notes, start_time)
+    account = {"attributes": {"type": "Account"}, ACCOUNT_EXT_ID: c["sid"]}
+    event = {"attributes": {"type": "Event", "referenceId": "visit"},
+             "Subject": c["subject"],
+             "ActivityDate": str(visit_date),
+             "StartDateTime": c["start"],
+             "DurationInMinutes": int(duration),
+             "Description": c["description"],
              "What": account,
-             "LB_Rep_Key__c": key.split("|", 1)[0],
-             "LB_Visit_Key__c": key,
+             "LB_Rep_Key__c": c["rep_key"],
+             "LB_Visit_Key__c": c["key"],
              "LB_Synthetic__c": True}
     if outcomes:
         event[CHILD_REL] = {"records": [_outcome_record(i, o) for i, o in enumerate(outcomes, 1)]}
     trees = {"Event": {"records": [event]}}
-    tasks = [{"attributes": {"type": "Task", "referenceId": f"followup{i}"},
-              "Subject": f"Follow-up: {o.point.key}", "ActivityDate": str(visit_date), "Status": "Not Started",
-              "Priority": "Normal", "Description": f"{FAKE_MARKER} follow-up from a demo visit: {o.follow_up}",
-              "What": dict(account), "LB_Visit_Key__c": key, "LB_Synthetic__c": True}
-             for i, o in enumerate(outcomes or [], 1) if (o.follow_up or "").strip()]
+    tasks = _tasks(outcomes, visit_date, c["key"], "What", lambda: dict(account))
     if tasks:
         trees["Task"] = {"records": tasks}
-    return {"lb_marker": FAKE_MARKER, "lb_schema_version": SCHEMA_VERSION, "lb_visit_key": key,
-            "lb_note": "Synthetic demo payload stored as a database record. Nothing is sent to Salesforce. "
-                       "Field names are proposals (AS-0049).",
-            "trees": trees}
+    return _envelope(LEGACY_VERSION, c["key"], trees, "AS-0049")
 
 
-@lru_cache(maxsize=1)
-def schema() -> dict:
-    return json.loads(SCHEMA_PATH.read_text())
+BUILDERS = {SCHEMA_VERSION: build_payload, LEGACY_VERSION: build_payload_v02}
+
+
+@lru_cache(maxsize=4)
+def schema(version: str = SCHEMA_VERSION) -> dict:
+    return json.loads(SCHEMA_PATHS[version].read_text())
 
 
 class InvalidPayload(ValueError):
@@ -160,9 +229,14 @@ class InvalidPayload(ValueError):
 
 
 def validate(payload: dict) -> None:
-    """Raise InvalidPayload unless the payload matches schemas/visit_payload.schema.json."""
+    """Raise InvalidPayload unless the payload matches the schema of its own lb_schema_version: 0.3
+    (schemas/visit_payload.schema.json) or the legacy 0.2 (schemas/visit_payload-0.2.schema.json). Any other version,
+    or none, is invalid."""
+    version = payload.get("lb_schema_version") if isinstance(payload, dict) else None
+    if version not in SCHEMA_PATHS:
+        raise InvalidPayload(f"lb_schema_version: {version!r} is not one of {sorted(SCHEMA_PATHS)}")
     try:
-        jsonschema.validate(payload, schema(), cls=jsonschema.Draft202012Validator)
+        jsonschema.validate(payload, schema(version), cls=jsonschema.Draft202012Validator)
     except jsonschema.ValidationError as e:
         where = "/".join(str(p) for p in e.absolute_path) or "(root)"
         raise InvalidPayload(f"{where}: {e.message}") from None

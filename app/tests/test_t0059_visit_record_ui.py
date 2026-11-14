@@ -50,7 +50,7 @@ def test_save_then_lookup_round_trip(tmp_path, monkeypatch):
     assert outs["must.R2"]["addressed"] == "Raised"  # keyword hint pre-filled from the notes ("HPV")
     assert outs["fixed.A1"]["addressed"] == "Not raised"
     kids = {k["Talking_Point_Key__c"]: k for k in
-            stored["payload"]["trees"]["Event"]["records"][0]["Talking_Point_Outcomes__r"]["records"]}
+            stored["payload"]["trees"]["Visit__c"]["records"][0]["Talking_Point_Outcomes__r"]["records"]}
     assert isinstance(kids["must.R2"]["Metric_Value__c"], float)  # numbers stay numbers
     assert kids["question.F2"]["Metric_Value__c"] is None  # None is JSON null
 
@@ -60,7 +60,7 @@ def test_save_then_lookup_round_trip(tmp_path, monkeypatch):
     at.button(key="vr_lookup").click().run()
     assert not at.exception
     assert any("version 1 of 1" in s.value for s in at.success)
-    shown = json.loads(at.code[-1].value)
+    shown = next(json.loads(c.value) for c in at.code if '"lb_marker"' in c.value)  # v0.2-f: preview code follows
     assert shown["lb_marker"] == "FAKE-SYNTHETIC" and pl.sha256(shown) == stored["sha256"]
     assert any(b.proto.label == visits.LABELS["download"] for b in at.get("download_button"))
 
