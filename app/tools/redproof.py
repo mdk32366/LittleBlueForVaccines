@@ -154,6 +154,8 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "downgrade_keeps_auto": (["test_t0093_autofill_scope.py"], ["test_apptest_not_raised_pick_withdraws_auto"]),
     "save_keeps_auto_marks": (["test_t0091_autofill_edits.py"], ["test_apptest_second_visit_gets_fresh_suggestions"]),
     "n7_clear_off": (["test_t0086_second_pass.py"], ["test_save_clears_gap_state_n7"]),
+    # v0.2-h1c (PR 16 review L-3)
+    "not_raised_blanks_edits": (["test_t0093_autofill_scope.py"], ["test_apptest_edit_survives_not_raised_pick"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

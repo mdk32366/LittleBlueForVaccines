@@ -534,6 +534,18 @@ def apply_mutation(name):
     elif name == "n7_clear_off":  # T-0086 (N7, L-3): the 'Not covered yet' state is no longer cleared on Save
         from brief import visit_tab
         visit_tab._clear_gap = lambda sid: None
+    elif name == "not_raised_blanks_edits":  # T-0093 (PR 16 review L-3): a Not raised pick blanks both fields, edits too
+        from brief import visit_tab
+        orig_apply3 = visit_tab._apply_autofill
+
+        def blank_on_not_raised(ss, sid, i, point, status, text):
+            if status == "Not raised":
+                for field, prefix in visit_tab.AUTO_KEYS.items():
+                    if ss.get(f"{prefix}_{sid}_{i}"):
+                        ss[f"{prefix}_{sid}_{i}"] = ""
+                        ss.setdefault("vr_auto", {}).pop((sid, point.key, field), None)
+            orig_apply3(ss, sid, i, point, status, text)
+        visit_tab._apply_autofill = blank_on_not_raised
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
