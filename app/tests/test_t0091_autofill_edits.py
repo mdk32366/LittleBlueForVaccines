@@ -59,6 +59,32 @@ def test_edit_survives_reruns_and_provenance_after_save(tmp_path, monkeypatch):
     assert kid["Evidence_Quote__c"] == MINE and "auto" not in kid
 
 
+def test_apptest_second_visit_gets_fresh_suggestions(tmp_path, monkeypatch):
+    """PR 15 review M-2 (v0.2-h1b): Save resets the auto-fill marks of the system, so on the next visit to the same
+    system in the same session a field still holding its saved value takes the fresh suggestion, while a field the rep
+    changes after the save is an edit as usual. Mutation: save_keeps_auto_marks."""
+    from tests.conftest import resolve_gaps
+    case = CASES["02"]
+    sid = case["sid"]
+    exp = {e["key"]: e for e in nf.h1_expected(case)}
+    keys = [r[0] for r in case["rows"]]
+    at = nf.app_with_notes(tmp_path, monkeypatch, case)
+    ev = lambda k: at.text_input(key=f"vr_ev_{sid}_{keys.index(k)}").value  # noqa: E731
+    at.text_input(key=f"vr_ev_{sid}_{keys.index('fixed.A1')}").input(MINE).run()
+    assert ev("fixed.A1") == MINE
+    resolve_gaps(at)
+    at.button(key="vr_save").click().run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert at.session_state["vr_saves"] == 1
+    # the next visit to the same system: the rep changes one field, which also re-runs the auto-fill
+    at.text_input(key=f"vr_ev_{sid}_{keys.index('fixed.A2.1')}").input("After save").run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert ev("fixed.A1") == exp["fixed.A1"]["evidence"] != MINE  # fresh suggestion, not the first visit's edit
+    assert ev("fixed.A2.1") == "After save"
+    assert visit_tab._provenance(at.session_state, sid, "fixed.A1")["evidence"] == "auto-rule"
+    assert visit_tab._provenance(at.session_state, sid, "fixed.A2.1")["evidence"] == "edited"
+
+
 def test_typed_before_any_suggestion_is_an_edit():
     p = pl.TalkingPoint("must.A2.1", "Must cover: dollar share of RSV is 70.1% for this system, an index of 1332.")
     ss = {"vr_ev_S_0": "typed first"}

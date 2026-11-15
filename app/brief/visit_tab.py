@@ -13,7 +13,10 @@ brief/autofill.py (AS-0077, AS-0078), labelled "auto (rule-based)" under a fixed
 st.session_state["vr_auto"][(sid, key, field)] = {"value", "src"}; a field whose widget value differs from its
 recorded suggestion becomes `edited` and is never written again. Customer response and Quality are never written.
 Nothing is stored before Save; on Save the provenance goes to outcomes_json only (AS-0080), and the 'Not covered yet'
-state of that system (vr_gap) is cleared (PR 14 review N7)."""
+state of that system (vr_gap) is cleared (PR 14 review N7).
+v0.2-h1b (PR 15 review M-1, M-2): when the rep's own Addressed pick is Not raised, the unedited suggestions of that point
+are withdrawn (so no auto follow-up becomes a Task on a Not raised point); on Save the auto-fill marks of that system
+are reset, so a second visit to the same system in the same session gets fresh suggestions."""
 from __future__ import annotations
 
 import dataclasses
@@ -103,6 +106,27 @@ def _apply_autofill(ss, sid: str, i: int, point, status: str, text: str) -> None
             del reg[rk]
 
 
+SRC_SAVED = "saved"  # registry-only mark (never in outcomes_json): the value a field held at the last Save
+
+
+def _autofill_status(status: str, pick) -> str:
+    """The status the auto-fill keys off (PR 15 review M-1): the hint or addendum status, except that the rep's own
+    Addressed pick of Not raised wins, so the unedited suggestions of that point are withdrawn."""
+    return pl.ADDRESSED[2] if pick == pl.ADDRESSED[2] else status
+
+
+def _reset_autofill(ss, sid: str, outcomes: list) -> None:
+    """After a typed save (PR 15 review M-2): every Evidence quote / Follow-up of this system is recorded as `saved`
+    with the value it was saved with, so on the next run a field still holding that value takes the fresh suggestion
+    (or is blanked), while a field the rep changes after the save is `edited` as usual."""
+    reg = ss.setdefault("vr_auto", {})
+    for k in [k for k in reg if k[0] == sid]:
+        del reg[k]
+    for o in outcomes:
+        for field in AUTO_KEYS:
+            reg[(sid, o.point.key, field)] = {"value": getattr(o, field) or "", "src": SRC_SAVED}
+
+
 def _provenance(ss, sid: str, key: str) -> dict:
     """{"evidence": src, "follow_up": src} for outcomes_json (AS-0080): edited, auto-rule (a non-empty suggestion
     still in place) or none."""
@@ -129,7 +153,9 @@ def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = N
     for i, p in enumerate(points):
         hinted = pl.hint_status(p, notes)
         status = gap.upgrade(hinted, (floor or {}).get(p.key, hinted))  # an addendum result stays in force
-        _apply_autofill(st.session_state, sid, i, p, status, _source_text(state, p.key, notes, status != hinted))
+        pick = st.session_state.get(f"vr_addr_{sid}_{i}_{status}")  # the rep's own pick, from the previous run
+        _apply_autofill(st.session_state, sid, i, p, _autofill_status(status, pick),
+                        _source_text(state, p.key, notes, status != hinted))
         st.markdown(f"**{p.key}**: {p.text}")
         extra = f"; after an addendum: {status}" if status != hinted else ""
         st.caption(HINT_CAPTION[hinted] + extra)
@@ -397,6 +423,7 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
                        f"(sha256 {res['sha256'][:12]}…). Nothing was sent.")
             st.session_state["vr_last_saved"] = {"payload": res["payload"], "sha256": res["sha256"]}
             _clear_gap(sid)
+            _reset_autofill(st.session_state, sid, outcomes)
     last = st.session_state.get("vr_last_saved")
     if last:
         _preview_panel(last["payload"], last["sha256"], "saved")

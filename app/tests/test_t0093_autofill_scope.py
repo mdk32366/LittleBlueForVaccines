@@ -48,3 +48,34 @@ def test_apptest_defaults_kept_caption_and_labels(tmp_path, monkeypatch):
     at.text_area(key="vr_notes").input(nf.notes(case) + " One more line.").run()
     assert not at.exception, [e.value for e in at.exception]
     assert at.selectbox(key=f"vr_resp_{sid}_0").value == "Objection" and at.number_input(key=f"vr_q_{sid}_0").value == 5
+
+
+def test_apptest_not_raised_pick_withdraws_auto(tmp_path, monkeypatch):
+    """PR 15 review M-1 (v0.2-h1b): the rep's own Addressed pick of Not raised withdraws the unedited suggestions of
+    that point, so its auto follow-up never becomes a Task; a pick back to Raised brings them back.
+    Mutation: downgrade_keeps_auto."""
+    from tests.conftest import resolve_gaps
+    case = CASES["01"]
+    sid = case["sid"]
+    exp = {e["key"]: e for e in nf.h1_expected(case)}
+    keys = [r[0] for r in case["rows"]]
+    i = keys.index("fixed.F5")
+    at = nf.app_with_notes(tmp_path, monkeypatch, case)
+    ev, fu = (lambda: at.text_input(key=f"vr_ev_{sid}_{i}").value), (lambda: at.text_input(key=f"vr_fu_{sid}_{i}").value)
+    assert exp["fixed.F5"]["status"] == "Raised" and exp["fixed.F5"]["follow_up"]
+    assert ev() == exp["fixed.F5"]["evidence"] and fu() == exp["fixed.F5"]["follow_up"]  # not vacuous
+    addr = f"vr_addr_{sid}_{i}_Raised"
+    at.selectbox(key=addr).set_value("Not raised").run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert ev() == fu() == ""
+    assert visit_tab._provenance(at.session_state, sid, "fixed.F5") == {"evidence": "none", "follow_up": "none"}
+    at.selectbox(key=addr).set_value("Raised").run()  # back to Raised: the suggestions return
+    assert ev() == exp["fixed.F5"]["evidence"] and fu() == exp["fixed.F5"]["follow_up"]
+    at.selectbox(key=addr).set_value("Not raised").run()
+    resolve_gaps(at)
+    at.button(key="vr_save").click().run()
+    assert not at.exception, [e.value for e in at.exception]
+    saved = at.session_state["vr_last_saved"]["payload"]
+    kids = saved["trees"]["Visit__c"]["records"][0]["Talking_Point_Outcomes__r"]["records"]
+    assert [k["Follow_Up__c"] for k in kids] == [""] * len(kids)
+    assert "Task" not in saved["trees"]  # no follow-up Task on a Not raised point, so none in the preview either

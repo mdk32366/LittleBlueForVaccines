@@ -524,6 +524,16 @@ def apply_mutation(name):
         orig_cues = payload.cues
         payload.cues = lambda point: orig_cues(point) | (payload.RANK_CUES_EXTRA &
                                                         set(payload.WORD.findall(point.text.casefold())))
+    # v0.2-h1b: PR 15 review M-1, M-2, L-3
+    elif name == "downgrade_keeps_auto":  # T-0093 (M-1): the rep's Not raised pick no longer withdraws the suggestions
+        from brief import visit_tab
+        visit_tab._autofill_status = lambda status, pick: status
+    elif name == "save_keeps_auto_marks":  # T-0091 (M-2): the auto-fill marks of the system survive Save
+        from brief import visit_tab
+        visit_tab._reset_autofill = lambda ss, sid, outcomes: None
+    elif name == "n7_clear_off":  # T-0086 (N7, L-3): the 'Not covered yet' state is no longer cleared on Save
+        from brief import visit_tab
+        visit_tab._clear_gap = lambda sid: None
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 

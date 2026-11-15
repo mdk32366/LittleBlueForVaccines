@@ -150,6 +150,10 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
                                                                "test_apptest_defaults_kept_caption_and_labels"]),
     "savevisit_gate_off": (["test_t0085_gap_gate.py"], ["test_save_visit_gate_is_its_own_refusal"]),
     "loaded_gate_off": (["test_t0085_gap_gate.py"], ["test_apptest_save_loaded_gate"]),
+    # v0.2-h1b (PR 15 review M-1, M-2, L-3)
+    "downgrade_keeps_auto": (["test_t0093_autofill_scope.py"], ["test_apptest_not_raised_pick_withdraws_auto"]),
+    "save_keeps_auto_marks": (["test_t0091_autofill_edits.py"], ["test_apptest_second_visit_gets_fresh_suggestions"]),
+    "n7_clear_off": (["test_t0086_second_pass.py"], ["test_save_clears_gap_state_n7"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():
