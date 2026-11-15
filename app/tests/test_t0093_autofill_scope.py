@@ -79,3 +79,28 @@ def test_apptest_not_raised_pick_withdraws_auto(tmp_path, monkeypatch):
     kids = saved["trees"]["Visit__c"]["records"][0]["Talking_Point_Outcomes__r"]["records"]
     assert [k["Follow_Up__c"] for k in kids] == [""] * len(kids)
     assert "Task" not in saved["trees"]  # no follow-up Task on a Not raised point, so none in the preview either
+
+
+def test_apptest_edit_survives_not_raised_pick(tmp_path, monkeypatch):
+    """PR 16 review L-3 (v0.2-h1c): a Follow-up the rep edited survives a Not raised pick (edits win) with provenance
+    `edited`, while the unedited Evidence quote of the same point is withdrawn; the rep's own follow-up still makes its
+    Task (rep intent, not auto output). Mutation: not_raised_blanks_edits."""
+    from tests.conftest import resolve_gaps
+    case = CASES["01"]
+    sid = case["sid"]
+    exp = {e["key"]: e for e in nf.h1_expected(case)}
+    i = [r[0] for r in case["rows"]].index("fixed.F5")
+    mine = "Call the pharmacy director back on Friday with the window table."
+    at = nf.app_with_notes(tmp_path, monkeypatch, case)
+    ev, fu = (lambda: at.text_input(key=f"vr_ev_{sid}_{i}").value), (lambda: at.text_input(key=f"vr_fu_{sid}_{i}").value)
+    assert fu() == exp["fixed.F5"]["follow_up"] != mine and ev() == exp["fixed.F5"]["evidence"]  # not vacuous
+    at.text_input(key=f"vr_fu_{sid}_{i}").input(mine).run()
+    at.selectbox(key=f"vr_addr_{sid}_{i}_Raised").set_value("Not raised").run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert fu() == mine and ev() == ""
+    assert visit_tab._provenance(at.session_state, sid, "fixed.F5") == {"evidence": "none", "follow_up": "edited"}
+    resolve_gaps(at)
+    at.button(key="vr_save").click().run()
+    assert not at.exception, [e.value for e in at.exception]
+    tasks = at.session_state["vr_last_saved"]["payload"]["trees"]["Task"]["records"]
+    assert len(tasks) == 1 and tasks[0]["Description"].endswith(mine)
