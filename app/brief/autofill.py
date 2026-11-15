@@ -33,8 +33,8 @@ _MONTHS = ("january|february|march|april|may|june|july|august|september|october|
            "jan|feb|mar|apr|jun|jul|aug|sept|sep|oct|nov|dec")
 FOLLOW_CUE = re.compile(r"\b(follow[- ]up|send|next visit|call back)\b", re.IGNORECASE)
 DATE_CUE = re.compile(rf"\bby ({_WEEKDAYS}|\d{{1,2}}/\d{{1,2}}|(?:{_MONTHS}) \d{{1,2}})\b", re.IGNORECASE)
-# Ranking only: `share` is a FUNC word in g's hint (AS-0073), but the h1 fixture ranks it as a cue (03 must.A2.1).
-RANK_CUES_EXTRA = frozenset({"share"})
+# AS-0077: ranking-only cue words, defined next to the hint's cue list (payload.RANK_CUES_EXTRA); never a status input.
+RANK_CUES_EXTRA = pl.RANK_CUES_EXTRA
 __all__ = ["CAP", "ELIGIBLE", "FIELDS", "LABEL", "CAPTION", "sentences", "cap", "evidence", "follow_up", "suggest",
            "has_cue"]
 

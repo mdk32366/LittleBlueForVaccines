@@ -137,6 +137,7 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     # v0.2-h1 rule-based auto-fill (D-0048; T-0089..T-0093) and the PR 14 follow-ups N4, N5 (T-0085 amended)
     "quote_paraphrased": (["test_t0089_autofill_evidence.py", "test_t0092_autofill_narratives.py"],
                           ["test_quote_is_verbatim_substring", "test_narrative_matches_fixture"]),
+    "share_reaches_status": (["test_t0089_autofill_evidence.py"], ["test_rank_cues_never_affect_status"]),
     "followup_without_cue": (["test_t0090_autofill_followup.py", "test_t0092_autofill_narratives.py"],
                              ["test_no_cue_gives_blank", "test_only_the_evidence_sentence_and_the_next",
                               "test_narrative_matches_fixture"]),

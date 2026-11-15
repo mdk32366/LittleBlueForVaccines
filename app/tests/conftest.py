@@ -520,6 +520,10 @@ def apply_mutation(name):
         from brief import visit_tab
         orig_gate = visit_tab._loaded_gate
         visit_tab._loaded_gate = lambda outcomes: (orig_gate(outcomes), [])[1]
+    elif name == "share_reaches_status":  # T-0089: the ranking-only cue (AS-0077) leaks into the status rule (AS-0073)
+        orig_cues = payload.cues
+        payload.cues = lambda point: orig_cues(point) | (payload.RANK_CUES_EXTRA &
+                                                        set(payload.WORD.findall(point.text.casefold())))
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 

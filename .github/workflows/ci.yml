@@ -56,7 +56,7 @@ jobs:
           STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
         run: python -m pytest -v --timeout=180 tests
       - name: Red-proof (every guard can go red)
-        timeout-minutes: 35  # F-0024: was 10; F-0031: was 15, 25, then 45 (v0.2-g); v0.2-h1 (N2): each run has --timeout=180
+        timeout-minutes: 45  # F-0024: was 10; F-0031: was 15, then 25, then 45 (v0.2-g); v0.2-h1 (N2): each run has --timeout=180
         run: python -u tools/redproof.py
       - name: Headless smoke (localhost only)
         env:

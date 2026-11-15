@@ -2,7 +2,10 @@
 (after removing a trailing "…"); it is the sentence with the highest (K hits, C hits), the earliest on a tie, and never
 a sentence with no K hit; a sentence over 280 characters is cut at a word boundary with "…" (at most 280 in all); after
 'Address now' (path B) a point the addendum lifted is quoted from the addendum, not the notes.
-Mutation: quote_paraphrased (the quote is collapsed to single spaces and lowercased)."""
+The ranking-only cue words (payload.RANK_CUES_EXTRA, `share`) never change a status: the same rows (the five narratives
+plus a planted row where `share` would decide) give identical hints with and without them.
+Mutations: quote_paraphrased (the quote is collapsed to single spaces and lowercased), share_reaches_status (the
+ranking-only cue reaches the status rule)."""
 import pytest
 
 from brief import autofill as af, payload as pl, talking, visit_tab
@@ -88,3 +91,20 @@ def test_apptest_path_b_quotes_the_addendum(tmp_path, monkeypatch):
     assert ev["fixed.A2.1"] == ev["must.R6"] == ev["question.F2"] == ""  # still Not raised
     assert all(_source_has(ev[k], ADD04) for k in ("must.R5", "must.A2.3"))
     assert not _source_has(ev["must.R5"], nf.notes(case))
+
+
+PLANTED = (RSV, "RSV share was discussed.")  # K = rsv alone; `share` would make it Raised if it were a status cue
+
+
+def test_rank_cues_never_affect_status(real_client, monkeypatch):
+    assert af.RANK_CUES_EXTRA is pl.RANK_CUES_EXTRA and "share" in pl.RANK_CUES_EXTRA and "share" in pl.FUNC
+    rows = [(p, nf.notes(c)) for c in CASES.values() for p in talking.payload_points(c["sid"], real_client)]
+    rows.append(PLANTED)
+    with_extra = [pl.hint_status(p, t) for p, t in rows]
+    assert not any(pl.RANK_CUES_EXTRA & pl.cues(p) for p, _ in rows)
+    monkeypatch.setattr(pl, "RANK_CUES_EXTRA", frozenset())
+    monkeypatch.setattr(af, "RANK_CUES_EXTRA", frozenset())
+    without = [pl.hint_status(p, t) for p, t in rows]
+    assert with_extra == without
+    assert with_extra[-1] == "Partially"  # the planted row: one K word and no AS-0073 cue
+    assert af.evidence(*PLANTED) == PLANTED[1]  # ranking still quotes it (K hit)

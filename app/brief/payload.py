@@ -121,6 +121,11 @@ def cues(point: TalkingPoint) -> set:
     return {w for w in WORD.findall(point.text.casefold()) if w in STOP and w not in FUNC}
 
 
+# AS-0077 (evidence quote rule, v0.2-h1): extra cue words used ONLY to rank the evidence sentence (brief/autofill.py).
+# `share` stays a FUNC word above, so it never reaches `cues` or `hint_status`: AS-0073's status rule holds (T-0089).
+RANK_CUES_EXTRA = frozenset({"share"})
+
+
 def _has_phrase(phrase: str, text: str) -> bool:
     return re.search(r"(?<![a-z0-9+\-])" + re.escape(phrase) + r"(?![a-z0-9+\-])", text) is not None
 
