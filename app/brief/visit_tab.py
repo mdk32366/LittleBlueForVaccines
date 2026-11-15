@@ -6,7 +6,14 @@ the stored payload and the latest dry-run setup (brief/sf_preview.py, D-0045 (Sa
 v0.2-g, D-0047 (missed talking-point follow-up): the hint pre-fills Raised, Partially or Not raised (AS-0073); the
 'Not covered yet' panel asks about every point that is not Raised: mark it not addressed with a reason (AS-0075), or
 address it now in an addendum that is checked for those points only (brief/gap.py). Save stays disabled until every
-point is resolved. Kept in its own module so app.py only gains one tab line and one call."""
+point is resolved. Kept in its own module so app.py only gains one tab line and one call.
+v0.2-h1, D-0048 (auto-fill visit fields, rules part): every Raised or Partially point gets a suggested Evidence quote
+and Follow-up from the notes (from the addendum only when an addendum lifted the point), by the rules in
+brief/autofill.py (AS-0077, AS-0078), labelled "auto (rule-based)" under a fixed caveat (AS-0079). Provenance lives in
+st.session_state["vr_auto"][(sid, key, field)] = {"value", "src"}; a field whose widget value differs from its
+recorded suggestion becomes `edited` and is never written again. Customer response and Quality are never written.
+Nothing is stored before Save; on Save the provenance goes to outcomes_json only (AS-0080), and the 'Not covered yet'
+state of that system (vr_gap) is cleared (PR 14 review N7)."""
 from __future__ import annotations
 
 import dataclasses
@@ -18,7 +25,8 @@ import streamlit as st
 
 import hashlib
 
-from . import benchmark as bm, clean, client_metrics, config, gap, load, payload as pl, sf_config, sf_preview, stt, visits
+from . import (autofill, benchmark as bm, clean, client_metrics, config, gap, load, payload as pl, sf_config,
+               sf_preview, stt, visits)
 
 
 @st.cache_data(show_spinner="Computing client metrics…")
@@ -51,18 +59,77 @@ def _gap_state(sid: str) -> dict:
     """Per-system resolutions in st.session_state["vr_gap"]: the status floor each addendum round reached, the keys
     that went through a round, and the addendum texts (D-0047)."""
     g = st.session_state.setdefault("vr_gap", {})
-    return g.setdefault(sid, {"floor": {}, "addendum_keys": [], "addenda": [], "round": 0, "msg": ""})
+    return g.setdefault(sid, {"floor": {}, "addendum_keys": [], "addenda": [], "addendum_text": {}, "round": 0,
+                              "msg": ""})
+
+
+def _clear_gap(sid: str) -> None:
+    """After a typed save (PR 14 review N7): drop this system's addenda, floors and rounds, so a later visit to the
+    same system in this browser session does not inherit them."""
+    st.session_state.get("vr_gap", {}).pop(sid, None)
 
 
 def _full_notes(notes: str, state: dict) -> str:
     return (notes or "") + "".join(ADDENDUM_SEP.format(n=n, text=t) for n, t in enumerate(state["addenda"], 1))
 
 
-def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = None) -> list:
+AUTO_KEYS = {"evidence": "vr_ev", "follow_up": "vr_fu"}  # the only widget keys the auto-fill may write (D-0048)
+
+
+def _apply_autofill(ss, sid: str, i: int, point, status: str, text: str) -> None:
+    """Write the rule suggestions (autofill.suggest) into the Evidence quote and Follow-up widget state of point i
+    BEFORE those widgets render. `ss` is st.session_state (a plain dict in unit tests). Per field:
+    - a widget value that differs from its recorded suggestion (or a value typed before any suggestion) marks the field
+      `edited`, and an edited field is never written again (edits win);
+    - otherwise the field takes the current suggestion and is recorded as auto-rule;
+    - a point that is no longer Raised or Partially gets an unedited suggestion withdrawn (blank).
+    Only the vr_ev / vr_fu keys are written: never Customer response (vr_resp) and never Quality (vr_q)."""
+    reg = ss.setdefault("vr_auto", {})
+    vals = autofill.suggest(point, status, text)
+    for field, prefix in AUTO_KEYS.items():
+        wkey, rk = f"{prefix}_{sid}_{i}", (sid, point.key, field)
+        rec, cur = reg.get(rk), ss.get(wkey)
+        if rec is None and cur:
+            rec = reg[rk] = {"value": None, "src": autofill.SRC_EDITED}  # the rep typed it before any suggestion
+        elif rec is not None and cur is not None and cur != rec["value"]:
+            rec["src"] = autofill.SRC_EDITED
+        if rec is not None and rec["src"] == autofill.SRC_EDITED:
+            continue
+        if field in vals:
+            ss[wkey] = vals[field]
+            reg[rk] = {"value": vals[field], "src": autofill.SRC_AUTO}
+        elif rec is not None:
+            ss[wkey] = ""
+            del reg[rk]
+
+
+def _provenance(ss, sid: str, key: str) -> dict:
+    """{"evidence": src, "follow_up": src} for outcomes_json (AS-0080): edited, auto-rule (a non-empty suggestion
+    still in place) or none."""
+    reg = ss.get("vr_auto", {})
+    out = {}
+    for field in AUTO_KEYS:
+        rec = reg.get((sid, key, field))
+        out[field] = (autofill.SRC_EDITED if rec and rec["src"] == autofill.SRC_EDITED else
+                      autofill.SRC_AUTO if rec and rec["value"] else autofill.SRC_NONE)
+    return out
+
+
+def _source_text(state: dict, key: str, notes: str, lifted: bool) -> str:
+    """The text the suggestions come from: the addendum text(s) this point was checked against when an addendum
+    lifted its status (path B), otherwise the notes."""
+    texts = (state or {}).get("addendum_text", {}).get(key) or []
+    return "\n".join(texts) if lifted and texts else notes
+
+
+def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = None, state: dict | None = None) -> list:
     out = []
+    if points:
+        st.caption(autofill.CAPTION)
     for i, p in enumerate(points):
         hinted = pl.hint_status(p, notes)
         status = gap.upgrade(hinted, (floor or {}).get(p.key, hinted))  # an addendum result stays in force
+        _apply_autofill(st.session_state, sid, i, p, status, _source_text(state, p.key, notes, status != hinted))
         st.markdown(f"**{p.key}**: {p.text}")
         extra = f"; after an addendum: {status}" if status != hinted else ""
         st.caption(HINT_CAPTION[hinted] + extra)
@@ -74,7 +141,11 @@ def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = N
         c2 = st.columns(2)
         evidence = c2[0].text_input("Evidence quote", key=f"vr_ev_{sid}_{i}")
         follow = c2[1].text_input("Follow-up", key=f"vr_fu_{sid}_{i}")
-        out.append(pl.Outcome(p, addressed, response, int(quality), evidence, follow))
+        prov = _provenance(st.session_state, sid, p.key)
+        for col, field in ((c2[0], "evidence"), (c2[1], "follow_up")):
+            if prov[field] == autofill.SRC_AUTO:
+                col.caption(autofill.LABEL)
+        out.append(pl.Outcome(p, addressed, response, int(quality), evidence, follow, auto=prov))
     return out
 
 
@@ -91,6 +162,7 @@ def _check_addendum(sid: str, outcomes: list, keys: list, box: str) -> None:
         state["floor"][k] = new[k].addressed
         if k not in state["addendum_keys"]:
             state["addendum_keys"].append(k)
+        state["addendum_text"].setdefault(k, []).append(text)  # v0.2-h1: the auto-fill source for this point
     state["addenda"].append(text)
     state["round"] += 1
     state["msg"] = (f"Addendum {len(state['addenda'])} checked for " +
@@ -156,6 +228,11 @@ def _blocked_warning(outcomes: list) -> list:
         st.warning(f"Not saved yet: {n} talking point{'s' if n != 1 else ''} need{'s' if n == 1 else ''} a reason "
                    f"or an addendum: {', '.join(o.point.key for o in blocked)}.")
     return blocked
+
+
+def _loaded_gate(outcomes: list) -> list:
+    """'Save loaded visit' stays disabled while this is not empty (D-0047; its own seam since v0.2-h1, PR 14 review N5)."""
+    return _blocked_warning(outcomes)
 
 
 STORE_ERRORS = (sqlite3.Error, OSError)  # the visit store can't be opened or written (AS-0050 (visits DB path))
@@ -302,7 +379,7 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     if not points:
         st.warning("No talking points with computed values for this system; the visit can still be saved.")
     state = _gap_state(sid)
-    outcomes = _outcome_controls(sid, points, notes, state["floor"])
+    outcomes = _outcome_controls(sid, points, notes, state["floor"], state)
     full_notes = _full_notes(notes, state)
     outcomes = _gap_panel(sid, outcomes, "typed", allow_b=True, notes_len=len(full_notes))
     outcomes = [dataclasses.replace(o, addendum=True) if o.point.key in state["addendum_keys"] else o for o in outcomes]
@@ -319,6 +396,7 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
             st.success(f"Saved visit {res['visit_key']} as payload record version {res['version']} "
                        f"(sha256 {res['sha256'][:12]}…). Nothing was sent.")
             st.session_state["vr_last_saved"] = {"payload": res["payload"], "sha256": res["sha256"]}
+            _clear_gap(sid)
     last = st.session_state.get("vr_last_saved")
     if last:
         _preview_panel(last["payload"], last["sha256"], "saved")
@@ -361,7 +439,7 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
             v = loaded["visit"]
             st.success(f"Valid visit file for {loaded['visit_key']} ({len(v['outcomes'])} talking points).")
             l_outcomes = _gap_panel(v["system_id"], loaded["outcomes"], "loaded", allow_b=False)
-            l_blocked = _blocked_warning(l_outcomes)
+            l_blocked = _loaded_gate(l_outcomes)
             if st.button(visits.LABELS["save_loaded"], key="vr_save_loaded",
                          disabled=saves >= visits.SAVES_PER_SESSION or bool(l_blocked)):
                 res = _save_loaded(rep=v["rep"], visit_date=v["visit_date"], system_id=v["system_id"],

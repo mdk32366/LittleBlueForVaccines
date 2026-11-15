@@ -74,3 +74,14 @@ def reason_key(sid: str, key: str, where: str = "typed") -> str:
 
 def text_key(sid: str, key: str, where: str = "typed") -> str:
     return f"vr_gap_text_{where}_{sid}_{key}"
+
+
+# v0.2-h1 (D-0048, T-0092): the Architect's expected auto-fill values for the five narratives, committed verbatim except
+# the prototype's local path in "generated_by" (public repo).
+H1_EXPECTED = DIR / "h1-fixture-expected.json"
+
+
+def h1_expected(case: dict) -> list:
+    """[{"key", "status", "evidence", "follow_up", ...} or {"key", "status": "Not raised", "autofill": None}, ...]"""
+    import json
+    return json.loads(H1_EXPECTED.read_text())["narratives"][case["file"].name]

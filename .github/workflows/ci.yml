@@ -51,12 +51,12 @@ jobs:
       - name: Install pinned requirements
         run: python -m pip install -r requirements.txt
       - name: pytest (app)
-        timeout-minutes: 20  # F-0031 amended (v0.2-g): was 10, timed out at 10 on push run 43637590266
+        timeout-minutes: 15  # F-0031: was 10, then 20 (v0.2-g); v0.2-h1 (N2): per-test cap 180 s, batched gap helper
         env:
           STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
-        run: python -m pytest -v tests
+        run: python -m pytest -v --timeout=180 tests
       - name: Red-proof (every guard can go red)
-        timeout-minutes: 45  # F-0024: was 10; F-0031: was 15, then 25; v0.2-g: 88 mutations took 26 min on the build box
+        timeout-minutes: 45  # F-0024: was 10; F-0031: was 15, then 25, then 45 (v0.2-g); v0.2-h1 (N2): each run has --timeout=180
         run: python -u tools/redproof.py
       - name: Headless smoke (localhost only)
         env:

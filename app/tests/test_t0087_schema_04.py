@@ -121,8 +121,10 @@ def test_visit_files_02_and_03_and_old_rows(tmp_path):
     visits.save_visit(db=db, **vf.visit())
     f03 = visits.visit_file(visits.lookup("demo rep", "2026-11-18", "SYNCP000025", db=db))
     doc = json.loads(f03)
-    assert doc["lb_visit_file"] == visits.FILE_VERSION == "lb-visit-file-0.3"
+    assert doc["lb_visit_file"] == visits.FILE_VERSION == "lb-visit-file-0.4"  # v0.2-h1 (AS-0080): was 0.3
     loaded = visits.parse_visit_file(f03)
+    d03 = dict(doc, lb_visit_file="lb-visit-file-0.3")  # a file downloaded under v0.2-g still loads
+    assert [o.reason_code for o in visits.parse_visit_file(json.dumps(d03).encode())["outcomes"]] == [None, "OUT_OF_TIME"]
     assert [(o.reason_code, o.addendum) for o in loaded["outcomes"]] == [(None, False), ("OUT_OF_TIME", False)]
     assert visits.save_visit(db=db, **{**vf.visit(), "outcomes": loaded["outcomes"]})["version"] == 2
     # a 0.2 file (before v0.2-g): no reason keys, a 0.3 payload

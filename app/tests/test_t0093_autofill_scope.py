@@ -1,0 +1,50 @@
+"""T-0093 scope (D-0048): the auto-fill writes only the Evidence quote and Follow-up widget state; it never writes
+Customer response (vr_resp) or Quality (vr_q), which keep today's defaults (Neutral, 3) and the rep's own picks; a
+Not raised point gets nothing; the fixed caveat caption and the "auto (rule-based)" labels are shown.
+Mutations: autofill_on_not_raised, score_autofilled, response_autofilled."""
+from brief import autofill as af, payload as pl, visit_tab
+from tests import narratives_fixture as nf
+
+CASES = nf.cases()
+RSV = pl.TalkingPoint("must.A2.1", "Must cover: dollar share of RSV is 70.1% for this system against 5.3% for the pooled "
+                                   "national file (45,462 rows), an index of 1332.")
+TEXT = "RSV index against the national file was discussed. Please send it."
+
+
+def test_writes_only_evidence_and_follow_up_keys():
+    for status in ("Raised", "Partially"):
+        ss = {}
+        visit_tab._apply_autofill(ss, "S", 3, RSV, status, TEXT)
+        assert set(ss) == {"vr_auto", "vr_ev_S_3", "vr_fu_S_3"}, (status, sorted(ss))
+        assert set(af.suggest(RSV, status, TEXT)) == {"evidence", "follow_up"}
+
+
+def test_not_raised_gets_nothing():
+    assert af.suggest(RSV, "Not raised", TEXT) == {}
+    ss = {}
+    visit_tab._apply_autofill(ss, "S", 0, RSV, "Not raised", TEXT)
+    assert ss == {"vr_auto": {}}
+
+
+def test_apptest_defaults_kept_caption_and_labels(tmp_path, monkeypatch):
+    case = CASES["02"]
+    sid = case["sid"]
+    at = nf.app_with_notes(tmp_path, monkeypatch, case)
+    n = len(case["rows"])
+    assert [at.selectbox(key=f"vr_resp_{sid}_{i}").value for i in range(n)] == ["Neutral"] * n
+    assert [at.number_input(key=f"vr_q_{sid}_{i}").value for i in range(n)] == [3] * n
+    caps = [c.value for c in at.caption]
+    assert caps.count(af.CAPTION) == 1
+    assert af.CAPTION == ("Suggestions from keyword rules. Review every value before saving. "
+                          "Accuracy has not been measured.")
+    filled = sum(bool(at.text_input(key=f"vr_{f}_{sid}_{i}").value) for i in range(n) for f in ("ev", "fu"))
+    assert filled == 6 and caps.count(af.LABEL) == filled == caps.count("auto (rule-based)")
+    i_nr = [r[0] for r in case["rows"]].index("must.A2.2")
+    assert at.text_input(key=f"vr_ev_{sid}_{i_nr}").value == at.text_input(key=f"vr_fu_{sid}_{i_nr}").value == ""
+    # the rep's own Customer response and Quality survive a re-run of the auto-fill
+    at.selectbox(key=f"vr_resp_{sid}_0").set_value("Objection")
+    at.number_input(key=f"vr_q_{sid}_0").set_value(5)
+    at.run()
+    at.text_area(key="vr_notes").input(nf.notes(case) + " One more line.").run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert at.selectbox(key=f"vr_resp_{sid}_0").value == "Objection" and at.number_input(key=f"vr_q_{sid}_0").value == 5

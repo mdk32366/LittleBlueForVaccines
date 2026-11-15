@@ -8,8 +8,10 @@ into a database record." (2:26 PT 11/13), AS-0057 (sf payload is a database reco
 - Lookup is by the exact key only. There is deliberately no list-all or search function (AS-0058 (open visit store,
   no passcode)): the store is open to anyone with the app URL, so it must not be enumerable from the UI.
 v0.2-g (D-0047, AS-0074): a save is refused (ValueError) while any talking point is unresolved (brief/gap.py); each
-outcome stores reason_code, reason_text and addendum; old rows default them on read. Visit files are
-lb-visit-file-0.3; 0.2 files still load.
+outcome stores reason_code, reason_text and addendum; old rows default them on read.
+v0.2-h1 (D-0048, AS-0080 (provenance is app-side)): an outcome may carry `auto` ({"evidence": src, "follow_up": src},
+src one of auto-rule, edited, none) in outcomes_json and in the visit file only, never in the payload; older rows read
+it as absent. Visit files are lb-visit-file-0.4; 0.2 and 0.3 files still load.
 Path: LB_VISITS_DB, default <repo>/data/visits.db (AS-0050 (visits DB path), gitignored).
 CLI: python -m brief.visits backup DEST [--db PATH]  (online copy via the sqlite3 backup API)
 """
@@ -30,9 +32,10 @@ DEFAULT_DB = PROJECT / "data" / "visits.db"
 NOTES_MAX = 8000          # AS-0058 (open visit store, no passcode) mitigation: notes capped
 SAVES_PER_SESSION = 30    # AS-0058 (open visit store, no passcode) mitigation: the UI caps saves per browser session
 FILE_SCHEMA_PATH = pl.SCHEMA_PATH.parent / "visit_file.schema.json"
-FILE_VERSION = "lb-visit-file-0.3"  # v0.2-g: outcomes carry reason_code, reason_text, addendum (AS-0074)
-FILE_VERSIONS = ("lb-visit-file-0.2", FILE_VERSION)
+FILE_VERSION = "lb-visit-file-0.4"  # v0.2-h1: outcomes may carry `auto` (AS-0080); 0.3 added the reasons (AS-0074)
+FILE_VERSIONS = ("lb-visit-file-0.2", "lb-visit-file-0.3", FILE_VERSION)
 OUTCOME_DEFAULTS = {"reason_code": None, "reason_text": None, "addendum": False}  # a row or file saved before v0.2-g
+AUTO_FIELDS = ("evidence", "follow_up")  # v0.2-h1 provenance keys (AS-0080); no default: older rows read it as absent
 BANNER = ("Demo: synthetic data only. No patient information (no PHI). There is no Salesforce connection: saving "
           "creates a FAKE payload record in this app's own database. Anyone with this app's address can save a "
           "visit or look one up by its exact rep, date and company.")
@@ -98,13 +101,19 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+def _outcome_item(o) -> dict:
+    item = {"key": o.point.key, "text": o.point.text, "metric_value": pl._val(o.point.metric_value),
+            "bench_state": pl._val(o.point.bench_state), "bench_national": pl._val(o.point.bench_national),
+            "addressed": o.addressed, "response": o.response, "quality": int(o.quality),
+            "evidence": o.evidence, "follow_up": o.follow_up, "reason_code": o.reason_code,
+            "reason_text": o.reason_text, "addendum": bool(o.addendum)}
+    if getattr(o, "auto", None) is not None:  # v0.2-h1 (AS-0080): app-side provenance, only when the UI recorded it
+        item["auto"] = {f: o.auto[f] for f in AUTO_FIELDS}
+    return item
+
+
 def _outcomes_json(outcomes) -> str:
-    return json.dumps([{"key": o.point.key, "text": o.point.text, "metric_value": pl._val(o.point.metric_value),
-                        "bench_state": pl._val(o.point.bench_state), "bench_national": pl._val(o.point.bench_national),
-                        "addressed": o.addressed, "response": o.response, "quality": int(o.quality),
-                        "evidence": o.evidence, "follow_up": o.follow_up, "reason_code": o.reason_code,
-                        "reason_text": o.reason_text, "addendum": bool(o.addendum)} for o in outcomes],
-                      ensure_ascii=False)
+    return json.dumps([_outcome_item(o) for o in outcomes], ensure_ascii=False)
 
 
 def _with_defaults(items) -> list:
@@ -114,7 +123,8 @@ def _with_defaults(items) -> list:
 def _outcomes_from(items) -> list:
     return [pl.Outcome(pl.TalkingPoint(i["key"], i["text"], i["metric_value"], i["bench_state"], i["bench_national"]),
                        i["addressed"], i["response"], int(i["quality"]), i["evidence"], i["follow_up"],
-                       i["reason_code"], i["reason_text"], bool(i["addendum"])) for i in _with_defaults(items)]
+                       i["reason_code"], i["reason_text"], bool(i["addendum"]), i.get("auto"))
+            for i in _with_defaults(items)]
 
 
 def _next_version(conn, key: str) -> int:
@@ -200,7 +210,7 @@ def visit_file(found: dict) -> bytes:
 
 
 def parse_visit_file(data: bytes) -> dict:
-    """'Load visit file': JSON, the visit-file schema (lb-visit-file-0.3, or 0.2), the payload schema of the payload's
+    """'Load visit file': JSON, the visit-file schema (lb-visit-file-0.4, or 0.3 or 0.2), the payload schema of the payload's
     own version (0.4; 0.3, or 0.2 for a file saved before v0.2-f), and the payload must match the visit (rebuilt from
     the file's own fields in that same version). Anything else raises InvalidVisitFile. Saving a loaded visit always
     writes a new 0.4 payload, through the same unresolved-point gate (D-0047)."""

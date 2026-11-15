@@ -214,3 +214,27 @@ Visit record tab: notes (typed or voice) --> payload.hint_status(point, notes) p
 - **Schemas.** New `visit_payload-0.4.schema.json`. `visit_payload.schema.json` (0.3) is byte-identical; `visit_file.schema.json` accepts lb-visit-file-0.2 and 0.3.
 - **Session state.** `st.session_state["vr_gap"][system id]` keeps, per point key, the best status an addendum reached, the keys that went through a round and the addendum texts. Addenda are kept apart from the notes box and joined to the notes on save, so editing the notes re-runs the first pass without re-reading an addendum, and an addendum result stays in force because the status only goes up. A point that becomes Raised leaves the panel, and its reason widgets, and so its reason, go with it.
 - **Unchanged.** The Composite mapping, the 25-subrequest guard and the inverse (AS-0072), the visit store tables and lookup, stored 0.2 and 0.3 rows, the other tabs, the PDF, gen/ and gen/out.
+
+## v0.2-h1 rule-based auto-fill (app/)
+D-0048 (auto-fill visit fields, rules part). No model, no network; nothing is sent (D-0037).
+```
+Visit record tab, per talking point, BEFORE its widgets render:
+   status = max(hint_status(point, notes), the point's addendum floor)            (AS-0073, D-0047)
+   source = the addendum text(s) of this point if an addendum lifted it, else the notes
+   visit_tab._apply_autofill(st.session_state, sid, i, point, status, source)
+       autofill.suggest(point, status, source): {} unless Raised or Partially
+           evidence  = the (K hits, C hits)-best sentence, earliest on a tie, verbatim, <= 280   (AS-0077)
+           follow_up = that sentence or the next one if it has a cue, else ""                  (AS-0078)
+       per field: widget value != recorded suggestion -> "edited" (never written again)
+                  else write vr_ev_{sid}_{i} / vr_fu_{sid}_{i} and record "auto-rule"     (AS-0080)
+       never writes vr_resp (Customer response) or vr_q (Quality)
+   "auto (rule-based)" under each filled field; one caveat caption above the points       (AS-0079)
+Save visit (D-0047 gate) --> visits.save_visit: outcomes_json[i].auto = {evidence, follow_up: auto-rule|edited|none}
+   payload lb-sf-tree-0.4 unchanged (no provenance); then vr_gap[sid] is cleared (N7)
+Download / Load visit file: lb-visit-file-0.4 (optional "auto" per outcome); 0.3 and 0.2 still load
+```
+
+- **Modules.** New `brief/autofill.py`, pure (no Streamlit, no store): `sentences`, `cap`, `evidence`, `follow_up`, `suggest`, `CAPTION`, `LABEL`. `brief/visit_tab.py` gains `_apply_autofill`, `_provenance`, `_source_text`, `_clear_gap` and the `_loaded_gate` seam. `brief/payload.py`'s `Outcome` gains `auto` (defaulted; no builder reads it). `brief/visits.py` stores `auto` in `outcomes_json` and writes visit file 0.4.
+- **Session state.** `st.session_state["vr_auto"][(system id, point key, field)] = {"value", "src"}`. The suggestion is written into the widget's own key before the widget renders; the widget keys `vr_ev_…` / `vr_fu_…` carry no status, so a re-run never drops a rep's edit (g put the status in the Addressed key only). `vr_gap[system id]` now also keeps the addendum texts per point key, and is cleared on Save.
+- **Unchanged.** The payload (lb-sf-tree-0.4) and its schemas, the Composite mapping and the 25-subrequest guard, `visits.DDL`, the hint (AS-0073), the gap panel and its gates, Customer response and Quality, the other tabs, gen/ and gen/out. The LLM stays off (AS-0035).
+
