@@ -220,6 +220,7 @@ D-0048 (auto-fill visit fields, rules part). No model, no network; nothing is se
 ```
 Visit record tab, per talking point, BEFORE its widgets render:
    status = max(hint_status(point, notes), the point's addendum floor)            (AS-0073, D-0047)
+   if the rep's own Addressed pick is Not raised: status = Not raised        (v0.2-h1b, F-0040)
    source = the addendum text(s) of this point if an addendum lifted it, else the notes
    visit_tab._apply_autofill(st.session_state, sid, i, point, status, source)
        autofill.suggest(point, status, source): {} unless Raised or Partially
@@ -231,10 +232,11 @@ Visit record tab, per talking point, BEFORE its widgets render:
    "auto (rule-based)" under each filled field; one caveat caption above the points       (AS-0079)
 Save visit (D-0047 gate) --> visits.save_visit: outcomes_json[i].auto = {evidence, follow_up: auto-rule|edited|none}
    payload lb-sf-tree-0.4 unchanged (no provenance); then vr_gap[sid] is cleared (N7)
+   and every vr_auto mark of sid becomes "saved" with the saved value, so the next visit gets fresh suggestions (F-0040)
 Download / Load visit file: lb-visit-file-0.4 (optional "auto" per outcome); 0.3 and 0.2 still load
 ```
 
 - **Modules.** New `brief/autofill.py`, pure (no Streamlit, no store): `sentences`, `cap`, `evidence`, `follow_up`, `suggest`, `CAPTION`, `LABEL`. `brief/visit_tab.py` gains `_apply_autofill`, `_provenance`, `_source_text`, `_clear_gap` and the `_loaded_gate` seam. `brief/payload.py`'s `Outcome` gains `auto` (defaulted; no builder reads it). `brief/visits.py` stores `auto` in `outcomes_json` and writes visit file 0.4.
-- **Session state.** `st.session_state["vr_auto"][(system id, point key, field)] = {"value", "src"}`. The suggestion is written into the widget's own key before the widget renders; the widget keys `vr_ev_…` / `vr_fu_…` carry no status, so a re-run never drops a rep's edit (g put the status in the Addressed key only). `vr_gap[system id]` now also keeps the addendum texts per point key, and is cleared on Save.
+- **Session state.** `st.session_state["vr_auto"][(system id, point key, field)] = {"value", "src"}`. The suggestion is written into the widget's own key before the widget renders; the widget keys `vr_ev_…` / `vr_fu_…` carry no status, so a re-run never drops a rep's edit (g put the status in the Addressed key only). `vr_gap[system id]` now also keeps the addendum texts per point key, and is cleared on Save. v0.2-h1b: `_autofill_status` (the rep's Not raised pick withdraws unedited suggestions) and `_reset_autofill` (on Save) are their own seams, as is `_clear_gap`, so each can be mutated alone.
 - **Unchanged.** The payload (lb-sf-tree-0.4) and its schemas, the Composite mapping and the 25-subrequest guard, `visits.DDL`, the hint (AS-0073), the gap panel and its gates, Customer response and Quality, the other tabs, gen/ and gen/out. The LLM stays off (AS-0035).
 
