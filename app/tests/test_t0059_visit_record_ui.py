@@ -8,6 +8,8 @@ from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
 
+from tests.conftest import resolve_gaps
+
 from brief import payload as pl, visits
 
 APP = str(Path(__file__).resolve().parents[1] / "app.py")
@@ -39,6 +41,7 @@ def test_save_then_lookup_round_trip(tmp_path, monkeypatch):
     at.text_input(key="vr_rep").input("Demo  Rep").run()
     at.date_input(key="vr_date").set_value(D).run()
     at.text_area(key="vr_notes").input("We talked about HPV uptake with the clinic manager.").run()
+    resolve_gaps(at)  # v0.2-g: Save needs every gap resolved (D-0047)
     at.button(key="vr_save").click().run()
     assert not at.exception
     saved = [s.value for s in at.success if s.value.startswith("Saved visit")]
@@ -47,7 +50,8 @@ def test_save_then_lookup_round_trip(tmp_path, monkeypatch):
     assert stored and stored["version"] == 1
     outs = {o["key"]: o for o in stored["visit"]["outcomes"]}  # the talking-points provider's points (v0.2-b)
     assert {"fixed.A1", "must.R2", "question.F2"} <= set(outs)
-    assert outs["must.R2"]["addressed"] == "Raised"  # keyword hint pre-filled from the notes ("HPV")
+    assert outs["must.R2"]["addressed"] == "Partially"  # hint from the notes; v0.2-g AS-0073: "HPV" alone, no cue word
+    assert outs["must.R2"]["reason_code"] == "OUT_OF_TIME"  # resolved in the gap panel before Save (D-0047)
     assert outs["fixed.A1"]["addressed"] == "Not raised"
     kids = {k["Talking_Point_Key__c"]: k for k in
             stored["payload"]["trees"]["Visit__c"]["records"][0]["Talking_Point_Outcomes__r"]["records"]}

@@ -71,3 +71,15 @@ The owner's answers of 2026-11-13, verbatim. At 4:54 PM PT: "Still on, but inven
   - The setup gains one non-secret field, `outcome_parent_field` (AS-0072).
   - The headers, the `Bearer <NOT CONFIGURED>` placeholder, the curl text, the request-set download (now `lb-sf-dryrun-requests-0.2`), the DRY RUN banner and the no-Send rule are unchanged.
   - Guards: T-0078 (updated), T-0081 and T-0082.
+
+## v0.2-g missed talking-point follow-up (app/)
+- **D-0047 (missed talking-point follow-up):** the owner, 10:46 PT 11/14: "I'll need visit narratives to test the feature. Probably five should do it. Pick the facilities, and intentionally miss some talking points. The system should then ask you what about the ones not covered? (Mark as not addressed with a reason, or give another chance to address the ones missing.)" The Architect's spec v0.2-g and G0 rulings follow. D-0045 (Salesforce dry run), D-0046 (one Composite request, allOrNone), D-0037 (no real Salesforce) and AS-0057 (sf payload is a database record, not a send) stand: nothing is sent.
+  - After the notes are typed (or pre-filled by voice), the hint pre-fills each talking point as Raised, Partially or Not raised (AS-0073 (three-state hint)). The rep confirms or changes each one.
+  - A "Not covered yet — What about these?" panel lists every point that is not Raised. For each, the rep picks (A) "Mark not addressed" with a reason from a fixed list (AS-0075 (reason pick list)), or (B) "Address now": a typed addendum, checked with the same hint **only for the (B) points and only on the addendum text**. A point that comes back Raised leaves the panel; the rest return to it. Rounds repeat with no limit, and the status never goes down. Covered points are never asked about again.
+  - Save is disabled, with an inline warning naming the keys, until every point is resolved. Nothing is resolved by a silent default: neither the path nor the reason is pre-picked. `visits.save_visit` refuses an unresolved outcome itself (ValueError), and the lb-sf-tree-0.4 schema refuses it a third time (AS-0074 (lb-sf-tree-0.4 and visit file 0.3)).
+  - Every point ends as Raised, Partially with a reason, or Not raised with a reason. Each addendum round is added to the saved notes as `Addendum n: …`, and the point is stored with `addendum` true.
+  - Save loaded visit goes through the same gate, with path (A) only: the notes of a past visit are not extended.
+  - The status values are the existing Addressed values. "Partially" already existed in the payload and file schemas; v0.2-g adds a way for the hint to pre-fill it and the reason fields, not a new value.
+  - The owner's two §14 questions are built with the Architect's defaults, which the owner can override: a manual switch to Raised needs no evidence quote (AS-0076 (manual Raised)), and the five-item reason list stays as written (AS-0075).
+  - Test inputs: five synthetic narratives in `app/tests/fixtures/narratives/` with their planted coverage in `expected.md` (T-0084, T-0088).
+  - Guards: T-0083 to T-0088; T-0046_stt_ui, T-0047, T-0048, T-0059, T-0060, T-0080 and T-0082 amended.

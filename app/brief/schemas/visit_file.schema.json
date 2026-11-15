@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "lb-visit-file-0.2",
-  "title": "Little Blue visit file (Download visit / Load visit file); the payload is checked separately",
+  "$id": "lb-visit-file-0.3",
+  "title": "Little Blue visit file (Download visit / Load visit file), lb-visit-file-0.3 (0.2 still loads); the payload is checked separately",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -12,7 +12,10 @@
   ],
   "properties": {
     "lb_visit_file": {
-      "const": "lb-visit-file-0.2"
+      "enum": [
+        "lb-visit-file-0.2",
+        "lb-visit-file-0.3"
+      ]
     },
     "lb_marker": {
       "const": "FAKE-SYNTHETIC"
@@ -136,6 +139,26 @@
               "follow_up": {
                 "type": "string",
                 "maxLength": 1000
+              },
+              "reason_code": {
+                "enum": [
+                  "NOT_RELEVANT",
+                  "OUT_OF_TIME",
+                  "CONTACT_DECLINED",
+                  "COVERED_PREVIOUSLY",
+                  "OTHER",
+                  null
+                ]
+              },
+              "reason_text": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 280
+              },
+              "addendum": {
+                "type": "boolean"
               }
             }
           }

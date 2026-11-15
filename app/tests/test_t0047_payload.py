@@ -3,6 +3,8 @@ FAKE Salesforce sObject Tree bodies validate against the JSON Schema of their ow
 Event fields, the Account external-id match and the rep, with the outcomes nested under Talking_Point_Outcomes__r; Event
 and Task are their own trees with WhatId = the Visit__c reference; a bad payload fails in both versions; a stored 0.2
 payload still validates and reads back; the FAKE-SYNTHETIC marker is on every record; the keyword hint is deterministic.
+v0.2-g (amended): new payloads are lb-sf-tree-0.4 (AS-0074), so each outcome child also carries the reason and addendum
+fields, and an outcome that is not Raised needs a reason (D-0047); mentioned_hint is hint_status != Not raised.
 Mutations: pay_drop (Visit_Date__c removed), pay_nofake (marker dropped), schema_lax (validator accepts anything),
 pay_none_str, hint, root_event (outcomes nested under Event again)."""
 import copy
@@ -15,7 +17,7 @@ from tests import visit_fixture as vf
 
 KID_FIELDS = {"attributes", "Talking_Point_Key__c", "Point_Text__c", "Metric_Value__c", "Benchmark_State__c",
               "Benchmark_National__c", "Addressed__c", "Customer_Response__c", "Quality_Score__c", "Evidence_Quote__c",
-              "Follow_Up__c"}
+              "Follow_Up__c", "Not_Addressed_Reason__c", "Not_Addressed_Reason_Text__c", "Addendum__c"}  # 0.4
 
 
 def _p(**kw):
@@ -30,7 +32,7 @@ def _visit(p):
 def test_payload_validates_against_schema():
     p = _p()
     pl.validate(p)
-    assert p["lb_schema_version"] == pl.SCHEMA_VERSION == "lb-sf-tree-0.3"
+    assert p["lb_schema_version"] == pl.SCHEMA_VERSION == "lb-sf-tree-0.4"
     assert list(p["trees"]) == ["Visit__c", "Event", "Task"] == list(pl.TREE_ORDER)
     v = _visit(p)
     assert v["attributes"] == {"type": "Visit__c", "referenceId": "visit"}
@@ -187,7 +189,7 @@ def test_provider_values_numbers_and_null():
     pts = [PayloadPoint("must.R2", "Must cover: HPV to MenACWY + MenABCWY doses", 0.2083, 0.7885, 1.2570),
            PayloadPoint("question.F2", "Question to ask: what is driving purchasing", None, None, None),
            PayloadPoint("must.none", "No ratio differs", float("nan"), float("inf"), None)]
-    p = pl.build_payload(**vf.visit(outcomes=[pl.Outcome(x) for x in pts]))
+    p = pl.build_payload(**vf.visit(outcomes=[pl.Outcome(x, reason_code="OUT_OF_TIME") for x in pts]))
     pl.validate(p)
     kids = _visit(p)[pl.CHILD_REL]["records"]
     assert (kids[0]["Metric_Value__c"], kids[0]["Benchmark_State__c"], kids[0]["Benchmark_National__c"]) == (0.2083, 0.7885, 1.257)

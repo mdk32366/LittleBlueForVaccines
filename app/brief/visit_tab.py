@@ -3,9 +3,13 @@ exact-key lookup, visit file download/load. v0.2-c (PR 7) adds an optional voice
 (brief/stt.py; AS-0047 (STT engine and model), AS-0059 (raw audio is not kept)). No network; nothing is sent anywhere (AS-0057 (sf payload is a database
 record, not a send)). v0.2-f adds the 'Preview Salesforce request' panel after a save or a lookup: a pure function of
 the stored payload and the latest dry-run setup (brief/sf_preview.py, D-0045 (Salesforce dry run)); nothing is sent.
-Kept in its own module so app.py only gains one tab line and one call."""
+v0.2-g, D-0047 (missed talking-point follow-up): the hint pre-fills Raised, Partially or Not raised (AS-0073); the
+'Not covered yet' panel asks about every point that is not Raised: mark it not addressed with a reason (AS-0075), or
+address it now in an addendum that is checked for those points only (brief/gap.py). Save stays disabled until every
+point is resolved. Kept in its own module so app.py only gains one tab line and one call."""
 from __future__ import annotations
 
+import dataclasses
 import datetime as _dt
 import json
 import sqlite3
@@ -14,7 +18,7 @@ import streamlit as st
 
 import hashlib
 
-from . import benchmark as bm, clean, client_metrics, config, load, payload as pl, sf_config, sf_preview, stt, visits
+from . import benchmark as bm, clean, client_metrics, config, gap, load, payload as pl, sf_config, sf_preview, stt, visits
 
 
 @st.cache_data(show_spinner="Computing client metrics…")
@@ -35,14 +39,36 @@ def _points(sid: str, provider):
     return _client_points(str(config.DATA_PATH), str(bm.national_path()), sid), "computed client ratios (PR 5)"
 
 
-def _outcome_controls(sid: str, points: list, notes: str) -> list:
+HINT_CAPTION = {"Raised": "hint: mentioned in the notes", "Partially": "hint: only in passing in the notes",
+                "Not raised": "hint: not found in the notes"}
+GAP = {"title": "Not covered yet — What about these?", "mode": "How to resolve", "A": "Mark not addressed",
+       "B": "Address now", "reason": "Reason", "details": "Details (required for Other)", "addendum": "Addendum",
+       "check": "Check addendum"}
+ADDENDUM_SEP = "\n\nAddendum {n}: {text}"  # how each round is added to the notes (D-0047)
+
+
+def _gap_state(sid: str) -> dict:
+    """Per-system resolutions in st.session_state["vr_gap"]: the status floor each addendum round reached, the keys
+    that went through a round, and the addendum texts (D-0047)."""
+    g = st.session_state.setdefault("vr_gap", {})
+    return g.setdefault(sid, {"floor": {}, "addendum_keys": [], "addenda": [], "round": 0, "msg": ""})
+
+
+def _full_notes(notes: str, state: dict) -> str:
+    return (notes or "") + "".join(ADDENDUM_SEP.format(n=n, text=t) for n, t in enumerate(state["addenda"], 1))
+
+
+def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = None) -> list:
     out = []
     for i, p in enumerate(points):
-        hint = pl.mentioned_hint(p, notes)
+        hinted = pl.hint_status(p, notes)
+        status = gap.upgrade(hinted, (floor or {}).get(p.key, hinted))  # an addendum result stays in force
         st.markdown(f"**{p.key}**: {p.text}")
-        st.caption("hint: mentioned in the notes" if hint else "hint: not found in the notes")
+        extra = f"; after an addendum: {status}" if status != hinted else ""
+        st.caption(HINT_CAPTION[hinted] + extra)
         c = st.columns([2, 2, 1])
-        addressed = c[0].selectbox("Addressed", pl.ADDRESSED, index=0 if hint else 2, key=f"vr_addr_{sid}_{i}_{hint}")
+        addressed = c[0].selectbox("Addressed", pl.ADDRESSED, index=pl.ADDRESSED.index(status),
+                                   key=f"vr_addr_{sid}_{i}_{status}")
         response = c[1].selectbox("Customer response", pl.RESPONSES, index=1, key=f"vr_resp_{sid}_{i}")
         quality = c[2].number_input("Quality (1-5)", min_value=1, max_value=5, value=3, step=1, key=f"vr_q_{sid}_{i}")
         c2 = st.columns(2)
@@ -50,6 +76,86 @@ def _outcome_controls(sid: str, points: list, notes: str) -> list:
         follow = c2[1].text_input("Follow-up", key=f"vr_fu_{sid}_{i}")
         out.append(pl.Outcome(p, addressed, response, int(quality), evidence, follow))
     return out
+
+
+def _check_addendum(sid: str, outcomes: list, keys: list, box: str) -> None:
+    """'Check addendum' (on_click, so the result is in place before the next render): the second pass over the
+    'Address now' points only, on the addendum text only (gap.second_pass)."""
+    state = _gap_state(sid)
+    text = (st.session_state.get(box) or "").strip()
+    if not text:
+        state["msg"] = "Type the addendum first; nothing was checked."
+        return
+    new = {o.point.key: o for o in gap.second_pass(outcomes, text, keys)}
+    for k in keys:
+        state["floor"][k] = new[k].addressed
+        if k not in state["addendum_keys"]:
+            state["addendum_keys"].append(k)
+    state["addenda"].append(text)
+    state["round"] += 1
+    state["msg"] = (f"Addendum {len(state['addenda'])} checked for " +
+                    ", ".join(f"{k}: {new[k].addressed}" for k in keys) + ".")
+
+
+def _gap_panel(sid: str, outcomes: list, where: str, allow_b: bool = True, notes_len: int = 0) -> list:
+    """'Not covered yet — What about these?': every point whose current status is not Raised (gap.uncovered). Each
+    needs (A) a reason, or (B) an addendum round (typed visit only). Returns the outcomes with the reasons applied."""
+    state = _gap_state(sid) if allow_b else None
+    listed = gap.uncovered(outcomes)
+    if not allow_b:  # a loaded visit: only the points that are not Raised and carry no valid reason (D-0047)
+        listed = [o for o in listed if gap.problem(o) is not None]
+    if state and state["msg"]:
+        st.info(state["msg"])
+    if not listed:
+        return outcomes
+    st.subheader(GAP["title"])
+    st.caption("These talking points are not Raised yet. Mark each one not addressed with a reason" +
+               (", or address it now in an addendum: only these points are checked again." if allow_b else
+                ". The notes of a saved visit are not extended."))
+    out = {o.point.key: o for o in outcomes}
+    b_keys = []
+    for o in listed:
+        k = o.point.key
+        st.markdown(f"**{k}** ({o.addressed}): {o.point.text}")
+        mode = GAP["A"]
+        if allow_b:
+            mode = st.radio(GAP["mode"], (GAP["A"], GAP["B"]), index=None, horizontal=True,
+                            key=f"vr_gap_mode_{where}_{sid}_{k}")
+        if mode == GAP["A"]:
+            c = st.columns([2, 3])
+            label = c[0].selectbox(GAP["reason"], list(gap.REASONS.values()), index=None, placeholder="Pick a reason",
+                                   key=f"vr_gap_reason_{where}_{sid}_{k}")
+            text = c[1].text_input(GAP["details"], max_chars=gap.REASON_TEXT_MAX, key=f"vr_gap_text_{where}_{sid}_{k}")
+            code = next((rc for rc, lab in gap.REASONS.items() if lab == label), None)
+            out[k] = dataclasses.replace(o, reason_code=code, reason_text=(text or "").strip() or None)
+        elif mode == GAP["B"]:
+            b_keys.append(k)
+            out[k] = dataclasses.replace(o, reason_code=None, reason_text=None)
+        else:
+            out[k] = dataclasses.replace(o, reason_code=None, reason_text=None)
+        why = gap.problem(out[k])
+        st.caption("resolved" if why is None else
+                   ("to be checked against the addendum below" if mode == GAP["B"] else f"still needed: {why}"))
+    if b_keys:
+        budget = visits.NOTES_MAX - notes_len - 16
+        if budget < 1:
+            st.warning(f"No room for an addendum: the notes are at the {visits.NOTES_MAX}-character limit. "
+                       "Mark these points not addressed instead.")
+        else:
+            box = f"vr_gap_add_{sid}_{state['round']}"
+            st.text_area(f"{GAP['addendum']} (checked only for {', '.join(b_keys)})", max_chars=budget, key=box)
+            cur = [out[o.point.key] for o in outcomes]
+            st.button(GAP["check"], key=f"vr_gap_check_{sid}", on_click=_check_addendum, args=(sid, cur, b_keys, box))
+    return [out[o.point.key] for o in outcomes]
+
+
+def _blocked_warning(outcomes: list) -> list:
+    blocked = gap.unresolved(outcomes)
+    if blocked:
+        n = len(blocked)
+        st.warning(f"Not saved yet: {n} talking point{'s' if n != 1 else ''} need{'s' if n == 1 else ''} a reason "
+                   f"or an addendum: {', '.join(o.point.key for o in blocked)}.")
+    return blocked
 
 
 STORE_ERRORS = (sqlite3.Error, OSError)  # the visit store can't be opened or written (AS-0050 (visits DB path))
@@ -195,10 +301,18 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     st.caption(f"Talking points from: {source}. Hints come from a keyword match on the notes; please confirm each one.")
     if not points:
         st.warning("No talking points with computed values for this system; the visit can still be saved.")
-    outcomes = _outcome_controls(sid, points, notes)
+    state = _gap_state(sid)
+    outcomes = _outcome_controls(sid, points, notes, state["floor"])
+    full_notes = _full_notes(notes, state)
+    outcomes = _gap_panel(sid, outcomes, "typed", allow_b=True, notes_len=len(full_notes))
+    outcomes = [dataclasses.replace(o, addendum=True) if o.point.key in state["addendum_keys"] else o for o in outcomes]
+    if state["addenda"]:
+        st.caption("Added to the notes on save: " + " ".join(f"Addendum {n}: {t}" for n, t in
+                                                              enumerate(state["addenda"], 1)))
+    blocked = _blocked_warning(outcomes)
     saves = st.session_state.get("vr_saves", 0)
-    if st.button(visits.LABELS["save"], key="vr_save", disabled=saves >= visits.SAVES_PER_SESSION):
-        res = _save_typed(rep=rep, visit_date=vdate.isoformat(), system_id=sid, system_name=fs.name, notes=notes,
+    if st.button(visits.LABELS["save"], key="vr_save", disabled=saves >= visits.SAVES_PER_SESSION or bool(blocked)):
+        res = _save_typed(rep=rep, visit_date=vdate.isoformat(), system_id=sid, system_name=fs.name, notes=full_notes,
                           outcomes=outcomes, start_time=start.strftime("%H:%M"), duration=int(duration))
         if res is not None:
             st.session_state["vr_saves"] = saves + 1
@@ -246,10 +360,12 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
         else:
             v = loaded["visit"]
             st.success(f"Valid visit file for {loaded['visit_key']} ({len(v['outcomes'])} talking points).")
+            l_outcomes = _gap_panel(v["system_id"], loaded["outcomes"], "loaded", allow_b=False)
+            l_blocked = _blocked_warning(l_outcomes)
             if st.button(visits.LABELS["save_loaded"], key="vr_save_loaded",
-                         disabled=saves >= visits.SAVES_PER_SESSION):
+                         disabled=saves >= visits.SAVES_PER_SESSION or bool(l_blocked)):
                 res = _save_loaded(rep=v["rep"], visit_date=v["visit_date"], system_id=v["system_id"],
-                                   system_name=v["system_name"], notes=v["notes"], outcomes=loaded["outcomes"],
+                                   system_name=v["system_name"], notes=v["notes"], outcomes=l_outcomes,
                                    start_time=v["start_time"], duration=v["duration"])
                 if res is not None:
                     st.session_state["vr_saves"] = saves + 1

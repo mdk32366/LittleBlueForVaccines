@@ -122,20 +122,20 @@ def test_notes_cap(db):
 
 def test_legacy_02_rows_read_back(db, monkeypatch):
     """v0.2-f: a row saved before the re-root keeps schema_version lb-sf-tree-0.2 and still reads back and validates;
-    the next save appends a 0.3 version; a 0.2 visit file still loads and is checked against the 0.2 shape."""
+    the next save appends a new version (0.4 since v0.2-g); a 0.2 visit file still loads and is checked against the 0.2 shape."""
     with monkeypatch.context() as m:  # a pre-v0.2-f save
         m.setattr(pl, "build_payload", pl.build_payload_v02)
         old = visits.save_visit(db=db, **vf.visit())
     old_file = visits.visit_file(visits.lookup("demo rep", "2026-11-18", "SYNCP000025", db=db))
     new = visits.save_visit(db=db, **vf.visit())
     rows = _rows(db, "SELECT version, schema_version, payload_json, sha256 FROM sf_payloads ORDER BY version")
-    assert [(r[0], r[1]) for r in rows] == [(1, "lb-sf-tree-0.2"), (2, "lb-sf-tree-0.3")]
+    assert [(r[0], r[1]) for r in rows] == [(1, "lb-sf-tree-0.2"), (2, pl.SCHEMA_VERSION)]  # v0.2-g: the next save is 0.4
     for (_, ver, pj, sha), res in zip(rows, (old, new)):
         p = json.loads(pj)
         pl.validate(p)
         assert p["lb_schema_version"] == ver and pl.sha256(p) == sha == res["sha256"]
     found = visits.lookup("demo rep", "2026-11-18", "SYNCP000025", db=db)
-    assert found["version"] == 2 and found["payload"]["lb_schema_version"] == "lb-sf-tree-0.3"
+    assert found["version"] == 2 and found["payload"]["lb_schema_version"] == pl.SCHEMA_VERSION
     assert [v["version"] for v in found["versions"]] == [1, 2] and found["versions"][0]["sha256"] == old["sha256"]
     loaded = visits.parse_visit_file(old_file)
     assert loaded["payload"]["lb_schema_version"] == "lb-sf-tree-0.2" and len(loaded["outcomes"]) == 2

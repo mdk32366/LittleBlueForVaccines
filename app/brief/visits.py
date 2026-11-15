@@ -7,6 +7,9 @@ into a database record." (2:26 PT 11/13), AS-0057 (sf payload is a database reco
   UPDATE and DELETE).
 - Lookup is by the exact key only. There is deliberately no list-all or search function (AS-0058 (open visit store,
   no passcode)): the store is open to anyone with the app URL, so it must not be enumerable from the UI.
+v0.2-g (D-0047, AS-0074): a save is refused (ValueError) while any talking point is unresolved (brief/gap.py); each
+outcome stores reason_code, reason_text and addendum; old rows default them on read. Visit files are
+lb-visit-file-0.3; 0.2 files still load.
 Path: LB_VISITS_DB, default <repo>/data/visits.db (AS-0050 (visits DB path), gitignored).
 CLI: python -m brief.visits backup DEST [--db PATH]  (online copy via the sqlite3 backup API)
 """
@@ -20,14 +23,16 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import payload as pl
+from . import gap, payload as pl
 from .config import PROJECT
 
 DEFAULT_DB = PROJECT / "data" / "visits.db"
 NOTES_MAX = 8000          # AS-0058 (open visit store, no passcode) mitigation: notes capped
 SAVES_PER_SESSION = 30    # AS-0058 (open visit store, no passcode) mitigation: the UI caps saves per browser session
 FILE_SCHEMA_PATH = pl.SCHEMA_PATH.parent / "visit_file.schema.json"
-FILE_VERSION = "lb-visit-file-0.2"
+FILE_VERSION = "lb-visit-file-0.3"  # v0.2-g: outcomes carry reason_code, reason_text, addendum (AS-0074)
+FILE_VERSIONS = ("lb-visit-file-0.2", FILE_VERSION)
+OUTCOME_DEFAULTS = {"reason_code": None, "reason_text": None, "addendum": False}  # a row or file saved before v0.2-g
 BANNER = ("Demo: synthetic data only. No patient information (no PHI). There is no Salesforce connection: saving "
           "creates a FAKE payload record in this app's own database. Anyone with this app's address can save a "
           "visit or look one up by its exact rep, date and company.")
@@ -97,12 +102,19 @@ def _outcomes_json(outcomes) -> str:
     return json.dumps([{"key": o.point.key, "text": o.point.text, "metric_value": pl._val(o.point.metric_value),
                         "bench_state": pl._val(o.point.bench_state), "bench_national": pl._val(o.point.bench_national),
                         "addressed": o.addressed, "response": o.response, "quality": int(o.quality),
-                        "evidence": o.evidence, "follow_up": o.follow_up} for o in outcomes], ensure_ascii=False)
+                        "evidence": o.evidence, "follow_up": o.follow_up, "reason_code": o.reason_code,
+                        "reason_text": o.reason_text, "addendum": bool(o.addendum)} for o in outcomes],
+                      ensure_ascii=False)
+
+
+def _with_defaults(items) -> list:
+    return [{**OUTCOME_DEFAULTS, **i} for i in items]
 
 
 def _outcomes_from(items) -> list:
     return [pl.Outcome(pl.TalkingPoint(i["key"], i["text"], i["metric_value"], i["bench_state"], i["bench_national"]),
-                       i["addressed"], i["response"], int(i["quality"]), i["evidence"], i["follow_up"]) for i in items]
+                       i["addressed"], i["response"], int(i["quality"]), i["evidence"], i["follow_up"],
+                       i["reason_code"], i["reason_text"], bool(i["addendum"])) for i in _with_defaults(items)]
 
 
 def _next_version(conn, key: str) -> int:
@@ -121,10 +133,14 @@ def _write_payload(conn, key: str, payload: dict, now: str) -> int:
 
 def save_visit(*, rep: str, visit_date: str, system_id: str, system_name: str, notes: str, outcomes: list,
                start_time: str = pl.DEFAULT_START, duration: int = pl.DEFAULT_DURATION, db=None) -> dict:
-    """Build + validate the FAKE payload, upsert the visit row, append a payload record. Returns key, version, sha256."""
+    """Build + validate the FAKE payload, upsert the visit row, append a payload record. Returns key, version, sha256.
+    Refuses (ValueError) while any talking point is unresolved (D-0047): the UI gate is not the only gate."""
     notes = notes or ""
     if len(notes) > NOTES_MAX:
         raise ValueError(f"notes are limited to {NOTES_MAX} characters")
+    if gap.unresolved(outcomes):
+        raise ValueError(f"{len(gap.unresolved(outcomes))} talking points need a reason or an addendum: "
+                         f"{gap.describe(outcomes)}")
     payload = pl.build_payload(rep=rep, visit_date=visit_date, system_id=system_id, system_name=system_name,
                                notes=notes, outcomes=outcomes, start_time=start_time, duration=duration)
     pl.validate(payload)
@@ -166,7 +182,7 @@ def lookup(rep: str, visit_date: str, system_id: str, db=None) -> dict | None:
     finally:
         conn.close()
     visit = dict(v)
-    visit["outcomes"] = json.loads(visit.pop("outcomes_json"))
+    visit["outcomes"] = _with_defaults(json.loads(visit.pop("outcomes_json")))  # rows before v0.2-g lack the reasons
     return {"visit_key": key, "visit": visit, "version": last["version"] if last else 0,
             "payload": json.loads(last["payload_json"]) if last else None, "sha256": last["sha256"] if last else None,
             "versions": [dict(r) for r in vers]}
@@ -184,9 +200,10 @@ def visit_file(found: dict) -> bytes:
 
 
 def parse_visit_file(data: bytes) -> dict:
-    """'Load visit file': JSON, the visit-file schema, the payload schema of the payload's own version (0.3, or 0.2 for
-    a file saved before v0.2-f), and the payload must match the visit (rebuilt from the file's own fields in that same
-    version). Anything else raises InvalidVisitFile. Saving a loaded visit always writes a new 0.3 payload."""
+    """'Load visit file': JSON, the visit-file schema (lb-visit-file-0.3, or 0.2), the payload schema of the payload's
+    own version (0.4; 0.3, or 0.2 for a file saved before v0.2-f), and the payload must match the visit (rebuilt from
+    the file's own fields in that same version). Anything else raises InvalidVisitFile. Saving a loaded visit always
+    writes a new 0.4 payload, through the same unresolved-point gate (D-0047)."""
     import jsonschema
     try:
         doc = json.loads(data)
@@ -201,7 +218,7 @@ def parse_visit_file(data: bytes) -> dict:
     except pl.InvalidPayload as e:
         raise InvalidVisitFile(f"payload: {e}") from None
     v = doc["visit"]
-    build = pl.BUILDERS[doc["payload"]["lb_schema_version"]]  # a pre-v0.2-f file is checked against the 0.2 shape
+    build = pl.BUILDERS[doc["payload"]["lb_schema_version"]]  # an older file is checked against its own shape
     try:
         rebuilt = build(rep=v["rep"], visit_date=v["visit_date"], system_id=v["system_id"],
                                    system_name=v["system_name"], notes=v["notes"], outcomes=_outcomes_from(v["outcomes"]),

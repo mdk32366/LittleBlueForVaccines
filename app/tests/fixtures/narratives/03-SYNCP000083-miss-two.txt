@@ -1,0 +1,10 @@
+FAKE-SYNTHETIC demo visit note: synthetic data, roles only.
+Visit notes, Cedar Valley Physician Alliance 083 (Michigan IDN). Urgent care is the main facility type, and this is a large book, about $1.86M in net dollars. Met the pharmacy director and the urgent care operations lead at the hub clinic.
+
+In-state comparison is limited: too few in-state peers to show a state share, so I used the national dollars figure (a small slice of the national file) when we talked scale. The pharmacy director was already aware of the too-few-peers issue and preferred the national comparison.
+
+RSV leads the mix at about seven tenths of dollars, far ahead of the national share, with a very high index. That dollar share of RSV was the first must-cover item, and the operations lead said urgent care traffic is where most of that volume shows up. I also walked the other RSV must-cover: RSV vaccine to adult-labelled influenza-season doses is near zero for this system against the national file. They asked for a simple one-line reminder of that ratio, without a long benchmark table.
+
+I asked what is driving purchasing in RSV and which programs are planned for next season. They pointed to standing urgent care protocols and a planned winter staffing plan, and they want a short leave-behind for the operations meeting.
+
+The MSA on file is already past its end date and does not roll over; we noted that only in passing and did not open contracting. I did not get to every must-cover item or to manufacturer-window moves; the visit stayed on scale and the RSV block. A shorter follow-up was left open if they want to finish the list.

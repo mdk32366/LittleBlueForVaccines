@@ -115,6 +115,23 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "visit_not_first": (["test_t0081_sf_composite.py"], ["test_all_or_none_and_order", "test_check_composite_refuses_each_broken_shape"]),
     "placeholder_linked": (["test_t0082_placeholder_not_linked.py"], ["test_instance_url_in_backticks"]),  # F-0034
     "link_live": (["test_t0082_placeholder_not_linked.py"], ["test_integration_tab_no_salesforce_anchor"]),  # F-0034
+    # v0.2-g missed talking-point follow-up (D-0047; T-0083..T-0087)
+    "reason_optional": (["test_t0085_gap_gate.py", "test_t0087_schema_04.py"],
+                        ["test_save_blocked_and_warning_names_keys", "test_save_visit_refuses_unresolved",
+                         "test_schema_04_rejects"]),
+    "gap_panel_off": (["test_t0084_narratives.py", "test_t0085_gap_gate.py"],
+                      ["test_uncovered_equals_planted", "test_apptest_panel_lists_planted",
+                       "test_all_resolved_enables_save_and_stores_reasons"]),
+    "second_pass_rescans_covered": (["test_t0086_second_pass.py"], ["test_spy_only_uncovered_keys_and_raised_unchanged",
+                                                                    "test_status_never_goes_down",
+                                                                    "test_04_round_one_then_round_two"]),
+    "partial_dropped": (["test_t0083_hint_status.py", "test_t0084_narratives.py"],
+                        ["test_rule_unit_cases", "test_deterministic_and_mentioned_hint_compatible",
+                         "test_uncovered_equals_planted", "test_apptest_panel_lists_planted"]),
+    "schema_03_mutated": (["test_t0087_schema_04.py"], ["test_v03_schema_bytes_pinned", "test_v03_builder_frozen"]),
+    "a1_stopworded": (["test_t0083_hint_status.py", "test_t0084_narratives.py"],
+                      ["test_rule_unit_cases", "test_size_point_has_no_keywords_and_uses_anchors",
+                       "test_uncovered_equals_planted", "test_apptest_panel_lists_planted"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():
