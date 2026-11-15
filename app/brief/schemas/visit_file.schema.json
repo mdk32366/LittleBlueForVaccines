@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "lb-visit-file-0.3",
-  "title": "Little Blue visit file (Download visit / Load visit file), lb-visit-file-0.3 (0.2 still loads); the payload is checked separately",
+  "$id": "lb-visit-file-0.4",
+  "title": "Little Blue visit file (Download visit / Load visit file), lb-visit-file-0.4 (0.3 and 0.2 still load); the payload is checked separately",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -14,7 +14,8 @@
     "lb_visit_file": {
       "enum": [
         "lb-visit-file-0.2",
-        "lb-visit-file-0.3"
+        "lb-visit-file-0.3",
+        "lb-visit-file-0.4"
       ]
     },
     "lb_marker": {
@@ -159,6 +160,31 @@
               },
               "addendum": {
                 "type": "boolean"
+              },
+              "auto": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "evidence",
+                  "follow_up"
+                ],
+                "description": "v0.2-h1 app-side provenance (AS-0080); never part of the payload",
+                "properties": {
+                  "evidence": {
+                    "enum": [
+                      "auto-rule",
+                      "edited",
+                      "none"
+                    ]
+                  },
+                  "follow_up": {
+                    "enum": [
+                      "auto-rule",
+                      "edited",
+                      "none"
+                    ]
+                  }
+                }
               }
             }
           }

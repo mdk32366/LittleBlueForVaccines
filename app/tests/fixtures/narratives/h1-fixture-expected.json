@@ -1,0 +1,273 @@
+{
+ "generated_by": "throwaway prototype (not committed)",
+ "source": "main 0f8471d app code (== PR 13 head 7fa7620) plus g's hint rule as specified in SPEC-v0.2-g (sha 4ba2dc84)",
+ "spec": "v0.2-h1",
+ "narratives": {
+  "01-SYNCP000025-all-covered.txt": [
+   {
+    "key": "fixed.A1",
+    "status": "Raised",
+    "evidence": "The book is about $835K in net dollars, a solid slice of the in-state total among the synthetic peers and a small slice of national dollars.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.A2.1",
+    "status": "Raised",
+    "evidence": "We spent most of the visit on pneumococcal, which leads the mix at roughly half of dollars, well ahead of the national share, with a high index versus both the national file and in-state peers.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.F5",
+    "status": "Raised",
+    "evidence": "On hepatitis, the share for Merck & Company moved down sharply between the two windows (from the high seventies to under half of class doses).",
+    "follow_up": "The pharmacy director had seen that share move and asked for a follow-up view of the two windows.",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.R2",
+    "status": "Raised",
+    "evidence": "Must-cover items we walked in full: HPV to MenACWY plus MenABCWY doses is low for this system against the pooled national file, and they agreed the adolescent platform needs a closer look before the next school cycle.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.4",
+    "status": "Raised",
+    "evidence": "Dollar share of shingles is well above in-state peers; they want to hold that volume and asked for a short peer comparison.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.1",
+    "status": "Raised",
+    "evidence": "We spent most of the visit on pneumococcal, which leads the mix at roughly half of dollars, well ahead of the national share, with a high index versus both the national file and in-state peers.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "question.F2",
+    "status": "Raised",
+    "evidence": "I asked what is driving purchasing in pneumococcal and which programs are planned for next season.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   }
+  ],
+  "02-SYNCP000031-miss-one.txt": [
+   {
+    "key": "fixed.A1",
+    "status": "Raised",
+    "evidence": "I opened with the size of the book: about $766K in net dollars, a few percent of the in-state total (there are many synthetic peers in the state) and a small slice of national dollars.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.A2.1",
+    "status": "Raised",
+    "evidence": "The top class is shingles, which leads at a little over two fifths of dollars, far ahead of the national share and with a very high index versus in-state peers.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.F5",
+    "status": "Raised",
+    "evidence": "On manufacturer mix, GSK Pharm in influenza moved from none of the class doses in the first window to all of them in the second.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.R5",
+    "status": "Raised",
+    "evidence": "We spent the middle of the visit on that dollar share and on the must-cover ratio: shingles to adult-labelled influenza doses is far above the in-state peer figure.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.1",
+    "status": "Raised",
+    "evidence": "The top class is shingles, which leads at a little over two fifths of dollars, far ahead of the national share and with a very high index versus in-state peers.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.2",
+    "status": "Not raised",
+    "autofill": null
+   },
+   {
+    "key": "question.F2",
+    "status": "Raised",
+    "evidence": "I asked what is driving purchasing in shingles and which programs are planned for next season.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   }
+  ],
+  "03-SYNCP000083-miss-two.txt": [
+   {
+    "key": "fixed.A1",
+    "status": "Raised",
+    "evidence": "In-state comparison is limited: too few in-state peers to show a state share, so I used the national dollars figure (a small slice of the national file) when we talked scale.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.A2.1",
+    "status": "Raised",
+    "evidence": "RSV leads the mix at about seven tenths of dollars, far ahead of the national share, with a very high index.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.F5",
+    "status": "Not raised",
+    "autofill": null
+   },
+   {
+    "key": "must.R6",
+    "status": "Raised",
+    "evidence": "I also walked the other RSV must-cover: RSV vaccine to adult-labelled influenza-season doses is near zero for this system against the national file.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.1",
+    "status": "Raised",
+    "evidence": "RSV leads the mix at about seven tenths of dollars, far ahead of the national share, with a very high index.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.3",
+    "status": "Not raised",
+    "autofill": null
+   },
+   {
+    "key": "question.F2",
+    "status": "Raised",
+    "evidence": "I asked what is driving purchasing in RSV and which programs are planned for next season.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   }
+  ],
+  "04-SYNCP000024-miss-most.txt": [
+   {
+    "key": "fixed.A1",
+    "status": "Raised",
+    "evidence": "I started with a scale snapshot only: about $430K in net dollars, a couple of percent of the in-state total among the synthetic peers and a small slice of national dollars.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.A2.1",
+    "status": "Not raised",
+    "autofill": null
+   },
+   {
+    "key": "fixed.F5",
+    "status": "Raised",
+    "evidence": "We then confirmed switching: no material switching between the two windows.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.R5",
+    "status": "Not raised",
+    "autofill": null
+   },
+   {
+    "key": "must.A2.3",
+    "status": "Not raised",
+    "autofill": null
+   },
+   {
+    "key": "must.R6",
+    "status": "Not raised",
+    "autofill": null
+   },
+   {
+    "key": "question.F2",
+    "status": "Not raised",
+    "autofill": null
+   }
+  ],
+  "05-SYNCP000098-partial.txt": [
+   {
+    "key": "fixed.A1",
+    "status": "Raised",
+    "evidence": "Scale first: about $665K in net dollars, roughly a tenth of the in-state total among the synthetic peers and a small slice of national dollars.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.A2.1",
+    "status": "Raised",
+    "evidence": "RSV leads the mix at close to two fifths of dollars, well above the national share, with a high index.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "fixed.F5",
+    "status": "Raised",
+    "evidence": "Switching was straightforward: no material switching between the two windows, and they did not dispute that.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.1",
+    "status": "Raised",
+    "evidence": "RSV leads the mix at close to two fifths of dollars, well above the national share, with a high index.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.A2.3",
+    "status": "Partially",
+    "evidence": "Rotavirus came up only in passing.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "must.R1",
+    "status": "Raised",
+    "evidence": "We also covered the meningococcal must-cover in full: MenB plus MenABCWY to MenACWY plus MenABCWY doses is about double the in-state peer ratio.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   },
+   {
+    "key": "question.F2",
+    "status": "Raised",
+    "evidence": "I asked what is driving purchasing in RSV and which programs are planned for next season.",
+    "follow_up": "",
+    "response": "not auto-filled (rep-set, default Neutral)",
+    "quality": "not auto-filled (rep-set, default 3)"
+   }
+  ]
+ }
+}

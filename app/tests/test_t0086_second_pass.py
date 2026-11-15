@@ -2,7 +2,9 @@
 sent to it that are not Raised; the status never goes down; points that come back Raised leave the panel and the rest
 return to it; rounds repeat; each round is added to the saved notes as 'Addendum n: ...' and the point is stored with
 addendum=True; with no room left under the notes limit, an addendum can't be added and the panel says why.
-Mutation: second_pass_rescans_covered (every point is re-checked and its status overwritten)."""
+Mutation: second_pass_rescans_covered (every point is re-checked and its status overwritten).
+v0.2-h1 amendment (PR 14 review N7): a typed Save clears that system's 'Not covered yet' state, so the next visit to the
+same system in the same browser session starts without the earlier addenda and floors."""
 from brief import gap, payload as pl, talking, visits, visit_tab
 from tests import narratives_fixture as nf
 
@@ -134,3 +136,19 @@ def test_notes_limit_disables_addendum(tmp_path, monkeypatch):
     _path_b(at2, sid, ["must.A2.2"])
     box = next(t for t in at2.text_area if str(t.key).startswith(f"vr_gap_add_{sid}_"))
     assert box.max_chars == visits.NOTES_MAX - len(nf.notes(short)) - 16
+
+
+def test_save_clears_gap_state_n7(tmp_path, monkeypatch):
+    case = CASES["02"]
+    sid = case["sid"]
+    at = nf.app_with_notes(tmp_path, monkeypatch, case)
+    _path_b(at, sid, ["must.A2.2"])
+    _add(at, sid, ADD02)
+    assert at.session_state["vr_gap"][sid]["addenda"] == [ADD02]
+    at.button(key="vr_save").click().run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert sid not in at.session_state["vr_gap"]  # cleared on Save
+    at.text_input(key="vr_rep").input("Second Rep").run()  # the next visit to the same system, same session
+    assert nf.panel(at) == {"must.A2.2": "Not raised"}  # no inherited floor
+    assert not [c.value for c in at.caption if c.value.startswith("Added to the notes on save")]
+    assert at.button(key="vr_save").disabled

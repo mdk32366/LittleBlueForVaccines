@@ -80,7 +80,8 @@ class Outcome:
     """The rep's record for one talking point. The keyword hint pre-fills `addressed`; the rep confirms.
     v0.2-g: a point that is not Raised carries a reason (reason_code, plus reason_text for OTHER); addendum is True
     when the point went through at least one 'Address now' round (D-0047). The new fields default, so the positional
-    constructors keep working."""
+    constructors keep working. v0.2-h1: `auto` is {"evidence": src, "follow_up": src} with src auto-rule, edited or
+    none (AS-0080 (provenance is app-side)); it is stored in visits.outcomes_json and the visit file only."""
     point: TalkingPoint
     addressed: str = "Not raised"
     response: str = "Neutral"
@@ -90,6 +91,7 @@ class Outcome:
     reason_code: str | None = None
     reason_text: str | None = None
     addendum: bool = False
+    auto: dict | None = None  # v0.2-h1 (AS-0080): app-side provenance only; never read by any payload builder
 
 
 STOP = frozenset("""a about above against all also an and any are as at be below between by for from has have in incl

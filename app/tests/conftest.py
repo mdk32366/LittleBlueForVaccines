@@ -472,24 +472,83 @@ def apply_mutation(name):
         payload.SCHEMA_PATHS = {**payload.SCHEMA_PATHS, payload.V03_VERSION: tmp}
     elif name == "a1_stopworded":  # T-0083/T-0084: the size-point anchor rule is removed (empty K -> Not raised)
         payload.ANCHORS = ()
+    # v0.2-h1 rule-based auto-fill (D-0048, T-0089..T-0093) and the PR 14 follow-ups N4/N5 (T-0085 amended)
+    elif name == "quote_paraphrased":  # T-0089/T-0092: the evidence is collapsed to single spaces and lowercased
+        from brief import autofill
+        orig_ev = autofill.evidence
+        autofill.evidence = lambda point, text: " ".join(orig_ev(point, text).split()).lower()
+    elif name == "followup_without_cue":  # T-0090/T-0092: the follow-up is always the sentence after the evidence
+        from brief import autofill
+
+        def next_sentence(point, text):
+            i = autofill._best(point, text)
+            ss = autofill.sentences(text)
+            return "" if i is None or i + 1 >= len(ss) else autofill.cap(ss[i + 1])
+        autofill.follow_up = next_sentence
+    elif name == "edit_overwritten":  # T-0091: the auto-fill writes even when a field is `edited`
+        from brief import visit_tab
+        orig_apply = visit_tab._apply_autofill
+
+        def forget_edits(ss, sid, i, point, status, text):
+            reg = ss.setdefault("vr_auto", {})
+            for field, prefix in visit_tab.AUTO_KEYS.items():
+                rk, wkey = (sid, point.key, field), f"{prefix}_{sid}_{i}"
+                if rk in reg or ss.get(wkey):
+                    reg[rk] = {"value": ss.get(wkey), "src": "auto-rule"}  # every edit looks like the suggestion
+            orig_apply(ss, sid, i, point, status, text)
+        visit_tab._apply_autofill = forget_edits
+    elif name == "autofill_on_not_raised":  # T-0093/T-0092: the eligibility filter is dropped
+        from brief import autofill
+        autofill.ELIGIBLE = tuple(payload.ADDRESSED)
+    elif name in ("score_autofilled", "response_autofilled"):  # T-0093: the auto-fill writes Quality / Customer response
+        from brief import visit_tab
+        orig_apply2 = visit_tab._apply_autofill
+
+        def also_writes(ss, sid, i, point, status, text):
+            orig_apply2(ss, sid, i, point, status, text)
+            if name == "score_autofilled" and status == "Raised":
+                ss[f"vr_q_{sid}_{i}"] = 4
+            if name == "response_autofilled":
+                ss[f"vr_resp_{sid}_{i}"] = "Neutral"  # any value: even today's default is a write
+        visit_tab._apply_autofill = also_writes
+    elif name == "savevisit_gate_off":  # T-0085 (N4): the gap.unresolved raise in visits.save_visit is removed
+        import types
+        from brief import gap
+        visits.gap = types.SimpleNamespace(**{k: getattr(gap, k) for k in dir(gap) if not k.startswith("__")})
+        visits.gap.unresolved = lambda outcomes: []
+    elif name == "loaded_gate_off":  # T-0085 (N5): 'Save loaded visit' is no longer disabled by the unresolved points
+        from brief import visit_tab
+        orig_gate = visit_tab._loaded_gate
+        visit_tab._loaded_gate = lambda outcomes: (orig_gate(outcomes), [])[1]
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 
 
 def resolve_gaps(at, code="OUT_OF_TIME", where="typed"):
     """T-0083..T-0088 shared helper (v0.2-g, D-0047): resolve every point in the 'Not covered yet' panel of an AppTest
-    with path A (Mark not addressed) and one reason code, so a test that only needs a save can click Save."""
+    with path A (Mark not addressed) and one reason code, so a test that only needs a save can click Save.
+    Batched (PR 14 review N1): set every radio, then one rerun; set every reason, then one rerun (and every Other
+    details box, then one rerun), instead of one full rerun per widget."""
     from brief import gap, visit_tab
     pre = f"vr_gap_mode_{where}_"
-    for r in [r for r in at.radio if str(r.key or "").startswith(pre)]:
-        at.radio(key=r.key).set_value(visit_tab.GAP["A"]).run()
+    radios = [r for r in at.radio if str(r.key or "").startswith(pre)]
+    for r in radios:
+        at.radio(key=r.key).set_value(visit_tab.GAP["A"])
+    if radios:
+        at.run()
     rpre = f"vr_gap_reason_{where}_"
-    for s in [s for s in at.selectbox if str(s.key or "").startswith(rpre)]:
-        at.selectbox(key=s.key).set_value(gap.REASONS[code]).run()
+    boxes = [s for s in at.selectbox if str(s.key or "").startswith(rpre)]
+    for s in boxes:
+        at.selectbox(key=s.key).set_value(gap.REASONS[code])
+    if boxes:
+        at.run()
     if code == "OTHER":
         tpre = f"vr_gap_text_{where}_"
-        for t in [t for t in at.text_input if str(t.key or "").startswith(tpre)]:
-            at.text_input(key=t.key).input("other reason").run()
+        texts = [t for t in at.text_input if str(t.key or "").startswith(tpre)]
+        for t in texts:
+            at.text_input(key=t.key).input("other reason")
+        if texts:
+            at.run()
     return at
 
 

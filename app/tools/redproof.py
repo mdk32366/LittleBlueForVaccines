@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Red-proof: one deliberate defect per run (tests/conftest.py REDPROOF=...), running the guard's own test file(s);
-each must go red. Then the full suite with no mutation must be green (control)."""
+each must go red. Then the full suite with no mutation must be green (control). Every run passes pytest-timeout's
+per-test cap (v0.2-h1, PR 14 review N2), so a hang fails in minutes, not at the CI step limit."""
 import os, re, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VENV_PY = ROOT / ".venv" / "bin" / "python"
 PY = str(VENV_PY) if VENV_PY.exists() else sys.executable  # clean clone / CI: current interpreter
+TIMEOUT = ["--timeout", os.environ.get("REDPROOF_TEST_TIMEOUT", "180")]  # pytest-timeout (requirements.txt)
 EXPECT = {  # mutation: (files to run, tests that must fail)
     "reconcile": (["test_t0001_reconcile.py"], ["test_reconcile_synthetic_file", "test_returns_netted_and_reported"]),
     "ratio": (["test_t0002_ratio.py"], ["test_rule", "test_fixture_cases"]),
@@ -132,10 +134,26 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "a1_stopworded": (["test_t0083_hint_status.py", "test_t0084_narratives.py"],
                       ["test_rule_unit_cases", "test_size_point_has_no_keywords_and_uses_anchors",
                        "test_uncovered_equals_planted", "test_apptest_panel_lists_planted"]),
+    # v0.2-h1 rule-based auto-fill (D-0048; T-0089..T-0093) and the PR 14 follow-ups N4, N5 (T-0085 amended)
+    "quote_paraphrased": (["test_t0089_autofill_evidence.py", "test_t0092_autofill_narratives.py"],
+                          ["test_quote_is_verbatim_substring", "test_narrative_matches_fixture"]),
+    "followup_without_cue": (["test_t0090_autofill_followup.py", "test_t0092_autofill_narratives.py"],
+                             ["test_no_cue_gives_blank", "test_only_the_evidence_sentence_and_the_next",
+                              "test_narrative_matches_fixture"]),
+    "edit_overwritten": (["test_t0091_autofill_edits.py"], ["test_edit_survives_reruns_and_provenance_after_save"]),
+    "autofill_on_not_raised": (["test_t0093_autofill_scope.py", "test_t0092_autofill_narratives.py"],
+                               ["test_not_raised_gets_nothing", "test_narrative_matches_fixture"]),
+    "score_autofilled": (["test_t0093_autofill_scope.py"], ["test_writes_only_evidence_and_follow_up_keys",
+                                                            "test_apptest_defaults_kept_caption_and_labels"]),
+    "response_autofilled": (["test_t0093_autofill_scope.py"], ["test_writes_only_evidence_and_follow_up_keys",
+                                                               "test_apptest_defaults_kept_caption_and_labels"]),
+    "savevisit_gate_off": (["test_t0085_gap_gate.py"], ["test_save_visit_gate_is_its_own_refusal"]),
+    "loaded_gate_off": (["test_t0085_gap_gate.py"], ["test_apptest_save_loaded_gate"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():
-    r = subprocess.run([PY, "-m", "pytest", "-q", "-rf", "-p", "no:cacheprovider"] + [f"tests/{f}" for f in files],
+    r = subprocess.run([PY, "-m", "pytest", "-q", "-rf", "-p", "no:cacheprovider"] + TIMEOUT +
+                       [f"tests/{f}" for f in files],
                        cwd=ROOT, env=dict(os.environ, REDPROOF=name), capture_output=True, text=True)
     failed = sorted(set(re.findall(r"^FAILED tests/\S+?::(\w+)", r.stdout, re.M)))
     hit = all(e in failed for e in expect)
@@ -144,7 +162,8 @@ for name, (files, expect) in EXPECT.items():
     lines += [f"## REDPROOF={name}: {'RED as expected' if hit else 'NOT RED (guard is vacuous!)'}",
               f"   files: {', '.join(files)}; pytest exit={r.returncode}; {last}",
               f"   expected red: {', '.join(expect)}", f"   all failed:   {', '.join(failed) or '(none)'}"]
-r = subprocess.run([PY, "-m", "pytest", "-q", "-p", "no:cacheprovider", "tests"], cwd=ROOT, capture_output=True, text=True)
+r = subprocess.run([PY, "-m", "pytest", "-q", "-p", "no:cacheprovider"] + TIMEOUT + ["tests"], cwd=ROOT, capture_output=True,
+                   text=True)
 lines.append(f"## control (no mutation, full suite): exit={r.returncode}; {r.stdout.strip().splitlines()[-1]}")
 ok_all &= r.returncode == 0
 lines.append(f"REDPROOF OVERALL: {'PASS' if ok_all else 'FAIL'}")

@@ -2,7 +2,9 @@
 'FAKE-SYNTHETIC demo visit note: synthetic data, roles only.' and the marker leaves every hint result unchanged; the
 narratives and expected.md hold no person names (an honorific / name-intro pattern list, plus the project's hygiene
 names, kept here only as sha256 digests so the names themselves are not in the repo), no URL or hostname and no box
-path. Each detector is checked on a planted sample first, so it can go red."""
+path. Each detector is checked on a planted sample first, so it can go red. v0.2-h1 (PR 14 review N6): the digests
+also cover the short name the review added (checked on a planted sample spelled split), and the committed h1 fixture
+JSON (h1-fixture-expected.json, T-0092) is held to the same rules."""
 import hashlib
 import re
 
@@ -23,6 +25,7 @@ NAME_SHA = {  # sha256 of each casefolded project hygiene name
     "d2dae6d1b4625413eade8cafcb06d6d000fdb57d963fc3c5c497084d42288319",
     "47d9bb497099c29a05f74dc83894e6bfa64dacf3977ee777bd37f60d15059539",
     "ecd18c6a66631988cfa1ef186b61d729c1430c3e1a2503c3d83167a6d95f7b95",
+    "78e0b1fdb55ecbc60a8da0168ce87daa0e7ba2b44ffa0cf61a8f0a6c5b423d7a",  # v0.2-h1 (PR 14 review N6)
 }
 NAME_PATTERNS = [re.compile(p) for p in (r"\b(?:Dr|Mr|Mrs|Ms|Mx|Miss|Prof)\b\.?\s+[A-Z]",
                                          r"\b(?:named|called|whose name is)\s+[A-Z][a-z]+",
@@ -39,7 +42,7 @@ def _names(text: str, digests=NAME_SHA) -> list:
 
 
 def _texts():
-    return [(f.name, f.read_text()) for f in FILES] + [(nf.EXPECTED.name, nf.EXPECTED.read_text())]
+    return [(f.name, f.read_text()) for f in FILES] + [(p.name, p.read_text()) for p in (nf.EXPECTED, nf.H1_EXPECTED)]
 
 
 def test_five_files_each_with_the_marker():
@@ -64,6 +67,7 @@ def test_detectors_go_red_on_planted_samples():
     planted = "zqxplanted"
     assert _names(f"Met {planted} today.", {hashlib.sha256(planted.encode()).hexdigest()}) == [planted]
     assert _names("Met Dr. Quillon at the site.") and _names("a lead named Quillon")
+    assert _names("met " + "k" "en" + " at the site") == ["k" "en"]  # N6: split so the pre-PR grep stays at 0 hits
     assert HOST.search("see example.com") and HOST.search("https://x") and not HOST.search("Merck & Company")
     assert all(BOX_PATH.search(f"in /{d}/x") for d in BOX_DIRS) and not BOX_PATH.search("3/4 of doses")
 

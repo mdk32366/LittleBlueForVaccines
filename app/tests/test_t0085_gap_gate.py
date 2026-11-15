@@ -2,7 +2,11 @@
 unresolved key; nothing is pre-picked (no resolution radio and no reason has a default); a reason of Other without
 details still blocks, and so do details over 280 characters; once every point is resolved Save is enabled and the
 reasons reach the stored payload. visits.save_visit refuses an unresolved outcome on its own (ValueError, nothing
-written). Mutations: reason_optional (0.4 reason rules dropped and unresolved() ignores reasons), gap_panel_off."""
+written). Mutations: reason_optional (0.4 reason rules dropped and unresolved() ignores reasons), gap_panel_off.
+v0.2-h1 amendments (PR 14 review N4, N5): save_visit's own gate is told apart from the 0.4 schema (its message, and not
+InvalidPayload; mutation savevisit_gate_off), and 'Save loaded visit' is disabled until the loaded file's missing
+reason is set (AppTest; mutation loaded_gate_off)."""
+import copy
 import json
 import sqlite3
 
@@ -104,3 +108,40 @@ def test_resolved_outcomes_save(tmp_path):
         assert kid["Not_Addressed_Reason__c"] == over.get("reason_code"), over
     assert json.loads(sqlite3.connect(tmp_path / "ok.db").execute(
         "SELECT outcomes_json FROM visits").fetchone()[0])[1]["reason_code"] is None  # last save: Raised, no reason
+
+
+@pytest.mark.parametrize("over", [{}, {"addressed": "Partially"}])
+def test_save_visit_gate_is_its_own_refusal(over, tmp_path):
+    """N4: the refusal comes from save_visit's gap.unresolved check, not from the 0.4 schema (InvalidPayload is a
+    ValueError too, so a bare pytest.raises(ValueError) could not tell them apart)."""
+    db = tmp_path / "v.db"
+    with pytest.raises(ValueError, match="need a reason or an addendum") as e:
+        visits.save_visit(db=db, **vf.visit(outcomes=_raw(**over)))
+    assert not isinstance(e.value, pl.InvalidPayload), repr(e.value)
+    assert not db.exists() or sqlite3.connect(db).execute("SELECT COUNT(*) FROM sf_payloads").fetchone() == (0,)
+
+
+def test_apptest_save_loaded_gate(tmp_path, monkeypatch):
+    """N5: a loaded visit file whose Not raised point has no reason (a file saved before v0.2-g) keeps 'Save loaded
+    visit' disabled until the (A) reason is picked; then it saves."""
+    good = tmp_path / "good.db"
+    visits.save_visit(db=good, **vf.visit())
+    doc = json.loads(visits.visit_file(visits.lookup("demo rep", "2026-11-18", "SYNCP000025", db=good)))
+    doc["lb_visit_file"] = "lb-visit-file-0.2"
+    for o in doc["visit"]["outcomes"]:
+        for k in ("reason_code", "reason_text", "addendum"):
+            o.pop(k)
+    doc["payload"] = pl.build_payload_v03(**vf.visit())
+    body = json.dumps(copy.deepcopy(doc)).encode()
+    at = nf.app_with_notes(tmp_path, monkeypatch, CASES["01"])  # 01: nothing to resolve in the typed panel
+    at.file_uploader(key="vr_upload").set_value(("visit.json", body, "application/json")).run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert any(s.value.startswith("Valid visit file") for s in at.success)
+    rk = nf.reason_key("SYNCP000025", "R3", "loaded")
+    assert at.selectbox(key=rk).value is None
+    assert at.button(key="vr_save_loaded").disabled  # the gate under test
+    at.selectbox(key=rk).set_value(gap.REASONS["OUT_OF_TIME"]).run()
+    assert not at.button(key="vr_save_loaded").disabled
+    at.button(key="vr_save_loaded").click().run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert any(s.value.startswith("Saved loaded visit") for s in at.success)
