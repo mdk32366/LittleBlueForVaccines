@@ -166,6 +166,16 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "bb_down_neutral": (["test_t0096_bluebird_ui.py"], ["test_model_down_never_saves_neutral"]),
     "bb_unpicked_saves": (["test_t0096_bluebird_ui.py"], ["test_nothing_prepicked_and_save_blocked"]),
     "bb_stale_kept": (["test_t0096_bluebird_ui.py"], ["test_notes_change_withdraws_stale_suggestions"]),
+    # v0.2-h3 Bluebird Contract Q&A, same flag (D-0050; T-0097, T-0098)
+    "qa_span_unchecked": (["test_t0097_bluebird_qa_client.py", "test_t0098_bluebird_qa_ui.py"],
+                          ["test_span_not_in_contract_rejected", "test_rejected_answer_is_not_shown"]),
+    "qa_digits_lax": (["test_t0097_bluebird_qa_client.py"],
+                      ["test_numbers_outside_slots_rejected_d0023"]),
+    "qa_other_system": (["test_t0097_bluebird_qa_client.py"], ["test_units_one_system_and_budget"]),
+    "qa_advice_sent": (["test_t0097_bluebird_qa_client.py", "test_t0098_bluebird_qa_ui.py"],
+                       ["test_advice_question_never_sent", "test_advice_question_refused_without_the_model"]),
+    "qa_down_hidden": (["test_t0097_bluebird_qa_client.py", "test_t0098_bluebird_qa_ui.py"],
+                       ["test_failures_are_statuses_never_exceptions", "test_model_down_warns_and_termset_still_works"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():

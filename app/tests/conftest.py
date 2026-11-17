@@ -589,6 +589,28 @@ def apply_mutation(name):
     elif name == "bb_stale_kept":  # T-0096: a model value from older notes stays after the notes change
         from brief import visit_tab
         visit_tab._text_sha = lambda text: "same"
+    # v0.2-h3 Bluebird Contract Q&A, same flag (D-0050; T-0097, T-0098)
+    elif name == "qa_span_unchecked":  # T-0097/T-0098: a quoted span is accepted without finding it in the clauses
+        from brief import bluebird_qa
+        bluebird_qa.locate = lambda span, anchor, us: (us or [None])[0]
+    elif name == "qa_digits_lax":  # T-0097: a number outside the slots is let through
+        from brief import bluebird_qa
+        bluebird_qa.stray_numbers = lambda answer, question="": []
+    elif name == "qa_other_system":  # T-0097: another system's contract text goes into the prompt
+        from brief import bluebird_qa
+        orig_units = bluebird_qa.units
+        bluebird_qa.units = lambda sid, q: orig_units(sid, q) + orig_units("SYNCP000003", q)[:1]
+    elif name == "qa_advice_sent":  # T-0097/T-0098: pricing-advice questions go to the model
+        from brief import bluebird_qa
+        bluebird_qa.asks_for_advice = lambda question: False
+    elif name == "qa_down_hidden":  # T-0098: a model that is down is shown as "not in the contracts"
+        from brief import bluebird_qa
+        orig_ask = bluebird_qa.ask
+
+        def down_as_refusal(*a, **k):
+            res = orig_ask(*a, **k)
+            return {**res, "status": "refusal", "answer": bluebird_qa.REFUSAL} if res["status"] == "down" else res
+        bluebird_qa.ask = down_as_refusal
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 

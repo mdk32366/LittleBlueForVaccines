@@ -136,3 +136,20 @@ AS-0047 keeps its spec reservation. AS-0057 and AS-0058 are taken (v0.2-d), so t
   - The point keeps an empty response, and Save is blocked until the rep picks one.
   - `visits.save_visit` refuses an empty response as well, because the lb-sf-tree-0.4 schema's `Customer_Response__c` enum rejects it (T-0096).
   - Response provenance stays in the session only: `vr_bb_auto` holds `auto-bluebird` or `edited`. The visit file and `outcomes_json` keep the D-0048 shape (AS-0080), so storing response provenance would need a visit-file version bump (open question).
+
+## v0.2-h3 Bluebird Contract Q&A (app/)
+- **AS-0084 (Q&A clause choice):** D-0050. The prompt carries clauses of the picked system only, chosen to mirror the document sets Bluebird was trained on, at most 4,300 characters of contract text (training prompts kept at most 4,274):
+  - the master arrangement alone for its terms and for questions it must refuse;
+  - master + the whole proposal (one unit) for proposal questions (a pitch, offer, counter, exchange or return item, or a year);
+  - the amendment (with the master when the question is about exclusivity or preferred standing) for amendment questions;
+  - a contiguous window of exhibit sections for metric questions, centred on the section whose lines best match the question (a named metric code first, then shared words after mapping synonyms such as nationwide/countrywide/national and latest-year/trailing twelve months);
+  - master (+ amendment) + an exhibit window for questions that set the contract against the account's figures (latest-year, windows, cleared, met, drift).
+  - Documents in id order, sections in their own order. On the 2,090 held-out test questions the gold clause is in the prompt for 2,071 (99.1%), and 1,379 prompts equal the training prompt clause for clause. Routing is keyword rules, not a model.
+- **AS-0085 (Q&A answer checks):** D-0050. A reply is shown only if every check passes; otherwise the tab says why and shows no answer:
+  - the exact schema {answer, spans{Sn: {anchor, text}}};
+  - every {Sn} has a span and every span a {Sn}; "not in the contracts" carries no spans (D-0027);
+  - no digit outside a slot (D-0023: "Band 2" in answer prose is rejected even when the question said it);
+  - no advisory-with-commercial wording in the filled answer (D-0009 denylist);
+  - every quoted span is found word for word (whitespace aside) in a clause that was in the prompt, so never in another system's text; the shown anchor is that clause, whatever anchor the model gave.
+  - A question asking what to offer, ask for or negotiate on price is answered "not in the contracts" without calling the model (all 180 pricing-refusal questions in gen/out, no other question of the 8,363; the rule was tuned on that corpus).
+  - A checked span proves the quote is real, not that it answers the question: the tab states the measured accuracy and keeps the TermSet lookup alongside.

@@ -172,7 +172,7 @@ D-0048 (auto-fill visit fields, rules part). Inputs: the five committed narrativ
   - `config.bluebird_on()` is true only for `on`, in any case and with surrounding spaces; it is false for unset, empty, `off`, `1` and `true`.
   - `LLM_MODE` stays `"off"`.
   - AppTest on 01 with the flag unset: every Customer response is Neutral, and there is no Bluebird button, caption or pick warning.
-  - app.py imports the client exactly once, inside the `bluebird_on()` check.
+  - app.py imports the sidecar clients in exactly one import statement, inside the `bluebird_on()` check (v0.2-h3: `bluebird` and `bluebird_qa`).
   - No compose, env, Dockerfile or workflow file in the repository sets the flag on (the detector is first shown a planted line).
   - Mutation: bb_default_on.
 - **T-0095 client** (`app/tests/test_t0095_bluebird_client.py`), against a loopback stub sidecar (`tests/bluebird_stub.py`):
@@ -190,3 +190,20 @@ D-0048 (auto-fill visit fields, rules part). Inputs: the five committed narrativ
   - A notes change withdraws model values made from the old notes but keeps the rep's pick.
   - `save_visit` refuses an outcome with no response.
   - Mutations: bb_fills_not_raised, bb_overwrites_edit, bb_down_neutral, bb_unpicked_saves, bb_stale_kept.
+
+## v0.2-h3 Bluebird Contract Q&A, same flag (D-0050)
+- **T-0097 Q&A client** (`app/tests/test_t0097_bluebird_qa_client.py`), against the loopback stub:
+  - Routing examples for each route, and the training document sets per route.
+  - Clauses are of one system only and within 4,300 characters; on 400 committed test questions the gold clause is in the prompt for at least 97%.
+  - The prompt is the training prompt; the request is `/completion` with the JSON-slot grammar, greedy, 256 tokens.
+  - Checks: a wrong model anchor is replaced by the clause where the span is; a span from no clause, or from another system's contract, is rejected; numbers outside slots are rejected (D-0023); bad JSON, extra keys, slot mismatch, a refusal with spans and advisory-commercial wording are rejected; a refusal is a result.
+  - Pricing-advice questions are refused with no request; the guard flags every refuse.pricing question in gen/out/test and no other.
+  - Refused connection, a bad URL, no URL and HTTP 500 are "down"; prose instead of JSON is "rejected"; `provider()` is None unless the flag is on.
+  - Mutations: qa_span_unchecked, qa_digits_lax, qa_other_system, qa_advice_sent, qa_down_hidden.
+- **T-0098 Q&A tab** (`app/tests/test_t0098_bluebird_qa_ui.py`), AppTest of the whole app on SYNCP000002:
+  - Flag off: today's heading, no Ask Bluebird button, the page caption says LLM off, the TermSet answer is shown.
+  - Flag on: Bluebird heading and caption; no request before the click; one click shows the answer with the span in bold, its anchor, heading and clause, and the TermSet lookup under it; a rerun does not ask again.
+  - A rejected answer and a model that is down each show a warning and no answer; the TermSet lookup still works.
+  - A cross-document answer carries the cross-document warning; a plain contract answer does not.
+  - A pricing-advice question shows the refusal and its reason, with no request.
+  - Mutations: qa_span_unchecked, qa_advice_sent, qa_down_hidden.

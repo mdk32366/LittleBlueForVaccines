@@ -11,8 +11,17 @@ from brief import benchmark as bm, charts, clean, client_metrics, config, contra
 
 st.set_page_config(page_title=config.APP_NAME, layout="wide")
 st.title(config.APP_NAME)
-st.caption("SYNTHETIC sales data, D-0022 (fake data). LLM off: talking points are templated; "
-           "contract answers are TermSet lookups with cited spans.")
+response_provider = qa_provider = None  # D-0049, D-0050: the Bluebird sidecar, flag LB_BLUEBIRD, OFF by default
+if config.bluebird_on():
+    from brief import bluebird, bluebird_qa  # noqa: E402 (the sidecar clients are imported only when the flag is on)
+    response_provider, qa_provider = bluebird.provider(), bluebird_qa.provider()
+if qa_provider is None:
+    st.caption("SYNTHETIC sales data, D-0022 (fake data). LLM off: talking points are templated; "
+               "contract answers are TermSet lookups with cited spans.")
+else:
+    st.caption("SYNTHETIC sales data, D-0022 (fake data). Bluebird on (local model): contract answers come from "
+               "Bluebird with quoted spans checked against the contract text, and it can suggest Customer responses "
+               "on the Visit record tab. Talking points stay templated.")
 
 MODES = ["synthetic", "national"]
 mode = st.sidebar.radio("Benchmark", MODES, index=MODES.index(bm.requested_mode()), key="benchmark",
@@ -86,12 +95,20 @@ with tab_talk:
         st.checkbox(p.rendered, key=f"tp_{sid}_{i}")
 
 with tab_qa:
-    st.subheader("Ask the contracts (TermSet lookup, LLM off)")
+    from brief import qa_panel  # noqa: E402 (D-0050: the Bluebird part of this tab; it imports no model client)
+    if qa_provider is None:
+        st.subheader("Ask the contracts (TermSet lookup, LLM off)")
+    else:
+        st.subheader(qa_panel.QA["subheader"])
+        st.caption(qa_panel.QA["caption"])
     examples = [q["question"] for q in contracts.system_questions(sid)]
     pick = st.selectbox("Example questions (from gen/out qa.jsonl)", ["(type your own)"] + examples, key="qa_pick")
     typed = st.text_input("Question", key="qa_text")
     question = typed if typed.strip() else ("" if pick == "(type your own)" else pick)
     if question:
+        if qa_provider is not None:
+            qa_panel.render(sid, question, qa_provider)
+            st.markdown(f"##### {qa_panel.QA['termset']}")
         res = contracts.answer(sid, question)
         st.markdown(f"**Answer:** {res['answer']}")
         st.caption(res["note"])
@@ -112,10 +129,6 @@ with tab_qa:
 with tab_visit:  # v0.2-d (PR 8): FAKE Salesforce payload record, no send (AS-0057 (sf payload is a database record, not a send))
     from functools import partial  # noqa: E402 (imports kept in this block so the PR's app.py change stays in one place)
     from brief import visit_tab  # noqa: E402
-    response_provider = None  # D-0049: Bluebird Customer response suggestions, flag LB_BLUEBIRD, OFF by default
-    if config.bluebird_on():
-        from brief import bluebird  # noqa: E402 (the sidecar client is imported only when the flag is on)
-        response_provider = bluebird.provider()
     visit_tab.render(sid, fs, ids, points_provider=partial(talking.payload_points, fsets=fsets),  # same points as the Talking points tab
                      response_provider=response_provider)
 
