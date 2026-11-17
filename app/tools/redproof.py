@@ -173,6 +173,9 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
                                ["test_not_raised_default_needs_no_pick_and_saves_neutral"]),
     "bb_button_silent": (["test_t0100_bluebird_not_raised.py"],
                          ["test_button_with_no_notes_says_why", "test_button_with_nothing_covered_says_why"]),
+    "clear_keeps_points": (["test_t0102_clear_form.py"],
+                           ["test_clear_empties_the_form", "test_clear_drops_bluebird_suggestions"]),
+    "clear_resets_saves": (["test_t0102_clear_form.py"], ["test_saved_visit_survives_and_save_count_kept"]),
     "talk_llm_off_label": (["test_t0101_talking_labels.py"],
                            ["test_talking_point_labels_do_not_say_llm_off", "test_pdf_heading_does_not_say_llm_off"]),
     # v0.2-h3 Bluebird Contract Q&A, same flag (D-0050; T-0097, T-0098)

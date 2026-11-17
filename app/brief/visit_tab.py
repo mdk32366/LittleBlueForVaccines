@@ -22,7 +22,9 @@ LB_BLUEBIRD on; OFF by default, and then this tab is unchanged). Customer respon
 "Suggest Customer responses (Bluebird)" asks the provider once per Raised or Partially point and fills only that box
 (edits win, the same registry pattern as the auto-fill, in st.session_state["vr_bb_auto"]); a point the model could not
 answer stays unpicked and Save stays disabled until the rep picks it (AS-0083 (model down is not Neutral)). This module
-still imports no network code: the provider is injected."""
+still imports no network code: the provider is injected.
+v0.2-h6, AS-0089 (owner request): 'Clear form' under Save, with a confirm step, resets the typed visit form and this
+system's per-point state; nothing saved is touched."""
 from __future__ import annotations
 
 import dataclasses
@@ -493,6 +495,48 @@ def _merge_notes(typed: str, text: str) -> tuple[str, bool]:
     return merged, False
 
 
+CLEAR_KEY, CLEAR_YES_KEY, CLEAR_NO_KEY = "vr_clear", "vr_clear_yes", "vr_clear_no"
+CLEAR = {"button": "Clear form",
+         "ask": ("Clear the visit form? This erases the unsaved rep, date, time, notes, recording, Addressed and Customer "
+                 "response picks, quotes, follow-ups, reasons and addenda for this system. Saved visits are not "
+                 "touched."),
+         "yes": "Yes, clear the form", "no": "Cancel",
+         "done": "Form cleared. Saved visits were not touched."}
+FORM_KEYS = ("vr_rep", "vr_date", "vr_start", "vr_duration", "vr_notes", "vr_audio", "vr_audio_done", "vr_last_saved")
+POINT_PREFIXES = ("vr_addr_", "vr_resp_", "vr_q_", "vr_ev_", "vr_fu_", "vr_gap_mode_typed_", "vr_gap_reason_typed_",
+                  "vr_gap_text_typed_", "vr_gap_add_")
+
+
+def _clear_form(ss, sid: str) -> None:
+    """'Clear form' (AS-0089; on_click, so the widgets render empty on the next run): drops every typed-visit widget
+    value and this system's hint, auto-fill, Bluebird and 'Not covered yet' state, so the form starts as it does on a
+    fresh session. The save counter (vr_saves), the lookup and load sections and the visit store are not touched."""
+    prefixes = tuple(f"{p}{sid}_" for p in POINT_PREFIXES)
+    for k in [k for k in list(ss.keys()) if k in FORM_KEYS or str(k).startswith(prefixes)]:
+        del ss[k]
+    ss.get("vr_gap", {}).pop(sid, None)
+    ss.get("vr_bb", {}).pop(sid, None)
+    ss.get("vr_bb_msg", {}).pop(sid, None)
+    for reg in (ss.get("vr_auto", {}), ss.get("vr_bb_auto", {})):
+        for k in [k for k in reg if k[0] == sid]:
+            del reg[k]
+    ss["vr_clear_ask"] = False
+    ss["vr_clear_done"] = True
+
+
+def _clear_controls(sid: str) -> None:
+    ss = st.session_state
+    if ss.pop("vr_clear_done", False):
+        st.success(CLEAR["done"])
+    if not ss.get("vr_clear_ask"):
+        st.button(CLEAR["button"], key=CLEAR_KEY, on_click=ss.__setitem__, args=("vr_clear_ask", True))
+        return
+    st.warning(CLEAR["ask"])
+    c = st.columns(2)
+    c[0].button(CLEAR["yes"], key=CLEAR_YES_KEY, type="primary", on_click=_clear_form, args=(ss, sid))
+    c[1].button(CLEAR["no"], key=CLEAR_NO_KEY, on_click=ss.__setitem__, args=("vr_clear_ask", False))
+
+
 def _voice_notes() -> None:
     """Audio recorder above the notes box. The transcript pre-fills st.session_state["vr_notes"] (appended to anything
     already typed) before that widget renders; the rep edits it there. The recording itself is only read in memory."""
@@ -578,6 +622,7 @@ def render(sid: str, fs, system_ids: list, points_provider=None, response_provid
             _reset_autofill(st.session_state, sid, outcomes)
             if bb_targets is not None:
                 _bb_reset(st.session_state, sid, outcomes)
+    _clear_controls(sid)  # AS-0089: the owner's 'Clear form', two clicks
     last = st.session_state.get("vr_last_saved")
     if last:
         _preview_panel(last["payload"], last["sha256"], "saved")

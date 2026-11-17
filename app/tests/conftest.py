@@ -608,6 +608,17 @@ def apply_mutation(name):
             if not any(t[2] in ("Raised", "Partially") for t in targets):
                 visit_tab.st.session_state.get("vr_bb_msg", {}).pop(sid, None)
         visit_tab._bb_suggest = silent
+    elif name == "clear_keeps_points":  # T-0102: 'Clear form' leaves the per-point values in place
+        from brief import visit_tab
+        visit_tab.POINT_PREFIXES = ()
+    elif name == "clear_resets_saves":  # T-0102: 'Clear form' also resets the session's save counter
+        from brief import visit_tab
+        orig_clear = visit_tab._clear_form
+
+        def resets(ss, sid):
+            orig_clear(ss, sid)
+            ss["vr_saves"] = 0
+        visit_tab._clear_form = resets
     elif name == "talk_llm_off_label":  # T-0101: the talking-point labels say "LLM off" again (bug 3 back)
         cfg.TALK_SOURCE = "templated (LLM off)"
         cfg.TALK_TAB = "Talking points (computed numbers only; LLM off)"
