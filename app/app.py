@@ -63,7 +63,8 @@ with tab_brief:
     l.pyplot(charts.figure(charts.draw_trend, fs))
     r.pyplot(charts.figure(charts.draw_facility, fs))
     st.subheader("Talking points")
-    st.caption(f"source: {narr.source} ({'; '.join(narr.notes)})")
+    st.caption(f"source: {config.TALK_SOURCE}" if narr.source == "templated"
+               else f"source: {narr.source} ({'; '.join(narr.notes)})")
     for p in narr.rendered:
         st.markdown(f"- {p}")
     st.subheader("Contracts on file")
@@ -88,7 +89,7 @@ with tab_brief:
         st.code(fs.to_json(), language="json")
 
 with tab_talk:
-    st.subheader("Talking points (computed numbers only; LLM off)")
+    st.subheader(config.TALK_TAB)
     st.caption("Fixed slots, up to three must-cover points (AS-0045 (must-cover selection)) and one question. "
                "Every number is a computed fact. Tick a point once it is covered.")
     for i, p in enumerate(talking.build(fs)):

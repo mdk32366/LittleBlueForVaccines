@@ -20,6 +20,10 @@ BENCHMARK = "synthetic"            # §0 item 1: pluggable; default synthetic pe
 BENCH_LABEL = "synthetic peers"    # Fact.source_label for benchmark-derived facts (§1, T-0008)
 SYSTEM_LABEL = "system"            # Fact.source_label for system-only facts (see AS-0030)
 LLM_MODE = "off"                   # brief + D-0022 (fake data) order: LLM off everywhere; narrative is templated
+# bug 3 (AS-0088): talking points are templated in every build, Bluebird on or off; the labels say so without "LLM off"
+TALK_SOURCE = "templated from computed numbers; no model writes these"
+TALK_TAB = "Talking points (computed numbers only; no model writes these)"
+TALK_PDF = "Talking points (templated from fact tokens; no model)"
 BLUEBIRD_ENV = "LB_BLUEBIRD"       # D-0049: "on" lets the Bluebird sidecar suggest Customer response; default OFF
 BLUEBIRD_URL_ENV = "LB_BLUEBIRD_URL"  # the sidecar's base URL (AS-0081); no default: unset = model unavailable
 AS_OF = "202609"                   # data's last month (program-level as-of-month assumption)

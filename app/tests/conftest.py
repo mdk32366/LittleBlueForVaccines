@@ -608,6 +608,10 @@ def apply_mutation(name):
             if not any(t[2] in ("Raised", "Partially") for t in targets):
                 visit_tab.st.session_state.get("vr_bb_msg", {}).pop(sid, None)
         visit_tab._bb_suggest = silent
+    elif name == "talk_llm_off_label":  # T-0101: the talking-point labels say "LLM off" again (bug 3 back)
+        cfg.TALK_SOURCE = "templated (LLM off)"
+        cfg.TALK_TAB = "Talking points (computed numbers only; LLM off)"
+        cfg.TALK_PDF = "Talking points (templated from fact tokens; LLM off)"
     # v0.2-h3 Bluebird Contract Q&A, same flag (D-0050; T-0097, T-0098)
     elif name == "qa_span_unchecked":  # T-0097/T-0098: a quoted span is accepted without finding it in the clauses
         from brief import bluebird_qa

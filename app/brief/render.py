@@ -66,7 +66,7 @@ def build_figure(fs, narrative, contract_rows=(), marker: str = ""):
     charts.draw_mfr(fig.add_axes([0.66, 0.66, 0.28, 0.19]), fs)
     charts.draw_trend(fig.add_axes([0.08, 0.40, 0.40, 0.19]), fs)
     charts.draw_facility(fig.add_axes([0.66, 0.40, 0.28, 0.19]), fs)
-    fig.text(0.05, 0.335, "Talking points (templated from fact tokens; LLM off)", fontsize=9, weight="bold")
+    fig.text(0.05, 0.335, config.TALK_PDF, fontsize=9, weight="bold")
     fig.text(0.05, 0.325, "\n".join(fit_points(narrative.rendered)), fontsize=7, va="top", family="DejaVu Sans")
     fig.text(0.56, 0.335, "Contracts on file (generated, cited)", fontsize=9, weight="bold")
     fig.text(0.56, 0.325, "\n".join(textwrap.fill(x, 52) for x in contract_lines(list(contract_rows), marker)),

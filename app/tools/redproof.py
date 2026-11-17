@@ -173,6 +173,8 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
                                ["test_not_raised_default_needs_no_pick_and_saves_neutral"]),
     "bb_button_silent": (["test_t0100_bluebird_not_raised.py"],
                          ["test_button_with_no_notes_says_why", "test_button_with_nothing_covered_says_why"]),
+    "talk_llm_off_label": (["test_t0101_talking_labels.py"],
+                           ["test_talking_point_labels_do_not_say_llm_off", "test_pdf_heading_does_not_say_llm_off"]),
     # v0.2-h3 Bluebird Contract Q&A, same flag (D-0050; T-0097, T-0098)
     "qa_span_unchecked": (["test_t0097_bluebird_qa_client.py", "test_t0098_bluebird_qa_ui.py"],
                           ["test_span_not_in_contract_rejected", "test_rejected_answer_is_not_shown"]),
