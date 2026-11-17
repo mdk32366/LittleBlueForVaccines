@@ -121,6 +121,12 @@ def _autofill_status(status: str, pick) -> str:
     return pl.ADDRESSED[2] if pick == pl.ADDRESSED[2] else status
 
 
+def _bb_status(status: str, pick) -> str:
+    """The status the Bluebird Customer response keys off (AS-0087): the rep's own Addressed pick, either way, else the
+    hint or addendum status. A point the rep marks Raised or Partially was discussed, so it needs a real response."""
+    return pick if pick in pl.ADDRESSED else status
+
+
 def _reset_autofill(ss, sid: str, outcomes: list) -> None:
     """After a typed save (PR 15 review M-2): every Evidence quote / Follow-up of this system is recorded as `saved`
     with the value it was saved with, so on the next run a field still holding that value takes the fresh suggestion
@@ -153,8 +159,16 @@ BB = {"button": "Suggest Customer responses (Bluebird)",
       "label": "auto (Bluebird)",
       "down": "Bluebird unavailable: pick the Customer response yourself",
       "stale": "The notes changed after the Bluebird suggestion: click Suggest again, or pick the response yourself.",
-      "pick": "pick a Customer response for"}
+      "pick": "pick a Customer response for",
+      "not_raised": "Not raised: Neutral by default, not sent to Bluebird. Change it if the customer did respond.",
+      "no_notes": ("Nothing to suggest yet: there are no visit notes. Type or record the notes first, then click "
+                   "'Suggest Customer responses (Bluebird)' again."),
+      "nothing": ("Nothing to suggest yet: no talking point is Raised or Partially. Bluebird only suggests a Customer "
+                  "response for points the notes cover; add notes that cover a point, or set a point to Raised or "
+                  "Partially, then click again.")}
 SRC_BB = "auto-bluebird"  # D-0049: session-only provenance of a model-filled Customer response (AS-0083)
+SRC_NR = "default-not-raised"  # AS-0087 (bug 2): the labelled Neutral default of a Not raised point, flag on only
+NR_DEFAULT = "Neutral"
 
 
 def _text_sha(text: str) -> str:
@@ -168,6 +182,11 @@ def _bb_suggest(sid: str, targets: list, provider) -> None:
     res = st.session_state.setdefault("vr_bb", {})
     res[sid] = {}
     down = []
+    eligible = [t for t in targets if t[2] in autofill.ELIGIBLE]
+    if not eligible:  # say why nothing happened, instead of doing nothing
+        why = BB["no_notes"] if not any((t[3] or "").strip() for t in targets) else BB["nothing"]
+        st.session_state.setdefault("vr_bb_msg", {})[sid] = why
+        return
     for key, point, status, text in targets:
         if status not in autofill.ELIGIBLE:
             continue
@@ -186,9 +205,10 @@ def _apply_bluebird(ss, sid: str, i: int, point, status: str, text: str):
     """Write the model's Customer response for point i into its widget state BEFORE the box renders. `ss` is
     st.session_state (a plain dict in unit tests). A value the rep picked (one that differs from the recorded model
     value, or any pick before a model value) is `edited` and never written again. Otherwise the field takes the model
-    value made from the current text of a Raised or Partially point; a value that no longer applies (the point is no
-    longer eligible, the text changed, the model failed) is withdrawn to unpicked. Only vr_resp is written.
-    Returns "auto", "stale", "down" or None for the caption."""
+    value made from the current text of a Raised or Partially point; a value that no longer applies (the text changed,
+    the model failed, a Not raised default whose point became Raised or Partially) is withdrawn to unpicked. A Not
+    raised point takes the labelled Neutral default instead (AS-0087). Only vr_resp is written.
+    Returns "auto", "stale", "down", "not_raised" or None for the caption."""
     reg = ss.setdefault("vr_bb_auto", {})
     wkey, rk = f"vr_resp_{sid}_{i}", (sid, point.key)
     rec, cur = reg.get(rk), ss.get(wkey)
@@ -198,7 +218,11 @@ def _apply_bluebird(ss, sid: str, i: int, point, status: str, text: str):
         rec["src"] = autofill.SRC_EDITED
     if rec is not None and rec["src"] == autofill.SRC_EDITED:
         return None
-    sug = ss.get("vr_bb", {}).get(sid, {}).get(point.key) if status in autofill.ELIGIBLE else None
+    if status not in autofill.ELIGIBLE:  # AS-0087: Not raised gets the labelled Neutral default, never the model
+        ss[wkey] = NR_DEFAULT
+        reg[rk] = {"value": NR_DEFAULT, "src": SRC_NR}
+        return "not_raised"
+    sug = ss.get("vr_bb", {}).get(sid, {}).get(point.key)
     shown = None
     if sug is not None and sug["sha"] != _text_sha(text):
         shown = "stale"
@@ -216,8 +240,7 @@ def _apply_bluebird(ss, sid: str, i: int, point, status: str, text: str):
 
 def _bb_provenance(ss, sid: str, key: str) -> str:
     rec = ss.get("vr_bb_auto", {}).get((sid, key))
-    return (autofill.SRC_EDITED if rec and rec["src"] == autofill.SRC_EDITED else
-            SRC_BB if rec and rec["src"] == SRC_BB else autofill.SRC_NONE)
+    return rec["src"] if rec and rec["src"] in (autofill.SRC_EDITED, SRC_BB, SRC_NR) else autofill.SRC_NONE
 
 
 def _bb_missing(outcomes: list) -> list:
@@ -259,7 +282,7 @@ def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = N
                         _source_text(state, p.key, notes, status != hinted))
         bb_shown = None
         if bb_targets is not None:
-            bb_status, bb_text = _autofill_status(status, pick), _source_text(state, p.key, notes, status != hinted)
+            bb_status, bb_text = _bb_status(status, pick), _source_text(state, p.key, notes, status != hinted)
             bb_targets.append((p.key, p, bb_status, bb_text))
             bb_shown = _apply_bluebird(st.session_state, sid, i, p, bb_status, bb_text)
         st.markdown(f"**{p.key}**: {p.text}")
@@ -273,8 +296,9 @@ def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = N
         else:
             response = c[1].selectbox("Customer response", pl.RESPONSES, index=None, placeholder="Pick a response",
                                       key=f"vr_resp_{sid}_{i}")
-            if bb_shown in ("auto", "stale", "down"):
-                c[1].caption({"auto": BB["label"], "stale": BB["stale"], "down": BB["down"] + "."}[bb_shown])
+            if bb_shown in ("auto", "stale", "down", "not_raised"):
+                c[1].caption({"auto": BB["label"], "stale": BB["stale"], "down": BB["down"] + ".",
+                              "not_raised": BB["not_raised"]}[bb_shown])
         quality = c[2].number_input("Quality (1-5)", min_value=1, max_value=5, value=3, step=1, key=f"vr_q_{sid}_{i}")
         c2 = st.columns(2)
         evidence = c2[0].text_input("Evidence quote", key=f"vr_ev_{sid}_{i}")
@@ -525,7 +549,9 @@ def render(sid: str, fs, system_ids: list, points_provider=None, response_provid
     if bb_targets is not None and points:
         bb_slot.button(BB["button"], key=BB_BUTTON_KEY, on_click=_bb_suggest, args=(sid, bb_targets, response_provider))
         bb_msg = st.session_state.get("vr_bb_msg", {}).get(sid)
-        if bb_msg:
+        if bb_msg in (BB["nothing"], BB["no_notes"]):
+            bb_slot.info(bb_msg)
+        elif bb_msg:
             bb_slot.warning(bb_msg)
     full_notes = _full_notes(notes, state)
     outcomes = _gap_panel(sid, outcomes, "typed", allow_b=True, notes_len=len(full_notes))

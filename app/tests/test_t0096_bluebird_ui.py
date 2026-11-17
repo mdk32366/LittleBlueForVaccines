@@ -2,8 +2,9 @@
 - AppTest on 03 (Raised and Not raised points) and 05 (a Partially point).
 - Customer response only: one click asks the model for every Raised or Partially point and fills only vr_resp; the
   Evidence quote and Follow-up stay the rule-based values, Quality stays 3, Not raised points are not sent;
-- nothing is pre-picked: no response is Neutral by default, and Save stays disabled until every response is picked
-  by the rep or filled by the model;
+- nothing discussed is pre-picked: no Raised or Partially response is Neutral by default, and Save stays disabled
+  until each is picked by the rep or filled by the model; a Not raised point takes a labelled Neutral default and is
+  never sent (AS-0087, bug 2);
 - edits win: a response the rep picked is never overwritten by a later click;
 - model down: nothing is filled, the rep is told, and no Neutral is ever saved for them;
 - a suggestion made from older notes is withdrawn when the notes change.
@@ -83,12 +84,14 @@ def test_partially_point_is_filled(tmp_path, monkeypatch, stub):
 
 def test_nothing_prepicked_and_save_blocked(tmp_path, monkeypatch, stub):
     at = app_on(tmp_path, monkeypatch, stub.url)
-    assert [resp(at, k) for k in KEYS] == [None] * len(KEYS)
+    assert {k: resp(at, k) for k in ELIGIBLE} == {k: None for k in ELIGIBLE}
+    assert {k: resp(at, k) for k in NOT_RAISED} == {k: "Neutral" for k in NOT_RAISED}  # AS-0087 labelled default
+    assert [c.value for c in at.caption].count(visit_tab.BB["not_raised"]) == len(NOT_RAISED)
     assert stub.requests == []  # no model call before the rep clicks
     resolve_gaps(at)
     assert save_button(at).disabled
-    warn = " ".join(w.value for w in at.warning)
-    assert visit_tab.BB["pick"] in warn and all(k in warn for k in KEYS)
+    warn = " ".join(w.value for w in at.warning if visit_tab.BB["pick"] in w.value)
+    assert all(k in warn for k in ELIGIBLE) and not any(f" {k}" in warn or f"{k}," in warn for k in NOT_RAISED)
     caps = [c.value for c in at.caption]
     assert visit_tab.BB["caption"] in caps
 
@@ -100,7 +103,7 @@ def test_click_fills_customer_response_only(tmp_path, monkeypatch, stub):
                   at.text_input(key=f"vr_fu_{SID}_{KEYS.index(k)}").value) for k in KEYS}
     click(at)
     assert {k: resp(at, k) for k in ELIGIBLE} == {k: "Objection" for k in ELIGIBLE}
-    assert {k: resp(at, k) for k in NOT_RAISED} == {k: None for k in NOT_RAISED}
+    assert {k: resp(at, k) for k in NOT_RAISED} == {k: "Neutral" for k in NOT_RAISED}  # the default, not the model
     assert len(stub.requests) == len(ELIGIBLE)  # Not raised points are never sent
     for k in KEYS:  # the rule-based fields and Quality are untouched by the model
         i = KEYS.index(k)
@@ -136,7 +139,7 @@ def test_edits_win(tmp_path, monkeypatch, stub):
 def test_model_down_never_saves_neutral(tmp_path, monkeypatch):
     at = app_on(tmp_path, monkeypatch, free_port_url())
     click(at)
-    assert [resp(at, k) for k in KEYS] == [None] * len(KEYS)
+    assert {k: resp(at, k) for k in ELIGIBLE} == {k: None for k in ELIGIBLE}  # no Neutral for a discussed point
     msgs = " ".join(m.value for m in list(at.warning) + list(at.caption))
     assert visit_tab.BB["down"] in msgs
     resolve_gaps(at)

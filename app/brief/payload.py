@@ -130,25 +130,68 @@ def _has_phrase(phrase: str, text: str) -> bool:
     return re.search(r"(?<![a-z0-9+\-])" + re.escape(phrase) + r"(?![a-z0-9+\-])", text) is not None
 
 
+# AS-0086 (hint fixes, bug 1): a sentence (clause) that says the point was NOT discussed never counts for it, and a
+# ratio point ("X to Y doses") is Raised only when a sentence names both sides; the numerator alone is at most
+# Partially, and the denominator alone (often shared between ratios) does not count.
+NOT_DISCUSSED = re.compile(
+    r"\b(?:did\s*n[o']t|didn't|never|could\s*n[o']t|couldn't|was\s*n[o']t|wasn't|were\s*n[o']t|weren't|not)\s+"
+    r"(?:get\s+to|got\s+to|getting\s+to|discuss\w*|raise\w*|cover\w*|mention\w*|go\s+through|went\s+through|reach\w*|"
+    r"talk\w*\s+about|come\s+up|came\s+up|touch\w*\s+on|address\w*|bring\s+up|brought\s+up)\b"
+    r"|\bran\s+out\s+of\s+time\s+before\b|\bno\s+time\s+(?:for|to)\b|\bskipp(?:ed|ing)\b", re.I)
+RATIO = re.compile(r"^must cover:\s*(.+?)\s+to\s+(.+?)\s+doses\s+is\b", re.I)
+
+
+CLAUSE = re.compile(r";|,?\s+\bbut\b|,?\s+\bthough\b|,?\s+\balthough\b|,?\s+\bwhile\b", re.I)
+
+
+def not_discussed(sentence: str) -> bool:
+    """True for a sentence (or clause) that says something was not discussed ("we did not get to rotavirus", "ran out
+    of time before the RSV point", "skipped the shingles ratio")."""
+    return NOT_DISCUSSED.search(sentence) is not None
+
+
+def discussed_part(sentence: str) -> str:
+    """The sentence without its "not discussed" clauses: "I mentioned MenB briefly, but we ran out of time before going
+    through it" keeps "I mentioned MenB briefly"."""
+    return " ".join(c for c in CLAUSE.split(sentence) if not not_discussed(c))
+
+
+def ratio_sides(point: TalkingPoint):
+    """(K of the numerator, K of the denominator) for an "X to Y doses" ratio point, else None."""
+    m = RATIO.match(point.text.strip())
+    if not m:
+        return None
+    side = lambda s: {w for w in WORD.findall(s.casefold()) if len(w) >= 3 and w not in STOP}  # noqa: E731
+    return side(m.group(1)), side(m.group(2))
+
+
 def hint_status(point: TalkingPoint, text: str) -> str:
-    """Deterministic pre-fill, one of ADDRESSED (AS-0073). With content words K: a sentence holding 2+ distinct K words,
-    or 1 K word and one of the point's cue words, gives Raised; K words only alone in their sentences give Partially;
-    no K word gives Not raised. With no K (the size point): 2+ of its template anchors in the notes give Raised, 1 gives
-    Partially, 0 gives Not raised. Only a hint; the rep confirms or changes it."""
+    """Deterministic pre-fill, one of ADDRESSED (AS-0073, AS-0086). With content words K: a sentence holding 2+
+    distinct K words, or 1 K word and one of the point's cue words, gives Raised; K words only alone in their sentences
+    give Partially; no K word gives Not raised. A ratio point needs K words of both sides in one sentence for Raised.
+    A sentence that says the point was not discussed is ignored. With no K (the size point): 2+ of its template
+    anchors in the notes give Raised, 1 gives Partially, 0 gives Not raised. Only a hint; the rep confirms or changes
+    it."""
     t = (text or "").casefold()
     k = keywords(point)
     if not k:
+        t = " ".join(discussed_part(s) for s in SENTENCE.split(t))
         anchors = [a for a in ANCHORS if _has_phrase(a, point.text.casefold())]
         n = sum(_has_phrase(a, t) for a in anchors)
         return ADDRESSED[0] if n >= 2 else ADDRESSED[1] if n == 1 else ADDRESSED[2]
-    c, hit = cues(point), False
+    c, hit, sides = cues(point), False, ratio_sides(point)
     for s in SENTENCE.split(t):
-        words = set(WORD.findall(s))
+        words = set(WORD.findall(discussed_part(s)))
         found = k & words
-        if found:
-            hit = True
-            if len(found) >= 2 or c & words:
-                return ADDRESSED[0]
+        if not found:
+            continue
+        if sides is not None and not found & sides[0]:
+            continue  # the denominator alone (shared, e.g. adult-labelled Influenza) does not name this ratio
+        hit = True
+        if sides is not None and not found & sides[1]:
+            continue  # the numerator alone is at most Partially
+        if len(found) >= 2 or c & words:
+            return ADDRESSED[0]
     return ADDRESSED[1] if hit else ADDRESSED[2]
 
 

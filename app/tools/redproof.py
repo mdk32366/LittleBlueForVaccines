@@ -166,6 +166,13 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "bb_down_neutral": (["test_t0096_bluebird_ui.py"], ["test_model_down_never_saves_neutral"]),
     "bb_unpicked_saves": (["test_t0096_bluebird_ui.py"], ["test_nothing_prepicked_and_save_blocked"]),
     "bb_stale_kept": (["test_t0096_bluebird_ui.py"], ["test_notes_change_withdraws_stale_suggestions"]),
+    # v0.2-h4 bug fixes (D-0051; T-0099, T-0100)
+    "hint_negation_off": (["test_t0099_hint_not_discussed.py"], ["test_not_discussed_is_not_raised"]),
+    "hint_ratio_off": (["test_t0099_hint_not_discussed.py"], ["test_ratio_needs_both_sides"]),
+    "bb_not_raised_unpicked": (["test_t0100_bluebird_not_raised.py"],
+                               ["test_not_raised_default_needs_no_pick_and_saves_neutral"]),
+    "bb_button_silent": (["test_t0100_bluebird_not_raised.py"],
+                         ["test_button_with_no_notes_says_why", "test_button_with_nothing_covered_says_why"]),
     # v0.2-h3 Bluebird Contract Q&A, same flag (D-0050; T-0097, T-0098)
     "qa_span_unchecked": (["test_t0097_bluebird_qa_client.py", "test_t0098_bluebird_qa_ui.py"],
                           ["test_span_not_in_contract_rejected", "test_rejected_answer_is_not_shown"]),

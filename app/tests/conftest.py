@@ -589,6 +589,25 @@ def apply_mutation(name):
     elif name == "bb_stale_kept":  # T-0096: a model value from older notes stays after the notes change
         from brief import visit_tab
         visit_tab._text_sha = lambda text: "same"
+    # v0.2-h4 bug fixes (D-0051; T-0099, T-0100)
+    elif name == "hint_negation_off":  # T-0099: a "not discussed" sentence counts for the point again
+        from brief import payload as pl_mod
+        pl_mod.not_discussed = lambda sentence: False
+    elif name == "hint_ratio_off":  # T-0099: one side of a ratio is enough for Raised again
+        from brief import payload as pl_mod
+        pl_mod.ratio_sides = lambda point: None
+    elif name == "bb_not_raised_unpicked":  # T-0100: a Not raised point starts unpicked again (bug 2 back)
+        from brief import visit_tab
+        visit_tab.NR_DEFAULT = None
+    elif name == "bb_button_silent":  # T-0100: the Suggest button with nothing eligible says nothing
+        from brief import visit_tab
+        orig_bb_suggest3 = visit_tab._bb_suggest
+
+        def silent(sid, targets, provider):
+            orig_bb_suggest3(sid, targets, provider)
+            if not any(t[2] in ("Raised", "Partially") for t in targets):
+                visit_tab.st.session_state.get("vr_bb_msg", {}).pop(sid, None)
+        visit_tab._bb_suggest = silent
     # v0.2-h3 Bluebird Contract Q&A, same flag (D-0050; T-0097, T-0098)
     elif name == "qa_span_unchecked":  # T-0097/T-0098: a quoted span is accepted without finding it in the clauses
         from brief import bluebird_qa

@@ -10,7 +10,8 @@ from tests import narratives_fixture as nf
 
 CASES = nf.cases()
 ADD02 = "Dollar share of DTaP is well above the national file, and they want to keep that volume."
-ADD04 = "Shingles uptake runs ahead of the national file this year. Hepatitis came up only briefly."
+ADD04 = ("Shingles to adult-labelled influenza uptake runs ahead of the national file this year. "  # both ratio sides
+         "Hepatitis came up only briefly.")  # (AS-0086: the numerator alone would only be Partially)
 ADD04_2 = "Hepatitis dollar share is well above the national file, and they asked for the index page."
 MISSED04 = ["fixed.A2.1", "must.R5", "must.A2.3", "must.R6", "question.F2"]
 
