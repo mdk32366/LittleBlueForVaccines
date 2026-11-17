@@ -112,7 +112,12 @@ with tab_qa:
 with tab_visit:  # v0.2-d (PR 8): FAKE Salesforce payload record, no send (AS-0057 (sf payload is a database record, not a send))
     from functools import partial  # noqa: E402 (imports kept in this block so the PR's app.py change stays in one place)
     from brief import visit_tab  # noqa: E402
-    visit_tab.render(sid, fs, ids, points_provider=partial(talking.payload_points, fsets=fsets))  # same points as the Talking points tab
+    response_provider = None  # D-0049: Bluebird Customer response suggestions, flag LB_BLUEBIRD, OFF by default
+    if config.bluebird_on():
+        from brief import bluebird  # noqa: E402 (the sidecar client is imported only when the flag is on)
+        response_provider = bluebird.provider()
+    visit_tab.render(sid, fs, ids, points_provider=partial(talking.payload_points, fsets=fsets),  # same points as the Talking points tab
+                     response_provider=response_provider)
 
 with tab_sf:  # v0.2-f: Salesforce dry-run setup, non-secret fields only; nothing is sent (D-0045 (Salesforce dry run))
     from brief import integration_tab  # noqa: E402

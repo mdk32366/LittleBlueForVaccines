@@ -240,3 +240,16 @@ Download / Load visit file: lb-visit-file-0.4 (optional "auto" per outcome); 0.3
 - **Session state.** `st.session_state["vr_auto"][(system id, point key, field)] = {"value", "src"}`. The suggestion is written into the widget's own key before the widget renders; the widget keys `vr_ev_…` / `vr_fu_…` carry no status, so a re-run never drops a rep's edit (g put the status in the Addressed key only). `vr_gap[system id]` now also keeps the addendum texts per point key, and is cleared on Save. v0.2-h1b: `_autofill_status` (the rep's Not raised pick withdraws unedited suggestions) and `_reset_autofill` (on Save) are their own seams, as is `_clear_gap`, so each can be mutated alone.
 - **Unchanged.** The payload (lb-sf-tree-0.4) and its schemas, the Composite mapping and the 25-subrequest guard, `visits.DDL`, the hint (AS-0073), the gap panel and its gates, Customer response and Quality, the other tabs, gen/ and gen/out. The LLM stays off (AS-0035).
 
+
+## v0.2-h2 Gate 1 Bluebird Customer response, flagged OFF (app/)
+- `brief/config.py`: `bluebird_on(env=None)` reads `LB_BLUEBIRD` on each call (only `on` is on); `BLUEBIRD_URL_ENV = "LB_BLUEBIRD_URL"`. `LLM_MODE` stays `"off"`.
+- `brief/bluebird.py`: the only module that talks to the model sidecar, over plain HTTP using the standard library. It provides `check_url`, `render_prompt`, `parse_label`, `classify`, and `provider(env)`, which returns None when the flag is off and otherwise `(point, text) -> label`, raising `Unavailable` on any trouble.
+- `app.py`: imports `brief.bluebird` only inside `if config.bluebird_on():` and passes `response_provider=` to `visit_tab.render`. With the flag off, it passes None.
+- `brief/visit_tab.py`: with `response_provider` None, the Customer response box is today's (index 1, Neutral). With a provider:
+  - The box starts unpicked.
+  - `_apply_bluebird` writes model values into `vr_resp_*` before the box renders, using the same edits-win registry pattern as the auto-fill (`vr_bb_auto`), and withdraws stale or no-longer-eligible values.
+  - The button's `on_click` (`_bb_suggest`) calls the provider once per Raised or Partially point and records the label or the failure, with the sha256 of the source text, in `vr_bb`.
+  - `_bb_missing` blocks Save while any response is empty.
+  - After a Save, `_bb_reset` clears that system's suggestions, so the next visit starts unpicked.
+  - The visit tab still imports no network module (T-0049 unchanged).
+- Sidecar (not in this repository; deployment is a later card): a llama.cpp server with the merged Bluebird v1.0 Q4_K_M GGUF, CPU only, with its own memory and CPU caps. Gate 0 measured it with `--memory 6g`: about 1.6 GB peak (24.8% of the cap), per-point p95 3.6–4.1 s and 7-point visit p95 22.9–25.5 s on 4 and 8 cores.

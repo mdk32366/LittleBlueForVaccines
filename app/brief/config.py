@@ -20,6 +20,8 @@ BENCHMARK = "synthetic"            # §0 item 1: pluggable; default synthetic pe
 BENCH_LABEL = "synthetic peers"    # Fact.source_label for benchmark-derived facts (§1, T-0008)
 SYSTEM_LABEL = "system"            # Fact.source_label for system-only facts (see AS-0030)
 LLM_MODE = "off"                   # brief + D-0022 (fake data) order: LLM off everywhere; narrative is templated
+BLUEBIRD_ENV = "LB_BLUEBIRD"       # D-0049: "on" lets the Bluebird sidecar suggest Customer response; default OFF
+BLUEBIRD_URL_ENV = "LB_BLUEBIRD_URL"  # the sidecar's base URL (AS-0081); no default: unset = model unavailable
 AS_OF = "202609"                   # data's last month (program-level as-of-month assumption)
 AS_OF_DATE = "2026-09-30"          # last day of AS_OF; a contract that ended before this is shown as expired
 FULL_PERIOD = ("202410", "202609")
@@ -27,3 +29,9 @@ W1 = ("202410", "202503")          # §0 item 3 switching windows (program-level
 W2 = ("202604", "202609")
 T12 = ("202510", "202609")         # F7 trailing 12
 P12 = ("202410", "202509")         # F7 prior 12
+
+
+def bluebird_on(env=None) -> bool:
+    """D-0049 feature flag, read on every call: only "on" (any case, spaces ignored) is on. LLM_MODE is unaffected."""
+    env = os.environ if env is None else env
+    return (env.get(BLUEBIRD_ENV) or "").strip().lower() == "on"

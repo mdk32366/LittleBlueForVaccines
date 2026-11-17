@@ -546,6 +546,49 @@ def apply_mutation(name):
                         ss.setdefault("vr_auto", {}).pop((sid, point.key, field), None)
             orig_apply3(ss, sid, i, point, status, text)
         visit_tab._apply_autofill = blank_on_not_raised
+    # v0.2-h2 Gate 1 Bluebird Customer response, flag default OFF (D-0049; T-0094..T-0096)
+    elif name == "bb_default_on":  # T-0094: the flag is on when nothing sets it
+        cfg.bluebird_on = lambda env=None: True
+    elif name == "bb_label_lax":  # T-0095: any answer becomes the Customer response
+        from brief import bluebird
+        bluebird.parse_label = lambda content: content.strip() if isinstance(content, str) else ""
+    elif name == "bb_url_lax":  # T-0095: any URL is used as given
+        from brief import bluebird
+        bluebird.check_url = lambda url: (url or "").rstrip("/")
+    elif name == "bb_fills_not_raised":  # T-0096: Not raised points are sent and filled too
+        from brief import visit_tab
+        orig_bb_apply, orig_bb_suggest = visit_tab._apply_bluebird, visit_tab._bb_suggest
+        visit_tab._apply_bluebird = lambda ss, sid, i, point, status, text: orig_bb_apply(ss, sid, i, point, "Raised",
+                                                                                          text)
+        visit_tab._bb_suggest = lambda sid, targets, provider: orig_bb_suggest(
+            sid, [(k, p, "Raised", t) for k, p, s, t in targets], provider)
+    elif name == "bb_overwrites_edit":  # T-0096: a later click overwrites the rep's pick
+        from brief import visit_tab
+        orig_bb_apply2 = visit_tab._apply_bluebird
+
+        def forget_bb_edits(ss, sid, i, point, status, text):
+            ss.get("vr_bb_auto", {}).pop((sid, point.key), None)
+            ss.pop(f"vr_resp_{sid}_{i}", None)
+            return orig_bb_apply2(ss, sid, i, point, status, text)
+        visit_tab._apply_bluebird = forget_bb_edits
+    elif name == "bb_down_neutral":  # T-0096: a model that is down fills Neutral
+        from brief import visit_tab
+        orig_bb_suggest2 = visit_tab._bb_suggest
+
+        def neutral_when_down(sid, targets, provider):
+            def safe(point, text):
+                try:
+                    return provider(point, text)
+                except Exception:
+                    return "Neutral"
+            return orig_bb_suggest2(sid, targets, safe)
+        visit_tab._bb_suggest = neutral_when_down
+    elif name == "bb_unpicked_saves":  # T-0096: Save is enabled while a response is unpicked
+        from brief import visit_tab
+        visit_tab._bb_missing = lambda outcomes: []
+    elif name == "bb_stale_kept":  # T-0096: a model value from older notes stays after the notes change
+        from brief import visit_tab
+        visit_tab._text_sha = lambda text: "same"
     elif name:
         raise ValueError(f"unknown REDPROOF mutation {name}")
 

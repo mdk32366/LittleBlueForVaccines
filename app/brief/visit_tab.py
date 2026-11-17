@@ -16,7 +16,13 @@ Nothing is stored before Save; on Save the provenance goes to outcomes_json only
 state of that system (vr_gap) is cleared (PR 14 review N7).
 v0.2-h1b (PR 15 review M-1, M-2): when the rep's own Addressed pick is Not raised, the unedited suggestions of that point
 are withdrawn (so no auto follow-up becomes a Task on a Not raised point); on Save the auto-fill marks of that system
-are reset, so a second visit to the same system in the same session gets fresh suggestions."""
+are reset, so a second visit to the same system in the same session gets fresh suggestions.
+v0.2-h2 Gate 1, D-0049 (Bluebird Customer response, flagged): only when app.py passes a `response_provider` (flag
+LB_BLUEBIRD on; OFF by default, and then this tab is unchanged). Customer response then starts unpicked; one click on
+"Suggest Customer responses (Bluebird)" asks the provider once per Raised or Partially point and fills only that box
+(edits win, the same registry pattern as the auto-fill, in st.session_state["vr_bb_auto"]); a point the model could not
+answer stays unpicked and Save stays disabled until the rep picks it (AS-0083 (model down is not Neutral)). This module
+still imports no network code: the provider is injected."""
 from __future__ import annotations
 
 import dataclasses
@@ -139,6 +145,98 @@ def _provenance(ss, sid: str, key: str) -> dict:
     return out
 
 
+BB_BUTTON_KEY = "vr_bb_suggest"
+BB = {"button": "Suggest Customer responses (Bluebird)",
+      "caption": ("Customer response: pick one for every talking point, or click 'Suggest Customer responses "
+                  "(Bluebird)' to have the local Bluebird model suggest them for the Raised and Partially points. "
+                  "Review every value before saving. Accuracy has not been measured for this use."),
+      "label": "auto (Bluebird)",
+      "down": "Bluebird unavailable: pick the Customer response yourself",
+      "stale": "The notes changed after the Bluebird suggestion: click Suggest again, or pick the response yourself.",
+      "pick": "pick a Customer response for"}
+SRC_BB = "auto-bluebird"  # D-0049: session-only provenance of a model-filled Customer response (AS-0083)
+
+
+def _text_sha(text: str) -> str:
+    return hashlib.sha256((text or "").encode("utf-8")).hexdigest()
+
+
+def _bb_suggest(sid: str, targets: list, provider) -> None:
+    """'Suggest Customer responses (Bluebird)' (on_click, so the values are in place before the next render): one
+    provider call per Raised or Partially target; the label, or the failure, is kept with the sha256 of the text it
+    came from. A failure is never turned into a value (AS-0083)."""
+    res = st.session_state.setdefault("vr_bb", {})
+    res[sid] = {}
+    down = []
+    for key, point, status, text in targets:
+        if status not in autofill.ELIGIBLE:
+            continue
+        try:
+            label = provider(point, text)
+            if label not in pl.RESPONSES:
+                raise ValueError("not a Customer response value")
+            res[sid][key] = {"sha": _text_sha(text), "label": label}
+        except Exception as e:  # unreachable, timeout, refused URL, bad answer: the rep picks (D-0049)
+            res[sid][key] = {"sha": _text_sha(text), "error": type(e).__name__}
+            down.append(key)
+    st.session_state.setdefault("vr_bb_msg", {})[sid] = f"{BB['down']}: {', '.join(down)}." if down else ""
+
+
+def _apply_bluebird(ss, sid: str, i: int, point, status: str, text: str):
+    """Write the model's Customer response for point i into its widget state BEFORE the box renders. `ss` is
+    st.session_state (a plain dict in unit tests). A value the rep picked (one that differs from the recorded model
+    value, or any pick before a model value) is `edited` and never written again. Otherwise the field takes the model
+    value made from the current text of a Raised or Partially point; a value that no longer applies (the point is no
+    longer eligible, the text changed, the model failed) is withdrawn to unpicked. Only vr_resp is written.
+    Returns "auto", "stale", "down" or None for the caption."""
+    reg = ss.setdefault("vr_bb_auto", {})
+    wkey, rk = f"vr_resp_{sid}_{i}", (sid, point.key)
+    rec, cur = reg.get(rk), ss.get(wkey)
+    if rec is None and cur is not None:
+        rec = reg[rk] = {"value": None, "src": autofill.SRC_EDITED}  # the rep picked it before any model value
+    elif rec is not None and cur != rec["value"]:
+        rec["src"] = autofill.SRC_EDITED
+    if rec is not None and rec["src"] == autofill.SRC_EDITED:
+        return None
+    sug = ss.get("vr_bb", {}).get(sid, {}).get(point.key) if status in autofill.ELIGIBLE else None
+    shown = None
+    if sug is not None and sug["sha"] != _text_sha(text):
+        shown = "stale"
+    elif sug is not None and "label" in sug:
+        ss[wkey] = sug["label"]
+        reg[rk] = {"value": sug["label"], "src": SRC_BB}
+        return "auto"
+    elif sug is not None:
+        shown = "down"
+    if rec is not None:
+        ss[wkey] = None
+        del reg[rk]
+    return shown
+
+
+def _bb_provenance(ss, sid: str, key: str) -> str:
+    rec = ss.get("vr_bb_auto", {}).get((sid, key))
+    return (autofill.SRC_EDITED if rec and rec["src"] == autofill.SRC_EDITED else
+            SRC_BB if rec and rec["src"] == SRC_BB else autofill.SRC_NONE)
+
+
+def _bb_missing(outcomes: list) -> list:
+    """The points whose Customer response is still unpicked (flag on only): Save stays disabled while any is."""
+    return [o for o in outcomes if o.response not in pl.RESPONSES]
+
+
+def _bb_reset(ss, sid: str, outcomes: list) -> None:
+    """After a typed save: drop this system's model values, and record each saved response, so the next visit to the
+    same system in this session starts unpicked again (an unchanged box is withdrawn, a changed one is the rep's)."""
+    ss.get("vr_bb", {}).pop(sid, None)
+    ss.get("vr_bb_msg", {}).pop(sid, None)
+    reg = ss.setdefault("vr_bb_auto", {})
+    for k in [k for k in reg if k[0] == sid]:
+        del reg[k]
+    for o in outcomes:
+        reg[(sid, o.point.key)] = {"value": o.response, "src": SRC_SAVED}
+
+
 def _source_text(state: dict, key: str, notes: str, lifted: bool) -> str:
     """The text the suggestions come from: the addendum text(s) this point was checked against when an addendum
     lifted its status (path B), otherwise the notes."""
@@ -146,7 +244,10 @@ def _source_text(state: dict, key: str, notes: str, lifted: bool) -> str:
     return "\n".join(texts) if lifted and texts else notes
 
 
-def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = None, state: dict | None = None) -> list:
+def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = None, state: dict | None = None,
+                      bb_targets: list | None = None) -> list:
+    """`bb_targets` is None unless the Bluebird flag is on (D-0049); then it collects (key, point, status, text) for
+    the Suggest button and the Customer response box starts unpicked."""
     out = []
     if points:
         st.caption(autofill.CAPTION)
@@ -156,13 +257,24 @@ def _outcome_controls(sid: str, points: list, notes: str, floor: dict | None = N
         pick = st.session_state.get(f"vr_addr_{sid}_{i}_{status}")  # the rep's own pick, from the previous run
         _apply_autofill(st.session_state, sid, i, p, _autofill_status(status, pick),
                         _source_text(state, p.key, notes, status != hinted))
+        bb_shown = None
+        if bb_targets is not None:
+            bb_status, bb_text = _autofill_status(status, pick), _source_text(state, p.key, notes, status != hinted)
+            bb_targets.append((p.key, p, bb_status, bb_text))
+            bb_shown = _apply_bluebird(st.session_state, sid, i, p, bb_status, bb_text)
         st.markdown(f"**{p.key}**: {p.text}")
         extra = f"; after an addendum: {status}" if status != hinted else ""
         st.caption(HINT_CAPTION[hinted] + extra)
         c = st.columns([2, 2, 1])
         addressed = c[0].selectbox("Addressed", pl.ADDRESSED, index=pl.ADDRESSED.index(status),
                                    key=f"vr_addr_{sid}_{i}_{status}")
-        response = c[1].selectbox("Customer response", pl.RESPONSES, index=1, key=f"vr_resp_{sid}_{i}")
+        if bb_targets is None:
+            response = c[1].selectbox("Customer response", pl.RESPONSES, index=1, key=f"vr_resp_{sid}_{i}")
+        else:
+            response = c[1].selectbox("Customer response", pl.RESPONSES, index=None, placeholder="Pick a response",
+                                      key=f"vr_resp_{sid}_{i}")
+            if bb_shown in ("auto", "stale", "down"):
+                c[1].caption({"auto": BB["label"], "stale": BB["stale"], "down": BB["down"] + "."}[bb_shown])
         quality = c[2].number_input("Quality (1-5)", min_value=1, max_value=5, value=3, step=1, key=f"vr_q_{sid}_{i}")
         c2 = st.columns(2)
         evidence = c2[0].text_input("Evidence quote", key=f"vr_ev_{sid}_{i}")
@@ -387,7 +499,7 @@ def _voice_notes() -> None:
     st.caption(f"Transcribed with {tr.name}. Check and edit the notes below before saving; the recording is not kept.")
 
 
-def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
+def render(sid: str, fs, system_ids: list, points_provider=None, response_provider=None) -> None:
     st.info(visits.BANNER)
     st.subheader(f"Visit record: {fs.name} ({sid})")
     c = st.columns(3)
@@ -405,7 +517,16 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
     if not points:
         st.warning("No talking points with computed values for this system; the visit can still be saved.")
     state = _gap_state(sid)
-    outcomes = _outcome_controls(sid, points, notes, state["floor"], state)
+    bb_targets = None if response_provider is None else []  # D-0049: flag on only
+    if bb_targets is not None and points:
+        st.caption(BB["caption"])
+        bb_slot = st.container()
+    outcomes = _outcome_controls(sid, points, notes, state["floor"], state, bb_targets)
+    if bb_targets is not None and points:
+        bb_slot.button(BB["button"], key=BB_BUTTON_KEY, on_click=_bb_suggest, args=(sid, bb_targets, response_provider))
+        bb_msg = st.session_state.get("vr_bb_msg", {}).get(sid)
+        if bb_msg:
+            bb_slot.warning(bb_msg)
     full_notes = _full_notes(notes, state)
     outcomes = _gap_panel(sid, outcomes, "typed", allow_b=True, notes_len=len(full_notes))
     outcomes = [dataclasses.replace(o, addendum=True) if o.point.key in state["addendum_keys"] else o for o in outcomes]
@@ -413,6 +534,11 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
         st.caption("Added to the notes on save: " + " ".join(f"Addendum {n}: {t}" for n, t in
                                                               enumerate(state["addenda"], 1)))
     blocked = _blocked_warning(outcomes)
+    if bb_targets is not None:  # D-0049: no Customer response is saved by default (AS-0083)
+        unpicked = _bb_missing(outcomes)
+        if unpicked:
+            st.warning(f"Not saved yet: {BB['pick']}: {', '.join(o.point.key for o in unpicked)}.")
+        blocked = blocked + [o for o in unpicked if o not in blocked]
     saves = st.session_state.get("vr_saves", 0)
     if st.button(visits.LABELS["save"], key="vr_save", disabled=saves >= visits.SAVES_PER_SESSION or bool(blocked)):
         res = _save_typed(rep=rep, visit_date=vdate.isoformat(), system_id=sid, system_name=fs.name, notes=full_notes,
@@ -424,6 +550,8 @@ def render(sid: str, fs, system_ids: list, points_provider=None) -> None:
             st.session_state["vr_last_saved"] = {"payload": res["payload"], "sha256": res["sha256"]}
             _clear_gap(sid)
             _reset_autofill(st.session_state, sid, outcomes)
+            if bb_targets is not None:
+                _bb_reset(st.session_state, sid, outcomes)
     last = st.session_state.get("vr_last_saved")
     if last:
         _preview_panel(last["payload"], last["sha256"], "saved")

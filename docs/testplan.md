@@ -166,3 +166,27 @@ D-0048 (auto-fill visit fields, rules part). Inputs: the five committed narrativ
 - **Amended (PR 14 review follow-ups, no new T id):** T-0085 gains N4, `pytest.raises(ValueError, match="need a reason or an addendum")` that is not `InvalidPayload` (mutation savevisit_gate_off), and N5, an AppTest where a loaded 0.2 file with a Not raised point and no reason keeps "Save loaded visit" disabled until the reason is picked, then saves (mutation loaded_gate_off). T-0086 gains N7: after a Save the system's `vr_gap` state is gone, and the next visit in the same session lists the point again with no inherited addendum. T-0087: new visit files are lb-visit-file-0.4 and a 0.3 file still loads. T-0088 gains the short name from the review in its digests (N6, checked on a planted sample spelled split) and also checks the committed h1 fixture JSON.
 - **Amended (v0.2-h1b, PR 15 review follow-ups, no new T id; F-0040):** T-0093 gains an AppTest on 01: fixed.F5 fills its quote and follow-up; the rep's Addressed pick of Not raised blanks both (provenance none), a pick back to Raised brings them back, and after Not raised again plus a reason the saved payload has no follow-up and no Task tree, so the preview shows no Task (mutation downgrade_keeps_auto). T-0091 gains an AppTest on 02: an edited quote is saved; on the next visit to the same system in the same session that field takes the fresh suggestion (auto-rule) while a field changed after the save stays edited (mutation save_keeps_auto_marks). T-0086's N7 test gets its own mutation, n7_clear_off (review L-3).
 - **Amended (v0.2-h1c, PR 16 review L-3, no new T id):** T-0093 gains an AppTest on 01: the rep edits fixed.F5's Follow-up, then picks Not raised; the edit survives with provenance `edited` while the unedited Evidence quote is withdrawn (`none`), and after a reason and Save the payload holds one Task carrying the rep's own follow-up. Mutation: not_raised_blanks_edits (a Not raised pick blanks both fields, edits too).
+
+## v0.2-h2 Gate 1 Bluebird Customer response, flag default OFF (D-0049)
+- **T-0094 flag off** (`app/tests/test_t0094_bluebird_flag_off.py`):
+  - `config.bluebird_on()` is true only for `on`, in any case and with surrounding spaces; it is false for unset, empty, `off`, `1` and `true`.
+  - `LLM_MODE` stays `"off"`.
+  - AppTest on 01 with the flag unset: every Customer response is Neutral, and there is no Bluebird button, caption or pick warning.
+  - app.py imports the client exactly once, inside the `bluebird_on()` check.
+  - No compose, env, Dockerfile or workflow file in the repository sets the flag on (the detector is first shown a planted line).
+  - Mutation: bb_default_on.
+- **T-0095 client** (`app/tests/test_t0095_bluebird_client.py`), against a loopback stub sidecar (`tests/bluebird_stub.py`):
+  - URL rules: plain `http://host[:port]` only.
+  - The grammar is exactly the four values, and the label must be one of them exactly.
+  - Request shape: `/completion`, greedy, `cache_prompt`, at most 8 tokens, notes before the talking point. The notes are cut at 4,000 characters.
+  - A bad answer, HTTP 500, a refused connection and a timeout each raise Unavailable.
+  - `provider()` is None unless the flag is on; with the flag on and no URL, a call raises Unavailable.
+  - Mutations: bb_label_lax, bb_url_lax.
+- **T-0096 Visit record UI, flag on** (`app/tests/test_t0096_bluebird_ui.py`), AppTest on 01 against the stub:
+  - Before a click: nothing is pre-picked, no request is made, and Save is blocked with a warning naming every key.
+  - One click fills only the Raised and Partially responses. Not raised points are not sent. The Evidence quote and Follow-up keep the h1 fixture values, Quality stays 3, and each filled box shows "auto (Bluebird)".
+  - A rep's pick survives a later click (provenance `edited`) and is saved.
+  - Model down (connection refused): nothing is filled, the rep is told, Save is blocked until every response is picked, and the saved payload holds exactly the rep's picks (no Neutral).
+  - A notes change withdraws model values made from the old notes but keeps the rep's pick.
+  - `save_visit` refuses an outcome with no response.
+  - Mutations: bb_fills_not_raised, bb_overwrites_edit, bb_down_neutral, bb_unpicked_saves, bb_stale_kept.

@@ -156,6 +156,16 @@ EXPECT = {  # mutation: (files to run, tests that must fail)
     "n7_clear_off": (["test_t0086_second_pass.py"], ["test_save_clears_gap_state_n7"]),
     # v0.2-h1c (PR 16 review L-3)
     "not_raised_blanks_edits": (["test_t0093_autofill_scope.py"], ["test_apptest_edit_survives_not_raised_pick"]),
+    # v0.2-h2 Gate 1 Bluebird Customer response, flag default OFF (D-0049; T-0094..T-0096)
+    "bb_default_on": (["test_t0094_bluebird_flag_off.py"], ["test_flag_values", "test_apptest_flag_off_is_todays_tab"]),
+    "bb_label_lax": (["test_t0095_bluebird_client.py"], ["test_parse_label_refuses_anything_else",
+                                                         "test_bad_answer_is_unavailable"]),
+    "bb_url_lax": (["test_t0095_bluebird_client.py"], ["test_url_refused"]),
+    "bb_fills_not_raised": (["test_t0096_bluebird_ui.py"], ["test_click_fills_customer_response_only"]),
+    "bb_overwrites_edit": (["test_t0096_bluebird_ui.py"], ["test_edits_win"]),
+    "bb_down_neutral": (["test_t0096_bluebird_ui.py"], ["test_model_down_never_saves_neutral"]),
+    "bb_unpicked_saves": (["test_t0096_bluebird_ui.py"], ["test_nothing_prepicked_and_save_blocked"]),
+    "bb_stale_kept": (["test_t0096_bluebird_ui.py"], ["test_notes_change_withdraws_stale_suggestions"]),
 }
 lines, ok_all = [], True
 for name, (files, expect) in EXPECT.items():
