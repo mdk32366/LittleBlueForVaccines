@@ -2,6 +2,12 @@
 
 Populated by the first build PR.
 
+## Program-level citations
+
+These ids belong to the program-level decision log, not to this repository's local numbering. They are cited here so that readers of this repository have the trail. They are not entries in the local D-0023..D-0048 sequence, so D-0070 does not imply a gap at D-0049..D-0069.
+
+- **D-0070 (Bluebird LLM v1.0 base is Qwen2.5-3B-Instruct):** program-level. The owner picked `Qwen/Qwen2.5-3B-Instruct` as the base for the Bluebird LLM v1.0 fine-tune on 14 Nov 2026, with `microsoft/Phi-3.5-mini-instruct` (MIT) as the documented fallback. Qwen2.5-3B-Instruct's licence is non-commercial only. It was accepted because the owner ruled that this class project is non-commercial, a proof of concept for demo purposes only. Llama-3.2-3B-Instruct was dropped because of its naming clause. The model is not part of the app on `main`. See F-0042 to F-0045 and the root `README.md`.
+
 ## Generator (gen/, PR 1)
 
 Project-local decisions for gen/ (BIA 562), numbered by Trinity 2026-11-12. These numbers are local to this repository and are not the program-level decision log; where a number collides with a program-level decision (for example D-0027), the entry below governs only this project.
@@ -45,6 +51,8 @@ Project-local decisions for app/ (BIA 562), logged from Matt's rulings via Trini
 - **D-0036 (v0.2 scope):** Accepted 2026-11-13 11:42 PT. The owner: "Generate a version 0.2 of this application (little blue)". Scope as in the spec `docs/spec-v0.2.md` §0 and §9: brief comparison, must-cover talking points from computed numbers, voice notes, and a Salesforce-shaped payload with a simulated send to SQLite, looked up by rep + date + company.
 - **D-0039 (v0.2 deploy GO):** Accepted 2026-11-13 11:49 PT. The owner: "GO covers v0.2 build, merge, and deploy to [the app server]" (bracket: editorial redaction of a server hostname). Little Blue only; each merge and each deploy still needs the Architect's approval. The deploy plan is kept outside this repository.
 - **D-0037 (no real Salesforce):** Accepted 2026-11-13 14:26 PT. The owner: "No actual send. Just create the payload and place it into a database record." No Salesforce network calls, client library or credentials. The payload is stored as a database record only (AS-0057 (sf payload is a database record, not a send)).
+- **D-0040 (public visit exposure):** closed (entered 20 Nov 2026 from the existing record; no new owner wording). The v0.2 spec left this to the owner's answer to Q-M1, a passcode on the visit tabs. No passcode was chosen, and the owner accepted the risk of an open demo store: AS-0058 (open visit store, no passcode). T-0050 (visit gate) stays unused.
+- **D-0038 (no raw audio kept):** no entry. The owner has not worded this decision, so AS-0059 (raw audio is not kept) governs, and the app keeps no raw audio. The id stays open for the owner's wording.
 
 ## GATE 2 path B: schema_v1 (spec v1.1)
 - **Supersessions:** D-0034 (national file public-real) is superseded for the training scope by D-0041 (the file stays public-real; its app benchmark use is unchanged). D-0029 (synthetic supplier and products) is superseded for the training scope by D-0043 and for the counterparty by D-0044. T-0025 is retired for gen by D-0042.
