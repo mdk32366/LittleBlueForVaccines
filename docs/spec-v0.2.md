@@ -1,5 +1,15 @@
 # Little Blue for Vaccine Sales: v0.2 spec (architect draft @0.0, 2026-11-13)
 
+> **Historical, superseded (added 20 Nov 2026).** This is the v0.2 architect draft of 13 Nov 2026, kept as it was written. Do not read it as the current design. The current behaviour is recorded in `docs/architecture.md`, `docs/decisions.md`, `docs/assumptions.md`, `docs/testplan.md` and `docs/findings.md`, and the root `README.md` has the project status. Known stale points in the text below:
+> - **Base and numbering.** `gate2-regen` merged long ago (PR #5). The id high-water marks below are out of date. On `main` they now reach D-0048, AS-0080, T-0093 and F-0045.
+> - **Q-M1 / D-0040.** Closed: no passcode was chosen. See D-0040 (public visit exposure) in `docs/decisions.md` and AS-0058 (open visit store, no passcode). T-0050 (visit gate) was never used.
+> - **Q-M4 / speech-to-text model.** Closed: the default is `small.en`, not `base.en` (AS-0047).
+> - **Q-M3.** Closed, as marked below (the national column is always shown).
+> - **D-0038 (no raw audio kept).** Still not worded by the owner. AS-0059 (raw audio is not kept) governs.
+> - **AS-0051 and AS-0052.** These now have rows in `docs/assumptions.md`.
+> - **F-0020.** Retired, as recorded in `docs/findings.md`.
+> - **Deploy.** The live demo described below was taken down on 20 Nov 2026.
+
 Public copy: the deploy section and server internals are omitted. Person names are replaced by roles ("the client" is the source of the asks; "the owner" is the project owner).
 
 Repo: mdk32366/LittleBlueForVaccines (PUBLIC). Base: main `a11b2f3e` plus unmerged `gate2-regen` head `9acaca82` (AS-0041, T-0039..T-0041). Numbering below continues from that branch. Highest numbers today: **D-0035 (real names, fake grounding), AS-0041, T-0041, F-0013** (docs/decisions.md:34, gate2-regen docs/assumptions.md, docs/testplan.md, docs/findings.md:18).

@@ -2,6 +2,8 @@
 
 Populated by the first build PR.
 
+**Status (20 Nov 2026).** `main` is at v0.2-h1c (PR #17, merge `63344d41`). The last demo deployment ran `b430554d` (v0.2-g). h1, h1b and h1c were merged but never deployed, and the demo was taken down on 20 Nov 2026. Bluebird LLM v1.0 (program-level D-0070) is **not** part of the app on `main`. The app has no language-model client (`LLM_MODE` is off), and Bluebird's training, evaluation and integration branch are summarised in the root `README.md` and in `docs/findings.md` (F-0042 to F-0045).
+
 ## Generator (gen/, PR 1)
 
 The generator turns one seed plus the synthetic sales CSV into a small, fully fictional contract corpus with ground-truth Q&A for the retrieval and answering work. Every artefact is fake under D-0022 (fake data); every document carries a SYNTHETIC banner and `synthetic: true`.
