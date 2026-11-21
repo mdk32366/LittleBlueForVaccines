@@ -1,6 +1,6 @@
 35589c33dcc605024b44f6cadecae002998ffff4ecb75a7c52d5432f2988251b  bluebird-llm/adapter/ADAPTER.SHA256
 bb3d7aa8710b659e32a1acdf7e9706b9b0cf89863dc25824cb3d06633e32e542  bluebird-llm/adapter/PEFT-AUTOGEN-README.md
-11e460712a1fc783799e0a3b336b2a94d8b566b86cfc16a51364dd7a3470511f  bluebird-llm/adapter/adapter_config.json
+70ce3a0245fd065d2c25e714c703e894048fbe186b1f162607930a4b594dff5e  bluebird-llm/adapter/adapter_config.json
 3b4166836c840e4e1661e030aad42e0c0c00c31b01aede65be98520cf007112d  bluebird-llm/adapter/adapter_model.safetensors
 1435468dd512c115bec335a12e9cfe47f5543876166218920d6e73cab2b21024  bluebird-llm/eval/jsonfix-v0.0/DIFF-v0.5-to-jf0.0.md
 cf1a568fc3b2aa02245b52ffc5bec40dce7b80a0e6aa46f7bbf216e1fe481e56  bluebird-llm/eval/jsonfix-v0.0/FILES.SHA256
