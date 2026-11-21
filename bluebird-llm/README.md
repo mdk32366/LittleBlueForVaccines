@@ -66,7 +66,7 @@ The actual laptop launch lines for the JSON-fix rerun are recorded verbatim in `
 ### Scoring
 Flags, as the tests and `eval/v0.5/sim/stub_harness.py` call it: `score.py --rows <eval_rows.jsonl> --expect_score_manifest_sha 8c4b3042ba5abf0134b9d0075170ec55585e41092e60e51f411642b59b59bd1e --expect_run_manifest_sha 0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d --expect_adapter_sha 35589c33dcc605024b44f6cadecae002998ffff4ecb75a7c52d5432f2988251b --pred T=<out-T/predictions-*.jsonl> --pred S=<out-S-b4/predictions-*.jsonl> --primary T --baseline S --out <dir>`.
 
-**Note:** `score.py` itself (sha256 `a4d7a3746e17549ba5e21965df3dcad916758faecaf2425dfaebdda99d424045`, listed in `eval/v0.5/SCORE-INPUTS.SHA256` and `EVAL-INPUTS.SHA256`) is **not included in this push**, because it was not in the source pack. `evalcore.py` and `evalstats.py` are included. The harness tests in `eval/v0.5/tests/` call `score.py`, so the scoring tests need it.
+`score.py` (sha256 `a4d7a3746e17549ba5e21965df3dcad916758faecaf2425dfaebdda99d424045`, which matches `eval/v0.5/SCORE-INPUTS.SHA256` and `EVAL-INPUTS.SHA256`) was not in the original source pack. It was added afterwards from the box eval stage `littleblue-eval-v0.5`, on Matt Kelly's ruling (card t581s2093), and its line was added to `SHA256SUMS`.
 
 ## Eval results (verbatim from the record)
 From `results/r03/score/REPORT.md` (sha256 `eecf22aad959fb80df64c40a87a01abf7bcff31fba92c82c5033a4fc6dfed4e5`) and `results/r03/OWNER-OVERRIDE-T-PASS.md`:
@@ -89,7 +89,7 @@ Read `REPORT.md` for every bar, the probe results and the conditions behind the 
 - `eval/jsonfix-v0.0/`: the JSON-slot constrained-decoding fix harness. Its `eval_rows.jsonl` is byte-identical to v0.5's, so it is left out.
 - `eval/route-a-evidence/v0.6`, `v0.7`: baseline-abort analysis tools and evidence.
 - `results/r03/`: run r03 (T and S outputs, scoring, result note, owner override, route-A redo, JSON-fix plan). `results/jf00/`: the JSON-fix T rerun and its re-score. `results/records/`: BIA 562 class report v2, HOWTO, class-pack index.
-- `SHA256SUMS`: sha256 of every other file in this folder as packed (206 lines). Run `sha256sum -c bluebird-llm/SHA256SUMS` from the repo root. README.md and LICENSE-NOTES.md were written after packing, so they are not listed.
+- `SHA256SUMS`: sha256 of every other file in this folder (206 lines as packed, plus `eval/v0.5/score.py` added later; see Scoring). Run `sha256sum -c bluebird-llm/SHA256SUMS` from the repo root. README.md and LICENSE-NOTES.md were written after packing, so they are not listed.
 
 ## Git LFS manifest
 | Path | Bytes | sha256 |

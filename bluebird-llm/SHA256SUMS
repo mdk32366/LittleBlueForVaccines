@@ -109,6 +109,7 @@ e796fcb88f3c50a16550fe336d8422bfa1073d309a8d366f0649320e66ebd5c4  bluebird-llm/e
 a8bfcd06c752648570f985eccaa235c10dbe3dc05b1ff8cca5a67325b38cc04e  bluebird-llm/eval/v0.5/mut/runmut.py
 b1162051095bb5679c51e67cb56996988ff36d81efcafa87a1f49c28c7b16d70  bluebird-llm/eval/v0.5/mut/spec.py
 db7b7c2e186423e3cd1047ccb7679ef169839c9fd5e2748d54f03638a79e904d  bluebird-llm/eval/v0.5/probecheck.py
+a4d7a3746e17549ba5e21965df3dcad916758faecaf2425dfaebdda99d424045  bluebird-llm/eval/v0.5/score.py
 34ed5b5c9fef413eb8ef1d9f32191713941a8f926fc851f66d11543eaa4f6d9d  bluebird-llm/eval/v0.5/sim/SIM-RESULTS.json
 a24420b7d983adf8d43b0eab9c46795e6b856880a81833eb4aaecc61543f9a85  bluebird-llm/eval/v0.5/sim/SIM-RESULTS.md
 5569c4ad691d1a098926c04baf93e841810311efb39dd29e14927f1cca61e482  bluebird-llm/eval/v0.5/sim/STUB-OUTCOMES.json
