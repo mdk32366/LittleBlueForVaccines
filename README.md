@@ -17,7 +17,7 @@ Every dataset in this repository is synthetic, apart from one public national su
 - **No pricing advice, and no efficacy or safety claims.** The brief's text goes through a validator that rejects clinical-claim words and pricing advice (D-0009 (denylist)). The generated Q&A includes pricing and clinical questions, and their answer is the refusal string.
 - **No Salesforce connection.** The app never connects to Salesforce and stores no Salesforce credentials. Nothing is sent (D-0037 (no real Salesforce), D-0045 (Salesforce dry run), D-0046 (one Composite request, allOrNone)).
 - **No language model in the app on `main`.** The brief's narrative is templated (LLM off), and the visit suggestions are deterministic rules. Bluebird was trained and evaluated outside this repository. Its integration work is on a separate branch that has not been merged (see "Where we left off").
-- **No model weights in this repository.** No base model, adapter, merged model or GGUF file is committed, and none will be.
+- **No model weights on `main`.** No base model, merged model or GGUF file is committed anywhere in this repository. The Bluebird LoRA adapter (only) is on the separate [`bluebird-llm` branch](https://github.com/mdk32366/LittleBlueForVaccines/tree/bluebird-llm), in Git LFS (see "Bluebird LLM" below).
 - **Not for public or production use.** No patient data. Not reviewed for any real commercial use.
 
 ## Data
@@ -77,6 +77,12 @@ The decision, assumption, finding and test ids in `docs/` are local to this repo
 - **App versions on `main`:** the first version (brief, Contract Q&A, PDF), then v0.2-a to v0.2-g (client metrics, talking points, voice notes, visit store and payload record, Salesforce dry run, one Composite request, missed talking-point follow-up), then v0.2-h1 (rule-based evidence quote and follow-up), with follow-ups h1b and h1c. The last merge is PR #17, on 15 Nov 2026.
 - **Demo deployment:** the last public demo ran commit `b430554d` (v0.2-g, before h1). h1, h1b and h1c were merged but never deployed. The demo was taken down on 20 Nov 2026, after the final class presentation was recorded.
 - **Bluebird LLM v1.0:** trained and evaluated, as described below. It is not in the app on `main`.
+
+## Bluebird LLM
+
+Bluebird LLM v1.0 is a QLoRA adapter (LoRA r=16) on [Qwen/Qwen2.5-3B-Instruct](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct), fine-tuned to answer questions about vaccine-supply contracts as JSON with cited spans. It was trained and evaluated on synthetic data only. The adapter (in Git LFS), training and evaluation code, synthetic datasets and results are on the [`bluebird-llm` branch](https://github.com/mdk32366/LittleBlueForVaccines/tree/bluebird-llm); start with [`bluebird-llm/README.md`](https://github.com/mdk32366/LittleBlueForVaccines/blob/bluebird-llm/bluebird-llm/README.md). It is not part of the app on `main`.
+
+License note: the base model is under the Qwen RESEARCH LICENSE AGREEMENT (non-commercial, research or evaluation use only), and the adapter is distributed under those terms; see [`bluebird-llm/LICENSE-NOTES.md`](https://github.com/mdk32366/LittleBlueForVaccines/blob/bluebird-llm/bluebird-llm/LICENSE-NOTES.md).
 
 ## How Bluebird LLM v1.0 was built
 
@@ -159,7 +165,7 @@ The training data is this repository's own generator output (`gen/`, seed 562), 
 
 It checkpoints every 50 steps. Each guard was tripped once on purpose, on a tiny CPU stand-in model, before the real run.
 
-**Output.** Only the LoRA adapter is saved. It is kept outside this repository. For reference, the sha256 fingerprint of the adapter weights file is `3b416683…112d`.
+**Output.** Only the LoRA adapter is saved. It is not on `main`; it is published on the [`bluebird-llm` branch](https://github.com/mdk32366/LittleBlueForVaccines/tree/bluebird-llm). For reference, the sha256 fingerprint of the adapter weights file is `3b416683…112d`.
 
 ### 5. Evaluation
 
@@ -213,7 +219,7 @@ All of these numbers measure reading synthetic contracts. They say nothing about
   - a text-matching helper needs word boundaries;
   - one decisions entry needs rewording.
 - **Not in production.** The proof of concept was taken down with the demo on 20 Nov 2026.
-- **Not published.** No weights, adapter, GGUF, training rows or evaluation harness are in this repository. The training and evaluation code and evidence stay outside the public repository. Only the adapter fingerprint is published.
+- **Not on `main`.** No weights, adapter, GGUF, training rows or evaluation harness are on `main`. The adapter, training and evaluation code, synthetic training and evaluation rows, and evidence were published on 20 Nov 2026 on the [`bluebird-llm` branch](https://github.com/mdk32366/LittleBlueForVaccines/tree/bluebird-llm). No base-model weights or GGUF are published anywhere.
 - **Never built.** A labelled customer-response dataset, and an evaluation of the response-label task.
 - **Open evaluation follow-ups.** Whether to re-certify after the JSON-format fix, and the clean-up of the training machine's working files. Both were held for a later decision.
 
@@ -230,4 +236,4 @@ As of 20 Nov 2026:
   3. Close or rewrite issue #4, an early v0.2 checklist whose work has all shipped.
   4. D-0038 (no raw audio kept) is still worded only as an assumption, AS-0059 (raw audio is not kept). The app already behaves that way.
   5. Some client data questions are still open, such as the HepB Ped figure behind R4 (AS-0053 (R4 interim definition)).
-- **Rules that still apply:** no weights or private evidence in this repository, no pricing advice, no efficacy or safety claims, and synthetic data only.
+- **Rules that still apply:** no weights or private evidence on `main` (the adapter lives only on the `bluebird-llm` branch), no pricing advice, no efficacy or safety claims, and synthetic data only.
