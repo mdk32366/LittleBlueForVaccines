@@ -1,0 +1,330 @@
+[
+ {
+  "stub": "gold",
+  "outcome": "READS",
+  "why": [
+   "format gate, completeness, test floor and every probe bar pass"
+  ],
+  "test_correct": 1.0,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [],
+  "expected": "READS",
+  "match": true
+ },
+ {
+  "stub": "honest92",
+  "outcome": "READS",
+  "why": [
+   "format gate, completeness, test floor and every probe bar pass"
+  ],
+  "test_correct": 0.9268,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [],
+  "expected": "READS",
+  "match": true
+ },
+ {
+  "stub": "honest45",
+  "outcome": "INCONCLUSIVE",
+  "why": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "test_correct": 0.4445,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "expected": "INCONCLUSIVE",
+  "match": true
+ },
+ {
+  "stub": "mem",
+  "outcome": "MEMORISES",
+  "why": [
+   "old value returned over placebo: 479 vs 0 discordant of 577, p=6.41e-145"
+  ],
+  "test_correct": 1.0,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 479,
+   "c_placebo_not_old": 0,
+   "p_value": 6.41e-145,
+   "fires": true
+  },
+  "failed_bars": [
+   "P-CF counterfactual",
+   "P-AR anchor removal"
+  ],
+  "expected": "MEMORISES",
+  "match": true
+ },
+ {
+  "stub": "copy_anchor",
+  "outcome": "DEGENERATE",
+  "why": [
+   "copies whole clauses as spans (1660/1660)",
+   "answers almost nothing right (0/1660 answerable)"
+  ],
+  "test_correct": 0.2057,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "expected": "DEGENERATE",
+  "match": true
+ },
+ {
+  "stub": "refuse",
+  "outcome": "DEGENERATE",
+  "why": [
+   "refuses answerable rows (1660/1660)",
+   "answers almost nothing right (0/1660 answerable)"
+  ],
+  "test_correct": 0.2057,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "expected": "DEGENERATE",
+  "match": true
+ },
+ {
+  "stub": "length_gamer",
+  "outcome": "DEGENERATE",
+  "why": [
+   "enumerates extra spans (length-gaming) (1660/1660)",
+   "answers almost nothing right (0/1660 answerable)"
+  ],
+  "test_correct": 0.0,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "expected": "DEGENERATE",
+  "match": true
+ },
+ {
+  "stub": "format_only",
+  "outcome": "DEGENERATE",
+  "why": [
+   "span text not in the prompt (format-only) (1660/1660)",
+   "answers almost nothing right (0/1660 answerable)"
+  ],
+  "test_correct": 0.0,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "expected": "DEGENERATE",
+  "match": true
+ },
+ {
+  "stub": "numeric_only",
+  "outcome": "DEGENERATE",
+  "why": [
+   "format gate failed (235 of 2090 test outputs not strict-valid)"
+  ],
+  "test_correct": 0.6746,
+  "valid": 0.8876,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "G-F format",
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "expected": "DEGENERATE",
+  "match": true
+ },
+ {
+  "stub": "numeric_only_clean",
+  "outcome": "INCONCLUSIVE",
+  "why": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "test_correct": 0.7612,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "A-T test accuracy floor (strict correct, all test rows)"
+  ],
+  "expected": "INCONCLUSIVE",
+  "match": true
+ },
+ {
+  "stub": "gold_but_invalid_nonnum",
+  "outcome": "DEGENERATE",
+  "why": [
+   "format gate failed (75 of 2090 test outputs not strict-valid)"
+  ],
+  "test_correct": 0.9641,
+  "valid": 0.9641,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "G-F format"
+  ],
+  "expected": "DEGENERATE",
+  "match": true
+ },
+ {
+  "stub": "prior_guesser",
+  "outcome": "INCONCLUSIVE",
+  "why": [
+   "A-T test accuracy floor (strict correct, all test rows)",
+   "P-CF counterfactual: new value vs same rows original",
+   "P-AR anchor removal: refusal vs same rows answered"
+  ],
+  "test_correct": 0.4014,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 57,
+   "c_placebo_not_old": 52,
+   "p_value": 0.351,
+   "fires": false
+  },
+  "failed_bars": [
+   "A-T test accuracy floor (strict correct, all test rows)",
+   "P-CF counterfactual",
+   "P-AR anchor removal"
+  ],
+  "expected": "DEGENERATE|INCONCLUSIVE",
+  "match": true
+ },
+ {
+  "stub": "leaker",
+  "outcome": "INCONCLUSIVE",
+  "why": [
+   "P-RN-LEAK real supplier/brand name in output after rename"
+  ],
+  "test_correct": 1.0,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "P-RN-LEAK real supplier/brand name in output after rename"
+  ],
+  "expected": "INCONCLUSIVE",
+  "match": true
+ },
+ {
+  "stub": "shuffle_sensitive",
+  "outcome": "INCONCLUSIVE",
+  "why": [
+   "P-SH clause shuffle: drop vs same rows"
+  ],
+  "test_correct": 0.9569,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 0,
+   "c_placebo_not_old": 0,
+   "p_value": 1.0,
+   "fires": false
+  },
+  "failed_bars": [
+   "P-SH clause shuffle"
+  ],
+  "expected": "INCONCLUSIVE",
+  "match": true
+ },
+ {
+  "stub": "partial_memoriser_30",
+  "outcome": "MEMORISES",
+  "why": [
+   "old value returned over placebo: 157 vs 0 discordant of 577, p=5.47e-48"
+  ],
+  "test_correct": 0.91,
+  "valid": 1.0,
+  "memo": {
+   "b_old_not_placebo": 157,
+   "c_placebo_not_old": 0,
+   "p_value": 5.47e-48,
+   "fires": true
+  },
+  "failed_bars": [
+   "P-CF counterfactual",
+   "P-AR anchor removal"
+  ],
+  "expected": "MEMORISES",
+  "match": true
+ },
+ {
+  "stub": "gold_partial64",
+  "outcome": "REFUSED exit 16",
+  "why": "SCORE_REFUSED exit 16: /workspace/lbe-tmp/suite-tmp/stub-gold_partial64-4quj1f7t/out/predictions-T.jsonl: 3505 of 3569 ids have no prediction (by kind {'rn': 296, 'ar': 294, 'test': 2051, 'sh': 294, 'cf': 274, 'pp': 296}); refusing to score partial predictions",
+  "expected": "REFUSED exit 16",
+  "match": true
+ },
+ {
+  "stub": "gold_no_sh_rn_pp",
+  "outcome": "REFUSED exit 16",
+  "why": "SCORE_REFUSED exit 16: /workspace/lbe-tmp/suite-tmp/stub-gold_no_sh_rn_pp-75j6md3v/out/predictions-T.jsonl: 900 of 3569 ids have no prediction (by kind {'pp': 300, 'sh': 300, 'rn': 300}); refusing to score partial predictions",
+  "expected": "REFUSED exit 16",
+  "match": true
+ },
+ {
+  "stub": "dup",
+  "outcome": "REFUSED exit 16",
+  "why": "SCORE_REFUSED exit 16: /workspace/lbe-tmp/suite-tmp/stub-dup-63peq65k/out/predictions-T.jsonl: duplicate id ar:SYN-SYNCP000004-AMD1-Q01:0",
+  "expected": "REFUSED exit 16",
+  "match": true
+ }
+]

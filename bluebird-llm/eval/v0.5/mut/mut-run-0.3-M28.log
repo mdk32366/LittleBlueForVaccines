@@ -1,0 +1,2 @@
+M28 KILLED ['test_orphan_in_readonly_out_dir_refused_7 (tests.test_eval.KayleeM28.test_orphan_in_readonly_out_dir_refused_7)', 'test_orphan_with_fresh_torn_lock_refused_at_once (tests.test_eval.KayleeM28.test_orphan_with_fresh_torn_lock_refused_at_once)', 'test_orphan_with_stale_lock_same_inode_and_mtime (tests.test_eval.KayleeM28.test_orphan_with_stale_lock_same_inode_and_mtime)']
+RUNMUT_EXIT 0

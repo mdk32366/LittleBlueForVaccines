@@ -1,0 +1,62 @@
+{
+ "E3_acceptance_proposed": {
+  "hit_max <= 0.02 (primary only)": true,
+  "merged generation config read and greedy (every session)": true,
+  "no ABORT-n.json in out dir": true,
+  "status complete, exit 0": true,
+  "strict-valid >= 0.9 (primary only)": true
+ },
+ "E3_pass": true,
+ "NO_VERDICT": "smoke rows only; score.py never issues a verdict on a smoke run",
+ "batches": 8,
+ "gpu_free_at_start": 7385120768,
+ "hit_max_rate": 0.0156,
+ "invalid_reasons": {
+  "not_json": 1
+ },
+ "logits_processors": [],
+ "merged_generation_config": {
+  "bad_words_ids": null,
+  "begin_suppress_tokens": null,
+  "do_sample": false,
+  "eos_token_id": [
+   151645,
+   151643
+  ],
+  "max_new_tokens": 128,
+  "min_new_tokens": null,
+  "min_p": null,
+  "no_repeat_ngram_size": 0,
+  "num_beams": 1,
+  "num_return_sequences": 1,
+  "pad_token_id": 151643,
+  "repetition_penalty": 1.0,
+  "suppress_tokens": null,
+  "temperature": null,
+  "top_k": null,
+  "top_p": null,
+  "typical_p": 1.0
+ },
+ "peak_alloc_bytes": 4403054592,
+ "projected_hours_3569_rows": 1.1479,
+ "refused": 0.1719,
+ "replay_b1": {
+  "ids": [
+   "ar:SYN-SYNCP000152-AMD1-Q01:0",
+   "ar:SYN-SYNCP000011-AMD1-Q01:0",
+   "ar:SYN-SYNCP000054-AMD1-Q01:0"
+  ],
+  "raw_differs": 3,
+  "rows": 8
+ },
+ "rows": 64,
+ "sec_per_row_mean": 1.1579,
+ "strict_valid": 0.9844,
+ "versions": {
+  "bitsandbytes": "0.50.2",
+  "cuda": "12.8",
+  "peft": "0.21.2",
+  "torch": "2.11.0+cu128",
+  "transformers": "5.22.2"
+ }
+}

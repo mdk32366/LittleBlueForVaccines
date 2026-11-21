@@ -1,0 +1,20 @@
+{"check": "I0 stage rows sha256 = RUN-INPUTS line", "ok": true}
+{"check": "I1 out-S holds only the run json, predictions and ABORT-n files; no eval.lock", "ok": true, "files": ["ABORT-1.json", "predictions-qwen25-3b-base-fs.jsonl", "run-qwen25-3b-base-fs.json"]}
+{"check": "I2 run json: status aborted; cfg fewshot, batch 8, limit 0, all kinds, backend hf, no adapter, RUN PIN, rows sha; 3569 rows / 447 batches planned", "ok": true}
+{"check": "I3 last session: exit 3, its ABORT file is the newest, pinned 5.22.2 PINNED_UNVERIFIED, processors [], min_free 7000000000.0", "ok": true}
+{"check": "I4 newest ABORT: exit 3, pid = last session pid, cause peak_alloc > 7000000000.0", "ok": true, "abort": "peak_alloc 7001188352 > 7000000000.0 after row 2920"}
+{"check": "I5 predictions: no torn tail, every line a record, no duplicate or unplanned id, batch field = plan, only whole batches, batches 0..k-1 contiguous", "ok": true, "lines": 2920, "whole_batches": 365, "partial": [], "bad_lines": []}
+{"check": "I6 eval-S.out last line = the ABORT 3 line of the newest ABORT, after row = rows this session wrote", "ok": true, "last_line": "ABORT 3 peak_alloc 7001188352 > 7000000000.0 after row 2920", "rows_this_session": 2920}
+{"check": "I7 progress lines: one per batch of this session, consecutive from batches_done_at_start, ending one batch before the abort batch", "ok": true, "first": [0], "last": [363], "n": 364}
+{"check": "I8 (N30a) exactly one session in the run json, started from batch 0 (the curve is one process from load)", "ok": true, "sessions": 1}
+{"check": "I9 (N30b) full greedy: merged generation config = the literal greedy config = smoke-S's", "ok": true}
+{"check": "I10 (N30c) full cfg = smoke-S cfg except limit (0 vs 64); library versions = literal = smoke-S's", "ok": true, "cfg_diff": ["limit"], "versions": {"bitsandbytes": "0.50.2", "cuda": "12.8", "peft": "0.21.2", "torch": "2.11.0+cu128", "transformers": "5.22.2"}}
+{"check": "I11 (N30d) smoke-S.out sha = 4b8b2cab...19b9 pin, 8 progress lines batches 0-7 of 8, last line EVAL_DONE qwen25-3b-base-fs 64 complete; smoke run json sha pin, status complete", "ok": true}
+{"check": "I12 (N30e) curve never decreases; every progress-line peak <= 7000000000; the ABORT value > 7000000000", "ok": true}
+{"check": "C3 (N29) session peak at full batches 0,64,127,191,254,318 <= smoke-S peak at that batch + 1.0e9", "ok": true, "early": [{"batch": 0, "session": 2753126400, "smoke": 2753126400}, {"batch": 64, "session": 3969564160, "smoke": 3971223040}, {"batch": 127, "session": 4012063232, "smoke": 4011912192}, {"batch": 191, "session": 4030990336, "smoke": 4030207488}, {"batch": 254, "session": 4053525504, "smoke": 4030207488}, {"batch": 318, "session": 4526430720, "smoke": 4030207488}]}
+{"check": "C1 every single-batch increase > 1e8 at a batch with L >= 1000 is at a zero-padding batch", "ok": true, "steps": [{"batch": 4, "bytes": 234109440, "L": 945, "pad": 243}, {"batch": 16, "bytes": 882774528, "L": 992, "pad": 0}, {"batch": 293, "bytes": 441467904, "L": 1176, "pad": 0}, {"batch": 356, "bytes": 2422646272, "L": 1769, "pad": 0}]}
+{"check": "C2 zero-padding records fit peak = a + c*L^2 within 1%; no done zero-padding batch above the session max by > 2%", "ok": true, "points": 49, "a": 2535834082, "c": 1410.88, "max_rel_resid": 0.005, "over": []}
+{"remaining_batches": 82, "remaining_zero_padding": [[391, 1901, 7634479667], [401, 1914, 7704452343], [408, 1923, 7753174320], [420, 1942, 7856782415], [431, 1964, 7978022299], [437, 1971, 8016885034], [446, 1994, 3237048620]], "padded_bound_from_smoke_S": 4030207488, "max_projected": {"batch": 437, "bytes": 8016885034}, "over_go_max": [[391, 7634479667], [401, 7704452343], [408, 7753174320], [420, 7856782415], [431, 7978022299], [437, 8016885034]], "go_max": 6500000000.0, "peak_limit": 7000000000.0}
+{"check": "C4 every remaining batch's projected own peak <= go_max", "ok": false, "first_over": [[391, 7634479667]], "n_over": 6}
+E5S1 STOP: C4 failed; max projected per-batch peak 8016885034 B at batch 437 (go_max 6500000000, limit 7000000000); no relaunch, Trinity re-plans
+rc=1

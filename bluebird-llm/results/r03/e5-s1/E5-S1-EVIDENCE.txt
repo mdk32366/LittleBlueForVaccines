@@ -1,0 +1,7 @@
+E5-S1-keep evidence, 2026-11-15 PT
+nvidia-smi compute apps at ~9:00 PM PT: 12452 C:\Windows\explorer.exe [N/A]; 1344 [Insufficient Permissions] [N/A]
+Get-Process -Id 1344 (~9:01 PM PT, Matt card): ProcessName dwm. CIM Win32_Process for 1344: empty (protected process).
+Trinity ruling (~9:00 PM PT): gate means live python/eval.py only; explorer and dwm do not trip; accept Get-Process name.
+eval.lock False; no eval.py Win32_Process.
+CopyToBox 5 files; laptop Get-FileHash == box sha256sum for all 5.
+e5s1_check.py (@0.6, ed4208b7) result: E5S1 STOP (C1 jump 2422646272 B at batch 356; C2 projection 8223608809 > 6.5e9).

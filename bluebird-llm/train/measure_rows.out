@@ -1,0 +1,11 @@
+train 6273 test 2090
+qa_id overlap 0
+system overlap 0 train systems 135 test systems 45
+doc overlap 0
+families train Counter({'A': 6273}) test Counter({'B': 2090})
+answer_type train Counter({'num': 1436, 'unanswerable': 1287, 'int': 1185, 'enum': 868, 'pct': 738, 'span': 489, 'date': 270})
+synthetic all True
+{'anchored': 4986, 'fits_whole_doc': 4653, 'unanswerable': 1287, 'anchor_in_proposal_leaf': 405, 'clauses_dropped': 1620}
+answer tokens mean/max 51.8 107
+whole-doc prompt tokens p50/p90/max 482 3277 3646
+row tokens (<=1536 upper bound) mean 801.9 share at cap 0.2582

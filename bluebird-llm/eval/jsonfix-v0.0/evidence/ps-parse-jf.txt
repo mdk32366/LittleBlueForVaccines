@@ -1,0 +1,14 @@
+# parse only: 12 PowerShell blocks in ORDER-bluebird-json-fix@0.0 (PowerShell 7.4.6)
+PARSE OK      01-J0.ps1
+PARSE OK      02-J2.ps1
+PARSE OK      03-J2.ps1
+PARSE OK      04-J3.ps1
+PARSE OK      05-J3b.ps1
+PARSE OK      06-J4.ps1
+PARSE OK      07-J5.ps1
+PARSE OK      08-J5-floor.ps1
+PARSE OK      09-J6.ps1
+PARSE OK      10-J6-floor.ps1
+PARSE OK      11-J7.ps1
+PARSE OK      12-J8.ps1
+

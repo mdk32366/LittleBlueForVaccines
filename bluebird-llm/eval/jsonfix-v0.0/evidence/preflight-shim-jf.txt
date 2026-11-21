@@ -1,0 +1,13 @@
+RC 0
+SHIM_EVAL script sha256 772189be5b30ea03dccef4f49b77260d91b17f1d52ab1ddfa6945621082d6874
+VERSIONS {"torch": "2.15.0+cpu", "cuda": null, "bitsandbytes": "shim", "transformers": "5.23.0", "peft": "0.21.3"}
+TRANSFORMERS {"installed": "5.23.0", "verified": "5.23.0", "pin": null, "check": "PASS"}
+GPU_FREE {"free": 7500000000, "total": 8000000000, "min_free": 7000000000.0}
+MERGED_GENERATION_CONFIG {"merged": {"do_sample": false, "num_beams": 1, "temperature": null, "top_p": null, "top_k": null, "min_p": null, "typical_p": 1.0, "repetition_penalty": 1.0, "no_repeat_ngram_size": 0, "max_new_tokens": 256, "min_new_tokens": null, "eos_token_id": [151645, 151643], "pad_token_id": 151643, "num_return_sequences": 1, "bad_words_ids": null, "suppress_tokens": null, "begin_suppress_tokens": null}, "logits_processors": ["JsonSlotConstraint"]}
+PREFLIGHT_DONE {"min_free_check": "PASS", "peak_alloc_bytes": 1000} PREFLIGHT-bluebird-v1.0-e2-jf-1.json
+
+/workspace/littleblue-fullrun-review/venv/lib/python3.13/site-packages/transformers/modeling_utils.py:3303: FutureWarning: `is_gradient_checkpointing` is deprecated and will be removed in v6. Use `is_activation_checkpointing` instead.
+  warnings.warn(
+
+PREFLIGHT-bluebird-v1.0-e2-jf-1.json {"byte_tokens": 151643, "schema": "bluebird-answer-spans-slot@0.0", "stop_ids": [151645, 151643], "table_size": 151665, "tokenizer_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"} ['JsonSlotConstraint']
+pycache []

@@ -1,0 +1,19 @@
+MOCK CASES:
+  M1 known app parent -> KNOWN-EXCEPTION
+  M2 known app child -> KNOWN-EXCEPTION
+  M3 same pid, other start time (pid reused) -> STOP
+  M4 known pid but eval.py in cmd -> STOP
+  M5 live eval -> STOP
+  M6 wrapper mentioning eval.py -> STOP (N44 fail-safe)
+  M7 non-python, no eval.py -> not listed
+  M8 python with hidden cmd -> STOP
+  M9 app cmd but other pid -> STOP
+GATE OUTPUT:
+KNOWN-EXCEPTION pid=21896 name=python.exe created=2026-11-12 14:20:35 cmd="C:\Users\mdk32\venvs\littleblue-app\Scripts\python.exe" "C:\Users\mdk32\venvs\littleblue-app\Scripts\streamlit.exe" run app.py --server.address 127.0.0.1 --server.headless true
+KNOWN-EXCEPTION pid=2580 name=python.exe created=2026-11-12 14:20:35 cmd="C:\Users\mdk32\AppData\Local\Programs\Python\Python312\python.exe" "C:\Users\mdk32\venvs\littleblue-app\Scripts\streamlit.exe" run app.py --server.address 127.0.0.1 --server.headless true
+STOP pid=2580 name=python.exe created=2026-11-12 14:20:36 cmd="C:\Users\mdk32\AppData\Local\Programs\Python\Python312\python.exe" "C:\Users\mdk32\venvs\littleblue-app\Scripts\streamlit.exe" run app.py --server.address 127.0.0.1 --server.headless true
+STOP pid=21896 name=python.exe created=2026-11-12 14:20:35 cmd="C:\Users\mdk32\venvs\littleblue-app\Scripts\python.exe" "C:\Users\mdk32\venvs\littleblue-app\Scripts\streamlit.exe" run app.py --server.address 127.0.0.1 --server.headless true eval.py
+STOP pid=9448 name=python.exe created=2026-11-16 08:00:00 cmd=C:\Users\mdk32\venvs\bia562-train\Scripts\python.exe -B eval.py --model x
+STOP pid=7777 name=pwsh.exe created=2026-11-16 08:00:00 cmd=pwsh -c python eval.py
+STOP pid=5555 name=python.exe created=2026-11-12 14:20:35 cmd=
+STOP pid=3333 name=python.exe created=2026-11-12 14:20:35 cmd="C:\x\venvs\littleblue-app\Scripts\streamlit.exe" run app.py --x

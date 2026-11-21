@@ -1,0 +1,15 @@
+E6-S4 read-only poll (ORDER @0.7 L606-615, verbatim), MDKDevLaptop, Matt's approval card, 2026-11-16 ~4:55 AM PT. Exit code 0. Raw output:
+
+NO LOCK
+STATUS complete
+pid        : 27020
+started    : 2026-11-16 02:41:07
+ended      : 2026-11-16 04:26:34
+exit       : 0
+abort_file :
+{"batch": 891, "done_batches": 892, "of": 893, "sec_per_row": 2.946, "peak_alloc": 5032707072}
+{"batch": 892, "done_batches": 893, "of": 893, "sec_per_row": 3.665, "peak_alloc": 5032707072}
+EVAL_DONE qwen25-3b-base-fs 3569 complete c47eda6e3024a497f80b49f106231413f4a5a625d610daa911fa465451439930
+Loading weights: 100%|██████████| 434/434 [00:05<00:00, 83.18it/s]   (err tail)
+NVIDIA RTX PRO 2000 Blackwell Generation Laptop GPU, 0 MiB, 8151 MiB, 48
+BatteryStatus 2, EstimatedChargeRemaining 99

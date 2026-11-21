@@ -1,0 +1,44 @@
+# (1) parse only: 30 PowerShell blocks in §g + E8 filled (PowerShell 7.4.6)
+PARSE OK      00-E0a.ps1
+PARSE OK      01-E1.ps1
+PARSE OK      02-E2.ps1
+PARSE OK      03-E2-2.ps1
+PARSE OK      04-E0b.ps1
+PARSE OK      05-E0b-pin.ps1
+PARSE OK      06-E0b-pin-floor.ps1
+PARSE OK      07-E0b-floor.ps1
+PARSE OK      08-E3a.ps1
+PARSE OK      09-E3a-pin.ps1
+PARSE OK      10-E3a-pin-floor.ps1
+PARSE OK      11-E3a-floor.ps1
+PARSE OK      12-E3b.ps1
+PARSE OK      13-E3b-pin.ps1
+PARSE OK      14-E3b-pin-floor.ps1
+PARSE OK      15-E3b-floor.ps1
+PARSE OK      16-E6-smoke.ps1
+PARSE OK      17-E4.ps1
+PARSE OK      18-E4-pin.ps1
+PARSE OK      19-E4-pin-floor.ps1
+PARSE OK      20-E4-floor.ps1
+PARSE OK      21-E5.ps1
+PARSE OK      22-E5-pin.ps1
+PARSE OK      23-E5-pin-floor.ps1
+PARSE OK      24-E5-floor.ps1
+PARSE OK      25-E6.ps1
+PARSE OK      26-E6-2.ps1
+PARSE OK      27-E7.ps1
+PARSE ERRORS  28-E8.ps1: line 2: The '<' operator is reserved for future use. | line 2: The '<' operator is reserved for future use.
+PARSE OK      29-E9.ps1
+PARSE OK      99-E8-filled.ps1
+# (2a) E0a weights line under pwsh, model path mapped to a mock dir
+ok       -> SHARD OK model-00001-of-00002.safetensors 10 / SHARD OK model-00002-of-00002.safetensors 20
+missing  -> SHARD OK model-00001-of-00002.safetensors 10 / SHARD MISSING model-00002-of-00002.safetensors
+zero     -> SHARD OK model-00001-of-00002.safetensors 10 / SHARD MISSING model-00002-of-00002.safetensors
+single   -> SHARD OK model.safetensors 5
+none     -> NO WEIGHTS: neither model.safetensors.index.json nor model.safetensors
+# (2b) E8 restore guard under pwsh, filled (GUID 381b4222-f694-41f0-9685-ff5bb260df2e, 1800, 0), mock powercfg that only echoes
+same scheme                    -> CALLED powercfg /setacvalueindex SCHEME_CURRENT SUB_SLEEP STANDBYIDLE 1800 / CALLED powercfg /setacvalueindex SCHEME_CURRENT SUB_SLEEP HIBERNATEIDLE 0 / CALLED powercfg /setactive SCHEME_CURRENT / RESTORED
+same scheme, 2-line output     -> CALLED powercfg /setacvalueindex SCHEME_CURRENT SUB_SLEEP STANDBYIDLE 1800 / CALLED powercfg /setacvalueindex SCHEME_CURRENT SUB_SLEEP HIBERNATEIDLE 0 / CALLED powercfg /setactive SCHEME_CURRENT / RESTORED
+scheme changed                 -> SCHEME CHANGED: nothing restored; stop and report
+scheme changed, 2-line output  -> SCHEME CHANGED: nothing restored; stop and report
+GUID left unfilled             -> SCHEME CHANGED: nothing restored; stop and report

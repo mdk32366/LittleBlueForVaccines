@@ -1,0 +1,16 @@
+{"check": "E5-b4-pin = E5-pin with out_dir out-S-b4 + '--batch','4'; redirects eval-S4.out/.err", "ok": true}
+{"check": "E5-b4-pin-floor = E5-b4-pin + '--min_free','<MIN_FREE_BYTES>'", "ok": true}
+{"check": "E5-pin-limit = E5-pin + '--peak_limit','8500000000'; redirects eval-S.out/.err", "ok": true}
+{"step": "T: E4-pin argv (fixture adapter)", "rc": 0, "expect": 0, "last_out": "EVAL_DONE bluebird-v1.0-e2 3569 complete a81282dc8428002207fc5f211b97834375f8fab4e46b078d0872efacba57f076", "ok": true}
+{"step": "route A: E5-b4-pin, fresh out-S-b4, peak 5.3e9", "rc": 0, "expect": 0, "last_out": "EVAL_DONE qwen25-3b-base-fs 3569 complete b68932233c57d6c48f264b76d11b2e58f54e4cfa451767dc30b5510079f6f55b", "ok": true}
+{"step": "out-S-b4: sha256sum -c EVAL.SHA256", "ok": true}
+{"step": "box scoring route A line (adapter sha -> fixture's) on T (batch 8) + S (batch 4)", "rc": 0, "ok": true, "tail": [" ]", "}"]}
+{"step": "route A: E5-b4-pin aborts 3 at batch 499", "rc": 3, "expect": 3, "last_out": "ABORT 3 peak_alloc 7100000000 > 7000000000.0 after row 2000", "ok": true}
+{"step": "route A: same E5-b4-pin line again resumes from batch 500", "rc": 0, "expect": 0, "last_out": "EVAL_DONE qwen25-3b-base-fs 3569 complete b68932233c57d6c48f264b76d11b2e58f54e4cfa451767dc30b5510079f6f55b", "ok": true}
+{"step": "route A: E5-b4-pin-floor (filled 7000000000) resumes the same dir", "rc": 0, "expect": 0, "last_out": "EVAL_DONE qwen25-3b-base-fs 3569 complete b68932233c57d6c48f264b76d11b2e58f54e4cfa451767dc30b5510079f6f55b", "ok": true}
+{"step": "route A: relaunch against the completed out-S-b4 is refused", "rc": 7, "expect": 7, "last_out": "REFUSED (exit 7, nothing written): out_dir holds a COMPLETED run; nothing to do. Use a fresh out_dir for a new run", "ok": true}
+{"step": "session 1: E5-pin, the reported abort", "rc": 3, "expect": 3, "last_out": "ABORT 3 peak_alloc 7001188352 > 7000000000.0 after row 2920", "ok": true}
+{"step": "route B: E5-pin-limit resumes out-S, peak 8016885034 < 8.5e9", "rc": 0, "expect": 0, "last_out": "EVAL_DONE qwen25-3b-base-fs 3569 complete b68932233c57d6c48f264b76d11b2e58f54e4cfa451767dc30b5510079f6f55b", "ok": true}
+{"step": "route B: E5-pin-limit with a peak above 8.5e9 stops with exit 3 after its first batch", "rc": 3, "expect": 3, "last_out": "ABORT 3 peak_alloc 8600000000 > 8500000000.0 after row 8", "ok": true}
+{"check": "no __pycache__ in the v0.5 stage", "ok": true}
+{"summary": "15/15 ok"}

@@ -1,0 +1,929 @@
+{
+ "bad_rows": [
+  "ar:SYN-SYNCP000054-AMD1-Q01:0",
+  "sh:SYN-SYNCP000116-MSA1-Q21:0",
+  "test:SYN-SYNCP000004-MSA1-Q12",
+  "test:SYN-SYNCP000015-MSA1-Q12",
+  "test:SYN-SYNCP000023-MSA1-Q21",
+  "test:SYN-SYNCP000040-MSA1-Q28",
+  "test:SYN-SYNCP000069-MSA1-Q12",
+  "test:SYN-SYNCP000076-MSA1-Q21",
+  "test:SYN-SYNCP000082-MSA1-Q12",
+  "test:SYN-SYNCP000134-MSA1-Q28",
+  "test:SYN-SYNCP000154-MSA1-Q21",
+  "test:SYN-SYNCP000168-MSA1-Q12",
+  "test:SYN-SYNCP000174-MSA1-Q29"
+ ],
+ "batches": [
+  0,
+  1,
+  40,
+  80,
+  113,
+  120,
+  123,
+  149,
+  158,
+  162,
+  201,
+  228,
+  242,
+  281,
+  282,
+  287,
+  296,
+  298,
+  301,
+  307,
+  308,
+  327,
+  366,
+  406,
+  445
+ ],
+ "rows": 200,
+ "scenarios": {
+  "R0 recorded script, no constraint, cap 128 (mock reproduces out-T)": {
+   "bad": {
+    "ar:SYN-SYNCP000054-AMD1-Q01:0": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"After {S1}, the minimum was revised to the level in {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000054-AMD1#2\", \"text\": \"Starting 1 March 2027, instrument SYN-SYNCP000054-AMD1 agreed with MERCK &amp; COMPANY revises SYN-SYNCP000054-MSA1\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000054-AMD1#3",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "sh:SYN-SYNCP000116-MSA1-Q21:0": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 35,
+     "raw": "{\"answer\": \"The Customer signed off on the terms.\", \"spans\": {\"S2\": \"SYN-SYNCP000116-P1\"}}",
+     "reason": "bad_span_obj",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000004-MSA1-Q12": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000004-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000004-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 2.5 per cent rebate.",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000015-MSA1-Q12": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000015-MS1#4.3\", \"text\": \"310\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000015-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000023-MSA1-Q21": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 36,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {\"S2\": \"SYN-SYNCP000023-P1#4\"}}",
+     "reason": "bad_span_obj",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000040-MSA1-Q28": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000040-MSA1#4.1\", \"text\": \"1,010\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000040-EXH1#3\", \"text\": \"790\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000040-MSA",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000069-MSA1-Q12": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000069-MS1#4.3\", \"text\": \"140\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000069-MS1#5\", \"text\": \"Band 1 is reached once yearly Meningococcal volume hits 70 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band ",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000076-MSA1-Q21": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 49,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {\"SYN-SYNCP000076-P1#4\": \"SYN-SYNCP000076-P1#4\"}}",
+     "reason": "bad_span_key",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000082-MSA1-Q12": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000082-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000082-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 1.5 per cent rebate.",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000134-MSA1-Q28": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000134-MS1#5.1\", \"text\": \"430\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000134-EXH1#3\", \"text\": \"342\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000134-EXH1#2",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000154-MSA1-Q21": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 49,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {\"SYN-SYNCP000154-P1#4\": \"SYN-SYNCP000154-P1#4\"}}",
+     "reason": "bad_span_key",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000168-MSA1-Q12": {
+     "forced": null,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000168-MS1#4.3\", \"text\": \"160\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000168-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 80 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n\\\\",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000174-MSA1-Q29": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 94,
+     "raw": "{\"answer\": \"No; the second window falls below the required {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000174-MSA1#4.1\", \"text\": \"69.2%\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000174-EXH1#3\", \"text\": \"70%\"}}}",
+     "reason": "slot_mismatch",
+     "same_as_outT": true,
+     "valid": false
+    }
+   },
+   "summary": {
+    "bad_rows_valid_now": 0,
+    "err_tail": "",
+    "good_rows": 187,
+    "good_rows_same": 187,
+    "hit_max": 8,
+    "last": "EVAL_DONE t 200 complete f2d0e397b6c054cb80d1581f0de43f0c979dcc1d67ccfeea182cb884a53c6491",
+    "rc": 0,
+    "rows": 200,
+    "rows_forced": 0,
+    "same_as_outT": 200,
+    "valid": 187
+   }
+  },
+  "R1 recorded script, json-slot, cap 256": {
+   "bad": {
+    "ar:SYN-SYNCP000054-AMD1-Q01:0": {
+     "forced": 11,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 139,
+     "raw": "{\"answer\": \"After {S1}, the minimum was revised to the level in {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000054-AMD1#2\", \"text\": \"Starting 1 March 2027, instrument SYN-SYNCP000054-AMD1 agreed with MERCK &amp; COMPANY revises SYN-SYNCP000054-MSA1\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000054-AMD1#3\", \"text\": \"{\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "sh:SYN-SYNCP000116-MSA1-Q21:0": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 19,
+     "raw": "{\"answer\": \"The Customer signed off on the terms.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000004-MSA1-Q12": {
+     "forced": 2,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 130,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000004-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000004-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 2.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000015-MSA1-Q12": {
+     "forced": 2,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 130,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000015-MS1#4.3\", \"text\": \"310\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000015-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000023-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000040-MSA1-Q28": {
+     "forced": 10,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 138,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000040-MSA1#4.1\", \"text\": \"1,010\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000040-EXH1#3\", \"text\": \"790\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000040-MSA\", \"text\": \">\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000069-MSA1-Q12": {
+     "forced": 2,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 130,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000069-MS1#4.3\", \"text\": \"140\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000069-MS1#5\", \"text\": \"Band 1 is reached once yearly Meningococcal volume hits 70 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band \"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000076-MSA1-Q21": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 18,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000082-MSA1-Q12": {
+     "forced": 2,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 130,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000082-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000082-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 1.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000134-MSA1-Q28": {
+     "forced": 10,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 138,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000134-MS1#5.1\", \"text\": \"430\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000134-EXH1#3\", \"text\": \"342\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000134-EXH1#2\", \"text\": \":\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000154-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000168-MSA1-Q12": {
+     "forced": 2,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 130,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000168-MS1#4.3\", \"text\": \"160\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000168-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 80 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n\\\\\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000174-MSA1-Q29": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 61,
+     "raw": "{\"answer\": \"No; the second window falls below the required {S2}.\", \"spans\": {\"S2\": {\"anchor\": \"SYN-SYNCP000174-MSA1#4.1\", \"text\": \"69.2%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    }
+   },
+   "summary": {
+    "bad_rows_valid_now": 13,
+    "err_tail": "",
+    "good_rows": 187,
+    "good_rows_same": 187,
+    "hit_max": 0,
+    "last": "EVAL_DONE t 200 complete 11e8f2029a26468f214da42ca57db2c089ccdb6e7bef2ac86b6457a836d7969f",
+    "rc": 0,
+    "rows": 200,
+    "rows_forced": 13,
+    "same_as_outT": 187,
+    "valid": 200
+   }
+  },
+  "R2 recorded script, json-slot, cap 128": {
+   "bad": {
+    "ar:SYN-SYNCP000054-AMD1-Q01:0": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"After {S1}, the minimum was revised to the level in {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000054-AMD1#2\", \"text\": \"Starting 1 March 2027, instrument SYN-SYNCP000054-AMD1 agreed with MERCK &amp; COMPANY revises SYN-SYNCP000054-MSA1\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000054-AMD1#3",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "sh:SYN-SYNCP000116-MSA1-Q21:0": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 19,
+     "raw": "{\"answer\": \"The Customer signed off on the terms.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000004-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000004-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000004-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 2.5 per cent rebate.",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000015-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000015-MS1#4.3\", \"text\": \"310\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000015-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000023-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000040-MSA1-Q28": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000040-MSA1#4.1\", \"text\": \"1,010\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000040-EXH1#3\", \"text\": \"790\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000040-MSA",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000069-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000069-MS1#4.3\", \"text\": \"140\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000069-MS1#5\", \"text\": \"Band 1 is reached once yearly Meningococcal volume hits 70 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band ",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000076-MSA1-Q21": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 18,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000082-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000082-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000082-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 1.5 per cent rebate.",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000134-MSA1-Q28": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000134-MS1#5.1\", \"text\": \"430\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000134-EXH1#3\", \"text\": \"342\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000134-EXH1#2",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000154-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000168-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 128,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000168-MS1#4.3\", \"text\": \"160\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000168-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 80 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n\\\\",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000174-MSA1-Q29": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 128,
+     "new_tokens": 61,
+     "raw": "{\"answer\": \"No; the second window falls below the required {S2}.\", \"spans\": {\"S2\": {\"anchor\": \"SYN-SYNCP000174-MSA1#4.1\", \"text\": \"69.2%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    }
+   },
+   "summary": {
+    "bad_rows_valid_now": 5,
+    "err_tail": "",
+    "good_rows": 187,
+    "good_rows_same": 187,
+    "hit_max": 8,
+    "last": "EVAL_DONE t 200 complete ef71b2cbb378480120c5099d111e0abdc85b1249eb17b928e85b0451dd6d4a03",
+    "rc": 0,
+    "rows": 200,
+    "rows_forced": 5,
+    "same_as_outT": 195,
+    "valid": 192
+   }
+  },
+  "R3 primary truncation hypotheses, json-slot, cap 256": {
+   "bad": {
+    "ar:SYN-SYNCP000054-AMD1-Q01:0": {
+     "forced": 11,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 139,
+     "raw": "{\"answer\": \"After {S1}, the minimum was revised to the level in {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000054-AMD1#2\", \"text\": \"Starting 1 March 2027, instrument SYN-SYNCP000054-AMD1 agreed with MERCK &amp; COMPANY revises SYN-SYNCP000054-MSA1\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000054-AMD1#3\", \"text\": \"{\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "sh:SYN-SYNCP000116-MSA1-Q21:0": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 19,
+     "raw": "{\"answer\": \"The Customer signed off on the terms.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000004-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 201,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000004-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000004-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 2.5 per cent rebate. Band 2 is reached once yearly Pneumococcal volume hits 300 doses or more; qualifying spend then carries a 3.5 per cent rebate. Band 3 is reached once yearly Pneumococcal volume hits 400 doses or more; qualifying spend then carries a 4.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000015-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 201,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000015-MS1#4.3\", \"text\": \"310\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000015-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\nBand 2 is reached once yearly Pneumococcal volume hits 230 doses or more; qualifying spend then carries a 3 per cent rebate.\\\\nBand 3 is reached once yearly Pneumococcal volume hits 310 doses or more; qualifying spend then carries a 4.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000023-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000040-MSA1-Q28": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 169,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000040-MSA1#4.1\", \"text\": \"1,010\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000040-EXH1#3\", \"text\": \"790\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000040-MSA\", \"text\": \"* Pneumococcal share of dollars = 13.9% | same-state pool 19.1% | countrywide 21.5%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000069-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 195,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000069-MS1#4.3\", \"text\": \"140\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000069-MS1#5\", \"text\": \"Band 1 is reached once yearly Meningococcal volume hits 70 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band 2 is reached once yearly Meningococcal volume hits 110 doses or more; qualifying spend then carries a 3 per cent rebate. Band 3 is reached once yearly Meningococcal volume hits 140 doses or more; qualifying spend then carries a 4.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000076-MSA1-Q21": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 18,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000082-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 199,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000082-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000082-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band 2 is reached once yearly Pneumococcal volume hits 300 doses or more; qualifying spend then carries a 2.5 per cent rebate. Band 3 is reached once yearly Pneumococcal volume hits 400 doses or more; qualifying spend then carries a 4 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000134-MSA1-Q28": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 168,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000134-MS1#5.1\", \"text\": \"430\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000134-EXH1#3\", \"text\": \"342\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000134-EXH1#2\", \"text\": \"* Pneumococcal share of dollars = 16.3% | same-state pool too few in-state peers | countrywide 21.5%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000154-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000168-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 204,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000168-MS1#4.3\", \"text\": \"160\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000168-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 80 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n\\\\nBand 2 is reached once yearly Pneumococcal volume hits 120 doses or more; qualifying spend then carries a 3.5 per cent rebate.\\\\n\\\\nBand 3 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000174-MSA1-Q29": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 61,
+     "raw": "{\"answer\": \"No; the second window falls below the required {S2}.\", \"spans\": {\"S2\": {\"anchor\": \"SYN-SYNCP000174-MSA1#4.1\", \"text\": \"69.2%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    }
+   },
+   "summary": {
+    "bad_rows_valid_now": 13,
+    "err_tail": "",
+    "good_rows": 187,
+    "good_rows_same": 187,
+    "hit_max": 0,
+    "last": "EVAL_DONE t 200 complete f7afe880e4729f3dc0a2648b122159abc40b2a8ddae4153697cb6b4996a2d17b",
+    "rc": 0,
+    "rows": 200,
+    "rows_forced": 6,
+    "same_as_outT": 187,
+    "valid": 200
+   }
+  },
+  "R4 upper truncation hypotheses, json-slot, cap 256": {
+   "bad": {
+    "ar:SYN-SYNCP000054-AMD1-Q01:0": {
+     "forced": 11,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 139,
+     "raw": "{\"answer\": \"After {S1}, the minimum was revised to the level in {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000054-AMD1#2\", \"text\": \"Starting 1 March 2027, instrument SYN-SYNCP000054-AMD1 agreed with MERCK &amp; COMPANY revises SYN-SYNCP000054-MSA1\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000054-AMD1#3\", \"text\": \"{\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "sh:SYN-SYNCP000116-MSA1-Q21:0": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 19,
+     "raw": "{\"answer\": \"The Customer signed off on the terms.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000004-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 241,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000004-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000004-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 2.5 per cent rebate. Band 2 is reached once yearly Pneumococcal volume hits 300 doses or more; qualifying spend then carries a 3.5 per cent rebate. Band 3 is reached once yearly Pneumococcal volume hits 400 doses or more; qualifying spend then carries a 4.5 per cent rebate. Each year the Customer undertakes to take 2,330 or more Influenza doses. Each year the Customer undertakes to take 400 or more Tdap doses.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000015-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 243,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000015-MS1#4.3\", \"text\": \"310\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000015-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\nBand 2 is reached once yearly Pneumococcal volume hits 230 doses or more; qualifying spend then carries a 3 per cent rebate.\\\\nBand 3 is reached once yearly Pneumococcal volume hits 310 doses or more; qualifying spend then carries a 4.5 per cent rebate.\\\\nEach year the Customer undertakes to take 580 or more Tdap doses.\\\\nEach year the Customer undertakes to take 480 or more Influenza doses.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000023-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000040-MSA1-Q28": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 256,
+     "new_tokens": 256,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000040-MSA1#4.1\", \"text\": \"1,010\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000040-EXH1#3\", \"text\": \"790\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000040-MSA\", \"text\": \"* Influenza share of dollars = 18.3% | same-state pool 15.9% | countrywide 14.8%\\n* Pneumococcal share of dollars = 13.9% | same-state pool 19.1% | countrywide 21.5%\\n* DTaP share of dollars = 9.7% | same-state pool 4.4% | countrywide 3.6%\\n* Meningococcal share of dollars = 9.5% | same-state pool 7",
+     "reason": "not_json",
+     "same_as_outT": false,
+     "valid": false
+    },
+    "test:SYN-SYNCP000069-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 231,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000069-MS1#4.3\", \"text\": \"140\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000069-MS1#5\", \"text\": \"Band 1 is reached once yearly Meningococcal volume hits 70 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band 2 is reached once yearly Meningococcal volume hits 110 doses or more; qualifying spend then carries a 3 per cent rebate. Band 3 is reached once yearly Meningococcal volume hits 140 doses or more; qualifying spend then carries a 4.5 per cent rebate. Each year the Customer undertakes to take 390 or more Tdap doses. Each year the Customer undertakes to take 380 or more MMR doses.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000076-MSA1-Q21": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 18,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000082-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 237,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000082-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000082-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band 2 is reached once yearly Pneumococcal volume hits 300 doses or more; qualifying spend then carries a 2.5 per cent rebate. Band 3 is reached once yearly Pneumococcal volume hits 400 doses or more; qualifying spend then carries a 4 per cent rebate. Each year the Customer undertakes to take 380 or more Influenza doses. Each year the Customer undertakes to take 360 or more Tdap doses.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000134-MSA1-Q28": {
+     "forced": 0,
+     "hit_max": true,
+     "max_new": 256,
+     "new_tokens": 256,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000134-MS1#5.1\", \"text\": \"430\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000134-EXH1#3\", \"text\": \"342\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000134-EXH1#2\", \"text\": \"* DTaP share of dollars = 22.0% | same-state pool too few in-state peers | countrywide 3.6%\\n* Pneumococcal share of dollars = 16.3% | same-state pool too few in-state peers | countrywide 21.5%\\n* Influenza share of dollars = 10.6% | same-state pool too few in-state peers | countrywide 14.8%\\n* MMR share of dollars = 8.9% | same-state pool too few in-state peers |",
+     "reason": "not_json",
+     "same_as_outT": false,
+     "valid": false
+    },
+    "test:SYN-SYNCP000154-MSA1-Q21": {
+     "forced": 3,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 17,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000168-MSA1-Q12": {
+     "forced": 0,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 250,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000168-MS1#4.3\", \"text\": \"160\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000168-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 80 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n\\\\nBand 2 is reached once yearly Pneumococcal volume hits 120 doses or more; qualifying spend then carries a 3.5 per cent rebate.\\\\n\\\\nBand 3 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 5 per cent rebate.\\\\n\\\\nEach year the Customer undertakes to take 520 or more Influenza doses.\\\\n\\\\nEach year the Customer undertakes to take 240 or more Tdap doses.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000174-MSA1-Q29": {
+     "forced": 4,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 61,
+     "raw": "{\"answer\": \"No; the second window falls below the required {S2}.\", \"spans\": {\"S2\": {\"anchor\": \"SYN-SYNCP000174-MSA1#4.1\", \"text\": \"69.2%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    }
+   },
+   "summary": {
+    "bad_rows_valid_now": 11,
+    "err_tail": "",
+    "good_rows": 187,
+    "good_rows_same": 187,
+    "hit_max": 2,
+    "last": "EVAL_DONE t 200 complete d7bcef543e229910f60bbd24b5b9d69af1ed5f85f8beefadec07843382783b74",
+    "rc": 0,
+    "rows": 200,
+    "rows_forced": 6,
+    "same_as_outT": 187,
+    "valid": 198
+   }
+  },
+  "R5 primary truncation hypotheses, no constraint, cap 256": {
+   "bad": {
+    "ar:SYN-SYNCP000054-AMD1-Q01:0": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 128,
+     "raw": "{\"answer\": \"After {S1}, the minimum was revised to the level in {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000054-AMD1#2\", \"text\": \"Starting 1 March 2027, instrument SYN-SYNCP000054-AMD1 agreed with MERCK &amp; COMPANY revises SYN-SYNCP000054-MSA1\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000054-AMD1#3",
+     "reason": "not_json",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "sh:SYN-SYNCP000116-MSA1-Q21:0": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 35,
+     "raw": "{\"answer\": \"The Customer signed off on the terms.\", \"spans\": {\"S2\": \"SYN-SYNCP000116-P1\"}}",
+     "reason": "bad_span_obj",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000004-MSA1-Q12": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 201,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000004-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000004-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 2.5 per cent rebate. Band 2 is reached once yearly Pneumococcal volume hits 300 doses or more; qualifying spend then carries a 3.5 per cent rebate. Band 3 is reached once yearly Pneumococcal volume hits 400 doses or more; qualifying spend then carries a 4.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000015-MSA1-Q12": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 201,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000015-MS1#4.3\", \"text\": \"310\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000015-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\nBand 2 is reached once yearly Pneumococcal volume hits 230 doses or more; qualifying spend then carries a 3 per cent rebate.\\\\nBand 3 is reached once yearly Pneumococcal volume hits 310 doses or more; qualifying spend then carries a 4.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000023-MSA1-Q21": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 36,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {\"S2\": \"SYN-SYNCP000023-P1#4\"}}",
+     "reason": "bad_span_obj",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000040-MSA1-Q28": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 169,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000040-MSA1#4.1\", \"text\": \"1,010\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000040-EXH1#3\", \"text\": \"790\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000040-MSA\", \"text\": \"* Pneumococcal share of dollars = 13.9% | same-state pool 19.1% | countrywide 21.5%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000069-MSA1-Q12": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 195,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000069-MS1#4.3\", \"text\": \"140\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000069-MS1#5\", \"text\": \"Band 1 is reached once yearly Meningococcal volume hits 70 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band 2 is reached once yearly Meningococcal volume hits 110 doses or more; qualifying spend then carries a 3 per cent rebate. Band 3 is reached once yearly Meningococcal volume hits 140 doses or more; qualifying spend then carries a 4.5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000076-MSA1-Q21": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 49,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {\"SYN-SYNCP000076-P1#4\": \"SYN-SYNCP000076-P1#4\"}}",
+     "reason": "bad_span_key",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000082-MSA1-Q12": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 199,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000082-MS1#4.3\", \"text\": \"400\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000082-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 200 doses or more; qualifying spend then carries a 1.5 per cent rebate. Band 2 is reached once yearly Pneumococcal volume hits 300 doses or more; qualifying spend then carries a 2.5 per cent rebate. Band 3 is reached once yearly Pneumococcal volume hits 400 doses or more; qualifying spend then carries a 4 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000134-MSA1-Q28": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 168,
+     "raw": "{\"answer\": \"No; trailing twelve month doses of {S2} fall short of the {S1} requirement of {S3}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000134-MS1#5.1\", \"text\": \"430\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000134-EXH1#3\", \"text\": \"342\"}, \"S3\": {\"anchor\": \"SYN-SYNCP000134-EXH1#2\", \"text\": \"* Pneumococcal share of dollars = 16.3% | same-state pool too few in-state peers | countrywide 21.5%\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000154-MSA1-Q21": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 49,
+     "raw": "{\"answer\": \"The Customer turned the terms down.\", \"spans\": {\"SYN-SYNCP000154-P1#4\": \"SYN-SYNCP000154-P1#4\"}}",
+     "reason": "bad_span_key",
+     "same_as_outT": true,
+     "valid": false
+    },
+    "test:SYN-SYNCP000168-MSA1-Q12": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 204,
+     "raw": "{\"answer\": \"The highest reached band starts at {S1} doses; the schedule is {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000168-MS1#4.3\", \"text\": \"160\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000168-MS1#5\", \"text\": \"Band 1 is reached once yearly Pneumococcal volume hits 80 doses or more; qualifying spend then carries a 2 per cent rebate.\\\\n\\\\nBand 2 is reached once yearly Pneumococcal volume hits 120 doses or more; qualifying spend then carries a 3.5 per cent rebate.\\\\n\\\\nBand 3 is reached once yearly Pneumococcal volume hits 160 doses or more; qualifying spend then carries a 5 per cent rebate.\"}}}",
+     "reason": null,
+     "same_as_outT": false,
+     "valid": true
+    },
+    "test:SYN-SYNCP000174-MSA1-Q29": {
+     "forced": null,
+     "hit_max": false,
+     "max_new": 256,
+     "new_tokens": 94,
+     "raw": "{\"answer\": \"No; the second window falls below the required {S2}.\", \"spans\": {\"S1\": {\"anchor\": \"SYN-SYNCP000174-MSA1#4.1\", \"text\": \"69.2%\"}, \"S2\": {\"anchor\": \"SYN-SYNCP000174-EXH1#3\", \"text\": \"70%\"}}}",
+     "reason": "slot_mismatch",
+     "same_as_outT": true,
+     "valid": false
+    }
+   },
+   "summary": {
+    "bad_rows_valid_now": 7,
+    "err_tail": "",
+    "good_rows": 187,
+    "good_rows_same": 187,
+    "hit_max": 0,
+    "last": "EVAL_DONE t 200 complete b8060306ebee981e343e70065d26342413243c7c1ac2ab7b6514d119938f9eea",
+    "rc": 0,
+    "rows": 200,
+    "rows_forced": 0,
+    "same_as_outT": 193,
+    "valid": 194
+   }
+  }
+ }
+}

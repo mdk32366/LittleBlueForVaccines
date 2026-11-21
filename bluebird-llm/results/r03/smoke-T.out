@@ -1,0 +1,13 @@
+VERSIONS {"torch": "2.11.0+cu128", "cuda": "12.8", "bitsandbytes": "0.50.2", "transformers": "5.22.2", "peft": "0.21.2"}
+TRANSFORMERS {"installed": "5.22.2", "verified": "5.23.0", "pin": "5.22.2", "check": "PINNED_UNVERIFIED"}
+GPU_FREE {"free": 7385120768, "total": 8546484224, "min_free": 7000000000.0}
+MERGED_GENERATION_CONFIG {"merged": {"do_sample": false, "num_beams": 1, "temperature": null, "top_p": null, "top_k": null, "min_p": null, "typical_p": 1.0, "repetition_penalty": 1.0, "no_repeat_ngram_size": 0, "max_new_tokens": 128, "min_new_tokens": null, "eos_token_id": [151645, 151643], "pad_token_id": 151643, "num_return_sequences": 1, "bad_words_ids": null, "suppress_tokens": null, "begin_suppress_tokens": null}, "logits_processors": []}
+{"batch": 0, "done_batches": 1, "of": 8, "sec_per_row": 1.465, "peak_alloc": 2366736896}
+{"batch": 1, "done_batches": 2, "of": 8, "sec_per_row": 0.722, "peak_alloc": 2851532800}
+{"batch": 2, "done_batches": 3, "of": 8, "sec_per_row": 1.182, "peak_alloc": 2874707968}
+{"batch": 3, "done_batches": 4, "of": 8, "sec_per_row": 0.778, "peak_alloc": 2885064704}
+{"batch": 4, "done_batches": 5, "of": 8, "sec_per_row": 0.713, "peak_alloc": 2900426752}
+{"batch": 5, "done_batches": 6, "of": 8, "sec_per_row": 1.291, "peak_alloc": 3219714560}
+{"batch": 6, "done_batches": 7, "of": 8, "sec_per_row": 1.305, "peak_alloc": 4215678464}
+{"batch": 7, "done_batches": 8, "of": 8, "sec_per_row": 1.807, "peak_alloc": 4403054592}
+EVAL_DONE bluebird-v1.0-e2 64 complete dc0046e2f24dd52068fb95aa8f4a2908348dd606084c24071bd631967ad5c5a7

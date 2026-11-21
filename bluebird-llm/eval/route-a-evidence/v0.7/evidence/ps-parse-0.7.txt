@@ -1,0 +1,56 @@
+# (1) parse only: 42 PowerShell blocks in @0.7 §g + E8 filled + E5-gpu-pid filled (PowerShell 7.4.6)
+PARSE OK      00-E0a.ps1
+PARSE OK      01-E1.ps1
+PARSE OK      02-E2.ps1
+PARSE OK      03-E2-2.ps1
+PARSE OK      04-E0b.ps1
+PARSE OK      05-E0b-pin.ps1
+PARSE OK      06-E0b-pin-floor.ps1
+PARSE OK      07-E0b-floor.ps1
+PARSE OK      08-E3a.ps1
+PARSE OK      09-E3a-pin.ps1
+PARSE OK      10-E3a-pin-floor.ps1
+PARSE OK      11-E3a-floor.ps1
+PARSE OK      12-E3b.ps1
+PARSE OK      13-E3b-pin.ps1
+PARSE OK      14-E3b-pin-floor.ps1
+PARSE OK      15-E3b-floor.ps1
+PARSE OK      16-E6-smoke.ps1
+PARSE OK      17-E4.ps1
+PARSE OK      18-E4-pin.ps1
+PARSE OK      19-E4-pin-floor.ps1
+PARSE OK      20-E4-floor.ps1
+PARSE OK      21-E5.ps1
+PARSE OK      22-E5-pin.ps1
+PARSE OK      23-E5-pin-floor.ps1
+PARSE OK      24-E5-floor.ps1
+PARSE OK      25-E6.ps1
+PARSE OK      26-E6-2.ps1
+PARSE OK      27-E7.ps1
+PARSE ERRORS  28-E8.ps1: line 2: The '<' operator is reserved for future use. | line 2: The '<' operator is reserved for future use.
+PARSE OK      29-E9.ps1
+PARSE OK      30-E5-gpu-pid.ps1
+PARSE OK      31-E5-free.ps1
+PARSE OK      32-E5-S-gate.ps1
+PARSE OK      33-E5-S1-keep.ps1
+PARSE OK      34-E5-pin-resume.ps1
+PARSE OK      35-E5-b4-pin.ps1
+PARSE OK      36-E5-b4-pin-floor.ps1
+PARSE OK      37-E6-S4.ps1
+PARSE OK      38-E5-S4-keep.ps1
+PARSE OK      39-E7-A.ps1
+PARSE OK      40-E5-pin-limit.ps1
+PARSE OK      41-E5-S2-keep.ps1
+PARSE OK      98-E8-filled.ps1
+PARSE OK      99-E5-gpu-pid-filled.ps1
+# parse errors outside unfilled E8: 0
+# (2a) E5-S-gate process line = the ruling's Name/CommandLine gate: True
+# (2a) E5-S2-keep process line = the ruling's Name/CommandLine gate: True
+# (2a) E5-S4-keep process line = the ruling's Name/CommandLine gate: True
+# (2) E5-S2-keep: 3 lines run under pwsh on a mock work dir: 5 hash lines (expect 5), Test-Path -> ['False'], stderr ''
+#    process line = the 9:00 PM PT ruling's Name/CommandLine gate: True
+# (2) E5-S4-keep: 3 lines run under pwsh on a mock work dir: 5 hash lines (expect 5), Test-Path -> ['False'], stderr ''
+#    process line = the 9:00 PM PT ruling's Name/CommandLine gate: True
+# (3) @0.7 blocks literal (no '...', no '…', no 'as @0.', absolute work dir, venv python, literal RUN PIN): True; new blocks: ['E5-gpu-pid', 'E5-free', 'E5-S-gate', 'E5-b4-pin', 'E5-b4-pin-floor', 'E6-S4', 'E5-S4-keep', 'E7-A', 'E5-pin-limit', 'E5-S2-keep']
+# (3b) E5-pin-resume == E5-pin byte for byte: True
+# (4) @0.7 §g minus its 10 new blocks == @0.6 §g's 33 blocks minus its last (the old E5-S2-keep, replaced by the @0.7 one), byte for byte and in order: True (@0.6 E5-S2-keep is its last block: True)

@@ -1,0 +1,7 @@
+{
+ "abort": "peak_alloc 7001188352 > 7000000000.0 after row 2920",
+ "exit": 3,
+ "pid": 9448,
+ "tag": "qwen25-3b-base-fs",
+ "time": "2026-11-15 19:12:12"
+}

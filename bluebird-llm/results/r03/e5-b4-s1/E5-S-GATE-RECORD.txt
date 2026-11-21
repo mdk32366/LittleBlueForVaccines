@@ -1,0 +1,8 @@
+E5-S-gate record, route A (Matt ruled A, card t382s1311, 2026-11-16 2:39 AM PT). Recorded by Emma.
+E6-S: NO LOCK; STATUS aborted; ABORT-1.json pid=9448 exit=3; GPU 0/8151 MiB; BatteryStatus 2, 100%.
+E5-S-gate Win32_Process hit 2 python.exe -> STOP; Trinity requested full CommandLine.
+Full read (Format-List), verbatim:
+1344 parent 1428 dwm.exe created 11/12/2026 3:20:04 AM, CommandLine empty
+21896 parent 2304 python.exe created 11/12/2026 2:20:35 PM: "C:\Users\mdk32\venvs\littleblue-app\Scripts\python.exe" "C:\Users\mdk32\venvs\littleblue-app\Scripts\streamlit.exe" run app.py --server.address 127.0.0.1 --server.headless true
+2580 parent 21896 python.exe created 11/12/2026 2:20:35 PM: "C:\Users\mdk32\AppData\Local\Programs\Python\Python312\python.exe" "C:\Users\mdk32\venvs\littleblue-app\Scripts\streamlit.exe" run app.py --server.address 127.0.0.1 --server.headless true
+Disposition under Trinity's pre-ruling (1): 21896, 2580 = pre-existing app server, not eval, not on GPU. 1344 = dwm.exe (non-python). Gate PASS with exception logged. Neither process touched.

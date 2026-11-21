@@ -1,0 +1,12 @@
+{"line": "landing mkdir", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": []}
+{"line": "E3c sha256sum -c out-smoke-T", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": ["run-bluebird-v1.0-e2.json: OK"]}
+{"line": "E3c sha256sum -c out-smoke-S", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": ["run-qwen25-3b-base-fs.json: OK"]}
+{"line": "E3c smoke score T (+--allow_stub)", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": ["}"]}
+{"line": "E3c smoke score S (+--allow_stub)", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": ["}"]}
+{"line": "E7 sha256sum -c out-T", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": ["run-bluebird-v1.0-e2.json: OK"]}
+{"line": "E7 sha256sum -c out-S", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": ["run-qwen25-3b-base-fs.json: OK"]}
+{"line": "box scoring as written (+--allow_stub): real adapter sha vs stub's fixture adapter -> 15", "rc": 15, "expect": 15, "ok": true, "pycache": [], "tail": ["SCORE_REFUSED exit 15: runs/r03/out-T/predictions-bluebird-v1.0-e2.jsonl: provenance: ['adapter manifest sha256 != --expect_adapter_sha']"]}
+{"line": "box scoring, adapter sha swapped to the fixture's (+--allow_stub)", "rc": 0, "expect": 0, "ok": true, "pycache": [], "tail": ["}"]}
+{"line": "no __pycache__ anywhere in the stage copy after all box lines (PYTHONDONTWRITEBYTECODE=1)", "ok": true, "pycache": []}
+{"line": "contrast: smoke score T without PYTHONDONTWRITEBYTECODE=1", "rc": 0, "expect": 0, "ok": true, "pycache": ["__pycache__"], "tail": ["}"]}
+{"summary": "11/11 ok"}

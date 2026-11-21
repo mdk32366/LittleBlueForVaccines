@@ -1,0 +1,1955 @@
+{
+ "bars": [
+  {
+   "bar": "G-F format: strict schema-valid JSON on test",
+   "id": "G-F",
+   "source": "carried \u00a7f / brief (hard gate)",
+   "status": "FAIL",
+   "threshold": "= all test rows",
+   "value": "2079/2090"
+  },
+  {
+   "bar": "G-G guardrail: denylist hits on test",
+   "id": "G-G",
+   "source": "carried \u00a7f (must be 0); promotion gate, not part of the verdict",
+   "status": "PASS",
+   "threshold": "= 0",
+   "value": 0
+  },
+  {
+   "bar": "A-T test accuracy floor (strict correct, all test rows)",
+   "id": "A-T",
+   "source": "proposed (@0.1, ruling 1)",
+   "status": "FAIL",
+   "threshold": "Wilson95 LB >= 0.8149 (count >= 1738); stated true accuracy 0.85, miss rate at stated <= 0.01",
+   "value": "1559/2090 = 0.7459",
+   "wilson95": [
+    0.7268,
+    0.7641
+   ]
+  },
+  {
+   "b": 3,
+   "bar": "P-CF counterfactual: new value vs same rows original",
+   "c": 12,
+   "id": "P-CF",
+   "n": 279,
+   "p_value": 0.996,
+   "source": "proposed (@0.1: exact one-sided McNemar on discordant pairs)",
+   "status": "PASS",
+   "threshold": "FAIL iff p < 0.0067 AND drop > 0.05",
+   "value": -0.0323
+  },
+  {
+   "b": 159,
+   "bar": "P-AR anchor removal: refusal vs same rows answered",
+   "c": 50,
+   "id": "P-AR",
+   "n": 300,
+   "p_value": 9.89e-15,
+   "source": "proposed (@0.1: exact one-sided McNemar on discordant pairs)",
+   "status": "FAIL",
+   "threshold": "FAIL iff p < 0.0067 AND drop > 0.05",
+   "value": 0.3633
+  },
+  {
+   "b": 58,
+   "bar": "P-SH clause shuffle: drop vs same rows",
+   "c": 20,
+   "id": "P-SH",
+   "n": 300,
+   "p_value": 9.76e-06,
+   "source": "proposed (@0.1: exact one-sided McNemar on discordant pairs)",
+   "status": "FAIL",
+   "threshold": "FAIL iff p < 0.0067 AND drop > 0.03",
+   "value": 0.1267
+  },
+  {
+   "b": 4,
+   "bar": "P-RN supplier+brand rename: drop vs same rows",
+   "c": 13,
+   "id": "P-RN",
+   "n": 300,
+   "p_value": 0.994,
+   "source": "proposed (@0.1: exact one-sided McNemar on discordant pairs)",
+   "status": "PASS",
+   "threshold": "FAIL iff p < 0.0067 AND drop > 0.03",
+   "value": -0.03
+  },
+  {
+   "b": 59,
+   "bar": "P-PP paraphrase: drop vs same rows",
+   "c": 18,
+   "id": "P-PP",
+   "n": 300,
+   "p_value": 1.53e-06,
+   "source": "proposed (@0.1: exact one-sided McNemar on discordant pairs)",
+   "status": "FAIL",
+   "threshold": "FAIL iff p < 0.0067 AND drop > 0.05",
+   "value": 0.1367
+  },
+  {
+   "b": 20,
+   "bar": "P-PP-REF paraphrase: extra refusal on answerable vs same rows",
+   "c": 5,
+   "id": "P-PP-REF",
+   "n": 292,
+   "p_value": 0.00204,
+   "source": "proposed (@0.1: exact one-sided McNemar on discordant pairs)",
+   "status": "FAIL",
+   "threshold": "FAIL iff p < 0.0067 AND drop > 0.05",
+   "value": 0.0514
+  },
+  {
+   "bar": "P-RN-LEAK real supplier/brand name in output after rename",
+   "id": "P-RN-LEAK",
+   "source": "proposed (case-insensitive, word-bounded)",
+   "status": "PASS",
+   "threshold": "= 0",
+   "value": 0
+  }
+ ],
+ "inputs": {
+  "run_manifest_sha256": "0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d",
+  "runs": {
+   "S": {
+    "cfg": {
+     "adapter_files_sha256": {},
+     "adapter_manifest_sha256": null,
+     "adapter_path": null,
+     "backend": "hf",
+     "batch": 4,
+     "decoding": "greedy",
+     "inputs_sha256": {
+      "eval.py": "429751f6b8e05f8cba63ca1e858f883ef71022d8cdb2aee736200d71b7ffdb25",
+      "eval_rows.jsonl": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899",
+      "evalcore.py": "2d1d2f9bc0716938278a6d9dee9d19830ec673721c68d0753390127c3104ba75",
+      "fewshot.json": "a27d1f08e6a85afd728ae76d65ee62f3e7b4901bc7bdfdbd79c92b013b3e9f07"
+     },
+     "kinds": "",
+     "limit": 0,
+     "manifest_sha256": "0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d",
+     "max_new_tokens": 128,
+     "mode": "fewshot",
+     "model_files_sha256": {
+      ".gitattributes": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+      "LICENSE": "ef52482bb785733093dc9a2e8edd8e764c77d12d8e9d8f10a80c9b547d32d0f9",
+      "README.md": "2c74693e6ae36ba878124d465195b4dad0f71035b54ece1c9fd1553cc497ef8c",
+      "config.json": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+      "generation_config.json": "ea35dfb6fc5051b01114f9b995820d55dab01ed33ee490f6378b442af82c09f9",
+      "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+      "model-00001-of-00002.safetensors": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+      "model-00002-of-00002.safetensors": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d",
+      "model.safetensors.index.json": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+      "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+      "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+      "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+     },
+     "model_path": "C:\\Users\\mdk32\\models\\Qwen2.5-3B-Instruct",
+     "rows_sha256": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899",
+     "run_manifest_lines": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899  eval_rows.jsonl\na27d1f08e6a85afd728ae76d65ee62f3e7b4901bc7bdfdbd79c92b013b3e9f07  fewshot.json\n429751f6b8e05f8cba63ca1e858f883ef71022d8cdb2aee736200d71b7ffdb25  eval.py\n2d1d2f9bc0716938278a6d9dee9d19830ec673721c68d0753390127c3104ba75  evalcore.py\n",
+     "schema": "bluebird-eval@0.2",
+     "seed": 562,
+     "tag": "qwen25-3b-base-fs"
+    },
+    "content_sha256": "c47eda6e3024a497f80b49f106231413f4a5a625d610daa911fa465451439930"
+   },
+   "T": {
+    "cfg": {
+     "adapter_files_sha256": {
+      "final-adapter/adapter_config.json": "11e460712a1fc783799e0a3b336b2a94d8b566b86cfc16a51364dd7a3470511f",
+      "final-adapter/adapter_model.safetensors": "3b4166836c840e4e1661e030aad42e0c0c00c31b01aede65be98520cf007112d"
+     },
+     "adapter_manifest_sha256": "35589c33dcc605024b44f6cadecae002998ffff4ecb75a7c52d5432f2988251b",
+     "adapter_path": "C:\\Users\\mdk32\\lb-eval-bluebird-v1.0-r03\\adapter\\final-adapter",
+     "backend": "hf",
+     "batch": 8,
+     "decoding": "greedy",
+     "inputs_sha256": {
+      "eval.py": "429751f6b8e05f8cba63ca1e858f883ef71022d8cdb2aee736200d71b7ffdb25",
+      "eval_rows.jsonl": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899",
+      "evalcore.py": "2d1d2f9bc0716938278a6d9dee9d19830ec673721c68d0753390127c3104ba75"
+     },
+     "kinds": "",
+     "limit": 0,
+     "manifest_sha256": "0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d",
+     "max_new_tokens": 128,
+     "mode": "zero",
+     "model_files_sha256": {
+      ".gitattributes": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+      "LICENSE": "ef52482bb785733093dc9a2e8edd8e764c77d12d8e9d8f10a80c9b547d32d0f9",
+      "README.md": "2c74693e6ae36ba878124d465195b4dad0f71035b54ece1c9fd1553cc497ef8c",
+      "config.json": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+      "generation_config.json": "ea35dfb6fc5051b01114f9b995820d55dab01ed33ee490f6378b442af82c09f9",
+      "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+      "model-00001-of-00002.safetensors": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+      "model-00002-of-00002.safetensors": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d",
+      "model.safetensors.index.json": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+      "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+      "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+      "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+     },
+     "model_path": "C:\\Users\\mdk32\\models\\Qwen2.5-3B-Instruct",
+     "rows_sha256": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899",
+     "run_manifest_lines": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899  eval_rows.jsonl\na27d1f08e6a85afd728ae76d65ee62f3e7b4901bc7bdfdbd79c92b013b3e9f07  fewshot.json\n429751f6b8e05f8cba63ca1e858f883ef71022d8cdb2aee736200d71b7ffdb25  eval.py\n2d1d2f9bc0716938278a6d9dee9d19830ec673721c68d0753390127c3104ba75  evalcore.py\n",
+     "schema": "bluebird-eval@0.2",
+     "seed": 562,
+     "tag": "bluebird-v1.0-e2"
+    },
+    "content_sha256": "b3cb0afb6edd16ee321511a0380413b40d47f49f958a41bd3da972d232e78e53"
+   }
+  },
+  "score_manifest_sha256": "8c4b3042ba5abf0134b9d0075170ec55585e41092e60e51f411642b59b59bd1e"
+ },
+ "memorisation_test": {
+  "b_old_not_placebo": 0,
+  "by_kind": {
+   "ar": {
+    "b": 0,
+    "c": 0,
+    "n": 300,
+    "n_all_rows": 300,
+    "old": 0,
+    "old_all_rows": 0,
+    "placebo": 0
+   },
+   "cf": {
+    "b": 0,
+    "c": 0,
+    "n": 277,
+    "n_all_rows": 279,
+    "old": 0,
+    "old_all_rows": 0,
+    "placebo": 0
+   }
+  },
+  "c_placebo_not_old": 0,
+  "effect": 0.0,
+  "fires": false,
+  "n": 577,
+  "p_value": 1.0,
+  "rule": "old value (cf: the replaced original; ar: the removed value) returned more often than a placebo value absent from the prompt: exact one-sided McNemar p < 0.01 AND effect >= 0.02"
+ },
+ "models": {
+  "S": {
+   "hit_max_new_tokens": 71,
+   "invalid_reasons_test": {
+    "bad_span_key": 1132,
+    "not_json": 424,
+    "slot_mismatch": 1
+   },
+   "l": {
+    "anchor_exact": 0.0054,
+    "answer_exact_match_template_dependent": 0.0,
+    "answer_value_match": 0.0723,
+    "answer_value_match_ci": [
+     0.0602,
+     0.0843
+    ],
+    "breakdown": {
+     "anchor_position": {
+      "None": {
+       "correct": 0.1349,
+       "n": 430,
+       "valid": 0.707
+      },
+      "first": {
+       "correct": 0.0,
+       "n": 85,
+       "valid": 0.0941
+      },
+      "last": {
+       "correct": 0.0065,
+       "n": 155,
+       "valid": 0.0323
+      },
+      "middle": {
+       "correct": 0.0838,
+       "n": 1420,
+       "valid": 0.1521
+      }
+     },
+     "answer_type": {
+      "date": {
+       "correct": 0.0,
+       "n": 90,
+       "valid": 0.4778
+      },
+      "enum": {
+       "correct": 0.0344,
+       "n": 291,
+       "valid": 0.3986
+      },
+      "int": {
+       "correct": 0.0464,
+       "n": 388,
+       "valid": 0.0825
+      },
+      "num": {
+       "correct": 0.1739,
+       "n": 483,
+       "valid": 0.0062
+      },
+      "pct": {
+       "correct": 0.0286,
+       "n": 245,
+       "valid": 0.1224
+      },
+      "span": {
+       "correct": 0.0061,
+       "n": 163,
+       "valid": 0.0307
+      },
+      "unanswerable": {
+       "correct": 0.1349,
+       "n": 430,
+       "valid": 0.707
+      }
+     },
+     "manufacturer": {
+      "GSK PHARM": {
+       "correct": 0.103,
+       "n": 233,
+       "valid": 0.2833
+      },
+      "MERCK & COMPANY": {
+       "correct": 0.0583,
+       "n": 326,
+       "valid": 0.2393
+      },
+      "PFIZER": {
+       "correct": 0.092,
+       "n": 880,
+       "valid": 0.2625
+      },
+      "SANOFI": {
+       "correct": 0.0769,
+       "n": 559,
+       "valid": 0.2379
+      },
+      "SEQIRUS": {
+       "correct": 0.1196,
+       "n": 92,
+       "valid": 0.2717
+      }
+     },
+     "qt_group": {
+      "admin_fee_pct": {
+       "correct": 0.0222,
+       "n": 45,
+       "valid": 0.0444
+      },
+      "amended_share_floor": {
+       "correct": 0.0,
+       "n": 20,
+       "valid": 0.0
+      },
+      "amendment_exclusivity": {
+       "correct": 0.2667,
+       "n": 45,
+       "valid": 0.5556
+      },
+      "auto_renew": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.9556
+      },
+      "commitment_doses_per_year": {
+       "correct": 0.1111,
+       "n": 90,
+       "valid": 0.1444
+      },
+      "cxs": {
+       "correct": 0.0111,
+       "n": 180,
+       "valid": 0.1556
+      },
+      "effective_date": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0
+      },
+      "exclusivity_class": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.1556
+      },
+      "expiration_date": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.9556
+      },
+      "metric": {
+       "correct": 0.1815,
+       "n": 540,
+       "valid": 0.0111
+      },
+      "proposal_get": {
+       "correct": 0.0222,
+       "n": 45,
+       "valid": 0.0
+      },
+      "proposal_give": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0222
+      },
+      "proposal_outcome": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0889
+      },
+      "refuse": {
+       "correct": 0.0889,
+       "n": 135,
+       "valid": 0.7111
+      },
+      "renewal_notice_days": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0889
+      },
+      "share_floor_pct": {
+       "correct": 0.1333,
+       "n": 45,
+       "valid": 0.0889
+      },
+      "termination_for_convenience": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.7778
+      },
+      "termination_notice_days": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.2444
+      },
+      "tier_min_doses": {
+       "correct": 0.0148,
+       "n": 135,
+       "valid": 0.0222
+      },
+      "tier_rebate_pct": {
+       "correct": 0.0,
+       "n": 135,
+       "valid": 0.1778
+      },
+      "unanswerable": {
+       "correct": 0.1259,
+       "n": 270,
+       "valid": 0.6815
+      }
+     },
+     "truncated": {
+      "False": {
+       "correct": 0.0516,
+       "n": 1550,
+       "valid": 0.34
+      },
+      "True": {
+       "correct": 0.1815,
+       "n": 540,
+       "valid": 0.0111
+      }
+     }
+    },
+    "correct_all": 0.0852,
+    "correct_all_ci": [
+     0.0732,
+     0.0962
+    ],
+    "decision_counts": {
+     "correct_ans": 120,
+     "correct_test": 178,
+     "deny_hits": 0,
+     "extra_spans": 5,
+     "memo": {
+      "ar": {
+       "b": 0,
+       "c": 0,
+       "n": 300,
+       "n_all_rows": 300,
+       "old": 1,
+       "old_all_rows": 1,
+       "placebo": 1
+      },
+      "cf": {
+       "b": 0,
+       "c": 0,
+       "n": 277,
+       "n_all_rows": 279,
+       "old": 0,
+       "old_all_rows": 0,
+       "placebo": 0
+      }
+     },
+     "n_ans": 1660,
+     "n_nonref": 1656,
+     "n_rn": 300,
+     "n_test": 2090,
+     "overlong": 33,
+     "pairs": {
+      "ar": {
+       "b": 25,
+       "c": 28,
+       "n": 300,
+       "probe_correct": 28,
+       "src_correct": 25
+      },
+      "cf": {
+       "b": 11,
+       "c": 17,
+       "n": 279,
+       "probe_correct": 37,
+       "src_correct": 31
+      },
+      "pp": {
+       "b": 10,
+       "c": 10,
+       "n": 300,
+       "probe_correct": 13,
+       "src_correct": 13
+      },
+      "pp_refusal": {
+       "b": 0,
+       "c": 1,
+       "n": 292,
+       "probe_refused": 0,
+       "src_refused": 1
+      },
+      "rn": {
+       "b": 8,
+       "c": 5,
+       "n": 300,
+       "probe_correct": 29,
+       "src_correct": 32
+      },
+      "sh": {
+       "b": 14,
+       "c": 18,
+       "n": 300,
+       "probe_correct": 31,
+       "src_correct": 27
+      }
+     },
+     "refused_ans": 4,
+     "rn_leaks": 0,
+     "ungrounded": 1215,
+     "valid_test": 533
+    },
+    "guardrail_denylist_hits": 0,
+    "probes": {
+     "ar": {
+      "anchor_exact": 0.0,
+      "correct": 0.0933,
+      "correct_given_src_correct": 0.0,
+      "discordant_b_c": [
+       25,
+       28
+      ],
+      "drop_vs_src": -0.01,
+      "n": 300,
+      "n_src_correct": 25,
+      "old_value_given_src_correct": 0.04,
+      "old_value_hallucinated": 0.0033,
+      "placebo_value": 0.0033,
+      "refusal": 0.0933,
+      "refused": 0.0933,
+      "src_correct_same_rows": 0.0833,
+      "valid": 0.3333
+     },
+     "cf": {
+      "anchor_exact": 0.0072,
+      "correct": 0.1326,
+      "correct_given_src_correct": 0.6452,
+      "discordant_b_c": [
+       11,
+       17
+      ],
+      "drop_vs_src": -0.0215,
+      "n": 279,
+      "n_src_correct": 31,
+      "new_value": 0.1326,
+      "old_value": 0.0,
+      "old_value_given_src_correct": 0.0,
+      "placebo_value": 0.0,
+      "refused": 0.0,
+      "src_correct_same_rows": 0.1111,
+      "valid": 0.0645
+     },
+     "pp": {
+      "anchor_exact": 0.01,
+      "correct": 0.0433,
+      "correct_given_src_correct": 0.2308,
+      "discordant_b_c": [
+       10,
+       10
+      ],
+      "drop_vs_src": 0.0,
+      "n": 300,
+      "n_src_correct": 13,
+      "over_refusal_on_answerable": 0.0,
+      "refused": 0.0033,
+      "src_correct_same_rows": 0.0433,
+      "valid": 0.3033
+     },
+     "rn": {
+      "anchor_exact": 0.0033,
+      "correct": 0.0967,
+      "correct_given_src_correct": 0.75,
+      "discordant_b_c": [
+       8,
+       5
+      ],
+      "drop_vs_src": 0.01,
+      "leak_terms_seen": [],
+      "n": 300,
+      "n_src_correct": 32,
+      "name_leak": 0,
+      "refused": 0.03,
+      "src_correct_same_rows": 0.1067,
+      "valid": 0.2667
+     },
+     "sh": {
+      "anchor_exact": 0.0,
+      "correct": 0.1033,
+      "correct_given_src_correct": 0.4815,
+      "discordant_b_c": [
+       14,
+       18
+      ],
+      "drop_vs_src": -0.0133,
+      "n": 300,
+      "n_src_correct": 27,
+      "refused": 0.0,
+      "src_correct_same_rows": 0.09,
+      "valid": 0.12
+     }
+    },
+    "refusal_f1": 0.2358,
+    "refusal_f1_ci": [
+     0.1829,
+     0.2857
+    ],
+    "refusal_precision": 0.9355,
+    "refusal_recall": 0.1349,
+    "rendered_match_template_dependent": 0.0,
+    "span_grounded": 0.2657,
+    "span_ok_anchor_resolves_and_contains_text": 0.0042,
+    "valid_json_schema": 0.255,
+    "validator": {
+     "deny": 0.0,
+     "digits": 0.6914,
+     "verbatim_pass": 0.6681,
+     "xsys": 0.2416
+    }
+   },
+   "n_pred": 3569,
+   "n_test": 2090,
+   "s": {
+    "anchor_exact": 0.0,
+    "answer_exact_match_template_dependent": 0.0,
+    "answer_value_match": 0.0,
+    "answer_value_match_ci": [
+     0.0,
+     0.0
+    ],
+    "breakdown": {
+     "anchor_position": {
+      "None": {
+       "correct": 0.1349,
+       "n": 430,
+       "valid": 0.707
+      },
+      "first": {
+       "correct": 0.0,
+       "n": 85,
+       "valid": 0.0941
+      },
+      "last": {
+       "correct": 0.0,
+       "n": 155,
+       "valid": 0.0323
+      },
+      "middle": {
+       "correct": 0.0,
+       "n": 1420,
+       "valid": 0.1521
+      }
+     },
+     "answer_type": {
+      "date": {
+       "correct": 0.0,
+       "n": 90,
+       "valid": 0.4778
+      },
+      "enum": {
+       "correct": 0.0,
+       "n": 291,
+       "valid": 0.3986
+      },
+      "int": {
+       "correct": 0.0,
+       "n": 388,
+       "valid": 0.0825
+      },
+      "num": {
+       "correct": 0.0,
+       "n": 483,
+       "valid": 0.0062
+      },
+      "pct": {
+       "correct": 0.0,
+       "n": 245,
+       "valid": 0.1224
+      },
+      "span": {
+       "correct": 0.0,
+       "n": 163,
+       "valid": 0.0307
+      },
+      "unanswerable": {
+       "correct": 0.1349,
+       "n": 430,
+       "valid": 0.707
+      }
+     },
+     "manufacturer": {
+      "GSK PHARM": {
+       "correct": 0.0386,
+       "n": 233,
+       "valid": 0.2833
+      },
+      "MERCK & COMPANY": {
+       "correct": 0.0276,
+       "n": 326,
+       "valid": 0.2393
+      },
+      "PFIZER": {
+       "correct": 0.0307,
+       "n": 880,
+       "valid": 0.2625
+      },
+      "SANOFI": {
+       "correct": 0.0179,
+       "n": 559,
+       "valid": 0.2379
+      },
+      "SEQIRUS": {
+       "correct": 0.0326,
+       "n": 92,
+       "valid": 0.2717
+      }
+     },
+     "qt_group": {
+      "admin_fee_pct": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0444
+      },
+      "amended_share_floor": {
+       "correct": 0.0,
+       "n": 20,
+       "valid": 0.0
+      },
+      "amendment_exclusivity": {
+       "correct": 0.2667,
+       "n": 45,
+       "valid": 0.5556
+      },
+      "auto_renew": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.9556
+      },
+      "commitment_doses_per_year": {
+       "correct": 0.0,
+       "n": 90,
+       "valid": 0.1444
+      },
+      "cxs": {
+       "correct": 0.0,
+       "n": 180,
+       "valid": 0.1556
+      },
+      "effective_date": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0
+      },
+      "exclusivity_class": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.1556
+      },
+      "expiration_date": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.9556
+      },
+      "metric": {
+       "correct": 0.0,
+       "n": 540,
+       "valid": 0.0111
+      },
+      "proposal_get": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0
+      },
+      "proposal_give": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0222
+      },
+      "proposal_outcome": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0889
+      },
+      "refuse": {
+       "correct": 0.0889,
+       "n": 135,
+       "valid": 0.7111
+      },
+      "renewal_notice_days": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0889
+      },
+      "share_floor_pct": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.0889
+      },
+      "termination_for_convenience": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.7778
+      },
+      "termination_notice_days": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 0.2444
+      },
+      "tier_min_doses": {
+       "correct": 0.0,
+       "n": 135,
+       "valid": 0.0222
+      },
+      "tier_rebate_pct": {
+       "correct": 0.0,
+       "n": 135,
+       "valid": 0.1778
+      },
+      "unanswerable": {
+       "correct": 0.1259,
+       "n": 270,
+       "valid": 0.6815
+      }
+     },
+     "truncated": {
+      "False": {
+       "correct": 0.0374,
+       "n": 1550,
+       "valid": 0.34
+      },
+      "True": {
+       "correct": 0.0,
+       "n": 540,
+       "valid": 0.0111
+      }
+     }
+    },
+    "correct_all": 0.0278,
+    "correct_all_ci": [
+     0.0206,
+     0.0349
+    ],
+    "decision_counts": {
+     "correct_ans": 0,
+     "correct_test": 58,
+     "deny_hits": 0,
+     "extra_spans": 0,
+     "memo": {
+      "ar": {
+       "b": 0,
+       "c": 0,
+       "n": 300,
+       "n_all_rows": 300,
+       "old": 0,
+       "old_all_rows": 0,
+       "placebo": 0
+      },
+      "cf": {
+       "b": 0,
+       "c": 0,
+       "n": 277,
+       "n_all_rows": 279,
+       "old": 0,
+       "old_all_rows": 0,
+       "placebo": 0
+      }
+     },
+     "n_ans": 1660,
+     "n_nonref": 1656,
+     "n_rn": 300,
+     "n_test": 2090,
+     "overlong": 0,
+     "pairs": {
+      "ar": {
+       "b": 0,
+       "c": 28,
+       "n": 300,
+       "probe_correct": 28,
+       "src_correct": 0
+      },
+      "cf": {
+       "b": 0,
+       "c": 0,
+       "n": 279,
+       "probe_correct": 0,
+       "src_correct": 0
+      },
+      "pp": {
+       "b": 5,
+       "c": 1,
+       "n": 300,
+       "probe_correct": 1,
+       "src_correct": 5
+      },
+      "pp_refusal": {
+       "b": 0,
+       "c": 1,
+       "n": 292,
+       "probe_refused": 0,
+       "src_refused": 1
+      },
+      "rn": {
+       "b": 1,
+       "c": 1,
+       "n": 300,
+       "probe_correct": 8,
+       "src_correct": 8
+      },
+      "sh": {
+       "b": 0,
+       "c": 0,
+       "n": 300,
+       "probe_correct": 0,
+       "src_correct": 0
+      }
+     },
+     "refused_ans": 4,
+     "rn_leaks": 0,
+     "ungrounded": 1656,
+     "valid_test": 533
+    },
+    "guardrail_denylist_hits": 0,
+    "probes": {
+     "ar": {
+      "anchor_exact": 0.0,
+      "correct": 0.0933,
+      "correct_given_src_correct": null,
+      "discordant_b_c": [
+       0,
+       28
+      ],
+      "drop_vs_src": -0.0933,
+      "n": 300,
+      "n_src_correct": 0,
+      "old_value_given_src_correct": null,
+      "old_value_hallucinated": 0.0,
+      "placebo_value": 0.0,
+      "refusal": 0.0933,
+      "refused": 0.0933,
+      "src_correct_same_rows": 0.0,
+      "valid": 0.3333
+     },
+     "cf": {
+      "anchor_exact": 0.0,
+      "correct": 0.0,
+      "correct_given_src_correct": null,
+      "discordant_b_c": [
+       0,
+       0
+      ],
+      "drop_vs_src": 0.0,
+      "n": 279,
+      "n_src_correct": 0,
+      "new_value": 0.0,
+      "old_value": 0.0,
+      "old_value_given_src_correct": null,
+      "placebo_value": 0.0,
+      "refused": 0.0,
+      "src_correct_same_rows": 0.0,
+      "valid": 0.0645
+     },
+     "pp": {
+      "anchor_exact": 0.0,
+      "correct": 0.0033,
+      "correct_given_src_correct": 0.0,
+      "discordant_b_c": [
+       5,
+       1
+      ],
+      "drop_vs_src": 0.0133,
+      "n": 300,
+      "n_src_correct": 5,
+      "over_refusal_on_answerable": 0.0,
+      "refused": 0.0033,
+      "src_correct_same_rows": 0.0167,
+      "valid": 0.3033
+     },
+     "rn": {
+      "anchor_exact": 0.0,
+      "correct": 0.0267,
+      "correct_given_src_correct": 0.875,
+      "discordant_b_c": [
+       1,
+       1
+      ],
+      "drop_vs_src": 0.0,
+      "leak_terms_seen": [],
+      "n": 300,
+      "n_src_correct": 8,
+      "name_leak": 0,
+      "refused": 0.03,
+      "src_correct_same_rows": 0.0267,
+      "valid": 0.2667
+     },
+     "sh": {
+      "anchor_exact": 0.0,
+      "correct": 0.0,
+      "correct_given_src_correct": null,
+      "discordant_b_c": [
+       0,
+       0
+      ],
+      "drop_vs_src": 0.0,
+      "n": 300,
+      "n_src_correct": 0,
+      "refused": 0.0,
+      "src_correct_same_rows": 0.0,
+      "valid": 0.12
+     }
+    },
+    "refusal_f1": 0.2358,
+    "refusal_f1_ci": [
+     0.1829,
+     0.2857
+    ],
+    "refusal_precision": 0.9355,
+    "refusal_recall": 0.1349,
+    "rendered_match_template_dependent": 0.0,
+    "span_grounded": 0.0,
+    "span_ok_anchor_resolves_and_contains_text": 0.0,
+    "valid_json_schema": 0.255,
+    "validator": {
+     "deny": 0.0,
+     "digits": 0.0756,
+     "verbatim_pass": 0.138,
+     "xsys": 0.0
+    }
+   }
+  },
+  "T": {
+   "hit_max_new_tokens": 8,
+   "invalid_reasons_test": {
+    "bad_span_key": 2,
+    "bad_span_obj": 1,
+    "not_json": 7,
+    "slot_mismatch": 1
+   },
+   "l": {
+    "anchor_exact": 0.3048,
+    "answer_exact_match_template_dependent": 0.0,
+    "answer_value_match": 0.6873,
+    "answer_value_match_ci": [
+     0.6651,
+     0.709
+    ],
+    "breakdown": {
+     "anchor_position": {
+      "None": {
+       "correct": 0.9721,
+       "n": 430,
+       "valid": 1.0
+      },
+      "first": {
+       "correct": 0.5059,
+       "n": 85,
+       "valid": 1.0
+      },
+      "last": {
+       "correct": 0.6968,
+       "n": 155,
+       "valid": 0.9806
+      },
+      "middle": {
+       "correct": 0.6972,
+       "n": 1420,
+       "valid": 0.9944
+      }
+     },
+     "answer_type": {
+      "date": {
+       "correct": 1.0,
+       "n": 90,
+       "valid": 1.0
+      },
+      "enum": {
+       "correct": 0.3024,
+       "n": 291,
+       "valid": 0.9794
+      },
+      "int": {
+       "correct": 0.8711,
+       "n": 388,
+       "valid": 1.0
+      },
+      "num": {
+       "correct": 0.8075,
+       "n": 483,
+       "valid": 1.0
+      },
+      "pct": {
+       "correct": 0.4163,
+       "n": 245,
+       "valid": 0.9796
+      },
+      "span": {
+       "correct": 0.816,
+       "n": 163,
+       "valid": 1.0
+      },
+      "unanswerable": {
+       "correct": 0.9721,
+       "n": 430,
+       "valid": 1.0
+      }
+     },
+     "manufacturer": {
+      "GSK PHARM": {
+       "correct": 0.7167,
+       "n": 233,
+       "valid": 0.9957
+      },
+      "MERCK & COMPANY": {
+       "correct": 0.7178,
+       "n": 326,
+       "valid": 1.0
+      },
+      "PFIZER": {
+       "correct": 0.7705,
+       "n": 880,
+       "valid": 0.9909
+      },
+      "SANOFI": {
+       "correct": 0.7388,
+       "n": 559,
+       "valid": 0.9982
+      },
+      "SEQIRUS": {
+       "correct": 0.7283,
+       "n": 92,
+       "valid": 0.9891
+      }
+     },
+     "qt_group": {
+      "admin_fee_pct": {
+       "correct": 0.2667,
+       "n": 45,
+       "valid": 1.0
+      },
+      "amended_share_floor": {
+       "correct": 0.85,
+       "n": 20,
+       "valid": 1.0
+      },
+      "amendment_exclusivity": {
+       "correct": 0.6889,
+       "n": 45,
+       "valid": 1.0
+      },
+      "auto_renew": {
+       "correct": 0.0889,
+       "n": 45,
+       "valid": 1.0
+      },
+      "commitment_doses_per_year": {
+       "correct": 0.7778,
+       "n": 90,
+       "valid": 1.0
+      },
+      "cxs": {
+       "correct": 0.5889,
+       "n": 180,
+       "valid": 0.9833
+      },
+      "effective_date": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "exclusivity_class": {
+       "correct": 0.3778,
+       "n": 45,
+       "valid": 1.0
+      },
+      "expiration_date": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "metric": {
+       "correct": 0.8222,
+       "n": 540,
+       "valid": 1.0
+      },
+      "proposal_get": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "proposal_give": {
+       "correct": 0.8889,
+       "n": 45,
+       "valid": 1.0
+      },
+      "proposal_outcome": {
+       "correct": 0.1333,
+       "n": 45,
+       "valid": 0.9333
+      },
+      "refuse": {
+       "correct": 0.9926,
+       "n": 135,
+       "valid": 1.0
+      },
+      "renewal_notice_days": {
+       "correct": 0.8,
+       "n": 45,
+       "valid": 1.0
+      },
+      "share_floor_pct": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "termination_for_convenience": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "termination_notice_days": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "tier_min_doses": {
+       "correct": 0.963,
+       "n": 135,
+       "valid": 1.0
+      },
+      "tier_rebate_pct": {
+       "correct": 0.5407,
+       "n": 135,
+       "valid": 0.963
+      },
+      "unanswerable": {
+       "correct": 0.9593,
+       "n": 270,
+       "valid": 1.0
+      }
+     },
+     "truncated": {
+      "False": {
+       "correct": 0.7194,
+       "n": 1550,
+       "valid": 0.9929
+      },
+      "True": {
+       "correct": 0.8222,
+       "n": 540,
+       "valid": 1.0
+      }
+     }
+    },
+    "correct_all": 0.7459,
+    "correct_all_ci": [
+     0.7273,
+     0.7641
+    ],
+    "decision_counts": {
+     "correct_ans": 1141,
+     "correct_test": 1559,
+     "deny_hits": 0,
+     "extra_spans": 58,
+     "memo": {
+      "ar": {
+       "b": 0,
+       "c": 0,
+       "n": 300,
+       "n_all_rows": 300,
+       "old": 0,
+       "old_all_rows": 0,
+       "placebo": 0
+      },
+      "cf": {
+       "b": 0,
+       "c": 0,
+       "n": 277,
+       "n_all_rows": 279,
+       "old": 0,
+       "old_all_rows": 0,
+       "placebo": 0
+      }
+     },
+     "n_ans": 1660,
+     "n_nonref": 1606,
+     "n_rn": 300,
+     "n_test": 2090,
+     "overlong": 16,
+     "pairs": {
+      "ar": {
+       "b": 159,
+       "c": 50,
+       "n": 300,
+       "probe_correct": 91,
+       "src_correct": 200
+      },
+      "cf": {
+       "b": 3,
+       "c": 12,
+       "n": 279,
+       "probe_correct": 221,
+       "src_correct": 212
+      },
+      "pp": {
+       "b": 59,
+       "c": 18,
+       "n": 300,
+       "probe_correct": 158,
+       "src_correct": 199
+      },
+      "pp_refusal": {
+       "b": 20,
+       "c": 5,
+       "n": 292,
+       "probe_refused": 30,
+       "src_refused": 15
+      },
+      "rn": {
+       "b": 4,
+       "c": 13,
+       "n": 300,
+       "probe_correct": 226,
+       "src_correct": 217
+      },
+      "sh": {
+       "b": 58,
+       "c": 20,
+       "n": 300,
+       "probe_correct": 174,
+       "src_correct": 212
+      }
+     },
+     "refused_ans": 54,
+     "rn_leaks": 0,
+     "ungrounded": 54,
+     "valid_test": 2079
+    },
+    "guardrail_denylist_hits": 0,
+    "probes": {
+     "ar": {
+      "anchor_exact": 0.0,
+      "correct": 0.3033,
+      "correct_given_src_correct": 0.205,
+      "discordant_b_c": [
+       159,
+       50
+      ],
+      "drop_vs_src": 0.3633,
+      "n": 300,
+      "n_src_correct": 200,
+      "old_value_given_src_correct": 0.0,
+      "old_value_hallucinated": 0.0,
+      "placebo_value": 0.0,
+      "refusal": 0.3033,
+      "refused": 0.3033,
+      "src_correct_same_rows": 0.6667,
+      "valid": 0.9967
+     },
+     "cf": {
+      "anchor_exact": 0.3477,
+      "correct": 0.7921,
+      "correct_given_src_correct": 0.9858,
+      "discordant_b_c": [
+       3,
+       12
+      ],
+      "drop_vs_src": -0.0323,
+      "n": 279,
+      "n_src_correct": 212,
+      "new_value": 0.7921,
+      "old_value": 0.0,
+      "old_value_given_src_correct": 0.0,
+      "placebo_value": 0.0,
+      "refused": 0.0358,
+      "src_correct_same_rows": 0.7599,
+      "valid": 1.0
+     },
+     "pp": {
+      "anchor_exact": 0.3267,
+      "correct": 0.5267,
+      "correct_given_src_correct": 0.7035,
+      "discordant_b_c": [
+       59,
+       18
+      ],
+      "drop_vs_src": 0.1367,
+      "n": 300,
+      "n_src_correct": 199,
+      "over_refusal_on_answerable": 0.1027,
+      "refused": 0.1267,
+      "src_correct_same_rows": 0.6633,
+      "valid": 1.0
+     },
+     "rn": {
+      "anchor_exact": 0.25,
+      "correct": 0.7533,
+      "correct_given_src_correct": 0.9816,
+      "discordant_b_c": [
+       4,
+       13
+      ],
+      "drop_vs_src": -0.03,
+      "leak_terms_seen": [],
+      "n": 300,
+      "n_src_correct": 217,
+      "name_leak": 0,
+      "refused": 0.2067,
+      "src_correct_same_rows": 0.7233,
+      "valid": 1.0
+     },
+     "sh": {
+      "anchor_exact": 0.1233,
+      "correct": 0.58,
+      "correct_given_src_correct": 0.7264,
+      "discordant_b_c": [
+       58,
+       20
+      ],
+      "drop_vs_src": 0.1267,
+      "n": 300,
+      "n_src_correct": 212,
+      "refused": 0.0333,
+      "src_correct_same_rows": 0.7067,
+      "valid": 0.9967
+     }
+    },
+    "refusal_f1": 0.9268,
+    "refusal_f1_ci": [
+     0.9089,
+     0.9446
+    ],
+    "refusal_precision": 0.8856,
+    "refusal_recall": 0.9721,
+    "rendered_match_template_dependent": 0.0,
+    "span_grounded": 0.9349,
+    "span_ok_anchor_resolves_and_contains_text": 0.303,
+    "valid_json_schema": 0.9947,
+    "validator": {
+     "deny": 0.0,
+     "digits": 0.0014,
+     "verbatim_pass": 0.338,
+     "xsys": 0.1995
+    }
+   },
+   "n_pred": 3569,
+   "n_test": 2090,
+   "s": {
+    "anchor_exact": 0.3048,
+    "answer_exact_match_template_dependent": 0.0,
+    "answer_value_match": 0.6873,
+    "answer_value_match_ci": [
+     0.6651,
+     0.709
+    ],
+    "breakdown": {
+     "anchor_position": {
+      "None": {
+       "correct": 0.9721,
+       "n": 430,
+       "valid": 1.0
+      },
+      "first": {
+       "correct": 0.5059,
+       "n": 85,
+       "valid": 1.0
+      },
+      "last": {
+       "correct": 0.6968,
+       "n": 155,
+       "valid": 0.9806
+      },
+      "middle": {
+       "correct": 0.6972,
+       "n": 1420,
+       "valid": 0.9944
+      }
+     },
+     "answer_type": {
+      "date": {
+       "correct": 1.0,
+       "n": 90,
+       "valid": 1.0
+      },
+      "enum": {
+       "correct": 0.3024,
+       "n": 291,
+       "valid": 0.9794
+      },
+      "int": {
+       "correct": 0.8711,
+       "n": 388,
+       "valid": 1.0
+      },
+      "num": {
+       "correct": 0.8075,
+       "n": 483,
+       "valid": 1.0
+      },
+      "pct": {
+       "correct": 0.4163,
+       "n": 245,
+       "valid": 0.9796
+      },
+      "span": {
+       "correct": 0.816,
+       "n": 163,
+       "valid": 1.0
+      },
+      "unanswerable": {
+       "correct": 0.9721,
+       "n": 430,
+       "valid": 1.0
+      }
+     },
+     "manufacturer": {
+      "GSK PHARM": {
+       "correct": 0.7167,
+       "n": 233,
+       "valid": 0.9957
+      },
+      "MERCK & COMPANY": {
+       "correct": 0.7178,
+       "n": 326,
+       "valid": 1.0
+      },
+      "PFIZER": {
+       "correct": 0.7705,
+       "n": 880,
+       "valid": 0.9909
+      },
+      "SANOFI": {
+       "correct": 0.7388,
+       "n": 559,
+       "valid": 0.9982
+      },
+      "SEQIRUS": {
+       "correct": 0.7283,
+       "n": 92,
+       "valid": 0.9891
+      }
+     },
+     "qt_group": {
+      "admin_fee_pct": {
+       "correct": 0.2667,
+       "n": 45,
+       "valid": 1.0
+      },
+      "amended_share_floor": {
+       "correct": 0.85,
+       "n": 20,
+       "valid": 1.0
+      },
+      "amendment_exclusivity": {
+       "correct": 0.6889,
+       "n": 45,
+       "valid": 1.0
+      },
+      "auto_renew": {
+       "correct": 0.0889,
+       "n": 45,
+       "valid": 1.0
+      },
+      "commitment_doses_per_year": {
+       "correct": 0.7778,
+       "n": 90,
+       "valid": 1.0
+      },
+      "cxs": {
+       "correct": 0.5889,
+       "n": 180,
+       "valid": 0.9833
+      },
+      "effective_date": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "exclusivity_class": {
+       "correct": 0.3778,
+       "n": 45,
+       "valid": 1.0
+      },
+      "expiration_date": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "metric": {
+       "correct": 0.8222,
+       "n": 540,
+       "valid": 1.0
+      },
+      "proposal_get": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "proposal_give": {
+       "correct": 0.8889,
+       "n": 45,
+       "valid": 1.0
+      },
+      "proposal_outcome": {
+       "correct": 0.1333,
+       "n": 45,
+       "valid": 0.9333
+      },
+      "refuse": {
+       "correct": 0.9926,
+       "n": 135,
+       "valid": 1.0
+      },
+      "renewal_notice_days": {
+       "correct": 0.8,
+       "n": 45,
+       "valid": 1.0
+      },
+      "share_floor_pct": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "termination_for_convenience": {
+       "correct": 0.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "termination_notice_days": {
+       "correct": 1.0,
+       "n": 45,
+       "valid": 1.0
+      },
+      "tier_min_doses": {
+       "correct": 0.963,
+       "n": 135,
+       "valid": 1.0
+      },
+      "tier_rebate_pct": {
+       "correct": 0.5407,
+       "n": 135,
+       "valid": 0.963
+      },
+      "unanswerable": {
+       "correct": 0.9593,
+       "n": 270,
+       "valid": 1.0
+      }
+     },
+     "truncated": {
+      "False": {
+       "correct": 0.7194,
+       "n": 1550,
+       "valid": 0.9929
+      },
+      "True": {
+       "correct": 0.8222,
+       "n": 540,
+       "valid": 1.0
+      }
+     }
+    },
+    "correct_all": 0.7459,
+    "correct_all_ci": [
+     0.7273,
+     0.7641
+    ],
+    "decision_counts": {
+     "correct_ans": 1141,
+     "correct_test": 1559,
+     "deny_hits": 0,
+     "extra_spans": 58,
+     "memo": {
+      "ar": {
+       "b": 0,
+       "c": 0,
+       "n": 300,
+       "n_all_rows": 300,
+       "old": 0,
+       "old_all_rows": 0,
+       "placebo": 0
+      },
+      "cf": {
+       "b": 0,
+       "c": 0,
+       "n": 277,
+       "n_all_rows": 279,
+       "old": 0,
+       "old_all_rows": 0,
+       "placebo": 0
+      }
+     },
+     "n_ans": 1660,
+     "n_nonref": 1606,
+     "n_rn": 300,
+     "n_test": 2090,
+     "overlong": 16,
+     "pairs": {
+      "ar": {
+       "b": 159,
+       "c": 50,
+       "n": 300,
+       "probe_correct": 91,
+       "src_correct": 200
+      },
+      "cf": {
+       "b": 3,
+       "c": 12,
+       "n": 279,
+       "probe_correct": 221,
+       "src_correct": 212
+      },
+      "pp": {
+       "b": 59,
+       "c": 18,
+       "n": 300,
+       "probe_correct": 158,
+       "src_correct": 199
+      },
+      "pp_refusal": {
+       "b": 20,
+       "c": 5,
+       "n": 292,
+       "probe_refused": 30,
+       "src_refused": 15
+      },
+      "rn": {
+       "b": 4,
+       "c": 13,
+       "n": 300,
+       "probe_correct": 226,
+       "src_correct": 217
+      },
+      "sh": {
+       "b": 58,
+       "c": 20,
+       "n": 300,
+       "probe_correct": 174,
+       "src_correct": 212
+      }
+     },
+     "refused_ans": 54,
+     "rn_leaks": 0,
+     "ungrounded": 54,
+     "valid_test": 2079
+    },
+    "guardrail_denylist_hits": 0,
+    "probes": {
+     "ar": {
+      "anchor_exact": 0.0,
+      "correct": 0.3033,
+      "correct_given_src_correct": 0.205,
+      "discordant_b_c": [
+       159,
+       50
+      ],
+      "drop_vs_src": 0.3633,
+      "n": 300,
+      "n_src_correct": 200,
+      "old_value_given_src_correct": 0.0,
+      "old_value_hallucinated": 0.0,
+      "placebo_value": 0.0,
+      "refusal": 0.3033,
+      "refused": 0.3033,
+      "src_correct_same_rows": 0.6667,
+      "valid": 0.9967
+     },
+     "cf": {
+      "anchor_exact": 0.3477,
+      "correct": 0.7921,
+      "correct_given_src_correct": 0.9858,
+      "discordant_b_c": [
+       3,
+       12
+      ],
+      "drop_vs_src": -0.0323,
+      "n": 279,
+      "n_src_correct": 212,
+      "new_value": 0.7921,
+      "old_value": 0.0,
+      "old_value_given_src_correct": 0.0,
+      "placebo_value": 0.0,
+      "refused": 0.0358,
+      "src_correct_same_rows": 0.7599,
+      "valid": 1.0
+     },
+     "pp": {
+      "anchor_exact": 0.3267,
+      "correct": 0.5267,
+      "correct_given_src_correct": 0.7035,
+      "discordant_b_c": [
+       59,
+       18
+      ],
+      "drop_vs_src": 0.1367,
+      "n": 300,
+      "n_src_correct": 199,
+      "over_refusal_on_answerable": 0.1027,
+      "refused": 0.1267,
+      "src_correct_same_rows": 0.6633,
+      "valid": 1.0
+     },
+     "rn": {
+      "anchor_exact": 0.25,
+      "correct": 0.7533,
+      "correct_given_src_correct": 0.9816,
+      "discordant_b_c": [
+       4,
+       13
+      ],
+      "drop_vs_src": -0.03,
+      "leak_terms_seen": [],
+      "n": 300,
+      "n_src_correct": 217,
+      "name_leak": 0,
+      "refused": 0.2067,
+      "src_correct_same_rows": 0.7233,
+      "valid": 1.0
+     },
+     "sh": {
+      "anchor_exact": 0.1233,
+      "correct": 0.58,
+      "correct_given_src_correct": 0.7264,
+      "discordant_b_c": [
+       58,
+       20
+      ],
+      "drop_vs_src": 0.1267,
+      "n": 300,
+      "n_src_correct": 212,
+      "refused": 0.0333,
+      "src_correct_same_rows": 0.7067,
+      "valid": 0.9967
+     }
+    },
+    "refusal_f1": 0.9268,
+    "refusal_f1_ci": [
+     0.9089,
+     0.9446
+    ],
+    "refusal_precision": 0.8856,
+    "refusal_recall": 0.9721,
+    "rendered_match_template_dependent": 0.0,
+    "span_grounded": 0.9349,
+    "span_ok_anchor_resolves_and_contains_text": 0.303,
+    "valid_json_schema": 0.9947,
+    "validator": {
+     "deny": 0.0,
+     "digits": 0.0014,
+     "verbatim_pass": 0.3361,
+     "xsys": 0.1995
+    }
+   }
+  }
+ },
+ "params": {
+  "alpha_floor": 0.01,
+  "alpha_memo": 0.01,
+  "alpha_probes_total": 0.04,
+  "degenerate": {
+   "extra_spans": 0.5,
+   "min_nonref": 20,
+   "overlong": 0.5,
+   "reads_nothing_upper": 0.1,
+   "refuse_answerable": 0.8,
+   "ungrounded": 0.8
+  },
+  "margins": {
+   "ar": 0.05,
+   "cf": 0.05,
+   "pp": 0.05,
+   "pp_refusal": 0.05,
+   "rn": 0.03,
+   "sh": 0.03
+  },
+  "memo_min_effect": 0.02,
+  "test_floor_stated": 0.85
+ },
+ "promotable": false,
+ "scorer": {
+  "accepted_drift_reason": null,
+  "drift": {},
+  "files_sha256": {
+   "evalcore.py": "2d1d2f9bc0716938278a6d9dee9d19830ec673721c68d0753390127c3104ba75",
+   "evalstats.py": "9464f55d3d993557a5d48cc30e180feb8a24ba65742ecc494f5dc423787bc537",
+   "score.py": "a4d7a3746e17549ba5e21965df3dcad916758faecaf2425dfaebdda99d424045"
+  },
+  "run_manifest_sha256": "0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d",
+  "score_manifest_sha256": "8c4b3042ba5abf0134b9d0075170ec55585e41092e60e51f411642b59b59bd1e"
+ },
+ "t_vs_s": {
+  "l": {
+   "answer_value_match_diff": 0.6151,
+   "answer_value_match_diff_ci": [
+    0.5904,
+    0.6373
+   ],
+   "discordant_T_only_S_only": [
+    1037,
+    16
+   ],
+   "mcnemar_exact_two_sided_p": 2.05e-282,
+   "refusal_f1_diff_ci": [
+    0.6385,
+    0.745
+   ]
+  },
+  "n_paired": 2090,
+  "s": {
+   "answer_value_match_diff": 0.6873,
+   "answer_value_match_diff_ci": [
+    0.6651,
+    0.7084
+   ],
+   "discordant_T_only_S_only": [
+    1141,
+    0
+   ],
+   "mcnemar_exact_two_sided_p": 0.0,
+   "refusal_f1_diff_ci": [
+    0.6385,
+    0.745
+   ]
+  }
+ },
+ "verdict": "DEGENERATE",
+ "verdict_note": null,
+ "verdict_reasons": [
+  "format gate failed (11 of 2090 test outputs not strict-valid)"
+ ]
+}

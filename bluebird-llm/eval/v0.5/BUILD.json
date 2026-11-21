@@ -1,0 +1,66 @@
+{
+ "by_kind": {
+  "ar": 300,
+  "cf": 279,
+  "pp": 300,
+  "rn": 300,
+  "sh": 300,
+  "test": 2090
+ },
+ "corpus_files_checked_for_fake_names": 6692,
+ "eligible_pool": {
+  "ar": 1443,
+  "cf": 951,
+  "pp": 894,
+  "rn": 2004,
+  "sh": 1640
+ },
+ "eval_rows_sha256": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899",
+ "fewshot_qa_ids": [
+  "SYN-SYNCP000034-AMD1-Q01",
+  "SYN-SYNCP000100-MSA1-Q23"
+ ],
+ "fewshot_sha256": "a27d1f08e6a85afd728ae76d65ee62f3e7b4901bc7bdfdbd79c92b013b3e9f07",
+ "fs_prompt_tokens_mean": 1258.0,
+ "gold_denylist_hits": 0,
+ "gold_digits_in_answer": 0,
+ "manufacturer_rows": {
+  "GSK PHARM": 233,
+  "MERCK & COMPANY": 326,
+  "PFIZER": 880,
+  "SANOFI": 559,
+  "SEQIRUS": 92
+ },
+ "n_probe": 300,
+ "over_budget_rows": 0,
+ "placebo_rows": {
+  "ar": 300,
+  "cf": 277
+ },
+ "prompt_budget": 1408,
+ "prompt_tokens_min_p50_p90_max_mean": [
+  90,
+  446,
+  1328,
+  1408,
+  672.0
+ ],
+ "rn_brand_hits_replaced": 557,
+ "rn_gold_with_renamed_term": 2,
+ "rn_rows_with_brand": 298,
+ "rows": 3569,
+ "seed": 562,
+ "test_anchor_position": {
+  "first": 85,
+  "last": 155,
+  "middle": 1420
+ },
+ "test_qa_sha256": "260fbce943b5e10373d47a73c78520c2743e7fd85d40dac9c1a8985a911c8f65",
+ "test_truncated": 540,
+ "test_unanswerable": 430,
+ "tokenizer_sha256": {
+  "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+  "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583"
+ },
+ "train_rows_sha256": "b947c1be6468a0edb60ab09ece28909a664462178d079c38bc19fa62f7860106"
+}

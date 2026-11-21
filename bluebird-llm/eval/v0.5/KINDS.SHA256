@@ -1,0 +1,7 @@
+# sha256 of the concatenation of that kind's lines from eval_rows.jsonl, in file order, each line exactly as stored (sort_keys JSON + \n). Not sha256sum -c format.
+a5d38de41e9c81d6041219932adde79d17ed98eacb3d3a42be76fff1bea36fb8  kind=test rows=2090
+dbb043f9bd45b7750c084b551c63eaf0b9964f01549994070922032645ac0728  kind=cf rows=279
+0557ffe17596f670df9ff21bd073c8ee0ec70d639ea41993baaa95c914e76105  kind=ar rows=300
+0ac13bbd9e2b7ab7c5b3f26c1b72285f1ed63b774c346beb614e75e09c2f3c16  kind=sh rows=300
+d30d7cd8ff31e6bddd3d5dba8f79c5823c1922bd34f564bc3260cd19cfa060c3  kind=rn rows=300
+8e9736cf182385144383a17ca1dcf1d4c5e25f15ffabb0d5266785a2cbc4c199  kind=pp rows=300

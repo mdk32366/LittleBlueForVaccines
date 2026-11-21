@@ -1,0 +1,31 @@
+{"mutant": "J01 control bytes allowed in strings", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_escapes_and_bytes"], "sec": 0.1}
+{"mutant": "J02 slot set ignored (always empty)", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_bare_string_span_impossible"], "sec": 0.1}
+{"mutant": "J03 any escape letter", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_escapes_and_bytes"], "sec": 0.1}
+{"mutant": "J04 \\u hex not checked", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_escapes_and_bytes"], "sec": 0.1}
+{"mutant": "J05 bytes allowed after the close", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_nothing_after_close"], "sec": 0.2}
+{"mutant": "J06 duplicate span key allowed", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_escaped_slot_counts"], "sec": 0.1}
+{"mutant": "J07 spans may close early", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_every_strict_valid_outT_raw_accepted_and_complete"], "sec": 0.1}
+{"mutant": "J08 any key accepted", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_escaped_slot_counts"], "sec": 0.1}
+{"mutant": "J09 stop allowed before the object is complete", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_no_allowed_token_raises"], "sec": 7.3}
+{"mutant": "J10 special/added tokens allowed", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_greedy_exact_vs_full_mask"], "sec": 4.0}
+{"mutant": "J11 fallback takes the LOWEST score", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_greedy_exact_vs_full_mask"], "sec": 4.1}
+{"mutant": "J12 forced not counted", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_argmax_kept_when_allowed_and_counts_forced"], "sec": 4.3}
+{"mutant": "J13 finished rows still constrained", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_stop_only_when_done_and_finished_rows_untouched"], "sec": 8.1}
+{"mutant": "J14 stop-before-complete not detected", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_stop_only_when_done_and_finished_rows_untouched"], "sec": 7.9}
+{"mutant": "J15 disallowed fed-back token not detected", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_disallowed_token_fed_back_raises"], "sec": 4.0}
+{"mutant": "J16 tokenizer sha not checked", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_pinned_sha_refused_otherwise"], "sec": 2.6}
+{"mutant": "J17 added tokens keep bytes (equivalent: not in model.vocab)", "file": "jsonslot.py", "killed": false, "stage": "shim", "by": [], "sec": 77.4}
+{"mutant": "J18 refusal/empty answer may carry spans", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_every_strict_valid_outT_raw_accepted_and_complete"], "sec": 0.1}
+{"mutant": "J19 no allowed token -> silently keep argmax", "file": "jsonslot.py", "killed": true, "stage": "fast", "by": ["test_no_allowed_token_raises"], "sec": 7.2}
+{"mutant": "E01 per-batch clamp removed", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_identity_keys_in_cfg"], "sec": 7.7}
+{"mutant": "E02 constraint not in identity", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_changed_identity_refused_7"], "sec": 6.3}
+{"mutant": "E03 max_new_tokens not in identity", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_changed_identity_refused_7"], "sec": 6.1}
+{"mutant": "E04 jsonslot.py not integrity-checked", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_identity_keys_in_cfg"], "sec": 6.8}
+{"mutant": "E05 processor expectation back to []", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_processor_expectation_and_cap_check"], "sec": 9.4}
+{"mutant": "E06 exit-9 rule back to max_new_tokens", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_exit9_floor"], "sec": 9.3}
+{"mutant": "E07 processor not passed to generate", "file": "eval.py", "killed": true, "stage": "shim", "by": ["test_constraint_on"], "sec": 23.3}
+{"mutant": "E08 constraint allowed on few-shot", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_constraint_on_fewshot_refused_8"], "sec": 6.9}
+{"mutant": "E09 merged cap not checked", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_processor_expectation_and_cap_check"], "sec": 8.5}
+{"mutant": "E10 schema tag unchanged from v0.5", "file": "eval.py", "killed": true, "stage": "fast", "by": ["test_identity_keys_in_cfg"], "sec": 6.7}
+{"mutant": "E11 forced counts not written", "file": "eval.py", "killed": true, "stage": "shim", "by": ["test_constraint_on"], "sec": 25.2}
+{"tally": {"killed": 29, "survived": 1}, "mutants": 30}

@@ -1,0 +1,7 @@
+if (Test-Path -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\out-T-jf\eval.lock) { $raw = Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\out-T-jf\eval.lock -Raw; "LOCK $raw"; try { $l = $raw | ConvertFrom-Json; $p = Get-Process -Id $l.pid -ErrorAction SilentlyContinue; if ($p) { $p | Select-Object Id,StartTime,Path } else { "LOCK PID $($l.pid) NOT ALIVE" } } catch { 'LOCK TORN' } } else { 'NO LOCK' }
+if (Test-Path -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\out-T-jf\run-bluebird-v1.0-e2-jf.json) { $r = Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\out-T-jf\run-bluebird-v1.0-e2-jf.json -Raw | ConvertFrom-Json; "STATUS $($r.status)"; $r.sessions | Select-Object pid,started,ended,exit,abort_file } else { 'NO RUN JSON' }
+Get-ChildItem -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\out-T-jf -Filter 'ABORT-*.json' | Sort-Object { [int]($_.BaseName -replace '^ABORT-','') } | ForEach-Object { $j = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json; '{0} pid={1} exit={2} time={3} abort={4}' -f $_.Name,$j.pid,$j.exit,$j.time,$j.abort }
+Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\eval-T-jf.out -Tail 3
+Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\eval-T-jf.err -Tail 3
+nvidia-smi --query-gpu=name,memory.used,memory.total,temperature.gpu --format=csv,noheader
+Get-CimInstance -ClassName Win32_Battery | Select-Object BatteryStatus,EstimatedChargeRemaining

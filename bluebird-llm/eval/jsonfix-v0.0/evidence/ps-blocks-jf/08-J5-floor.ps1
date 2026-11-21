@@ -1,0 +1,3 @@
+Set-Location -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00
+& C:\Users\mdk32\venvs\bia562-train\Scripts\python.exe -B C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\eval.py --preflight --model C:\Users\mdk32\models\Qwen2.5-3B-Instruct --adapter C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\adapter\final-adapter --rows C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\eval_rows.jsonl --expect_manifest_sha c5db63e4a0194582245692c73ef7333297bf27dc46dd298ce55f98fa58903871 --out_dir C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\jf00\pre-T-jf --tag bluebird-v1.0-e2-jf --pin_transformers 5.22.2 --max_new_tokens 256 --constraint json-slot --min_free '<MIN_FREE_BYTES>'
+"EXIT $LASTEXITCODE"

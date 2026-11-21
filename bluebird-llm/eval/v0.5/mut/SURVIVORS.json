@@ -1,0 +1,4 @@
+{
+ "_erratum_0.3": "@0.2 listed M28 here as an 'equivalent' survivor. That was wrong (Kaylee RECHECK-eval@0.2 N8). At @0.3 the KayleeM28 tests kill it by name. No survivors remain.",
+ "M28": null
+}

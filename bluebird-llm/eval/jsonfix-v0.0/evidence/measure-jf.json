@@ -1,0 +1,295 @@
+{
+ "A_reencode_agree": [
+  3565,
+  3569
+ ],
+ "A_reencode_diff_minmax": [
+  -1,
+  0
+ ],
+ "B_truncated": [
+  {
+   "id": "test:SYN-SYNCP000004-MSA1-Q12",
+   "prompt_tokens": 447,
+   "hyp": "S2 = bands 4.1+4.2+4.3 joined by ' '",
+   "complete_tokens": 201,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000004-MSA1-Q12",
+   "prompt_tokens": 447,
+   "hyp": "upper: bands + all #5.x units",
+   "complete_tokens": 241,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000015-MSA1-Q12",
+   "prompt_tokens": 436,
+   "hyp": "S2 = bands 4.1+4.2+4.3 joined by '\\\\\\\\n'",
+   "complete_tokens": 201,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000015-MSA1-Q12",
+   "prompt_tokens": 436,
+   "hyp": "upper: bands + all #5.x units",
+   "complete_tokens": 243,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000040-MSA1-Q28",
+   "prompt_tokens": 624,
+   "hyp": "S3 text = short value '430'",
+   "complete_tokens": 138,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000040-MSA1-Q28",
+   "prompt_tokens": 624,
+   "hyp": "S3 text = a whole EXH1 line",
+   "complete_tokens": 169,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000040-MSA1-Q28",
+   "prompt_tokens": 624,
+   "hyp": "S3 text = longest whole EXH1 unit",
+   "complete_tokens": 332,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000069-MSA1-Q12",
+   "prompt_tokens": 434,
+   "hyp": "S2 = bands 4.1+4.2+4.3 joined by ' '",
+   "complete_tokens": 195,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000069-MSA1-Q12",
+   "prompt_tokens": 434,
+   "hyp": "upper: bands + all #5.x units",
+   "complete_tokens": 231,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000082-MSA1-Q12",
+   "prompt_tokens": 440,
+   "hyp": "S2 = bands 4.1+4.2+4.3 joined by ' '",
+   "complete_tokens": 199,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000082-MSA1-Q12",
+   "prompt_tokens": 440,
+   "hyp": "upper: bands + all #5.x units",
+   "complete_tokens": 237,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000134-MSA1-Q28",
+   "prompt_tokens": 620,
+   "hyp": "S3 text = short value '430'",
+   "complete_tokens": 138,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000134-MSA1-Q28",
+   "prompt_tokens": 620,
+   "hyp": "S3 text = a whole EXH1 line",
+   "complete_tokens": 168,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000134-MSA1-Q28",
+   "prompt_tokens": 620,
+   "hyp": "S3 text = longest whole EXH1 unit",
+   "complete_tokens": 327,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000168-MSA1-Q12",
+   "prompt_tokens": 439,
+   "hyp": "S2 = bands 4.1+4.2+4.3 joined by '\\\\\\\\n\\\\\\\\n'",
+   "complete_tokens": 204,
+   "valid": true
+  },
+  {
+   "id": "test:SYN-SYNCP000168-MSA1-Q12",
+   "prompt_tokens": 439,
+   "hyp": "upper: bands + all #5.x units",
+   "complete_tokens": 250,
+   "valid": true
+  }
+ ],
+ "C_new_tokens_all": {
+  "n": 3569,
+  "p50": 55,
+  "p90": 64,
+  "p99": 107,
+  "p999": 128,
+  "max": 128,
+  "ge100": 176,
+  "ge120": 13,
+  "eq128": 8,
+  "top12": [
+   120,
+   120,
+   120,
+   125,
+   128,
+   128,
+   128,
+   128,
+   128,
+   128,
+   128,
+   128
+  ]
+ },
+ "C_new_tokens_valid_max": 125,
+ "C_gold_json_tokens": {
+  "p50": 53,
+  "p99": 100,
+  "max": 104
+ },
+ "D_cap192": {
+  "batches_clamped": 34,
+  "rows_clamped": 265,
+  "min_effective_cap": 128,
+  "rows_over_SEQ_unclamped": 262
+ },
+ "D_cap256": {
+  "batches_clamped": 68,
+  "rows_clamped": 537,
+  "min_effective_cap": 128,
+  "rows_over_SEQ_unclamped": 536
+ },
+ "D_cap320": {
+  "batches_clamped": 76,
+  "rows_clamped": 601,
+  "min_effective_cap": 128,
+  "rows_over_SEQ_unclamped": 594
+ },
+ "D_cap384": {
+  "batches_clamped": 101,
+  "rows_clamped": 801,
+  "min_effective_cap": 128,
+  "rows_over_SEQ_unclamped": 796
+ },
+ "D_batches": 447,
+ "D_hit_batches": [
+  0,
+  113,
+  123,
+  149,
+  158,
+  228,
+  307,
+  308
+ ],
+ "D_zero_pad_full_batches": 220,
+ "D_longest_zero_pad": {
+  "k": 437,
+  "n": 8,
+  "L": 1385,
+  "pad": 0,
+  "maxnew128": 54,
+  "hit": 0
+ },
+ "E_record_batches": 158,
+ "E_last_records": [
+  {
+   "k": 362,
+   "L": 1192,
+   "pad": 0,
+   "n": 8,
+   "peak": 4683505664,
+   "step": 30185472
+  },
+  {
+   "k": 364,
+   "L": 1194,
+   "pad": 0,
+   "n": 8,
+   "peak": 4689729024,
+   "step": 6223360
+  },
+  {
+   "k": 391,
+   "L": 1315,
+   "pad": 0,
+   "n": 8,
+   "peak": 5125605888,
+   "step": 435876864
+  },
+  {
+   "k": 401,
+   "L": 1328,
+   "pad": 0,
+   "n": 8,
+   "peak": 5177292288,
+   "step": 51686400
+  },
+  {
+   "k": 408,
+   "L": 1337,
+   "pad": 0,
+   "n": 8,
+   "peak": 5209661952,
+   "step": 32369664
+  },
+  {
+   "k": 420,
+   "L": 1356,
+   "pad": 0,
+   "n": 8,
+   "peak": 5282743296,
+   "step": 73081344
+  },
+  {
+   "k": 431,
+   "L": 1378,
+   "pad": 0,
+   "n": 8,
+   "peak": 5368663552,
+   "step": 85920256
+  },
+  {
+   "k": 437,
+   "L": 1385,
+   "pad": 0,
+   "n": 8,
+   "peak": 5393720320,
+   "step": 25056768
+  }
+ ],
+ "E_T_fit": {
+  "points": 9,
+  "L_range": [
+   1183,
+   1385
+  ],
+  "a": 2648352942,
+  "c": 1432.54,
+  "max_resid_pct": 0.049
+ },
+ "E_S_fit_at_T_longest_zero_pad": 5242185288,
+ "E_T_peak_measured": 5393720320,
+ "E_kv_bytes_per_token_row": 36864,
+ "E_kv_extra_cap256_max": 37748736,
+ "E_kv_extra_at_longest_zero_pad_cap256": 6782976,
+ "F_gen_seconds_recorded": 4213.0,
+ "F_sum_batch_seconds": 4207.3,
+ "F_fit_padded": {
+  "n": 225,
+  "intercept_s": 4.89,
+  "s_per_decode_step": 0.0661
+ },
+ "F_fit_zero_pad": {
+  "n": 220,
+  "intercept_s": 2.62,
+  "s_per_decode_step": 0.0865
+ },
+ "F_extra_if_hit_batches_run_to_cap256_s": 88.6,
+ "F_upper_every_batch_to_cap_s": 10844.0
+}

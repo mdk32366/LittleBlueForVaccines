@@ -1,0 +1,47 @@
+test_bare_string_span_impossible (tests.test_jf.Automaton.test_bare_string_span_impossible) ... ok
+test_escaped_slot_counts (tests.test_jf.Automaton.test_escaped_slot_counts) ... ok
+test_escapes_and_bytes (tests.test_jf.Automaton.test_escapes_and_bytes) ... ok
+test_every_strict_valid_outT_raw_accepted_and_complete (tests.test_jf.Automaton.test_every_strict_valid_outT_raw_accepted_and_complete) ... ok
+test_non_slot_key_impossible (tests.test_jf.Automaton.test_non_slot_key_impossible) ... ok
+test_nothing_after_close (tests.test_jf.Automaton.test_nothing_after_close) ... ok
+test_prefix_keys_S1_S12 (tests.test_jf.Automaton.test_prefix_keys_S1_S12) ... ok
+test_random_valid_objects_accepted (tests.test_jf.Automaton.test_random_valid_objects_accepted)
+Converse: json.dumps of random strict-valid objects (slots, escapes, unicode) is accepted and DONE. ... ok
+test_random_walks_always_strict_valid (tests.test_jf.Automaton.test_random_walks_always_strict_valid)
+Property: any byte string the automaton reaches DONE on is strict-valid (2,000 random walks over allowed bytes). ... ok
+test_refusal_forces_empty_spans (tests.test_jf.Automaton.test_refusal_forces_empty_spans) ... ok
+test_slot_mismatch_impossible (tests.test_jf.Automaton.test_slot_mismatch_impossible) ... ok
+test_slot_regex_is_evalcore (tests.test_jf.Automaton.test_slot_regex_is_evalcore) ... ok
+test_the_13_invalid_outT_raws (tests.test_jf.Automaton.test_the_13_invalid_outT_raws) ... ok
+test_byte_table_matches_tokenizer_on_all_outT_raws (tests.test_jf.Vocab.test_byte_table_matches_tokenizer_on_all_outT_raws) ... ok
+test_pinned_sha_refused_otherwise (tests.test_jf.Vocab.test_pinned_sha_refused_otherwise) ... ok
+test_specials_have_no_bytes (tests.test_jf.Vocab.test_specials_have_no_bytes) ... ok
+test_argmax_kept_when_allowed_and_counts_forced (tests.test_jf.Proc.test_argmax_kept_when_allowed_and_counts_forced) ... ok
+test_disallowed_token_fed_back_raises (tests.test_jf.Proc.test_disallowed_token_fed_back_raises) ... ok
+test_greedy_exact_vs_full_mask (tests.test_jf.Proc.test_greedy_exact_vs_full_mask)
+The lazy choice equals argmax after masking every disallowed token (full 151,936-id scan), incl. ties. ... ok
+test_no_allowed_token_raises (tests.test_jf.Proc.test_no_allowed_token_raises) ... ok
+test_padding_ids_beyond_tokenizer_never_allowed (tests.test_jf.Proc.test_padding_ids_beyond_tokenizer_never_allowed) ... ok
+test_stop_only_when_done_and_finished_rows_untouched (tests.test_jf.Proc.test_stop_only_when_done_and_finished_rows_untouched) ... ok
+test_changed_identity_refused_7 (tests.test_jf.Identity.test_changed_identity_refused_7) ... ok
+test_constraint_on_fewshot_refused_8 (tests.test_jf.Identity.test_constraint_on_fewshot_refused_8) ... ok
+test_identity_keys_in_cfg (tests.test_jf.Identity.test_identity_keys_in_cfg) ... ok
+test_jsonslot_tamper_refused_6 (tests.test_jf.Identity.test_jsonslot_tamper_refused_6) ... ok
+test_launch_into_copy_of_outT_refused_nothing_written (tests.test_jf.Identity.test_launch_into_copy_of_outT_refused_nothing_written) ... ok
+test_old_pin_refused_6 (tests.test_jf.Identity.test_old_pin_refused_6) ... ok
+test_outT_is_byte_identical_to_pins (tests.test_jf.Identity.test_outT_is_byte_identical_to_pins) ... ok
+test_run_pin_changed_and_manifest_lists_jsonslot (tests.test_jf.Identity.test_run_pin_changed_and_manifest_lists_jsonslot) ... ok
+test_score_py_v05_accepts_new_pin_refuses_old (tests.test_jf.Identity.test_score_py_v05_accepts_new_pin_refuses_old) ... ok
+test_v05_eval_into_outTjf_refused_7 (tests.test_jf.Identity.test_v05_eval_into_outTjf_refused_7) ... ok
+test_budget_rule (tests.test_jf.EvalPatch.test_budget_rule) ... ok
+test_diff_is_only_the_jf_lines (tests.test_jf.EvalPatch.test_diff_is_only_the_jf_lines) ... ok
+test_exit9_floor (tests.test_jf.EvalPatch.test_exit9_floor) ... ok
+test_processor_expectation_and_cap_check (tests.test_jf.EvalPatch.test_processor_expectation_and_cap_check) ... ok
+test_constraint_on (tests.test_jf.Shim.test_constraint_on) ... ok
+test_mock_reproduces_outT_without_constraint (tests.test_jf.Shim.test_mock_reproduces_outT_without_constraint) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 112.209s
+
+OK
+TESTS_RC 0

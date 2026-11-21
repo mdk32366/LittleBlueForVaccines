@@ -1,0 +1,3 @@
+Get-CimInstance -ClassName Win32_Process | Where-Object { ($_.Name -like 'python*' -or $_.CommandLine -like '*eval.py*') -and $_.ProcessId -ne $PID } | ForEach-Object { $c = $_.CreationDate.ToString('yyyy-MM-dd HH:mm:ss'); $known = ($_.ProcessId -in 21896,2580) -and ($c -eq '2026-11-12 14:20:35') -and ($_.CommandLine -like '*\venvs\littleblue-app\Scripts\streamlit.exe" run app.py *') -and ($_.CommandLine -notlike '*eval.py*'); '{0} pid={1} name={2} created={3} cmd={4}' -f $(if ($known) { 'KNOWN-EXCEPTION' } else { 'STOP' }),$_.ProcessId,$_.Name,$c,$_.CommandLine }
+'GATE-END'
+nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv

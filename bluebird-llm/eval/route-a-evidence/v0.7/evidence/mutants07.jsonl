@@ -1,0 +1,30 @@
+{"mutant": "C3 margin 1e9 -> 1e10", "killed": true, "killed_by": ["P1 (Kaylee N29) flat 6.99e9 from batch 0", "P2 (Kaylee N29) 6.0e9 at batch 0", "P2b 5.04e9 first at batch 318 (last early point)"], "crash_only_failures": []}
+{"mutant": "C3 compares against smoke batch 7 instead of the same batch", "killed": true, "killed_by": ["P2c batches 0-15 at 3.8e9 (above smoke batch 0 + 1e9, below smoke batch 7 + 1e9)"], "crash_only_failures": []}
+{"mutant": "C3 only first 1 early point", "killed": true, "killed_by": ["P2b 5.04e9 first at batch 318 (last early point)"], "crash_only_failures": []}
+{"mutant": "C3 always ok", "killed": true, "killed_by": ["P1 (Kaylee N29) flat 6.99e9 from batch 0", "P2 (Kaylee N29) 6.0e9 at batch 0", "P2b 5.04e9 first at batch 318 (last early point)"], "crash_only_failures": []}
+{"mutant": "I8 single-session dropped", "killed": true, "killed_by": ["N30a A7 two sessions"], "crash_only_failures": []}
+{"mutant": "I9 greedy reduced to do_sample/num_beams", "killed": true, "killed_by": ["N30b A4 repetition_penalty 1.05", "N30b temperature 0.7"], "crash_only_failures": []}
+{"mutant": "I9 session greedy not compared", "killed": true, "killed_by": ["N30b A4 repetition_penalty 1.05", "N30b temperature 0.7"], "crash_only_failures": []}
+{"mutant": "I10 cfg diff ignored", "killed": true, "killed_by": ["N30c A1 max_new_tokens 64", "N30c A2 tag changed"], "crash_only_failures": []}
+{"mutant": "I10 versions not compared", "killed": true, "killed_by": ["N30c A3 peft 0.21.3"], "crash_only_failures": []}
+{"mutant": "I11 smoke sha pin dropped", "killed": true, "killed_by": ["N30d smoke-S.out content-equal but one byte added to line 1 (sha only)"], "crash_only_failures": []}
+{"mutant": "I11 progress-count check dropped", "killed": false, "killed_by": [], "crash_only_failures": []}
+{"mutant": "I11 EVAL_DONE dropped", "killed": false, "killed_by": [], "crash_only_failures": []}
+{"mutant": "I12 monotone dropped", "killed": true, "killed_by": ["N30e A5 one progress peak decreases"], "crash_only_failures": []}
+{"mutant": "I12 <= limit dropped", "killed": true, "killed_by": ["N30e pre-abort peak above the limit"], "crash_only_failures": []}
+{"mutant": "C1 threshold 1e8 -> 1e9", "killed": true, "killed_by": ["C1 +2e8 step at a padded batch L>=1000"], "crash_only_failures": []}
+{"mutant": "C1 always ok", "killed": true, "killed_by": ["C1 +2e8 step at a padded batch L>=1000"], "crash_only_failures": []}
+{"mutant": "C2 tolerance 1% -> 20%", "killed": true, "killed_by": ["P3 (Kaylee) smoke-consistent ramp to batch 318, then gradual growth to 6.99e9 at 363 (no step > 1e8)", "C2 zero-padding records off the L^2 fit (+3e8 from batch 293)"], "crash_only_failures": []}
+{"mutant": "C2 fit on L instead of L^2", "killed": true, "killed_by": ["REAL copy unchanged, default go_max: STOP by C4 (projection 8.02e9 at batch 437)", "REAL copy, go_max 9e9 (green: every check but C4's threshold)"], "crash_only_failures": []}
+{"mutant": "C4 zero-padding batches use the padded bound", "killed": true, "killed_by": ["REAL copy unchanged, default go_max: STOP by C4 (projection 8.02e9 at batch 437)"], "crash_only_failures": []}
+{"mutant": "C4 compares with >= flipped (p < go_max)", "killed": true, "killed_by": ["REAL copy unchanged, default go_max: STOP by C4 (projection 8.02e9 at batch 437)"], "crash_only_failures": []}
+{"mutant": "C4 default go_max 6.5e9 -> 8.5e9", "killed": true, "killed_by": ["REAL copy unchanged, default go_max: STOP by C4 (projection 8.02e9 at batch 437)"], "crash_only_failures": []}
+{"mutant": "I1 eval.lock allowed", "killed": true, "killed_by": ["I1 eval.lock present"], "crash_only_failures": []}
+{"mutant": "I4 pid not compared", "killed": true, "killed_by": ["I4 ABORT pid differs"], "crash_only_failures": []}
+{"mutant": "I5 torn tail ignored", "killed": true, "killed_by": ["I5 torn predictions tail"], "crash_only_failures": []}
+{"mutant": "I6 dropped", "killed": true, "killed_by": ["I6 last .out line not the ABORT line"], "crash_only_failures": []}
+{"mutant": "I7 dropped", "killed": true, "killed_by": ["I7 a progress line missing"], "crash_only_failures": []}
+{"mutant": "N31 exception prints GO", "killed": true, "killed_by": ["N31 run json not JSON", "N31 eval-S.out missing", "N31 smoke-S.out missing"], "crash_only_failures": []}
+{"mutant": "N31 exception exit 0", "killed": true, "killed_by": ["N31 run json not JSON", "N31 eval-S.out missing", "N31 smoke-S.out missing"], "crash_only_failures": []}
+{"mutant": "verdict ignores fails (always GO line)", "killed": true, "killed_by": ["REAL copy unchanged, default go_max: STOP by C4 (projection 8.02e9 at batch 437)", "P1 (Kaylee N29) flat 6.99e9 from batch 0", "P2 (Kaylee N29) 6.0e9 at batch 0"], "crash_only_failures": []}
+MUTANTS killed 27/29

@@ -1,0 +1,335 @@
+1c1
+< # ORDER: Bluebird LLM v1.0 post-run eval (adapter bluebird-v1.0-e2) @0.6
+---
+> # ORDER: Bluebird LLM v1.0 post-run eval (adapter bluebird-v1.0-e2) @0.7
+3,6c3,7
+< Status: **ORDER DRAFT @0.6, NOT GO'D. Supersedes @0.5 (left byte-unchanged: `ORDER-bluebird-eval@0.5.md` `7187d5adf48bb525b68f945791fa8dd39feace54bf6aca9698095d7fc08a7f51`, stage `/workspace/littleblue-eval-v0.5/` untouched, `EVAL-INPUTS.SHA256` `366202f5db0a731ad9929337fc175d720e145000da61c796b34540b2ca675ef1` 67/67; addendum `ADDENDUM-bluebird-eval@0.5-A1-A2@0.0.md` `6402ac634d6c512483a37d3330d94fb05d0bef0a02e3c937b3cbdd3edbeafa1c` unchanged and still applies; @0.4 `95cd401d…b093`, @0.3 `a4ce3843…8849`, @0.2 `b9c1b0da…6cee`, @0.1 `0d7acd06…f6cef32e`, @0.0 `4f6b6c9c…f432d50b` and their stages untouched).** Written Sun 11/15/2026 by Trinity (Architect), answering **Matt's card t369s1265 (7:42 PM PT, relayed by Emma): the E5-pin abort (exit 3 on `out-S`) comes to Trinity for an order amendment, and Kaylee diff-checks it before any card goes to Matt.** **@0.6 changes order text only and adds one read-only box script. No code, no test, and no RUN-INPUTS or SCORE-INPUTS file changed; eval.py, evalcore.py, `eval_rows.jsonl`, `fewshot.json`, score.py and evalstats.py are byte-identical to @0.2–@0.5, so the RUN PIN and SCORE PIN are unchanged** (§g, §j). The §10 card text is byte-identical to @0.5 (and @0.3, @0.4). Map: `/workspace/littleblue-eval-v0.6/DIFF-0.5-to-0.6.md`. Everything @0.5 (and its addendum A1-A2@0.0) says below stands unless marked @0.6.
+< - Box only. No model was loaded on any GPU; nothing was sent to the laptop or the server; no live app touched; no CloudAgent; no push. Nothing published; nothing sent to anyone. The live facts about the stopped run are **Emma-reported** (verified by her on the laptop at 7:40 PM PT) and not yet on the box; @0.6's first laptop step copies them here.
+< - **Run-time stage unchanged:** the laptop's files came from `/workspace/littleblue-eval-v0.5/` at E2 and stay as they are; box scoring still runs there. New **record stage** `/workspace/littleblue-eval-v0.6/` holds only `DIFF-0.5-to-0.6.md`, `tools/e5s1_check.py` (box, read-only), `evidence/` and `V06-FILES.SHA256`. Every number below is read from a file or measured on the box this turn, or labelled *Emma-reported* / *estimate* / *unverified*.
+< - **Recommendation: resume `out-S` with the identical E5-pin line in a fresh process**, after copying the stopped session's logs (§g, *E5-pin stopped with exit 3*). No `--peak_limit`, `--batch`, pin or floor change. Each laptop step still needs its own Matt card; Kaylee diff-checks @0.6 first.
+---
+> Status: **ORDER DRAFT @0.7, NOT GO'D. Supersedes @0.6 (left byte-unchanged: `ORDER-bluebird-eval@0.6.md` `ff8f6f57e9108a11df16bf165f45ff83872cd49678e8b62e56eb7cbb6916b6e6`, stage `/workspace/littleblue-eval-v0.6/` untouched, `V06-FILES.SHA256` `646cc8705367b8f884893ee73af394205672b7c3fac82bfe9eb7141fe36499e0`; @0.5 `7187d5adf48bb525b68f945791fa8dd39feace54bf6aca9698095d7fc08a7f51` and stage `/workspace/littleblue-eval-v0.5/` untouched, `EVAL-INPUTS.SHA256` `366202f5db0a731ad9929337fc175d720e145000da61c796b34540b2ca675ef1` 67/67; addendum `ADDENDUM-bluebird-eval@0.5-A1-A2@0.0.md` `6402ac634d6c512483a37d3330d94fb05d0bef0a02e3c937b3cbdd3edbeafa1c` unchanged and still applies; @0.4 `95cd401d…b093`, @0.3 `a4ce3843…8849`, @0.2 `b9c1b0da…6cee`, @0.1 `0d7acd06…f6cef32e`, @0.0 `4f6b6c9c…f432d50b` untouched).** Written Sun 11/15/2026 by Trinity (Architect). It answers **Kaylee's `RECHECK-eval@0.6.md` (`fdf0545625984c866a178309c7538091843849977860217c8d65494bd5440bca`; FAIL on N29 MED, plus N30–N38)**, **Trinity's ruling at 9:00 PM PT on the keep-step process gate (raised by Kaylee; N39-equivalent)**, and **the real E5-S1 copy, which falsifies @0.6's premise** (§g, *E5-pin stopped with exit 3*). **@0.7 changes order text and replaces the read-only box check `e5s1_check.py`. No RUN-INPUTS or SCORE-INPUTS file changed, so the RUN PIN and SCORE PIN are unchanged.** The §10 card text is byte-identical to @0.6 (and @0.3–@0.5). Map: `/workspace/littleblue-eval-v0.7/DIFF-0.6-to-0.7.md`. Everything @0.6 (and its addendum A1-A2@0.0) says below stands unless marked @0.7.
+> - Box only. No model loaded on any GPU; nothing sent to the laptop or the server; no live app touched; no CloudAgent; no push; nothing published or sent. Live facts are **Emma-reported** where marked; the E5-S1 copy was read and hashed on the box.
+> - **Run-time stage unchanged** (`/workspace/littleblue-eval-v0.5/`). New **record stage** `/workspace/littleblue-eval-v0.7/`: `DIFF-0.6-to-0.7.md`, `tools/e5s1_check.py`, `tests/` (suite and mutants for the check), `evidence/`, `V07-FILES.SHA256`.
+> - **Finding:** the peak is set by single zero-padding batches (all 8 prompts the same length), with memory growing with the prompt length squared. Six of the 82 remaining batches are projected at 7.63e9–8.02e9 (*estimate*), above the 7.0e9 guard and the 7.385e9 free GPU memory. **E5-pin-resume is withdrawn. No route finishes `out-S` without a Matt ruling**: question in §g and §9 (A: a fresh S at batch 4, recommended; B: resume with the guard at 8.5e9, relying on unverified driver spilling; C: a code change with reruns; D: hold).
+> - Kaylee diff-checks @0.7 before any card. Each laptop step stays its own Matt card.
+12c13,17
+< | **Matt card t369s1265 (answered here)** | relayed by Emma, 7:42 PM PT: send the E5-pin abort to Trinity for an order amendment; Kaylee diff-checks before any card | (card; no file) |
+---
+> | **Re-check of @0.6 (answered here)** | `/workspace/littleblue-eval-review/RECHECK-eval@0.6.md` | `fdf0545625984c866a178309c7538091843849977860217c8d65494bd5440bca` |
+> | **Trinity's ruling, 9:00 PM PT (raised by Kaylee; N39-equivalent)** | relayed in the brief; keep-step gate = no live python/eval.py by `Win32_Process` Name and CommandLine; explorer/dwm logged | (ruling; no file) |
+> | **E5-S1 copy (box)** | `/workspace/littleblue-eval-v0.5/runs/r03/e5-s1/` (5 files + `E5-S1-EVIDENCE.txt`, Emma's) | shas in §g |
+> | Order @0.6 (superseded, unchanged) | `/workspace/littleblue-specs/ORDER-bluebird-eval@0.6.md` | `ff8f6f57e9108a11df16bf165f45ff83872cd49678e8b62e56eb7cbb6916b6e6` |
+> | Matt card t369s1265 (answered by @0.6) | relayed by Emma, 7:42 PM PT: send the E5-pin abort to Trinity for an order amendment; Kaylee diff-checks before any card | (card; no file) |
+465,466c470,471
+< ### E5-pin stopped with exit 3 on out-S (@0.6; Matt card t369s1265, 7:42 PM PT: "send the E5-pin abort to Trinity for an order amendment")
+< **What stopped (Emma-reported, verified by her on MDKDevLaptop at 7:40 PM PT, work dir `C:\Users\mdk32\lb-eval-bluebird-v1.0-r03`; not yet seen on the box):** last line of `eval-S.out` `ABORT 3 peak_alloc 7001188352 > 7000000000.0 after row 2920` (exit 3 by the reading rule); `out-S\ABORT-1.json` pid 9448, exit 3, 7:12:12 PM PT; run json status `aborted`, `sessions[-1]` pid 9448, 6:05:28 to 7:12:12 PM PT, exit 3; no `eval.lock`, no live eval.py, no traceback in `eval-S.err`; last progress line `{"batch": 363, "done_batches": 364, "of": 447, "sec_per_row": 1.762, "peak_alloc": 6990548992}`. E4 (full T) peaked at about 5.28e9 (Emma-reported).
+---
+> ### E5-pin stopped with exit 3 on out-S (@0.7 re-plan; the @0.6 premise is falsified by the real E5-S1 copy)
+> **@0.7 status of this subsection.** @0.6's reading ("gradual growth inside one long session; a fresh process clears it; resume with the identical line, projected about 4.7e9–5.2e9") is **withdrawn**. The real per-batch curve, copied to the box by E5-S1-keep, shows the peak is set by **single batches whose eight prompts all have the same length** (no padding), and their cost grows with the square of the prompt length. Six of the 82 remaining batches are such batches and are projected at 7.63e9–8.02e9, above the 7.0e9 guard and above the GPU's 7.385e9 free memory. **No route finishes `out-S` without a Matt ruling** (question below and in §9). **E5-pin-resume is not to be carded.** The @0.6 text kept below for the record is marked where it is superseded.
+468,472c473
+< **What that means in eval.py (read from the code, `evidence/MECHANISM-0.6.md`):**
+< - `--peak_limit` is compared with `torch.cuda.max_memory_allocated()` (bytes held by live tensors, **not** the allocator's reserved pool), after each batch has been generated **and written** (eval.py L367–L371, L308–L310). The counter is reset once per process, after the model load (L264), so it is the **largest allocation of this session so far**, not of the last batch.
+< - The abort came after row 2920 = 365 whole batches (0–364), counting from batch 0 (`after row` counts this session's rows; Emma reports one session starting 6:05:28 PM PT; `e5s1_check.py` verifies it from the copied run json): batch 364 was generated, written and fsync'd, **then** the check fired, so its progress line was never printed. 2920 rows are on disk; **82 batches (365–446, 649 rows)** remain, not 83. A resume keeps every whole batch (L350, L360).
+< - Run identity (`cfg`, L187–L191, refused with exit 7 if different, L192–L194) holds: schema, tag, mode, rows / manifest / input shas, run manifest text, model path and file shas, adapter, `max_new_tokens`, **`batch`**, kinds, limit, backend, seed, decoding. It does **not** hold `--peak_limit`, `--min_free`, `--pin_transformers` or `--expect_versions`. The first session's library versions are checked separately (L228–L229, exit 7).
+< - M2 fixed boundaries: rows sorted by (`fs_prompt_tokens`, id) and cut every `--batch` rows (evalcore.py L115–L128). Any `--batch` other than 8 against `out-S` is **exit 7, nothing written** (replayed with 4 and 1, `evidence/resume-replay-0.6.jsonl`).
+---
+> **What stopped (box-verified @0.7; the copy is Emma-reported to match the laptop).** E5-S1-keep ran at about 9:00 PM PT (Emma-reported; the laptop's `Get-FileHash` values equal the box `sha256sum` for all 5 files, Emma-reported in `e5-s1/E5-S1-EVIDENCE.txt`). The box shas of the copies under `/workspace/littleblue-eval-v0.5/runs/r03/e5-s1/` (recomputed @0.7):
+474c475,497
+< **Why the remaining batches are not the cause (measured on the box, `evidence/peak-model-0.6.md`):** the remaining 82 batches have few-shot prompts of 1,781–1,994 tokens (from `eval_rows.jsonl`; the laptop's tokenizer reproduced every one of those counts at E5-pin's start, or eval.py would have exited 4). The **smoke S run (E3b-pin, set P, same code, same rows, batch 8, fresh process) already ran two of them**: batch 381 (1,879 tokens) and batch 445, the longest full batch (1,994 tokens), and its whole-session peak stayed at **4,030,207,488** (`runs/r03/smoke-S.out`; run json `peak_reserved_bytes` 6,490,685,440). The same longest batch that would have to cost ≥ 7.0e9 if peak followed prompt length cost ≤ 4.03e9 in a fresh session. So the 7.0e9 is **growth inside one long session** (live allocations accumulating over 365 batches, about 8.1e6 B per batch on average from the 4.03e9 fresh level), not the length of batch 364. T shows the same pattern at a lower rate (smoke T 4,403,054,592; full T about 5.28e9, Emma-reported). The cause of the growth is not identified (it needs the laptop); it ends with the process. Within one session the curve cannot separate "more batches" from "longer prompts", because both rise together in the length order; the smoke run is what separates them.
+---
+> | File | sha256 |
+> |---|---|
+> | `eval-S.out` (369 lines) | `d7278a0d7bd4bfdaa3ddfc9ea444cf0001ad36efab1a7dd6d4a7b9ce66e1bc61` |
+> | `eval-S.err` | `4c3bbc54d154b53b7cfab61699b7e6020302e7695413b7c171d560f4a0ddfa0d` |
+> | `out-S/ABORT-1.json` | `c0e97ac59269dfa01a116e3234ce1889913faf5cbd2b57f6adcc7092f646be9e` |
+> | `out-S/predictions-qwen25-3b-base-fs.jsonl` (2,920 lines) | `0651b0f248dcb1bb1d45bd069d80584c5c1ad984373d4c3858c536392cc9a3ae` |
+> | `out-S/run-qwen25-3b-base-fs.json` | `0b0e2d523aa1406c995b7653012d3a8a33ddd9f222b38d98decdace74fcf79fe` |
+> 
+> Content agrees with Emma's 7:40 PM PT report: last line `ABORT 3 peak_alloc 7001188352 > 7000000000.0 after row 2920`; one session, pid 9448, 6:05:28 to 7:12:12 PM PT, exit 3, `batches_done_at_start` 0; `GPU_FREE` free 7,385,120,768 of 8,546,484,224 at the session start; 364 progress lines (batches 0–363); batch 364 written and kept (2,920 = 365 × 8 rows); `.err` holds two torch warnings and no traceback. 82 batches (365–446, 649 rows) remain. Run with the @0.7 check (below) all integrity checks I0–I12 pass.
+> 
+> **What `peak_alloc` measures (eval.py, unchanged reading).** `torch.cuda.max_memory_allocated()`, reset once after the model load (L264) and read after each batch is written (L366–L372): the **session maximum so far**. A progress line therefore shows a batch's own peak **only when that batch raised the maximum**; for every other batch it shows the earlier maximum, and the batch's own peak is only known to be at most that. Confirmed by the data: the value is flat from batch 300 to 355 (4,526,430,720) and from 356 to 361 (6,949,076,992), and it never decreases.
+> 
+> **The curve (box, `/workspace/littleblue-eval-v0.7/evidence/CURVE-0.7.txt`, from `curve07.py`).** 63 batches raised the maximum (batch 0 included). After the load ramp (batches 0–15, all padded, up to 3.03e9), **every batch that raised it is a batch with zero padding** (all eight prompts the same length): batch 16 (992 tokens, +0.88e9), then 42 small steps at 998–1,041 tokens, batch 293 (1,176 tokens, +0.44e9), batch 300 (1,181), **batch 356 (1,769 tokens, +2.42e9 to 6,949,076,992)**, batch 362 (1,778, 6,990,548,992) and batch 364 (1,780, 7,001,188,352, the abort). Batch 4 (+0.23e9) is the one large early step at a padded batch (945 tokens, padding 243). 214 zero-padding batches ran; each one at a new, longer length raised the maximum, and **padded batches never raised it after batch 15**, at any length up to 1,780.
+> 
+> **Batches 353–364 compared (box; row ids, lengths, output in `CURVE-0.7.txt` and `evidence/batches-350-364.txt`).**
+> - **Batch 356**: all 8 rows exactly 1,769 tokens, padding 0; kinds ar, rn, sh, sh, test×4; generated 45, 59, 32, 49, 117, 32, 68, 48 tokens; **none hit `max_new_tokens` 128**; no repetition loop (largest repeat of one word in a row: 6, in the 117-token row, a long label repeated in its answer), no special tokens, output style identical to its neighbours (JSON-shaped, the base model's usual `bad_span_key` misses). `sec_per_row` **3.481**.
+> - **Batch 355**: 1,767–1,768 tokens (padding 1), generated 48–68, `sec_per_row` 1.311, maximum unchanged. **Batch 357**: 1,769–1,771 (padding 2), generated 38–68, 1.335, unchanged.
+> - **Batch 361**: padding 1, generated up to **111** tokens, 1.964 s, maximum unchanged. **Batch 362**: padding 0 (1,778), generated up to **111**, 3.428 s, **raised** it to 6,990,548,992. **Batch 364**: padding 0 (1,780), up to 111, raised it to 7,001,188,352.
+> - No batch in 350–364 hit `max_new_tokens`. Generated length does not explain the step: 361 and 362 generated the same maximum length; only the zero-padding one raised the peak. The zero-padding batches also run 2.6× slower per row (3.4–3.5 s against 1.3–2.0 s), which fits a different attention kernel at the prompt pass.
+> 
+> **Mechanism (box-verified in code; the kernel itself is *unverified*, no GPU on the box).** In transformers (the box's 5.23.0 source, `masking_utils.py` `_ignore_causal_mask_sdpa` L339–L344, `integrations/sdpa_attention.py` L159), a batch whose padding mask is all ones gets **no attention mask**, and SDPA is called with `is_causal=True`; a batch with any padding gets an explicit mask. The laptop runs the pinned 5.22.2, *assumed* to share this logic. The two calls can dispatch to different SDPA kernels; the data say the no-mask path on this laptop (torch 2.11.0+cu128, Blackwell sm_120, Windows) materialises memory that grows with L² (batch × heads × L × L, like the math kernel), and the masked path does not. **Fit** over all 49 record-raising zero-padding batches with L ≥ 900: own peak = **2.5358e9 + 1410.88 × L²** bytes, largest residual 0.49 %, and no zero-padding batch that did not raise the maximum lies more than 2 % above the fit (consistent upper bounds). Cross-check not used in the fit: the longest zero-padding batch in the zero-shot T plan (batch 437, 1,385 tokens) is predicted at 5.242e9; E4 (full T) peaked at about 5.28e9 (Emma-reported). Not fragmentation (allocated bytes, not reserved), not a leak (flat between steps; padded batches at the same lengths do not move it), not `max_new_tokens`, not eval.py logic (eval.py only reads the counter).
+> 
+> **What the smoke S run does and does not prove (re-derived @0.7).** The smoke-S mapping stands (limit 64 → full batches 0, 64, 127, 191, 254, 318, 381, 445, asserted against `plan_batches` in `e5s1_check.py`). Their padding: 21, 0, 0, 0, 1, 2, 3, 2. **Smoke never ran batch 356.** Smoke batches 381 (1,879 tokens) and 445 (1,994) are **padded**, so their ≤ 4.03e9 proves only that padded batches at those lengths are cheap in a fresh process. The only zero-padding batches smoke ran are 64, 127, 191 (1,009–1,029 tokens), where it matches the full run to within 0.1 % (3,971,223,040 against 3,969,564,160 at 1,009). @0.6's sentence "the same longest batch that would have to cost ≥ 7.0e9 if peak followed prompt length cost ≤ 4.03e9" compared a padded batch with zero-padding ones, and "growth inside one long session" was wrong. §k EV-F3 is corrected.
+476c499,503
+< **Options (projected peak of the remaining 82 batches; `evidence/peak-model-0.6.md`):**
+---
+> **Is a fresh resume from batch 365 safe? No.** The remaining 82 batches, in a fresh process:
+> - 75 padded batches and batch 446 (one row, 1,994 tokens; the fit scaled to 1 of 8 rows gives 3.24e9): bounded by the fresh smoke-S padded maximum, 4,030,207,488 (smoke ran padded batches up to 1,994 tokens).
+> - **6 zero-padding batches, projected own peak from the fit:** 391 (1,901 tokens) 7.634e9; 401 (1,914) 7.704e9; 408 (1,923) 7.753e9; 420 (1,942) 7.857e9; 431 (1,964) 7.978e9; 437 (1,971) **8.017e9**. All exceed the 7.0e9 guard and the 7.385e9 free memory. The projection is an extrapolation from 1,780 to 1,971 tokens of a fit with 0.5 % residuals; *estimate*, not a measurement.
+> - `e5s1_check.py` (@0.7) on the real copy prints `E5S1 STOP: C4 failed; max projected per-batch peak 8016885034 B at batch 437 (go_max 6500000000, limit 7000000000); no relaunch, Trinity re-plans`.
+> - So the identical line would run batches 365–390 and then, at batch 391, either stop with exit 5 (CUDA out of memory, batch 391 not written) or, if the Windows driver spills into system memory (*unverified on this laptop*), finish 391 slowly and then stop with exit 3 (391 written).
+478c505,507
+< | Option | Identity / exit | Projected peak | Verdict |
+---
+> **Options (@0.7).**
+> 
+> | Option | Identity / exit | Projected peak | Cost and risk |
+480,494c509,515
+< | **R. Resume: identical E5-pin line, fresh process (recommended)** | same cfg → resumes; batches 0–364 kept byte-identical; replayed: exit 0, no exit 7 | fresh base ≤ 4.03e9 + growth over 82 batches: 0.67e9 at the observed average rate, **1.13e9** if growth scales with prompt tokens (×1.70) → **about 4.7e9–5.2e9**, 1.8e9 under the unchanged 7.0e9 guard; growth would have to run ≥ 4.4× the observed average rate to reach 7.0e9 | **Recommended.** No code, no pin, no identity change, nothing new to rule |
+< | (a) Resume with a higher `--peak_limit` | not in cfg → resumes (replayed with 7.3e9: exit 0) | same as R, because any relaunch is a fresh process; the higher limit only matters if growth repeats, and then real VRAM is the limit: free at start 7,385,120,768 of 8,546,484,224 (PREFLIGHT, CUDA context already taken), reserved runs about 1.6× allocated (smoke S 6.49e9 at 4.03e9; smoke T 7.06e9 at 4.40e9), so at 7.0e9 allocated the pool is already within ~0.39e9 of all free memory. Above that the next allocation is exit 5 (OOM), or, under the Windows driver's system-memory fallback, a silent slowdown (*unverified on this laptop*) | Rejected: removes the guard's margin, gains nothing over R |
+< | (b) Smaller batch (4 or 1) for the remainder | `batch` is in cfg → **exit 7, nothing written** (replayed). Needs a fresh out dir and all 3,569 S rows again; new M2 boundaries | per-batch transient lower, but twice as many batches per session; if growth is per batch the session reaches the limit sooner | Rejected: loses 2,920 valid rows; batch composition changes greedy text (smoke `replay_b1`: 3 of 8 raw outputs differ between batch 8 and batch 1, for S and for T), so S would no longer be batch-8 like T |
+< | (c) Code change (per-batch split / fallback, `empty_cache`, periodic restart) | eval.py sha changes → new `RUN-INPUTS.SHA256` → new RUN PIN → `out-S` cfg differs → exit 7; S reruns from zero; T was run under the old pin and score.py takes one `--expect_run_manifest_sha`, so T reruns too (or score.py changes: new SCORE PIN) | depends on the fix; untestable on the box (real CUDA) | Rejected: new tests, suite (97, ~4–5 min), scoped mutants, RUN PIN change, a Kaylee round, a new E2 copy card and about 2 h more laptop time, for what a fresh process already does |
+< 
+< **Rows already done stay valid.** Greedy text does not depend on how much memory the allocator holds; batch 364 finished generating and was written before the check; boundaries are fixed; the resume keeps every byte of the 2,920 lines (replayed). **out-S stays comparable to out-T:** same eval.py and RUN PIN, same `--pin_transformers 5.22.2` (set P), batch 8 for both, same decoding check in every session (eval.py re-checks the merged config on the first generate of the resumed session, L298–L302). The run json keeps both sessions and `ABORT-1.json` stays in `out-S` (listed in `EVAL.SHA256`); full scoring does not refuse a multi-session run or an ABORT file (only `--smoke` reports "no ABORT-n"); replayed: the resumed S plus a T run score with exit 0 (`evidence/resume-replay-0.6.jsonl`). On the box CPU shim, abort + resume, abort + abort + resume, and one uninterrupted session give the **same `content_sha256`**. Not provable on the box: that real CUDA greedy is bit-identical across two processes (the M2 resume design already assumes it).
+< 
+< **Pin and floor stay separate rulings, both unchanged.** Set P (`--pin_transformers 5.22.2`, Matt's ruling (b)) stays. No `--min_free` is added: the floor rule of §g above is unchanged (an exit 10 at the resume's start → Matt sets a floor → the E5-pin-floor line, in the same out dir). `--peak_limit` stays at the 7.0e9 default.
+< 
+< **Sequence (each laptop step its own card; nothing runs without Matt's card):**
+< 1. **E6-S** (read-only poll, under the E6 card) shows `NO LOCK`, `STATUS aborted`, `ABORT-1.json pid=9448 exit=3`. Emma did this at 7:40 PM PT; repeat it if anything ran since.
+< 2. **E5-S1-keep** (own card): hash and copy the stopped session's logs and `out-S` to the box **before any relaunch**, because a relaunch truncates `eval-S.out` and `eval-S.err` (Kaylee N28; addendum A1-A2@0.0) and the per-batch peak lines exist only there.
+< 3. **Box check** (no card): landing dir, hash comparison, `e5s1_check.py`. It must print `E5S1 GO …`.
+< 4. **E5-pin-resume** (own card): the identical E5-pin line.
+< 5. E6-S while it runs; then E7 per §g (after E4 and E5 both exited 0), the A1 check, E8.
+---
+> | R0. Identical E5-pin line (the withdrawn E5-pin-resume) | resumes | 7.63e9 at batch 391 | Stops at 391 (exit 5, or exit 3 after spilling). With spilling, each further identical relaunch would bank one more zero-padding batch: 6 stops, 6 keep cards, 6 relaunch cards. **Rejected.** |
+> | **A. Fresh S at `--batch 4` in a new dir `out-S-b4` (recommended)** | new dir, new run (a `--batch 4` against `out-S` is exit 7, nothing written, replayed); RUN PIN, SCORE PIN, code unchanged; score.py plans each run with its own `batch` (score.py L313; replayed: exit 0) | longest full zero-padding batch at batch 4: 1,973 tokens. *Estimate* **5.1e9–5.3e9**: the fit's L² term halved (4 of 8 rows) plus 2.25e9–2.54e9 fixed. This assumes the L² memory is per row (as for a batch × heads × L × L score tensor); *unverified*. If wrong, the unchanged 7.0e9 guard stops it with exit 3 after a written batch | All 3,569 S rows again: *estimate* 1.7–2.5 h (session 1 did 2,920 rows at batch 8 in 67 min; batch 4 throughput unmeasured). S is batched 4 while T is batched 8. Batch composition changes some greedy text (smoke `replay_b1`: 3 of 8 rows differ between batch 8 and batch 1). That departs from §d M2's "batch 8 for both" for the baseline only, so it **needs Matt's ruling**. The stopped `out-S` (2,920 rows at batch 8) stays as a record; post-run, the box can compare the 2,920 shared ids to measure the batch effect directly |
+> | B. Resume `out-S` with `--peak_limit 8500000000` | `--peak_limit` is not in the run identity → resumes (replayed: exit 0) | 8.017e9 at batch 437, under 8.5e9 but **above the 7.385e9 free memory** | Only works if the Windows driver spills GPU memory into system RAM (driver "sysmem fallback"; *unverified on this laptop*, and the GPU also drives the display: dwm is a GPU resident). Without spilling: exit 5 at batch 391, batches 365–390 kept, then A or C anyway. With spilling: six batches run very slowly (*unmeasured*). Keeps batch 8 and every done row. **Needs Matt's ruling** (accept running past VRAM) |
+> | C. Code change, so no batch takes the no-mask path (for example, left-pad every batch by one token so the mask always has a zero) | eval.py sha → new RUN-INPUTS / RUN PIN → `out-S` and `out-T` both differ → exit 7; S and T both rerun (score.py takes one `--expect_run_manifest_sha`) | padded path, ≤ about 4.4e9 (smoke T/S padded batches) | New tests, suite, mutants, a Kaylee round, a new E2 copy card; T and S rerun, *estimate* 3–3.5 h laptop time; changes text for every zero-padding batch in both runs (consistently). Untestable on the box (real CUDA kernels) |
+> | D. Hold | none | none | No baseline; the comparison against S is not scored |
+> 
+> **Question for Matt (via Emma; Trinity's recommendation is A):** "The baseline run can't finish as set up. Six of its last 82 batches need about 7.6–8.0 GB on the GPU, and the GPU has 7.4 GB free. Those are batches where all eight questions have exactly the same length, which makes the software take a memory-hungry path. 2,920 of 3,569 baseline answers are saved. Which way? **A** (recommended): rerun the baseline from the start in a new folder with batches of 4 instead of 8. Estimated peak about 5.1–5.3 GB, under the 7.0 GB guard (an estimate, not measured), about 2–2.5 hours. The trained model's results are untouched, but the baseline would be batched differently from it, which can change the exact wording of a few answers. **B**: continue where it stopped with the memory guard raised to 8.5 GB, relying on Windows spilling GPU memory into normal RAM for those six batches. Untested on this laptop: it could be very slow, or stop with an out-of-memory error at batch 391 (nothing lost), and the same GPU drives the screen. **C**: change the eval code to avoid the memory-hungry path, then rerun both models (about 3–3.5 hours plus a review round). **D**: hold." → **A** / **B** / **C** / **D**
+496c517,567
+< **E5-S1-keep** (read-only on the laptop: hashes and a process check; then the copy; own card):
+---
+> **Rows already done.** The 2,920 rows in `out-S` are valid batch-8 greedy outputs (whole batches, I5). Under B they are kept and extended. Under A they are not scored; they stay on the laptop (until E9) and on the box (`e5-s1/out-S`).
+> 
+> **The @0.7 box check (`/workspace/littleblue-eval-v0.7/tools/e5s1_check.py`, sha in §j; replaces @0.6's `ed4208b7`, whose C1/C2 assumed gradual growth).** Box only, reads only, no card:
+> ```bash
+> cd /workspace/littleblue-eval-v0.5 && PYTHONDONTWRITEBYTECODE=1 /workspace/littleblue-fullrun-review/venv/bin/python -B /workspace/littleblue-eval-v0.7/tools/e5s1_check.py --stage /workspace/littleblue-eval-v0.5 --dir /workspace/littleblue-eval-v0.5/runs/r03/e5-s1 --smoke_out /workspace/littleblue-eval-v0.5/runs/r03/smoke-S.out --smoke_run /workspace/littleblue-eval-v0.5/runs/r03/out-smoke-S/run-qwen25-3b-base-fs.json
+> ```
+> - **Integrity** (I0–I12). I0–I7 as @0.6. Then the N30 checks:
+>   - **I8** (N30a): exactly one session, starting at batch 0.
+>   - **I9** (N30b): the merged generation config equals the literal full greedy config (all 17 keys: `do_sample` false, `num_beams` 1, `temperature`, `top_p`, `top_k` and `min_p` null, `typical_p` 1.0, `repetition_penalty` 1.0, `no_repeat_ngram_size` 0, `max_new_tokens` 128, `eos_token_id` [151645, 151643], `pad_token_id` 151643, and so on), and equals smoke-S's.
+>   - **I10** (N30c): the full cfg equals the smoke-S cfg except `limit` (0 against 64); the versions equal the literal `{"bitsandbytes": "0.50.2", "cuda": "12.8", "peft": "0.21.2", "torch": "2.11.0+cu128", "transformers": "5.22.2"}` and smoke-S's.
+>   - **I11** (N30d): `smoke-S.out` sha256 = `4b8b2cab351ced18d554494e64f1af0580e2498e01d159db26f4302a0f3819b9`; 8 progress lines, batches 0–7 of 8; last line `EVAL_DONE qwen25-3b-base-fs 64 complete …`; smoke run json sha256 = `2b30d3fc409db148fb5027206ed14f24f1bf36d3a3614df1176e4a2b1384739f`, status `complete`.
+>   - **I12** (N30e): the curve never decreases; every progress-line peak ≤ 7,000,000,000; the ABORT value > 7,000,000,000.
+> - **C3** (N29): at full batches 0, 64, 127, 191, 254 and 318, the session peak must be ≤ the smoke-S peak at that batch + 1.0e9, else STOP. Real copy: 2,753,126,400 / 3,969,564,160 / 4,012,063,232 / 4,030,990,336 / 4,053,525,504 / 4,526,430,720 against smoke 2,753,126,400 / 3,971,223,040 / 4,011,912,192 / 4,030,207,488 / 4,030,207,488 / 4,030,207,488 (pass).
+> - **C1** (reworked): every single-batch increase > 1e8 at a batch of ≥ 1,000 tokens must be at a zero-padding batch. A step the zero-padding mechanism does not explain is STOP.
+> - **C2** (new): the record-raising zero-padding batches (own peak exact) must fit peak = a + c·L² within 1 % (≥ 3 points spanning ≥ 500 tokens), and no done zero-padding batch may lie > 2 % above the session maximum at that point. Otherwise STOP: no projection is claimed.
+> - **C4** (new): each remaining batch's projected own peak in a fresh process must be ≤ `go_max` 6.5e9. Zero-padding batches use the fit; padded batches use the smoke-S fresh padded bound 4,030,207,488.
+> - The last line is `E5S1 GO: … max projected per-batch peak <N> B at batch <k> …` or `E5S1 STOP: <ids> failed; …; no relaunch, Trinity re-plans`.
+> - **N31: only exit code 0 together with a last line starting `E5S1 GO` is a pass. Anything else is STOP:** exit 1, the internal-error STOP line (any exception is caught and printed as `E5S1 STOP: internal error …`), a traceback, or no output.
+> - **Real copy, @0.7: `E5S1 STOP: C4 failed; max projected per-batch peak 8016885034 B at batch 437`** (exit 1). Every card that cites the check quotes this printed line (N32), never a rounded or replayed number.
+> - Tests: `tests/e5s1_suite.py`, 27/27 cases, built from the real copy: Kaylee's P1, P2 and P3 and A1–A7, the N30 probes, three N31 probes, and the real copy itself, with the default `go_max` (STOP C4) and with `go_max` 9e9 (GO). `tests/e5s1_mutants.py`: 27 of 29 mutants killed on a real verdict line. The 2 survivors drop the I11 progress-count and EVAL_DONE sub-checks; they are equivalent while the sha pin holds, because only the pinned file passes it.
+> 
+> **Trinity's ruling at 9:00 PM PT (raised by Kaylee; N39-equivalent), folded into every keep step.** The process gate is: **no live python or eval.py process**, judged by `Win32_Process` **Name** and **CommandLine**, never by the nvidia-smi name column.
+> - The keep blocks below list every process whose Name is `python*` or whose CommandLine contains `eval.py`, except the checking shell itself (`$PID`). Any line → **STOP**, and Trinity rules.
+> - The nvidia-smi compute-apps rows are **logged**. A non-python resident (`explorer.exe`, `dwm.exe`, other desktop processes) does **not** stop.
+> - For each row whose name is hidden (`[Insufficient Permissions]` or `N/A`), run **E5-gpu-pid** with that row's pid typed in as literal digits at card time. Result:
+>   - no row, or a Name that is not python → proceed;
+>   - a Name `python*`, `eval.py` in the CommandLine, or a row still without a Name → **STOP**, and Trinity rules.
+> - (E5-S1: nvidia-smi showed 12452 `C:\Windows\explorer.exe` and 1344 `[Insufficient Permissions]`. CIM returned nothing for 1344, and the ruling accepted `Get-Process -Id 1344` = `dwm`, Emma-reported, `E5-S1-EVIDENCE.txt`.)
+> - **Before any S launch** (A, B, or a floor relaunch), run **E5-free** and record the free memory. The guard stays eval.py's `--min_free` launch floor (7.0e9 by default): exit 10, then Matt sets a floor, then the matching floor line.
+> **E5-gpu-pid** (read-only, one hidden-name GPU row; own card; `<PID>` = that row's pid, literal digits):
+> ```powershell
+> Get-CimInstance Win32_Process -Filter "ProcessId=<PID>" | Select-Object ProcessId,Name,CommandLine
+> ```
+> `<PID>` is a fill-in: the card carries the literal digits of the hidden row's pid, for example `-Filter "ProcessId=1344"`; unfilled, `ProcessId=<PID>` is not a valid WQL filter, so the template cannot read any process (*unverified on Windows*; it parses).
+> 
+> **E5-free** (read-only; before any S launch; own card):
+> ```powershell
+> nvidia-smi --query-gpu=memory.free,memory.used,memory.total --format=csv,noheader,nounits
+> ```
+> 
+> **E5-S-gate** (read-only process gate before any S launch, per the 9:00 PM PT ruling; own card):
+> ```powershell
+> Get-CimInstance -ClassName Win32_Process | Where-Object { ($_.Name -like 'python*' -or $_.CommandLine -like '*eval.py*') -and $_.ProcessId -ne $PID } | Select-Object ProcessId,Name,CreationDate,CommandLine
+> nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv
+> ```
+> 
+> Expect: no `Win32_Process` line (else STOP, Trinity rules); compute-app rows logged per the ruling.
+> Expect: one line `<free MiB>, <used MiB>, <total MiB>`, recorded on the card. eval.py's own `GPU_FREE` line is the guard.
+> 
+> **E5-S1-keep (@0.6; done at about 9:00 PM PT, Emma-reported; kept as run, byte-identical).** Its expect sentence is superseded by the 9:00 PM PT ruling above: the gate was no `Win32_Process` line (none) and no live eval.py; explorer.exe and dwm were logged, not stopped.
+> **E5-S1-keep** (@0.6 block, as run; read-only on the laptop, then the copy):
+504,508d574
+< Expect: two `eval-S` hash lines, three `out-S` hash lines (`ABORT-1.json`, `predictions-qwen25-3b-base-fs.jsonl`, `run-qwen25-3b-base-fs.json`), `False`, no `Win32_Process` line, no python in the compute apps. Anything else → stop and report; do not copy over an earlier copy.
+< CopyToBox (after the box landing step below):
+< - `C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.out` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s1/eval-S.out`
+< - `C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.err` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s1/eval-S.err`
+< - `C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S\*` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s1/out-S/`
+510c576,592
+< Nothing on the laptop is moved, renamed or deleted; `out-S` must keep exactly these three files for the resume (any other file there is exit 7).
+---
+> CopyToBox was done (Emma-reported): `eval-S.out`, `eval-S.err` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s1/`; `out-S\ABORT-1.json`, `out-S\predictions-qwen25-3b-base-fs.jsonl`, `out-S\run-qwen25-3b-base-fs.json` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s1/out-S/` (N36: the three files by name).
+> 
+> N33 (wording corrected): `out-S` keeps exactly these three files for any resume. eval.py itself also tolerates `EVAL.SHA256`, `eval.lock`, `ABORT-n.json` and `PREFLIGHT-…-n.json` there (L137–L140) and refuses any **other** file with exit 7 ("out_dir holds files this run did not write").
+> 
+> **E5-pin-resume: WITHDRAWN @0.7, not to be carded** (the @0.7 check prints STOP C4 on the real copy). The block stays byte-identical to E5-pin for the record (sha of the line unchanged, `a81b81ff…`):
+> **E5-pin-resume** (WITHDRAWN @0.7; the E5-pin line, unchanged character for character):
+> ```powershell
+> Start-Process -FilePath C:\Users\mdk32\venvs\bia562-train\Scripts\python.exe -ArgumentList 'eval.py','--model','C:\Users\mdk32\models\Qwen2.5-3B-Instruct','--mode','fewshot','--fewshot','fewshot.json','--rows','eval_rows.jsonl','--expect_manifest_sha','0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d','--out_dir','out-S','--tag','qwen25-3b-base-fs','--pin_transformers','5.22.2' -WorkingDirectory C:\Users\mdk32\lb-eval-bluebird-v1.0-r03 -RedirectStandardOutput C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.out -RedirectStandardError C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.err -WindowStyle Hidden -PassThru
+> ```
+> 
+> (@0.6's expected-output paragraph, its "about 20–30 minutes" and its card text "about 5.2 GB" are void.)
+> 
+> **Route A, if Matt rules A** (each laptop step its own card; Kaylee diff-checks these lines first):
+> 1. E6-S (read-only) shows `NO LOCK`, `STATUS aborted`, `ABORT-1.json pid=9448 exit=3`, so nothing is running in `out-S`. `out-S` is left as it is.
+> 2. **E5-S-gate** (below; own card): no `Win32_Process` line; the nvidia-smi rows logged; E5-gpu-pid for each hidden row; then E5-free recorded.
+> 3. **E5-b4-pin** (own card). It writes a new dir `out-S-b4` and new logs `eval-S4.out` / `eval-S4.err`, and touches neither `out-S` nor `eval-S.out`.
+> 4. E6-S4 while it runs. Then E7-A, after E4 and E5-b4 have both exited 0, then box scoring (route A), the A1 check, and E8.
+512c594,639
+< **Box landing and check (E5-S1; box, no card).** The landing root stays `/workspace/littleblue-eval-v0.5/runs/r03/` (outside every manifest); `e5-s1/` is new.
+---
+> **E5-b4-pin** (route A: full S, fresh dir `out-S-b4`, batch 4, detached, set P; own card; only after Matt rules A):
+> ```powershell
+> Start-Process -FilePath C:\Users\mdk32\venvs\bia562-train\Scripts\python.exe -ArgumentList 'eval.py','--model','C:\Users\mdk32\models\Qwen2.5-3B-Instruct','--mode','fewshot','--fewshot','fewshot.json','--rows','eval_rows.jsonl','--expect_manifest_sha','0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d','--out_dir','out-S-b4','--tag','qwen25-3b-base-fs','--pin_transformers','5.22.2','--batch','4' -WorkingDirectory C:\Users\mdk32\lb-eval-bluebird-v1.0-r03 -RedirectStandardOutput C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.out -RedirectStandardError C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.err -WindowStyle Hidden -PassThru
+> ```
+> 
+> Expected `eval-S4.out`: `VERSIONS …`, `TRANSFORMERS {… "check": "PINNED_UNVERIFIED"}`, `GPU_FREE {…}`, `MERGED_GENERATION_CONFIG {…}`, progress lines `{"batch": 0, "done_batches": 1, "of": 893, …}` to `{"batch": 892, "done_batches": 893, "of": 893, …}`, and last `EVAL_DONE qwen25-3b-base-fs 3569 complete <content sha>`. The batch-4 plan has 893 batches (892 × 4 + 1).
+> **E5-b4-pin-floor** (route A, after an exit 10 at E5-b4-pin's start; set PF; own card):
+> ```powershell
+> Start-Process -FilePath C:\Users\mdk32\venvs\bia562-train\Scripts\python.exe -ArgumentList 'eval.py','--model','C:\Users\mdk32\models\Qwen2.5-3B-Instruct','--mode','fewshot','--fewshot','fewshot.json','--rows','eval_rows.jsonl','--expect_manifest_sha','0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d','--out_dir','out-S-b4','--tag','qwen25-3b-base-fs','--pin_transformers','5.22.2','--batch','4','--min_free','<MIN_FREE_BYTES>' -WorkingDirectory C:\Users\mdk32\lb-eval-bluebird-v1.0-r03 -RedirectStandardOutput C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.out -RedirectStandardError C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.err -WindowStyle Hidden -PassThru
+> ```
+> 
+> (Only after an exit 10 at E5-b4-pin's start, a Matt-set floor, and E5-S4-keep; own card.)
+> **E6-S4** (route A: read-only poll of `out-S-b4`; under the E6 card):
+> ```powershell
+> if (Test-Path -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4\eval.lock) { $raw = Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4\eval.lock -Raw; "LOCK $raw"; try { $l = $raw | ConvertFrom-Json; $p = Get-Process -Id $l.pid -ErrorAction SilentlyContinue; if ($p) { $p | Select-Object Id,StartTime,Path } else { "LOCK PID $($l.pid) NOT ALIVE" } } catch { 'LOCK TORN' } } else { 'NO LOCK' }
+> if (Test-Path -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4\run-qwen25-3b-base-fs.json) { $r = Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4\run-qwen25-3b-base-fs.json -Raw | ConvertFrom-Json; "STATUS $($r.status)"; $r.sessions | Select-Object pid,started,ended,exit,abort_file } else { 'NO RUN JSON' }
+> Get-ChildItem -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4 -Filter 'ABORT-*.json' | Sort-Object { [int]($_.BaseName -replace '^ABORT-','') } | ForEach-Object { $j = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json; '{0} pid={1} exit={2} time={3} abort={4}' -f $_.Name,$j.pid,$j.exit,$j.time,$j.abort }
+> Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.out -Tail 3
+> Get-Content -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.err -Tail 3
+> nvidia-smi --query-gpu=name,memory.used,memory.total,temperature.gpu --format=csv,noheader
+> Get-CimInstance -ClassName Win32_Battery | Select-Object BatteryStatus,EstimatedChargeRemaining
+> ```
+> 
+> **E5-S4-keep** (route A, only after a stop of E5-b4-pin, before any relaunch; read-only on the laptop, then the copy; own card; process gate per the 9:00 PM PT ruling):
+> ```powershell
+> Get-FileHash -Algorithm SHA256 -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.out,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.err | Select-Object Hash,Path
+> Get-ChildItem -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4 -File | Get-FileHash -Algorithm SHA256 | Select-Object Hash,Path
+> Test-Path -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4\eval.lock
+> Get-CimInstance -ClassName Win32_Process | Where-Object { ($_.Name -like 'python*' -or $_.CommandLine -like '*eval.py*') -and $_.ProcessId -ne $PID } | Select-Object ProcessId,Name,CreationDate,CommandLine
+> nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv
+> ```
+> 
+> CopyToBox (only after a stop of E5-b4-pin; named files, N36): `eval-S4.out`, `eval-S4.err` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-b4-s1/`; `out-S-b4\run-qwen25-3b-base-fs.json`, `out-S-b4\predictions-qwen25-3b-base-fs.jsonl` and each `out-S-b4\ABORT-<n>.json` that the hash lines list → `/workspace/littleblue-eval-v0.5/runs/r03/e5-b4-s1/out-S-b4/`. Box: `mkdir -p /workspace/littleblue-eval-v0.5/runs/r03/e5-b4-s1/out-S-b4`, then `cd /workspace/littleblue-eval-v0.5/runs/r03/e5-b4-s1 && sha256sum eval-S4.out eval-S4.err out-S-b4/*`.
+> **E7-A** (route A: hash and copy the results; own card; replaces E7 only under route A):
+> ```powershell
+> Get-ChildItem -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-T,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S-b4,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-smoke-T,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-smoke-S,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\pre-T -File | Get-FileHash -Algorithm SHA256 | Select-Object Hash,Path
+> Get-FileHash -Algorithm SHA256 -LiteralPath C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\smoke-T.out,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\smoke-T.err,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\smoke-S.out,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\smoke-S.err,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-T.out,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-T.err,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.out,C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S4.err | Select-Object Hash,Path
+> ```
+> 
+> CopyToBox (named files, N36): `out-T\EVAL.SHA256`, `out-T\predictions-bluebird-v1.0-e2.jsonl`, `out-T\run-bluebird-v1.0-e2.json` → `/workspace/littleblue-eval-v0.5/runs/r03/out-T/`; `out-S-b4\EVAL.SHA256`, `out-S-b4\predictions-qwen25-3b-base-fs.jsonl`, `out-S-b4\run-qwen25-3b-base-fs.json` and each `out-S-b4\ABORT-<n>.json` that the hash lines list → `/workspace/littleblue-eval-v0.5/runs/r03/out-S-b4/`; `eval-T.out`, `eval-T.err`, `eval-S4.out`, `eval-S4.err` → `/workspace/littleblue-eval-v0.5/runs/r03/`. Every laptop hash must equal the box `sha256sum`. Box:
+> ```bash
+> mkdir -p /workspace/littleblue-eval-v0.5/runs/r03/out-S-b4
+> cd /workspace/littleblue-eval-v0.5/runs/r03/out-T && sha256sum -c EVAL.SHA256
+> cd /workspace/littleblue-eval-v0.5/runs/r03/out-S-b4 && sha256sum -c EVAL.SHA256
+> ```
+> **Box scoring, route A (no card):**
+514,516c641
+< mkdir -p /workspace/littleblue-eval-v0.5/runs/r03/e5-s1/out-S
+< cd /workspace/littleblue-eval-v0.5/runs/r03/e5-s1 && sha256sum eval-S.out eval-S.err out-S/*
+< cd /workspace/littleblue-eval-v0.5 && PYTHONDONTWRITEBYTECODE=1 /workspace/littleblue-fullrun-review/venv/bin/python -B /workspace/littleblue-eval-v0.6/tools/e5s1_check.py --stage /workspace/littleblue-eval-v0.5 --dir /workspace/littleblue-eval-v0.5/runs/r03/e5-s1 --smoke_out /workspace/littleblue-eval-v0.5/runs/r03/smoke-S.out
+---
+> cd /workspace/littleblue-eval-v0.5 && PYTHONDONTWRITEBYTECODE=1 /workspace/littleblue-fullrun-review/venv/bin/python score.py --rows eval_rows.jsonl --expect_score_manifest_sha 8c4b3042ba5abf0134b9d0075170ec55585e41092e60e51f411642b59b59bd1e --expect_run_manifest_sha 0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d --expect_adapter_sha 35589c33dcc605024b44f6cadecae002998ffff4ecb75a7c52d5432f2988251b --pred T=runs/r03/out-T/predictions-bluebird-v1.0-e2.jsonl --pred S=runs/r03/out-S-b4/predictions-qwen25-3b-base-fs.jsonl --primary T --baseline S --out runs/r03/score
+518d642
+< Every laptop hash must equal the box `sha256sum` of the same file (Get-FileHash prints upper case). `e5s1_check.py` (`/workspace/littleblue-eval-v0.6/tools/`, sha in §j) only reads. It checks I0–I7 (rows sha; `out-S` holds only the run json, predictions and ABORT-n; status `aborted` with the set-P cfg; last session exit 3, pinned `PINNED_UNVERIFIED`, greedy, processors `[]`; newest ABORT exit 3 with the last session's pid; predictions whole batches 0..k−1, no torn tail, no duplicate or unplanned id; the `.out` last line equals that ABORT; one progress line per batch), prints the per-batch peak curve, and projects a fresh session's peak over the remaining batches as: smoke-S fresh peak + the largest of (average slope from the smoke level, least-squares slope of the last 200 batches, least-squares slope of the last 50 batches), each × the remaining batches × its prompt-token ratio. Its last line is `E5S1 GO: …` only if I0–I7 hold, no single batch raised the peak by more than 1.0e9 (a jump would mean something other than gradual growth), and the projection is ≤ 6.5e9. **`E5S1 STOP: …` → no resume card; Trinity re-plans with the copied files.** For the reported session it is expected to print GO with a projection of about 5.2e9 (replayed on a synthetic copy of the reported numbers, `evidence/check-replay-0.6.txt`).
+520c644,650
+< **E5-pin-resume** (full S resume, detached, set P; own card; only after `E5S1 GO`). This is the E5-pin line, unchanged character for character:
+---
+> **Route B, if Matt rules B** (each laptop step its own card):
+> 1. E6-S as in route A, step 1.
+> 2. E5-S-gate as in route A, step 2, with E5-free recorded.
+> 3. **E5-pin-limit** (own card). It resumes `out-S` from batch 365; the run identity is unchanged.
+> 4. E6-S. Then E7 and box scoring as in §g above (unchanged; the `out-S` CopyToBox names `ABORT-1.json`, every further `ABORT-<n>.json`, `EVAL.SHA256`, the predictions and the run json, N36).
+> 
+> **E5-pin-limit** (route B: full S resume of `out-S`, detached, set P, `--peak_limit 8500000000`; own card; only after Matt rules B):
+522c652
+< Start-Process -FilePath C:\Users\mdk32\venvs\bia562-train\Scripts\python.exe -ArgumentList 'eval.py','--model','C:\Users\mdk32\models\Qwen2.5-3B-Instruct','--mode','fewshot','--fewshot','fewshot.json','--rows','eval_rows.jsonl','--expect_manifest_sha','0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d','--out_dir','out-S','--tag','qwen25-3b-base-fs','--pin_transformers','5.22.2' -WorkingDirectory C:\Users\mdk32\lb-eval-bluebird-v1.0-r03 -RedirectStandardOutput C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.out -RedirectStandardError C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.err -WindowStyle Hidden -PassThru
+---
+> Start-Process -FilePath C:\Users\mdk32\venvs\bia562-train\Scripts\python.exe -ArgumentList 'eval.py','--model','C:\Users\mdk32\models\Qwen2.5-3B-Instruct','--mode','fewshot','--fewshot','fewshot.json','--rows','eval_rows.jsonl','--expect_manifest_sha','0769b8611cc9882f50fbd95ed81c4d0adbc35946ec7c6a187cb30a9802d8866d','--out_dir','out-S','--tag','qwen25-3b-base-fs','--pin_transformers','5.22.2','--peak_limit','8500000000' -WorkingDirectory C:\Users\mdk32\lb-eval-bluebird-v1.0-r03 -RedirectStandardOutput C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.out -RedirectStandardError C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.err -WindowStyle Hidden -PassThru
+524d653
+< Expected `eval-S.out` (new file; the old one is on the box): `VERSIONS …`, `TRANSFORMERS {"installed": "5.22.2", "verified": "5.23.0", "pin": "5.22.2", "check": "PINNED_UNVERIFIED"}`, `GPU_FREE {…}`, `MERGED_GENERATION_CONFIG {…}`, then progress lines from `{"batch": 365, "done_batches": 366, "of": 447, …}` to `{"batch": 446, "done_batches": 447, "of": 447, …}` and last `EVAL_DONE qwen25-3b-base-fs 3569 complete <content sha>`. No `REPAIRED` line is expected (the stopped session wrote whole batches only). The first progress line's `peak_alloc` is expected near 4.0e9 (a fresh session); about 649 rows at 1.8–2.4 s per row, so roughly 20–30 minutes after the model load (*estimate*, from `sec_per_row` 1.762 at batch 363 and smoke S 2.041 / 2.369 at batches 381 / 445).
+526,532c655
+< **Exit reading and stop rule for E5-pin-resume.** Read the exit from the last `eval-S.out` line exactly as in the reading rule above (`EVAL_DONE` = 0, `ABORT n` = n, `REFUSED (exit 7 …)` = 7, empty `.out` with `eval.py: error:` = 2, else running / no exit code).
+< - **0**: S is done. Continue with E6-S (status `complete`), then E7 when both E4 and E5 have exited 0.
+< - **3 again** (`ABORT 3 peak_alloc … after row <r>`): **stop.** No relaunch, no `--peak_limit` or `--batch` change, no second resume card. The batch that tripped the check is written and kept (replayed). Before anything else run **E5-S2-keep** (below). Trinity re-plans from the two sessions' curves.
+< - **5** (CUDA OOM): stop, E5-S2-keep, Trinity re-plans.
+< - **10 at the start** (`ABORT 10 GPU not free …`, an ABORT whose pid matches no session): the §g floor rule applies unchanged (Matt sets the floor; the next launch is the E5-pin-floor line with his number, in the same out dir; own card).
+< - **7**: stop and report (a live lock, a wrong dir or a changed line); never edit and relaunch.
+< - Any other code, or no exit code: stop and report with E6-S and the `.err` tail.
+---
+> The card quotes the check's printed line `E5S1 STOP: C4 failed; max projected per-batch peak 8016885034 B at batch 437` and states that Matt's ruling B overrides that STOP (N32). Expected: progress lines from `{"batch": 365, …}`. Batches 391, 401, 408, 420, 431 and 437 are expected to be slow, or to end the run with exit 5.
+534c657,664
+< **E5-S2-keep** (only after a second stop; the same laptop lines as E5-S1-keep; own card):
+---
+> **Exit reading and stop rules (A and B; N31 for the check).** Read the exit from the last line of `eval-S4.out` (A) or `eval-S.out` (B), as in the reading rule above.
+> - **0**: done. Continue with E6, then E7 (A: E7-A).
+> - **3** or **5**: **stop**. Run the keep block before anything else (A: E5-S4-keep; B: E5-S2-keep). Nothing is relaunched, and no `--peak_limit` or `--batch` change is made; Trinity re-plans. Under A, an exit 3 means the per-row L² assumption is wrong.
+> - **10 at the start** (an ABORT whose pid matches no session): run the keep block first (N35: a floor relaunch truncates `.out`/`.err`; the ABORT json alone keeps the cause, but not the `GPU_FREE` line). Then Matt sets a floor, and the floor line runs in the same dir (A: E5-b4-pin-floor; B: a floor variant written by Trinity on request).
+> - **7**: stop and report (a live lock, a wrong dir or a changed line). Never edit and relaunch.
+> - Any other code, or no exit code: stop and report with E6 and the `.err` tail.
+> 
+> **E5-S2-keep** (route B, only after a stop of E5-pin-limit, before any relaunch; @0.7 process gate per the 9:00 PM PT ruling; own card):
+539c669
+< Get-CimInstance -ClassName Win32_Process -Filter "Name = 'python.exe'" | Where-Object { $_.CommandLine -like '*eval.py*' } | Select-Object ProcessId,CreationDate,CommandLine
+---
+> Get-CimInstance -ClassName Win32_Process | Where-Object { ($_.Name -like 'python*' -or $_.CommandLine -like '*eval.py*') -and $_.ProcessId -ne $PID } | Select-Object ProcessId,Name,CreationDate,CommandLine
+542d671
+< CopyToBox: `C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.out` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s2/eval-S.out`; `C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\eval-S.err` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s2/eval-S.err`; `C:\Users\mdk32\lb-eval-bluebird-v1.0-r03\out-S\*` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s2/out-S/`. Box: `mkdir -p /workspace/littleblue-eval-v0.5/runs/r03/e5-s2/out-S`, then `cd /workspace/littleblue-eval-v0.5/runs/r03/e5-s2 && sha256sum eval-S.out eval-S.err out-S/*`. No `e5s1_check.py` GO applies to a second stop; Trinity reads it.
+544c673
+< **E7 with a resumed S.** E7 is unchanged. Its `eval-S.out` / `eval-S.err` are the resumed session's logs; the stopped session's logs are the `e5-s1/` copies. `out-S` holds `ABORT-1.json` next to the predictions and run json, and `EVAL.SHA256` lists it.
+---
+> CopyToBox (named files, N36): `eval-S.out`, `eval-S.err` → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s2/`; `out-S\run-qwen25-3b-base-fs.json`, `out-S\predictions-qwen25-3b-base-fs.jsonl`, `out-S\ABORT-1.json` and each further `out-S\ABORT-<n>.json` that the hash lines list → `/workspace/littleblue-eval-v0.5/runs/r03/e5-s2/out-S/`. Box: `mkdir -p /workspace/littleblue-eval-v0.5/runs/r03/e5-s2/out-S`, then `cd /workspace/littleblue-eval-v0.5/runs/r03/e5-s2 && sha256sum eval-S.out eval-S.err out-S/*`. No check GO applies to a second stop; Trinity reads it.
+546,548c675,680
+< **Proposed card texts (for Emma; plain language; one card each):**
+< - E5-S1-keep: "The baseline run stopped at 2,920 of 3,569 answers because its memory guard tripped (7.001 GB used, limit 7.0 GB). Nothing was lost. Copy its log and results to Trinity's computer before anything restarts, because restarting erases the log. This only reads and copies; nothing runs on the GPU." → **Copy** / **Hold**
+< - E5-pin-resume: "Restart the baseline run where it stopped, with exactly the same command as before (version pin 5.22.2, same memory limit, same batch size). The 2,920 finished answers are kept. A fresh start clears the memory that built up over the long run: a test run of the hardest remaining questions used 4.03 GB, and the projection for the remaining 649 answers is about 5.2 GB against the 7.0 GB limit. About 20–30 minutes. If the guard trips again it stops on its own and nothing is retried without you." → **Resume** / **Hold**
+---
+> **Proposed card texts (for Emma; plain language; one card each; no card goes before Kaylee's diff-check of @0.7 and Matt's A/B/C/D answer):**
+> - Ruling card: the question above.
+> - E5-b4-pin (if A): "Start the baseline run again from the beginning in a new folder, with batches of 4 instead of 8 (version pin 5.22.2, memory guard unchanged at 7.0 GB). The stopped run's 2,920 answers stay where they are as a record. Estimated peak 5.1–5.3 GB (an estimate; the guard stops the run on its own if it is wrong), about 2–2.5 hours. If it stops, nothing is retried without you." → **Start** / **Hold**
+> - E5-pin-limit (if B): "Continue the stopped baseline run from answer 2,921 with the memory guard raised from 7.0 to 8.5 GB. Trinity's check printed: max projected per-batch peak 8016885034 B at batch 437, STOP. That is above the GPU's 7.4 GB free, so this continues only if Windows spills into normal memory, which is untested here and may be very slow. If it fails it stops on its own and keeps everything done so far." → **Continue** / **Hold**
+> - E5-gpu-pid: "Read-only: show which program is process <pid> using the GPU (name and command line only). Nothing changes." → **Run** / **Hold**
+> - E5-free: "Read-only: record how much GPU memory is free right now." → **Run** / **Hold**
+550c682,683
+< **Resume** after any stop: rerun the same E3a, E3b, E4 or E5 line of the set fixed at E0b (own card). Exit 7 means a wrong dir, a changed command, or **a run still alive in that dir** (lock), never a resume. **@0.6:** before any relaunch of a detached run, its `.out` and `.err` are copied to the box first (a relaunch truncates them); for `out-S` after the E5-pin exit 3 that is E5-S1-keep and the box check above.
+---
+> 
+> **Resume** after any stop: rerun the same E3a, E3b, E4 or E5 line of the set fixed at E0b (own card). Exit 7 means a wrong dir, a changed command, or **a run still alive in that dir** (lock), never a resume. **@0.6:** before any relaunch of a detached run, its `.out` and `.err` are copied to the box first (a relaunch truncates them); for `out-S` after the E5-pin exit 3 that is E5-S1-keep and the box check above. **@0.7:** after a stop of E5-b4-pin it is E5-S4-keep; after a stop of E5-pin-limit it is E5-S2-keep; after an exit 10 at a relaunch's start the keep block also runs before the floor line (N35).
+647a781,782
+> - **@0.7 box evidence** (`/workspace/littleblue-eval-v0.7/`): the real E5-S1 curve, record batches, zero-padding fit and projection (`evidence/curve07.py` → `CURVE-0.7.txt`); batches 350–364 row by row (`evidence/batches07.py` → `batches-350-364.txt`); `tools/e5s1_check.py` **`814a5657fc7c138bda705ad1460993ee6690fb30f9ca0a7ad5ed635e6531c3f6`** (replaces @0.6 `ed4208b7…`; real copy → `E5S1 STOP: C4 failed; max projected per-batch peak 8016885034 B at batch 437`, `evidence/check-real-0.7.txt`); `tests/e5s1_suite.py` 27/27 (`evidence/suite07.jsonl`); `tests/e5s1_mutants.py` 27/29 killed on real verdict lines, 2 equivalent survivors (`evidence/mutants07.jsonl`); @0.6's resume replay re-run against @0.7 and route A/B replays through the real eval.py on the CPU shim (`evidence/replay07.py` → `replay-0.7.jsonl`); every §g PowerShell block parsed with PowerShell 7.4.6 (`evidence/ps_check07.py` → `ps-parse-0.7.txt`). Run with `PYTHONDONTWRITEBYTECODE=1` and `-B`; no `.pyc` in any stage (checked at the end).
+> - @0.7 not tested on the box: which SDPA kernel the laptop uses for no-mask batches (inferred from the curve and the transformers source, *unverified*); that transformers 5.22.2 skips the mask like 5.23.0; that the L² memory scales with rows at batch 4 (route A's estimate); the Windows driver's system-memory fallback (route B); batch-4 throughput.
+668a804
+> | EV-T8 | T | @0.7 e5s1 check: integrity I0–I12, C1–C4, N31 STOP-on-anything-else (`tests/e5s1_suite.py` 27 cases; 27/29 mutants) |
+673c809
+< | EV-F3 | F | @0.6: `max_memory_allocated` grows within one long session (full S 7.001e9 after 365 batches vs 4.03e9 for the longest batches in a fresh smoke session; full T about 5.28e9 vs smoke 4.40e9); cause not identified; a fresh process resets it. Post-run: find the growing allocation before the next full run |
+---
+> | EV-F3 | F | @0.7 (replaces @0.6's "in-session growth", falsified): `max_memory_allocated` is a session max set by zero-padding batches (no attention mask → SDPA `is_causal` path), whose own peak fits 2.5358e9 + 1410.88·L² B (49 points, ≤ 0.49 % residual) on the laptop; padded batches stay ≤ ~4.5e9 up to 1,994 tokens. Batching that creates long zero-padding batches can exceed the GPU; post-run: confirm the kernel on the laptop and decide whether eval.py should always pass a mask |
+686a823
+> 11. **@0.7, out-S cannot finish as configured (Matt rules A / B / C / D, question in §g):** A fresh S at `--batch 4` in `out-S-b4` (recommended; estimate 5.1–5.3e9; S batched 4 vs T batched 8); B resume with `--peak_limit 8500000000` relying on unverified driver spilling past the 7.385e9 free; C code change (new RUN PIN, T and S rerun); D hold. Item 10's recommendation (identical resume) is withdrawn.
+702a840,859
+> ### 11-00b. RECHECK-eval@0.6, Trinity's 9:00 PM PT ruling, and the E5-S1 copy (this order, @0.7)
+> | Finding | Sev | Disposition @0.7 | Where |
+> |---|---|---|---|
+> | **N29** `E5S1 GO` doesn't test its premise; probes P1 (flat 6.99e9) and P2 (6.0e9 at batch 0) gave GO | MED | **Fixed (tool).** C3: at full batches 0, 64, 127, 191, 254 and 318, the session peak must be ≤ the smoke-S peak + 1.0e9, else STOP. P1, P2, P2b (5.04e9 at 318) and P2c (3.8e9 at batches 0–15) STOP on C3; P3 STOPs on C2. The real copy passes C3 but STOPs on C4, because the premise C3 tested is itself falsified (§g) | `tools/e5s1_check.py`; `evidence/suite07.jsonl` |
+> | **N30a** one session not verified | LOW | **Fixed.** I8: exactly one session, starting at batch 0 (A7 → STOP I8) | same |
+> | **N30b** greedy check partial | LOW | **Fixed.** I9: the full 17-key merged config equals the literal and smoke-S's (A4 rep 1.05 and temperature 0.7 → STOP I9) | same |
+> | **N30c** cfg partial; versions unchecked | LOW | **Fixed.** I10: full cfg = smoke-S cfg except `limit`; versions = literal = smoke-S's (A1, A2, A3 → STOP I10) | same |
+> | **N30d** smoke-S.out not pinned | LOW | **Fixed.** I11: sha `4b8b2cab…19b9` (recomputed on the box: matches), 8 progress lines, EVAL_DONE, smoke run json sha `2b30d3fc…739f`, status complete. A6 (truncated) and a sha-only change → STOP I11 | same |
+> | **N30e** curve monotone and ≤ limit unchecked | LOW | **Fixed.** I12 (A5 → STOP I12; a pre-abort peak above the limit → STOP I12) | same |
+> | **N31** missing inputs crash without an E5S1 line | LOW | **Fixed (tool and text).** Every exception prints `E5S1 STOP: internal error …`, exit 1. The order says that anything other than exit 0 with a last line starting `E5S1 GO` is STOP. Three probes | §g; suite |
+> | **N32** card hard-codes "about 5.2 GB" | LOW | **Fixed.** The E5-pin-resume card is withdrawn. The route B card quotes the printed line `max projected per-batch peak 8016885034 B at batch 437`. The route A card gives its estimate as an estimate (no check applies to a fresh dir) | §g cards |
+> | **N33** "any other file is exit 7" inaccurate | INFO | **Folded.** The text now names the files eval.py also tolerates (L137–L140) | §g |
+> | **N34** A1 carried by reference only | INFO | **Carried.** E8's fill-ins still read "from E0a". The E8 card writer must use the addendum A1 values (baseline `381b4222-f694-41f0-9685-ff5bb260df2e`, 0 and 0, citing the E0a log line). Inlining would change E8's block, which Kaylee has passed byte-for-byte | addendum A1; §g E8 |
+> | **N35** no keep step before a floor relaunch after exit 10 | INFO | **Folded.** The stop rules and the Resume line require the keep block before any floor line | §g |
+> | **N36** CopyToBox wildcard | INFO | **Folded.** All new CopyToBox steps name their files. E5-S1's copy is recorded with its three named files. @0.5's E7 block text is unchanged (route B uses it; its CopyToBox bullets are read with the named-file rule) | §g |
+> | **N37** C1 false STOP possible | INFO | **Carried, superseded.** @0.6's C1 is replaced. The @0.7 C1 only counts steps > 1e8 at batches of ≥ 1,000 tokens that are padded. A false STOP stays fail-safe | tool |
+> | **N38** addendum wording | INFO | No change | — |
+> | **Trinity's ruling, 9:00 PM PT (N39-equivalent)** | — | **Folded.** The gate is no live python/eval.py, judged by `Win32_Process` Name and CommandLine (minus `$PID`), never by the nvidia-smi name column. explorer and dwm are logged and do not stop. **E5-gpu-pid** (literal pid at card time; no row or non-python → proceed; python, eval.py or unnamed → STOP, Trinity rules). **E5-free** before any S launch. The min_free floor stays the guard. E5-S1-keep is kept as run; the new gate is in E5-S2-keep and E5-S4-keep. All parsed | §g; `ps-parse-0.7.txt` |
+> | **E5-S1 copy falsifies @0.6** | — | **Re-planned.** Zero-padding mechanism, fit, projection, smoke re-derivation, options A–D, Matt question; E5-pin-resume withdrawn | §g; §9 #11; §k EV-F3 |
+> 
+792a950
+> @0.7 (Sun 11/15): answers Kaylee's `RECHECK-eval@0.6.md` (FAIL, N29 MED), Trinity's 9:00 PM PT ruling (N39-equivalent) and the real E5-S1 copy: @0.6's in-session-growth premise falsified (zero-padding batches, memory ∝ L²); identical resume withdrawn (projected 8.02e9 at batch 437); options A (batch 4, fresh dir; recommended) / B (peak_limit 8.5e9) / C (code) / D for Matt; `e5s1_check.py` rebuilt (I8–I12 = N30 a–e, C3 = N29, C1/C2/C4 for the step curve, N31 STOP on anything else; suite 27/27, mutants 27/29 with 2 equivalent); keep blocks with the Win32_Process gate, E5-S-gate, E5-gpu-pid, E5-free; route A/B lines written out; N33/N35/N36 folded; N34, N37, N38 carried. RUN PIN, SCORE PIN, §10, the addendum and the E5-pin line unchanged.

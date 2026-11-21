@@ -1,0 +1,24 @@
+gold                     READS              expected READS                    OK  ['format gate, completeness, test floor and every probe bar pass']
+honest92                 READS              expected READS                    OK  ['format gate, completeness, test floor and every probe bar pass']
+honest45                 INCONCLUSIVE       expected INCONCLUSIVE             OK  ['A-T test accuracy floor (strict correct, all test rows)']
+mem                      MEMORISES          expected MEMORISES                OK  ['old value returned over placebo: 479 vs 0 discordant of 577, p=6.41e-145']
+copy_anchor              DEGENERATE         expected DEGENERATE               OK  ['copies whole clauses as spans (1660/1660)', 'answers almost nothing right (0/1660 answerable)']
+refuse                   DEGENERATE         expected DEGENERATE               OK  ['refuses answerable rows (1660/1660)', 'answers almost nothing right (0/1660 answerable)']
+length_gamer             DEGENERATE         expected DEGENERATE               OK  ['enumerates extra spans (length-gaming) (1660/1660)', 'answers almost nothing right (0/1660 answerable)']
+format_only              DEGENERATE         expected DEGENERATE               OK  ['span text not in the prompt (format-only) (1660/1660)', 'answers almost nothing right (0/1660 answerable)']
+numeric_only             DEGENERATE         expected DEGENERATE               OK  ['format gate failed (235 of 2090 test outputs not strict-valid)']
+numeric_only_clean       INCONCLUSIVE       expected INCONCLUSIVE             OK  ['A-T test accuracy floor (strict correct, all test rows)']
+gold_but_invalid_nonnum  DEGENERATE         expected DEGENERATE               OK  ['format gate failed (75 of 2090 test outputs not strict-valid)']
+prior_guesser            INCONCLUSIVE       expected DEGENERATE|INCONCLUSIVE  OK  ['A-T test accuracy floor (strict correct, all test rows)', 'P-CF counterfactual: new value vs same rows original', 'P-AR anchor removal: refusal vs same rows answered']
+leaker                   INCONCLUSIVE       expected INCONCLUSIVE             OK  ['P-RN-LEAK real supplier/brand name in output after rename']
+shuffle_sensitive        INCONCLUSIVE       expected INCONCLUSIVE             OK  ['P-SH clause shuffle: drop vs same rows']
+partial_memoriser_30     MEMORISES          expected MEMORISES                OK  ['old value returned over placebo: 157 vs 0 discordant of 577, p=5.47e-48']
+gold_partial64           REFUSED exit 16    expected REFUSED exit 16          OK  SCORE_REFUSED exit 16: /workspace/lbe-tmp/suite-tmp/stub-gold_partial64-4quj1f7t/out/predictions-T.jsonl: 3505 of 3569 ids have no prediction (by kind {'rn': 296, 'ar': 294, 'test': 2051, 'sh': 294, 'cf': 274, 'pp': 296}); refusing to score partial predictions
+gold_no_sh_rn_pp         REFUSED exit 16    expected REFUSED exit 16          OK  SCORE_REFUSED exit 16: /workspace/lbe-tmp/suite-tmp/stub-gold_no_sh_rn_pp-75j6md3v/out/predictions-T.jsonl: 900 of 3569 ids have no prediction (by kind {'pp': 300, 'sh': 300, 'rn': 300}); refusing to score partial predictions
+dup                      REFUSED exit 16    expected REFUSED exit 16          OK  SCORE_REFUSED exit 16: /workspace/lbe-tmp/suite-tmp/stub-dup-63peq65k/out/predictions-T.jsonl: duplicate id ar:SYN-SYNCP000004-AMD1-Q01:0
+18/18 stubs on the expected outcome
+
+real	0m6.365s
+user	0m18.986s
+sys	0m1.544s
+DONE

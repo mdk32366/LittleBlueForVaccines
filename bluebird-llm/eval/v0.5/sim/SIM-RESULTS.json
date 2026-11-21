@@ -1,0 +1,281 @@
+{
+ "honest p=0.45": {
+  "bar_fail_counts": {
+   "A-T": 4000,
+   "P-AR": 14,
+   "P-CF": 29,
+   "P-PP": 11,
+   "P-PP-REF": 19,
+   "P-RN": 20,
+   "P-SH": 22
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 4000
+  }
+ },
+ "honest p=0.70": {
+  "bar_fail_counts": {
+   "A-T": 4000,
+   "P-AR": 24,
+   "P-CF": 27,
+   "P-PP": 19,
+   "P-PP-REF": 23,
+   "P-RN": 16,
+   "P-SH": 26
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 4000
+  }
+ },
+ "honest p=0.80": {
+  "bar_fail_counts": {
+   "A-T": 3999,
+   "P-AR": 24,
+   "P-CF": 22,
+   "P-PP": 9,
+   "P-PP-REF": 18,
+   "P-RN": 17,
+   "P-SH": 15
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 3999,
+   "READS": 1
+  }
+ },
+ "honest p=0.83": {
+  "bar_fail_counts": {
+   "A-T": 2274,
+   "P-AR": 16,
+   "P-CF": 14,
+   "P-PP": 27,
+   "P-PP-REF": 12,
+   "P-RN": 14,
+   "P-SH": 23
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 2346,
+   "READS": 1654
+  }
+ },
+ "honest p=0.85": {
+  "bar_fail_counts": {
+   "A-T": 39,
+   "P-AR": 29,
+   "P-CF": 18,
+   "P-PP": 16,
+   "P-PP-REF": 12,
+   "P-RN": 18,
+   "P-SH": 12
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 138,
+   "READS": 3862
+  }
+ },
+ "honest p=0.88": {
+  "bar_fail_counts": {
+   "P-AR": 17,
+   "P-CF": 14,
+   "P-PP": 12,
+   "P-PP-REF": 7,
+   "P-RN": 16,
+   "P-SH": 19
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 81,
+   "READS": 3919
+  }
+ },
+ "honest p=0.90": {
+  "bar_fail_counts": {
+   "P-AR": 19,
+   "P-CF": 16,
+   "P-PP": 17,
+   "P-PP-REF": 10,
+   "P-RN": 29,
+   "P-SH": 14
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 102,
+   "READS": 3898
+  }
+ },
+ "honest p=0.92": {
+  "bar_fail_counts": {
+   "P-AR": 19,
+   "P-CF": 15,
+   "P-PP": 15,
+   "P-PP-REF": 4,
+   "P-RN": 19,
+   "P-SH": 24
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 95,
+   "READS": 3905
+  }
+ },
+ "honest p=0.95": {
+  "bar_fail_counts": {
+   "P-AR": 8,
+   "P-CF": 15,
+   "P-PP": 2,
+   "P-RN": 23,
+   "P-SH": 12
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 58,
+   "READS": 3942
+  }
+ },
+ "honest p=0.97": {
+  "bar_fail_counts": {
+   "P-AR": 3,
+   "P-CF": 4,
+   "P-RN": 22,
+   "P-SH": 10
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 39,
+   "READS": 3961
+  }
+ },
+ "honest p=0.99": {
+  "bar_fail_counts": {
+   "P-RN": 1
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 1,
+   "READS": 3999
+  }
+ },
+ "null: plausible-value guesser (honest 0.70; every wrong cf/ar answer is another system's value)": {
+  "bar_fail_counts": {
+   "A-T": 4000,
+   "P-AR": 15,
+   "P-CF": 14,
+   "P-PP": 22,
+   "P-PP-REF": 18,
+   "P-RN": 18,
+   "P-SH": 12
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 4000
+  }
+ },
+ "null: plausible-value guesser (honest 0.92; every wrong cf/ar answer is another system's value)": {
+  "bar_fail_counts": {
+   "P-AR": 13,
+   "P-CF": 11,
+   "P-PP": 24,
+   "P-PP-REF": 6,
+   "P-RN": 17,
+   "P-SH": 16
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 84,
+   "READS": 3916
+  }
+ },
+ "power: memorises 10% of cf/ar (else honest 0.92)": {
+  "bar_fail_counts": {
+   "P-AR": 3187,
+   "P-CF": 3070,
+   "P-PP": 15,
+   "P-PP-REF": 4,
+   "P-RN": 15,
+   "P-SH": 21
+  },
+  "reps": 4000,
+  "verdicts": {
+   "MEMORISES": 4000
+  }
+ },
+ "power: memorises 2% of cf/ar (else honest 0.92)": {
+  "bar_fail_counts": {
+   "P-AR": 139,
+   "P-CF": 137,
+   "P-PP": 24,
+   "P-PP-REF": 8,
+   "P-RN": 12,
+   "P-SH": 24
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 219,
+   "MEMORISES": 1024,
+   "READS": 2757
+  }
+ },
+ "power: memorises 5% of cf/ar (else honest 0.92)": {
+  "bar_fail_counts": {
+   "P-AR": 920,
+   "P-CF": 791,
+   "P-PP": 13,
+   "P-PP-REF": 6,
+   "P-RN": 11,
+   "P-SH": 25
+  },
+  "reps": 4000,
+  "verdicts": {
+   "MEMORISES": 3992,
+   "READS": 8
+  }
+ },
+ "power: paraphrase-fragile (0.95, pp 0.85)": {
+  "bar_fail_counts": {
+   "P-AR": 8,
+   "P-CF": 21,
+   "P-PP": 3797,
+   "P-PP-REF": 1962,
+   "P-RN": 22,
+   "P-SH": 15
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 3809,
+   "READS": 191
+  }
+ },
+ "power: shuffle-sensitive (0.95, sh 0.85)": {
+  "bar_fail_counts": {
+   "P-AR": 7,
+   "P-CF": 16,
+   "P-PP": 7,
+   "P-PP-REF": 1,
+   "P-RN": 20,
+   "P-SH": 3762
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 3764,
+   "READS": 236
+  }
+ },
+ "power: shuffle-sensitive (0.95, sh 0.88)": {
+  "bar_fail_counts": {
+   "P-AR": 6,
+   "P-CF": 14,
+   "P-PP": 5,
+   "P-RN": 9,
+   "P-SH": 2787
+  },
+  "reps": 4000,
+  "verdicts": {
+   "INCONCLUSIVE": 2792,
+   "READS": 1208
+  }
+ }
+}

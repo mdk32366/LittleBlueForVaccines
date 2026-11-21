@@ -1,0 +1,23 @@
+# @0.2 bar simulation (4000 replicates per scenario; score.decide with default PARAMS)
+
+| scenario | reps | P(not READS) | READS | INCONCLUSIVE | MEMORISES | DEGENERATE | top failing bars (rate) | @0.0 P(not READS) |
+|---|---|---|---|---|---|---|---|---|
+| honest p=0.45 | 4000 | 1.000 | 0.000 | 1.000 | 0.000 | 0.000 | A-T 1.000, P-CF 0.007, P-SH 0.005 |  |
+| honest p=0.70 | 4000 | 1.000 | 0.000 | 1.000 | 0.000 | 0.000 | A-T 1.000, P-CF 0.007, P-SH 0.006 |  |
+| honest p=0.80 | 4000 | 1.000 | 0.000 | 1.000 | 0.000 | 0.000 | A-T 1.000, P-AR 0.006, P-CF 0.005 |  |
+| honest p=0.83 | 4000 | 0.587 | 0.413 | 0.587 | 0.000 | 0.000 | A-T 0.569, P-PP 0.007, P-SH 0.006 |  |
+| honest p=0.85 | 4000 | 0.034 | 0.966 | 0.035 | 0.000 | 0.000 | A-T 0.010, P-AR 0.007, P-CF 0.004 |  |
+| honest p=0.88 | 4000 | 0.020 | 0.980 | 0.020 | 0.000 | 0.000 | P-SH 0.005, P-AR 0.004, P-RN 0.004 |  |
+| honest p=0.90 | 4000 | 0.025 | 0.975 | 0.025 | 0.000 | 0.000 | P-RN 0.007, P-AR 0.005, P-PP 0.004 | 0.792 |
+| honest p=0.92 | 4000 | 0.024 | 0.976 | 0.024 | 0.000 | 0.000 | P-SH 0.006, P-RN 0.005, P-AR 0.005 | 0.33 |
+| honest p=0.95 | 4000 | 0.014 | 0.986 | 0.015 | 0.000 | 0.000 | P-RN 0.006, P-CF 0.004, P-SH 0.003 | 0.077 |
+| honest p=0.97 | 4000 | 0.010 | 0.990 | 0.010 | 0.000 | 0.000 | P-RN 0.005, P-SH 0.003, P-CF 0.001 | 0.024 |
+| honest p=0.99 | 4000 | 0.000 | 1.000 | 0.000 | 0.000 | 0.000 | P-RN 0.000 | 0.0 |
+| power: shuffle-sensitive (0.95, sh 0.85) | 4000 | 0.941 | 0.059 | 0.941 | 0.000 | 0.000 | P-SH 0.941, P-RN 0.005, P-CF 0.004 |  |
+| power: shuffle-sensitive (0.95, sh 0.88) | 4000 | 0.698 | 0.302 | 0.698 | 0.000 | 0.000 | P-SH 0.697, P-CF 0.004, P-RN 0.002 |  |
+| power: paraphrase-fragile (0.95, pp 0.85) | 4000 | 0.952 | 0.048 | 0.952 | 0.000 | 0.000 | P-PP 0.949, P-PP-REF 0.490, P-RN 0.005 |  |
+| power: memorises 2% of cf/ar (else honest 0.92) | 4000 | 0.311 | 0.689 | 0.055 | 0.256 | 0.000 | P-AR 0.035, P-CF 0.034, P-SH 0.006 |  |
+| power: memorises 5% of cf/ar (else honest 0.92) | 4000 | 0.998 | 0.002 | 0.000 | 0.998 | 0.000 | P-AR 0.230, P-CF 0.198, P-SH 0.006 |  |
+| power: memorises 10% of cf/ar (else honest 0.92) | 4000 | 1.000 | 0.000 | 0.000 | 1.000 | 0.000 | P-AR 0.797, P-CF 0.767, P-SH 0.005 |  |
+| null: plausible-value guesser (honest 0.70; every wrong cf/ar answer is another system's value) | 4000 | 1.000 | 0.000 | 1.000 | 0.000 | 0.000 | A-T 1.000, P-PP 0.005, P-PP-REF 0.004 |  |
+| null: plausible-value guesser (honest 0.92; every wrong cf/ar answer is another system's value) | 4000 | 0.021 | 0.979 | 0.021 | 0.000 | 0.000 | P-PP 0.006, P-RN 0.004, P-SH 0.004 |  |

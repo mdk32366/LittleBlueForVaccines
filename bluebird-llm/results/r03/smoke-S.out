@@ -1,0 +1,13 @@
+VERSIONS {"torch": "2.11.0+cu128", "cuda": "12.8", "bitsandbytes": "0.50.2", "transformers": "5.22.2", "peft": "0.21.2"}
+TRANSFORMERS {"installed": "5.22.2", "verified": "5.23.0", "pin": "5.22.2", "check": "PINNED_UNVERIFIED"}
+GPU_FREE {"free": 7385120768, "total": 8546484224, "min_free": 7000000000.0}
+MERGED_GENERATION_CONFIG {"merged": {"do_sample": false, "num_beams": 1, "temperature": null, "top_p": null, "top_k": null, "min_p": null, "typical_p": 1.0, "repetition_penalty": 1.0, "no_repeat_ngram_size": 0, "max_new_tokens": 128, "min_new_tokens": null, "eos_token_id": [151645, 151643], "pad_token_id": 151643, "num_return_sequences": 1, "bad_words_ids": null, "suppress_tokens": null, "begin_suppress_tokens": null}, "logits_processors": []}
+{"batch": 0, "done_batches": 1, "of": 8, "sec_per_row": 0.702, "peak_alloc": 2753126400}
+{"batch": 1, "done_batches": 2, "of": 8, "sec_per_row": 0.79, "peak_alloc": 3971223040}
+{"batch": 2, "done_batches": 3, "of": 8, "sec_per_row": 1.651, "peak_alloc": 4011912192}
+{"batch": 3, "done_batches": 4, "of": 8, "sec_per_row": 2.18, "peak_alloc": 4030207488}
+{"batch": 4, "done_batches": 5, "of": 8, "sec_per_row": 1.661, "peak_alloc": 4030207488}
+{"batch": 5, "done_batches": 6, "of": 8, "sec_per_row": 1.064, "peak_alloc": 4030207488}
+{"batch": 6, "done_batches": 7, "of": 8, "sec_per_row": 2.041, "peak_alloc": 4030207488}
+{"batch": 7, "done_batches": 8, "of": 8, "sec_per_row": 2.369, "peak_alloc": 4030207488}
+EVAL_DONE qwen25-3b-base-fs 64 complete fac508d7097c59afabda40bcd6748ab4df0e37b2452cc3991c65923c849cd1ab

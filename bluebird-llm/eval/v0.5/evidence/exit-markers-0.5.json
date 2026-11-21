@@ -1,0 +1,21 @@
+{"case": "stub run complete", "rc": 0, "rule": 0, "ok": true, "last_out": "EVAL_DONE t 16 complete 39df5c48ab7094402425a0fa22eb399d0c68ffcc412075b246b41a6255618b0b", "last_err": ""}
+{"case": "same launch into the completed dir", "rc": 7, "rule": 7, "ok": true, "last_out": "REFUSED (exit 7, nothing written): out_dir holds a COMPLETED run; nothing to do. Use a fresh out_dir for a new run", "last_err": ""}
+{"case": "--replay_b1 without --limit (fresh dir)", "rc": 8, "rule": 8, "ok": true, "last_out": "ABORT 8 --replay_b1 is for smoke runs (--limit) only", "last_err": ""}
+{"case": "wrong RUN PIN (fresh dir)", "rc": 6, "rule": 6, "ok": true, "last_out": "ABORT 6 manifest sha256 9d17d697c648fa1e6f0f956fe4776b579e939bd653b8a69b882df4ee44cb6366 != --expect_manifest_sha", "last_err": ""}
+{"case": "unfilled '<MIN_FREE_BYTES>'", "rc": 2, "rule": 2, "ok": true, "last_out": "", "last_err": "eval.py: error: argument --min_free: invalid float value: '<MIN_FREE_BYTES>'"}
+{"case": "shim ok", "rc": 0, "rule": 0, "ok": true, "last_out": "EVAL_DONE t 38 complete 64d8a508644168d35a8cb0e15ab03b35e8d2a015d22f6216b471cdf53ffff45d", "last_err": "  warnings.warn("}
+{"case": "shim peak > limit", "rc": 3, "rule": 3, "ok": true, "last_out": "ABORT 3 peak_alloc 9000000000 > 7000000000.0 after row 8", "last_err": "  warnings.warn("}
+{"case": "shim OOM at load", "rc": 5, "rule": 5, "ok": true, "last_out": "ABORT 5 cuda_oom at load SHIM OOM during model load", "last_err": ""}
+{"case": "shim OOM in generate", "rc": 5, "rule": 5, "ok": true, "last_out": "ABORT 5 cuda_oom SHIM OOM at batch 2", "last_err": "  warnings.warn("}
+{"case": "shim no CUDA", "rc": 10, "rule": 10, "ok": true, "last_out": "ABORT 10 no CUDA device", "last_err": ""}
+{"case": "shim GPU free < floor", "rc": 10, "rule": 10, "ok": true, "last_out": "ABORT 10 GPU not free: 1000000000 B free < 7000000000.0", "last_err": ""}
+{"case": "shim RuntimeError", "rc": 11, "rule": 11, "ok": true, "last_out": "ABORT 11 unhandled RuntimeError: SHIM non-OOM CUDA error at batch 2", "last_err": "  warnings.warn("}
+{"case": "shim KeyboardInterrupt", "rc": 11, "rule": 11, "ok": true, "last_out": "ABORT 11 unhandled KeyboardInterrupt: ", "last_err": "  warnings.warn("}
+{"case": "shim transformers 5.22.2 unpinned", "rc": 13, "rule": 13, "ok": true, "last_out": "ABORT 13 transformers 5.22.2 is not the verified 5.23.0 (greedy override verified there only); to run on 5.22.2 anyway it must be pinned explicitly: --pin_trans", "last_err": ""}
+{"case": "shim merged config not greedy", "rc": 13, "rule": 13, "ok": true, "last_out": "ABORT 13 merged generation config is not plain greedy: ['do_sample', 'temperature', 'top_p', 'top_k', 'repetition_penalty', 'logits_processors']", "last_err": "  warnings.warn("}
+{"case": "shim hard kill (os._exit 137): no marker", "rc": 137, "rule": "no exit code", "ok": true, "last_out": "{\"batch\": 1, \"done_batches\": 2, \"of\": 5, \"sec_per_row\": 0.017, \"peak_alloc\": 1000}", "last_err": "  warnings.warn("}
+{"case": "exit 8 against a run dir (NOT recorded)", "rc": 8, "rule": 8, "ok": true, "last_out": "ABORT 8 --mode fewshot needs --fewshot (NOT recorded in out_dir: it holds a run; run json and markers untouched)", "last_err": ""}
+{"case": "exit 6 against a run dir (NOT recorded)", "rc": 6, "rule": 6, "ok": true, "last_out": "ABORT 6 manifest sha256 9d17d697c648fa1e6f0f956fe4776b579e939bd653b8a69b882df4ee44cb6366 != --expect_manifest_sha (NOT recorded in out_dir: it holds a run; run ", "last_err": ""}
+{"case": "resume of the killed run", "rc": 0, "rule": 0, "ok": true, "last_out": "EVAL_DONE t 38 complete 64d8a508644168d35a8cb0e15ab03b35e8d2a015d22f6216b471cdf53ffff45d", "last_err": "  warnings.warn("}
+{"case": "static: sys.exit only in abort() L118/L127, refuse() L130 (each after its print) and __main__ sys.exit(main()) L400", "ok": true, "sys_exit_lines": [118, 127, 130, 400], "lines": ["print(\"ABORT\", code, why, \"(NOT recorded in out_dir: it holds a run; run json and markers untouched)\", flush=True); sys.exit(code)", "print(\"ABORT\", code, why, flush=True); sys.exit(code)", "print(\"REFUSED (exit 7, nothing written):\", why, flush=True); sys.exit(7)", "sys.exit(main())"]}
+{"summary": "20/20 ok"}

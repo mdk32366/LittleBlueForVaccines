@@ -1,0 +1,7 @@
+{
+ "abort": "transformers 5.22.2 is not the verified 5.23.0 (greedy override verified there only); to run on 5.22.2 anyway it must be pinned explicitly: --pin_transformers 5.22.2 (preflight; merged config and free memory recorded in PREFLIGHT-bluebird-v1.0-e2-1.json; min_free_check PASS)",
+ "exit": 13,
+ "pid": 32812,
+ "tag": "bluebird-v1.0-e2",
+ "time": "2026-11-15 15:08:21"
+}

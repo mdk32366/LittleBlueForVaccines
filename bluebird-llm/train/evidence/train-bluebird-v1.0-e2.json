@@ -1,0 +1,24 @@
+{
+ "tag": "bluebird-v1.0-e2",
+ "model": "C:\\Users\\mdk32\\models\\Qwen2.5-3B-Instruct",
+ "epochs": 2,
+ "accum": 16,
+ "seq": 1536,
+ "lr": 0.0002,
+ "rows_sha256": "b947c1be6468a0edb60ab09ece28909a664462178d079c38bc19fa62f7860106",
+ "rows": 6273,
+ "steps": 786,
+ "peak_alloc_bytes": 6238254080,
+ "peak_reserved_bytes": 7616856064,
+ "adapter_sha256": {
+  "adapter_config.json": "11e460712a1fc783799e0a3b336b2a94d8b566b86cfc16a51364dd7a3470511f",
+  "adapter_model.safetensors": "3b4166836c840e4e1661e030aad42e0c0c00c31b01aede65be98520cf007112d"
+ },
+ "versions": {
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "bitsandbytes": "0.50.2",
+  "transformers": "5.22.2",
+  "peft": "0.21.2"
+ }
+}

@@ -1,0 +1,139 @@
+{
+ "cfg": {
+  "adapter_files_sha256": {
+   "final-adapter/adapter_config.json": "11e460712a1fc783799e0a3b336b2a94d8b566b86cfc16a51364dd7a3470511f",
+   "final-adapter/adapter_model.safetensors": "3b4166836c840e4e1661e030aad42e0c0c00c31b01aede65be98520cf007112d"
+  },
+  "adapter_manifest_sha256": "35589c33dcc605024b44f6cadecae002998ffff4ecb75a7c52d5432f2988251b",
+  "adapter_path": "C:\\Users\\mdk32\\lb-eval-bluebird-v1.0-r03\\adapter\\final-adapter",
+  "backend": "hf",
+  "batch": 8,
+  "budget_rule": "zero-shot: min(max_new_tokens, SEQ 1536 - longest prompt in the batch); fewshot: max_new_tokens",
+  "constraint": "json-slot",
+  "constraint_schema": "bluebird-answer-spans-slot@0.0",
+  "constraint_tokenizer_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+  "decoding": "greedy",
+  "inputs_sha256": {
+   "eval.py": "772189be5b30ea03dccef4f49b77260d91b17f1d52ab1ddfa6945621082d6874",
+   "eval_rows.jsonl": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899",
+   "evalcore.py": "2d1d2f9bc0716938278a6d9dee9d19830ec673721c68d0753390127c3104ba75",
+   "jsonslot.py": "38c79c58be1049f04ac18f6973db5e54c7ddaf5a01b62d4d870d56a08612f956"
+  },
+  "kinds": "",
+  "limit": 0,
+  "manifest_sha256": "c5db63e4a0194582245692c73ef7333297bf27dc46dd298ce55f98fa58903871",
+  "max_new_tokens": 256,
+  "mode": "zero",
+  "model_files_sha256": {
+   ".gitattributes": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+   "LICENSE": "ef52482bb785733093dc9a2e8edd8e764c77d12d8e9d8f10a80c9b547d32d0f9",
+   "README.md": "2c74693e6ae36ba878124d465195b4dad0f71035b54ece1c9fd1553cc497ef8c",
+   "config.json": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b",
+   "generation_config.json": "ea35dfb6fc5051b01114f9b995820d55dab01ed33ee490f6378b442af82c09f9",
+   "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+   "model-00001-of-00002.safetensors": "67347b23fb4165b652eb6611f5e1f2a06dfcddba8e909df1b2b0b1857bee06c2",
+   "model-00002-of-00002.safetensors": "a40d941d0e7e0b966ad8b62bb6d6b7c88cce1299197b599d9d0a4ce59aabfc1d",
+   "model.safetensors.index.json": "bc8aaa0c87d4335177e01c765f1de0db81661c67c1a72fbfb0d521b09f5ddc56",
+   "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+   "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+   "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "model_path": "C:\\Users\\mdk32\\models\\Qwen2.5-3B-Instruct",
+  "rows_sha256": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899",
+  "run_manifest_lines": "dd3fc66d50373f123ce4f76602658794a438f6250c0953e8fffa7c84934db899  eval_rows.jsonl\na27d1f08e6a85afd728ae76d65ee62f3e7b4901bc7bdfdbd79c92b013b3e9f07  fewshot.json\n772189be5b30ea03dccef4f49b77260d91b17f1d52ab1ddfa6945621082d6874  eval.py\n2d1d2f9bc0716938278a6d9dee9d19830ec673721c68d0753390127c3104ba75  evalcore.py\n38c79c58be1049f04ac18f6973db5e54c7ddaf5a01b62d4d870d56a08612f956  jsonslot.py\n",
+  "schema": "bluebird-eval@jf0.0",
+  "seed": 562,
+  "tag": "bluebird-v1.0-e2-jf"
+ },
+ "complete": true,
+ "content_sha256": "38a19daeec39d43b7dc7daced6ffb72e51de8d033a08710b46d1570cc50fe513",
+ "finished": "2026-11-16 07:44:23",
+ "hit_max": 0,
+ "planned_batches": 447,
+ "planned_ids_sha256": "4115dad1d7ea60ff4e20b96668238dd278528bc695b8294437d1a4e628aa3706",
+ "planned_rows": 3569,
+ "predictions": 3569,
+ "sessions": [
+  {
+   "argv": [
+    "--model",
+    "C:\\Users\\mdk32\\models\\Qwen2.5-3B-Instruct",
+    "--adapter",
+    "C:\\Users\\mdk32\\lb-eval-bluebird-v1.0-r03\\adapter\\final-adapter",
+    "--rows",
+    "eval_rows.jsonl",
+    "--expect_manifest_sha",
+    "c5db63e4a0194582245692c73ef7333297bf27dc46dd298ce55f98fa58903871",
+    "--out_dir",
+    "out-T-jf",
+    "--tag",
+    "bluebird-v1.0-e2-jf",
+    "--pin_transformers",
+    "5.22.2",
+    "--max_new_tokens",
+    "256",
+    "--constraint",
+    "json-slot"
+   ],
+   "batches_done_at_start": 0,
+   "constraint": {
+    "byte_tokens": 151643,
+    "schema": "bluebird-answer-spans-slot@0.0",
+    "stop_ids": [
+     151645,
+     151643
+    ],
+    "table_size": 151665,
+    "tokenizer_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"
+   },
+   "ended": "2026-11-16 07:44:23",
+   "exit": 0,
+   "gen_seconds": 4326.4,
+   "gpu": "NVIDIA RTX PRO 2000 Blackwell Generation Laptop GPU",
+   "gpu_free_at_start": 7385120768,
+   "gpu_total": 8546484224,
+   "logits_processors": [
+    "JsonSlotConstraint"
+   ],
+   "merged_generation_config": {
+    "bad_words_ids": null,
+    "begin_suppress_tokens": null,
+    "do_sample": false,
+    "eos_token_id": [
+     151645,
+     151643
+    ],
+    "max_new_tokens": 256,
+    "min_new_tokens": null,
+    "min_p": null,
+    "no_repeat_ngram_size": 0,
+    "num_beams": 1,
+    "num_return_sequences": 1,
+    "pad_token_id": 151643,
+    "repetition_penalty": 1.0,
+    "suppress_tokens": null,
+    "temperature": null,
+    "top_k": null,
+    "top_p": null,
+    "typical_p": 1.0
+   },
+   "min_free": 7000000000.0,
+   "peak_alloc_bytes": 5393720320,
+   "peak_reserved_bytes": 7646216192,
+   "pid": 17204,
+   "repairs": [],
+   "started": "2026-11-16 06:32:02",
+   "transformers_check": "PINNED_UNVERIFIED",
+   "transformers_pin": "5.22.2",
+   "transformers_verified": "5.23.0",
+   "versions": {
+    "bitsandbytes": "0.50.2",
+    "cuda": "12.8",
+    "peft": "0.21.2",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.22.2"
+   }
+  }
+ ],
+ "status": "complete"
+}
